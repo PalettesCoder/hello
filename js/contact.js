@@ -8,7 +8,7 @@ function sendMail(event){
     const subject = `Project inquiry from ${name}`;
     const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
 
-    const mailtoLink = `mailto:hello@isak.design?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:iharsharoyal@gmail.com?subject=${subject}&body=${body}`;
 
     window.location.href = mailtoLink;
 }
