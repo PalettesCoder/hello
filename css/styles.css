@@ -46,7 +46,7 @@
   --black-56: rgba(0, 0, 0, 0.56);
   --black-72: rgba(0, 0, 0, 0.72);
   /*-- Project Color --*/
-  --primary: #00DE51;
+  --primary: #FF7518;
   --surface: #F5F5F5;
   --bg: #EBEBEB;
   --bg-2: #EAEAEA;
@@ -6853,7 +6853,7 @@ button.animate-btn::after,
   color: var(--white);
 }
 .dark-mode .section-intro .intro-title span::after {
-  background: linear-gradient(180deg, #00DE51 0%, rgba(0, 222, 81, 0.4) 100%);
+  background: linear-gradient(180deg, #FF7518 0%, rgba(0, 222, 81, 0.4) 100%);
 }
 .dark-mode .section-intro .intro-title span.type-2::after {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 100%);
@@ -7410,7 +7410,7 @@ button.animate-btn::after,
   color: var(--white);
 }
 .main-landing .intro-title span.type-2::after {
-  background: linear-gradient(180deg, #00DE51 0%, rgba(0, 222, 81, 0.4) 100%);
+  background: linear-gradient(180deg, #FF7518 0%, rgba(0, 222, 81, 0.4) 100%);
 }
 
 /*# sourceMappingURL=styles.css.map */
