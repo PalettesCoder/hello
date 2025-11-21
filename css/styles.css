@@ -1031,7 +1031,6 @@ h6,
 /* Spacing */
 .flat-spacing {
   padding-top: 72px;
-  padding-bottom: 72px;
 }
 @media (max-width: 991px) {
   .flat-spacing {
