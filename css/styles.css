@@ -4209,6 +4209,7 @@ button.animate-btn::after,
   -ms-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  color: #fff;
 }
 .tf-btn-action .ic-wrap {
   aspect-ratio: 1;
