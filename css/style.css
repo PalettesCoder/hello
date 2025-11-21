@@ -102,3 +102,9 @@
 .icon-x:before {
   content: "\e916";
 }
+.icon-behance:before {
+  content: "\f1b4"; /* Behance */
+}
+.icon-behance-square:before {
+  content: "\f1b5"; /* Behance Square */
+}
