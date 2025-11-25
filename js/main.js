@@ -253,7 +253,7 @@
     var textRotate = function () {
         if ($(".wg-curve-text").length > 0) {
             if ($(".text-rotate").length > 0) {
-                const text = "award winning agency - since 2022 -";
+                const text = "Harsha Royal - Software Engineer ";
                 const chars = text.split("");
                 const degree = 360 / chars.length;
 
