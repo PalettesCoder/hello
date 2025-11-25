@@ -4472,7 +4472,7 @@ button.animate-btn::after,
 }
 .sidebar-user .user-image .image img {
   width: 100%;
-  object-fit: cover;
+  object-fit: none;
 }
 .sidebar-user .user-image .meta-left {
   position: absolute;
