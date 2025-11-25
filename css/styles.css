@@ -7011,7 +7011,7 @@ button.animate-btn::after,
   backdrop-filter: blur(12px);
 }
 .dark-mode .tf-social-icon-2 a svg path {
-  fill: #fff;
+  fill: var(--white);
 }
 .dark-mode .tf-btn-action.style-white .icon,
 .dark-mode .tf-btn-action.style-white .text {
@@ -7392,4 +7392,3 @@ button.animate-btn::after,
   background: linear-gradient(180deg, #FF7518 0%, rgba(0, 222, 81, 0.4) 100%);
 }
 
-/*# sourceMappingURL=styles.css.map */
