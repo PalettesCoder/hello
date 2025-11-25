@@ -5180,6 +5180,8 @@ button.animate-btn::after,
 }
 .nav-top {
     position: absolute;
+    display: flex;
+    flex-direction: row;
 }
 .group-btn-slider .nav-prev-swiper.swiper-button-disabled,
 .group-btn-slider .nav-next-swiper.swiper-button-disabled {
