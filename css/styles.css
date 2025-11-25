@@ -4273,7 +4273,7 @@ button.animate-btn::after,
 }
 @media (min-width: 1200px) and (max-width: 1599px) {
   .wrap-container {
-    max-width: 708px;
+    max-width: 760px;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -7394,3 +7394,17 @@ button.animate-btn::after,
   background: linear-gradient(180deg, #FF7518 0%, rgba(0, 222, 81, 0.4) 100%);
 }
 
+.personal-details {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -460px;
+    width: 95%;
+}
+@media (max-width: 480px) {
+    .personal-details {
+        top: -350px;
+        position: relative; /* avoid overlap issues */
+        width: 100%;
+    }
+}
