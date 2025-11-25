@@ -998,7 +998,7 @@ h6,
 
 /* Spacing */
 .flat-spacing {
-  padding-top: 30px;
+  padding-top: 80px;
 }
 @media (max-width: 991px) {
   .flat-spacing {
@@ -5463,7 +5463,7 @@ button.animate-btn::after,
   padding-top: 42px;
 }
 .timeline-item:not(:last-child) {
-  padding-bottom: 88px;
+  padding-bottom: 40px;
 }
 .timeline-item .timeline-date {
   min-width: 120px;
@@ -7390,3 +7390,10 @@ button.animate-btn::after,
 }
 
 /*# sourceMappingURL=styles.css.map */
+
+.profile-image {
+      width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center;
+}
