@@ -8313,11 +8313,11 @@ button.animate-btn::after,
 .popup-box {
     background: #fff;
     padding: 25px;
-    width: 600px;
+    width:auto;
     border-radius: 12px;
     text-align: center;
     animation: fadeIn 0.3s ease;
-    height: 300px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8326,15 +8326,16 @@ button.animate-btn::after,
 
 .popup-box h3 {
     margin: 0;
-    font-size: 22px;
-    color: #38A433;
+    font-size: 28px;
+    color: var(--primary);
     letter-spacing: -1px;
+    font-weight: 600;
 }
 
 .popup-box p {
-    font-size: 14px;
+    font-size: 17px;
     margin: 15px 0;
-    color: #333;
+    color: #202020;
 }
 
 .popup-box button {
