@@ -187,7 +187,7 @@ video {
   font-weight: inherit;
 }
 
-/* body::before {
+body::before {
   content: "CODING IN PROGRESS";
   position: fixed;
   top: 50%;
@@ -200,7 +200,7 @@ video {
   pointer-events: none;
   user-select: none;
   z-index: 9999999999;
-} */
+}
 
 article,
 aside,
