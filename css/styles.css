@@ -193,7 +193,7 @@ body::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-30deg);
-  font-size: 120px;
+  font-size: 100px;
   color: #ff730080;
   white-space: nowrap;
   z-index: 9999;
