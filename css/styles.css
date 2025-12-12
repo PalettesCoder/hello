@@ -202,6 +202,29 @@ body::before {
   z-index: 9999999999;
 }
 
+@media (max-width: 600px) {
+  body::before {
+    content: "CODING IN PROGRESS";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 32px;
+    color: #ff730080;
+    white-space: nowrap;
+    z-index: 9999;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+
+@media (max-width: 340px) {
+  body::before {
+    font-size: 24px; 
+  }
+}
+
 article,
 aside,
 details,
