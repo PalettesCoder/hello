@@ -194,12 +194,13 @@ body::before {
   left: 50%;
   transform: translate(-50%, -50%) rotate(-30deg);
   font-size: 100px;
-  color: #ff730080;
+  color: #ff7300;
   white-space: nowrap;
   z-index: 9999;
   pointer-events: none;
   user-select: none;
   z-index: 9999999999;
+  background-color: #ffffff;
 }
 
 @media (max-width: 600px) {
@@ -209,19 +210,21 @@ body::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-30deg);
-    font-size: 32px;
-    color: #ff730080;
+    font-size: 40px;
+    color: #ff7300;
     white-space: nowrap;
     z-index: 9999;
     pointer-events: none;
     user-select: none;
+    font-weight: 600;
   }
 }
 
 
 @media (max-width: 340px) {
   body::before {
-    font-size: 24px; 
+    font-size: 36px; 
+    font-weight: 600;
   }
 }
 
