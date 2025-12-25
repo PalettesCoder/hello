@@ -8327,7 +8327,7 @@ button.animate-btn::after,
 .popup-box {
     background: #fff;
     padding: 25px;
-    width:auto;
+    width:620px;
     border-radius: 12px;
     text-align: center;
     animation: fadeIn 0.3s ease;
