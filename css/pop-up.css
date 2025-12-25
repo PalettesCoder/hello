@@ -58,6 +58,13 @@
     box-shadow: var(--shadow);
     background-color: #4c617f;
 }
+
+@media screen and (max-width: 450px) {
+    .popup-button-main, .popup-button-secondary {
+        padding: 30px 10px;
+    }
+    
+}
 .popup-button-secondary {
     display: inline-flex;
     align-items: center;
