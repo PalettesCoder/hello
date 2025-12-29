@@ -1929,7 +1929,6 @@ h6,
 }
 
 .relatest-post-item .title {
-  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -4108,7 +4107,6 @@ select option {
   background: transparent;
   cursor: pointer;
   outline: 0;
-  -webkit-appearance: none;
   width: 24px;
   height: 24px;
   min-width: 24px;
@@ -4484,7 +4482,6 @@ button.animate-btn::after,
   background: linear-gradient(to right, var(--primary-2) 50%, var(--primary) 50%);
   background-size: 200% 100%;
   background-position: right;
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: background-position 0.3s linear;
   cursor: pointer;
@@ -4523,7 +4520,6 @@ button.animate-btn::after,
   background: linear-gradient(to right, var(--primary-2) 50%, var(--white) 50%);
   background-size: 200% 100%;
   background-position: right;
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: background-position 0.3s linear;
 }

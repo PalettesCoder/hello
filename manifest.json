@@ -8,12 +8,12 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "images/harsha.png",
+      "src": "images/Harsha.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "images/harsha.png",
+      "src": "images/Harsha.png",
       "type": "image/png",
       "sizes": "512x512"
     }

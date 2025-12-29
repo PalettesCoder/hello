@@ -75,7 +75,7 @@ const urlsToCache = [
   'images/edu-3.svg',
   'images/favicon.svg',
   'images/harsha.jpg',
-  'images/harsha.png',
+  'images/Harsha.png',
   'images/icomoon.svg',
   'images/LIOWEOIGC8HK.jpg',
   'images/logo-2.svg',
