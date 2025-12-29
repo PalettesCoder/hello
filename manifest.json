@@ -1,0 +1,21 @@
+{
+  "name": "Harsha's Portfolio",
+  "short_name": "Harsha",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/harsha.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/harsha.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
