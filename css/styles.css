@@ -8273,23 +8273,78 @@ button.animate-btn::after,
 .main-landing .intro-title span.type-2::after {
   background: linear-gradient(180deg, #FF7518 0%, rgba(0, 222, 81, 0.4) 100%);
 }
-
 .personal-details {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: -460px;
-  width: 95%;
+  position: relative;
+  width: 100%;
+  top: -300px;
 }
 
-@media (max-width: 480px) {
+/* ≤ 360px */
+@media (max-width: 360px) {
   .personal-details {
-    top: -350px;
-    position: relative;
-    /* avoid overlap issues */
-    width: 100%;
+    top: -250px;
   }
 }
+
+/* 361px – 480px */
+@media (min-width: 361px) and (max-width: 480px) {
+  .personal-details {
+    top: -350px;
+    width: 84%;
+  }
+}
+
+/* 481px – 600px */
+@media (min-width: 481px) and (max-width: 600px) {
+  .personal-details {
+    top: -390px;
+    width: 95%;
+  }
+}
+
+/* 601px – 768px */
+@media (min-width: 601px) and (max-width: 768px) {
+  .personal-details {
+    top: -480px;
+    width: 90%;
+  }
+}
+
+/* 769px – 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .personal-details {
+    position: absolute;
+    top: -400px;
+    width: 90%;
+  }
+}
+
+/* 1025px – 1366px */
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .personal-details {
+    top: -370px;
+    width: 95%;
+  }
+}
+
+/* 1367px – 1600px */
+@media (min-width: 1367px) and (max-width: 1600px) {
+  .personal-details {
+    top: -410px;
+    width: 90%;
+  }
+}
+
+/* 1601px – 1920px */
+@media (min-width: 1601px) {
+  .personal-details {
+    top: -500px;
+    width: 85%;
+  }
+}
+
 /* Popup Background */
 .popup-overlay {
     position: fixed;
