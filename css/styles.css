@@ -60,39 +60,6 @@
   --error: #F44336;
 }
 
-/*------------ Core CSS ---------------- */
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 html,
 body,
 div,
@@ -194,7 +161,12 @@ video {
   }
 }
 
-
+body {
+  background-color: #fdfbf7;
+  background-image:
+    linear-gradient(0deg, rgba(0,0,0,0.03), rgba(0,0,0,0.03)),
+    linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0.4));
+}
 article,
 aside,
 details,
@@ -573,39 +545,6 @@ p {
 .tf-swiper .swiper-slide>* {
   height: 100%;
 }
-
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 /* Typography
 ============================================================== */
 /* Heading */
@@ -877,38 +816,7 @@ h6,
   }
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
 
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 /* General
 ============================================================== */
 /* Margin */
@@ -1280,40 +1188,6 @@ h6,
   }
 }
 
-/*------------ Component ---------------- */
-/*------------ Layout ---------------- */
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .tf-grid-layout {
   display: grid;
   column-gap: 24px;
@@ -1532,38 +1406,6 @@ h6,
   }
 }
 
-/*------------ Header ---------------- */
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
 /*--------- Abstracts variable ---------- */
 .btn-mobile-menu {
   display: flex;
@@ -1764,39 +1606,6 @@ h6,
   text-align: end;
 }
 
-/*------------ Blog ---------------- */
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .article-blog {
   border-radius: 12px;
   overflow: hidden;
@@ -2136,39 +1945,6 @@ h6,
   height: 100px;
 }
 
-/*------------ Element ---------------- */
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 @keyframes sliderShape {
 
   0%,
@@ -2814,37 +2590,6 @@ h6,
   opacity: 0;
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
 /*--------- Abstracts variable ---------- */
 .hover-img .img-style {
   overflow: hidden;
@@ -3179,38 +2924,6 @@ h6,
   }
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .box-icon {
   display: flex;
   align-items: center;
@@ -3415,38 +3128,6 @@ h6,
   gap: 4px;
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 /*-- CSS Boostrap --*/
 .offcanvas {
   border: none !important;
@@ -3818,38 +3499,6 @@ h6,
   font-size: 20px;
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .flat-animate-tab .tab-content {
   position: relative;
 }
@@ -3931,37 +3580,6 @@ h6,
   }
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
 /*--------- Abstracts variable ---------- */
 form {
   position: relative;
@@ -4240,38 +3858,6 @@ select option {
   color: var(--error);
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .tf-btn {
   display: inline-flex;
   align-items: center;
@@ -4663,38 +4249,6 @@ button.animate-btn::after,
   transition: all 0.3s ease;
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 #wrapper {
   position: relative;
 }
@@ -5664,38 +5218,6 @@ button.animate-btn::after,
   }
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .sw-dot-default {
   margin-top: 24px;
   display: inline-flex;
@@ -5939,38 +5461,6 @@ button.animate-btn::after,
   object-fit: cover;
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .testimonial-v01 .tes-icon {
   font-size: 32px;
   margin-bottom: 16px;
@@ -5991,38 +5481,6 @@ button.animate-btn::after,
   }
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .wg-counter .counter {
   margin-bottom: 10px;
 }
@@ -6774,38 +6232,6 @@ button.animate-btn::after,
   flex-direction: column;
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .nice-select {
   -webkit-tap-highlight-color: transparent;
   background-color: #fff;
@@ -7093,38 +6519,7 @@ button.animate-btn::after,
   transform: rotate(180deg);
 }
 
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
 
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .ic-accordion-custom {
   position: relative;
   width: 16px;
@@ -7292,39 +6687,6 @@ button.animate-btn::after,
   }
 }
 
-/*------------ Footer ---------------- */
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .tf-footer .quote-text {
   margin-bottom: 8px;
 }
@@ -7398,39 +6760,6 @@ button.animate-btn::after,
   }
 }
 
-/*------------ Mode ---------------- */
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .body-background {
   position: fixed;
   inset: 0;
@@ -7990,39 +7319,6 @@ button.animate-btn::after,
   opacity: 1;
 }
 
-/*------------ Landing ---------------- */
-/* ---------------------------------------------------------
-    * Name: Harsha Royal - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .bg-landing {
   background-color: #0c0c0c;
 }
@@ -8429,3 +7725,4 @@ html, body {
     cursor: url('../media/Two Soyjaks.cur'), pointer !important;
     cursor: url("../media/Two Soyjaks.cur"), pointer !important;
  }
+ 
