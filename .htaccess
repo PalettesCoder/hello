@@ -7,6 +7,15 @@ Options -Indexes
 # This includes dotfiles (like .git, .htaccess, .env) and configuration files.
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Redirect www to non-www
+    RewriteCond %{HTTP_HOST} ^www\.invaild\.com$ [NC]
+    RewriteRule ^(.*)$ https://invaild.com/$1 [L,R=301]
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     # Rule to block access to any file or directory starting with a dot.
     RewriteRule "(^|/)\." - [F]
 </IfModule>
@@ -27,7 +36,11 @@ Options -Indexes
 
     # Allow asset files (CSS, JS, images, fonts, media).
     # Add any other file extensions your site uses.
-    RewriteRule \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf)$ - [L]
+    RewriteRule \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|xml)$ - [L]
+    
+    # Allow sitemap and other verification files
+    RewriteRule ^(sitemap|BingSiteAuth)\.xml$ - [L]
+    RewriteRule ^(CNAME|robots\.txt)$ - [L]
 
     # Block everything else.
     # Any request that hasn't been allowed by the rules above will be forbidden.

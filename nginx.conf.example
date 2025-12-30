@@ -4,11 +4,34 @@
 
 server {
     listen 80;
-    server_name your-domain.com www.your-domain.com; # Replace with your domain
+    server_name invaild.com www.invaild.com;
+
+    # Redirect www to non-www
+    if ($host = 'www.invaild.com') {
+        return 301 https://invaild.com$request_uri;
+    }
+
+    # Letsencrypt challenge
+    location ~ /.well-known/acme-challenge {
+        allow all;
+        root c:/Harsha\ Portfolio;
+    }
+
+    location / {
+		return 301 https://invaild.com$request_uri;
+	}
+}
+
+server {
+    listen 443 ssl;
+    server_name invaild.com;
+
+    ssl_certificate /etc/letsencrypt/live/invaild.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/invaild.com/privkey.pem;
 
     # Path to your website's root directory.
     # Replace with the actual path on your server.
-    root /var/www/html;
+    root c:/Harsha\ Portfolio;
 
     # --- Disable Directory Listing ---
     # This is off by default in recent Nginx versions, but it's good to be explicit.
@@ -37,7 +60,7 @@ server {
     # for common asset file types.
     # The `~*` makes the match case-insensitive.
     # Add any other file extensions your site uses.
-    location ~* \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf)$ {
+    location ~* \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|xml)$ {
         allow all;
         # Optional: Add cache headers for assets to improve performance
         expires 1M;
