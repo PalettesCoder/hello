@@ -80,6 +80,39 @@ app.listen(3000);
 ```
 In this model, the client only knows the result. Your intellectual property is protected.
 
+## New Security Features
+
+### Nginx Configuration
+
+The `nginx.conf.example` file has been updated to include a more secure configuration. It now includes:
+- A redirect from `www` to non-`www`.
+- A server block for HTTPS on port 443.
+- A more restrictive location block to only allow access to necessary files.
+
+### .htaccess Configuration
+
+The `.htaccess` file has been updated to include a more secure configuration. It now includes:
+- A redirect from `www` to non-`www`.
+- A rule to force HTTPS.
+- A more restrictive set of rules to only allow access to necessary files.
+
+### Manifest Configuration
+
+The `manifest.json` file has been updated to include a more secure configuration. It now includes:
+- A more specific name and short name for the website.
+- A scope to restrict the app to the website's domain.
+- A more specific start URL.
+
+### Service Worker Configuration
+
+The `sw.js` file has been updated to include a more secure configuration. It now includes:
+- Caching for all the new files that have been added.
+
+### GitHub Actions Configuration
+
+The `.github/workflows/static.yml` file has been updated to include a more secure configuration. It now includes:
+- A step to run a linter on the HTML and CSS files.
+
 ## Other Security Measures
 
 ### File and Directory Protection (`.htaccess`)
@@ -87,16 +120,55 @@ In this model, the client only knows the result. Your intellectual property is p
 You can't hide `index.html` itself, but you can protect other files and prevent people from snooping around your directory structure. You can add this to your `.htaccess` file:
 
 ```htaccess
-# Disable directory browsing
+# --- Disable Directory Listings ---
+# This prevents the server from displaying the contents of a directory if no index file is present.
 Options -Indexes
 
-# Deny access to sensitive files
-<Files ".env">
+# --- Deny Access to Sensitive Files ---
+# Block access to files that might contain sensitive information.
+# This includes dotfiles (like .git, .htaccess, .env) and configuration files.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect www to non-www
+    RewriteCond %{HTTP_HOST} ^www\.harsharoyal\.com$ [NC]
+    RewriteRule ^(.*)$ https://harsharoyal.com/$1 [L,R=301]
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Rule to block access to any file or directory starting with a dot.
+    RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+# A more modern approach for Apache 2.4+. This is often used with the above for compatibility.
+<FilesMatch "^\.">
     Require all denied
-</Files>
-<Files "nginx.conf">
-    Require all denied
-</Files>
+</FilesMatch>
+
+# --- Control Access to File Types ---
+# The following ruleset is a restrictive policy. It denies access to all files
+# by default and then explicitly allows only the file types necessary for your website to run.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Allow the main index.html file.
+    RewriteRule ^index\.html$ - [L]
+
+    # Allow asset files (CSS, JS, images, fonts, media).
+    # Add any other file extensions your site uses.
+    RewriteRule \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|xml)$ - [L]
+    
+    # Allow sitemap and other verification files
+    RewriteRule ^(sitemap|BingSiteAuth)\.xml$ - [L]
+    RewriteRule ^(CNAME|robots\.txt)$ - [L]
+
+    # Block everything else.
+    # Any request that hasn't been allowed by the rules above will be forbidden.
+    RewriteCond %{REQUEST_URI} !^/$
+    RewriteRule . - [F]
+</IfModule>
 ```
 
 ### Code Minification (Obfuscation)
