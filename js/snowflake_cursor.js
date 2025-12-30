@@ -5,7 +5,7 @@ const snowflakeCursor = (element) => {
   let particles = [];
   let canvImages = [];  
   let animationFrame;
-  const possibleEmoji = [' స్వాగతం సుస్వాగతం'];
+  const possibleEmoji = [' స్వాగతం' , 'WELCOME', ' स्वागत हे', ' வரவேற்கிறோம்'  ,  '欢迎', 'ようこそ', '환영합니다', 'Добро пожаловать', 'ברוך הבא', 'مرحبا بك'];
   let prefersReducedMotion;
 
   if (typeof window === 'undefined') return;
