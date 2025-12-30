@@ -3,9 +3,9 @@
 const snowflakeCursor = (element) => {
   let canvas;
   let particles = [];
-  let canvImages = [];
+  let canvImages = [];  
   let animationFrame;
-  const possibleEmoji = ['🍊'];
+  const possibleEmoji = [' స్వాగతం సుస్వాగతం'];
   let prefersReducedMotion;
 
   if (typeof window === 'undefined') return;
