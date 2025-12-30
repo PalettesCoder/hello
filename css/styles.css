@@ -15,6 +15,7 @@
   --black-72: rgba(0, 0, 0, 0.72);
   /*-- Project Color --*/
   --primary: #FF7518;
+  --primary-dark: #D96516;
   --surface: #F5F5F5;
   --bg: #EBEBEB;
   --bg-2: #EAEAEA;
@@ -58,6 +59,30 @@
   --verified: #00BF43;
   --success: #3DAB25;
   --error: #F44336;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 html,
