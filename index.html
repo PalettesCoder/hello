@@ -39,7 +39,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" href="css/pop-up.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#000000"/>
+    <meta name="theme-color" content="#000000">
     <style>
       #offline-indicator {
         position: fixed;
@@ -88,7 +88,7 @@
 
     <div class="popup-overlay" id="welcome-popup-2">
         <div class="popup">
-            <video class="popup-image" autoplay muted loop playsinline role="presentation">
+            <video class="popup-image" muted loop playsinline role="presentation">
                 <source src="media/Hacker.mp4" type="video/mp4">
             </video>
             <div class="popup-text-box">
@@ -120,7 +120,7 @@
             <img loading="lazy" width="1440" height="900" src="images/cloud-bg.png" alt="Image">
         </div>
         <div class="bg-video video-dark">
-            <video class="video" muted="" autoplay="" loop="" playsinline="" role="presentation">
+            <video class="video" muted="" loop="" playsinline="" role="presentation">
                 <source src="media/overlay-2.mp4" type="video/mp4">
             </video>
             <div class="overlay-1"></div>
@@ -385,7 +385,7 @@
                     </div>
                     <div class="br-line"></div>
                     <div class="action-group">
-                        <a href="mailto:palettescoder@gmail.com?subject=Contact%20from%20your%20Website&body=Hi%20Harsha,%0A%0AI%20would%20like%20to%20connect%20with%20you%20regarding..."
+                        <a href="mailto:palettescoder@gmail.com?subject=Contact%20from%20your%20Website&amp;body=Hi%20Harsha,%0A%0AI%20would%20like%20to%20connect%20with%20you%20regarding..."
                             class="tf-btn-action">
                             <span class="ic-wrap">
                                 <i class="icon icon-arrow-right-top"></i>
@@ -429,7 +429,7 @@
                                         </p>
                                     </div>
                                 </div>
-<h1 class="intro-title letter-space--2 split-text effect-blur-fade" style="perspective: 400px; opacity: 1;"><div style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); filter: blur(0px); opacity: 1;"> I’m building <span class="active">Experiences</span></div><div style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); filter: blur(0px); opacity: 1;"><span class="type-2 active">&amp; brands</span>  that people </div><div style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); filter: blur(0px); opacity: 1;">remember </div></h1>
+<h1 class="intro-title letter-space--2 split-text effect-blur-fade" style="perspective: 400px; opacity: 1;"><div style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); filter: blur(0px); opacity: 1;"> I’m building <span class="active">Experiences</span></div><div style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); filter: blur(0px); opacity: 1;"><span class="type-2 active">&amp;amp; brands</span>  that people </div><div style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); filter: blur(0px); opacity: 1;">remember </div></h1>
                                 <div class="intro-item">
                                     <div class="scribble-wrap">
                                         <svg class="scribble" viewBox="0 0 772 320" fill="none"
@@ -1027,7 +1027,7 @@
                                 <div class="" id="accordion-service">
                                     <div class="service-accordion_item scrolling-effect effectBottom"
                                         role="presentation">
-                                        <div class="accordion-action" data-bs-target="#service-1" role="button"
+                                        <button class="accordion-action" data-bs-target="#service-1" role="button"
                                             data-bs-toggle="collapse" aria-controls="service-1" aria-expanded="true">
                                             <h4 class="text letter-space--2 text-black-72">Web Design</h4>
                                             <div class="ic-wrap">
@@ -1075,7 +1075,7 @@
                                     <div class="br-line scrolling-effect effectBottom"></div>
                                     <div class="service-accordion_item scrolling-effect effectBottom"
                                         role="presentation">
-                                        <div class="accordion-action collapsed" data-bs-target="#service-2"
+                                        <button class="accordion-action collapsed" data-bs-target="#service-2"
                                             role="button" data-bs-toggle="collapse" aria-controls="service-2"
                                             aria-expanded="true">
                                             <h4 class="text letter-space--2 text-black-72">No-Code Development</h4>
@@ -1124,7 +1124,7 @@
                                     <div class="br-line scrolling-effect effectBottom"></div>
                                     <div class="service-accordion_item scrolling-effect effectBottom"
                                         role="presentation">
-                                        <div class="accordion-action collapsed" data-bs-target="#service-3"
+                                        <button class="accordion-action collapsed" data-bs-target="#service-3"
                                             role="button" data-bs-toggle="collapse" aria-controls="service-3"
                                             aria-expanded="true">
                                             <h4 class="text letter-space--2 text-black-72">Brand Identity</h4>
@@ -1389,12 +1389,12 @@
                                     </div>
                                     <div class="number-pagination"></div>
                                     <div class="group-btn">
-                                        <div class="sw-nav sw-nav-prev link">
+                                        <button class="sw-nav sw-nav-prev link">
                                             <i class="icon icon-arrow-caret-left"></i>
-                                        </div>
-                                        <div class="sw-nav sw-nav-next link">
+                                        </button>
+                                        <button class="sw-nav sw-nav-next link">
                                             <i class="icon icon-arrow-caret-right"></i>
-                                        </div>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -1481,10 +1481,6 @@
         <div id="successPopup" class="popup-overlay">
             <div class="popup-box">
                 <div>
-                    <?xml version="1.0" ?>
-
-                    <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
-
                     <svg width="80px" height="80px" viewBox="0 0 512 512" version="1.1" xml:space="preserve"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -1702,6 +1698,13 @@
         window.addEventListener('offline', updateOnlineStatus);
 
         updateOnlineStatus();
+
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.addEventListener('canplay', () => {
+                video.play();
+            });
+        });
     </script>
 </body>
 
