@@ -79,7 +79,7 @@
         open-digits: 1;                /* Open digits */
         disambiguation: 2;             /* Disambiguation (with zero) */
         disambiguation-except-zero: 4; /* Disambiguation (no zero) */
-        round-quotes-and-commas: 3;    /* Round quotes &amp; commas */
+        round-quotes-and-commas: 3;    /* Round quotes  commas */
         square-punctuation: 7;         /* Square punctuation */
         square-quotes: 8;              /* Square quotes */
         circled-characters: 5;         /* Circled characters */
@@ -109,7 +109,7 @@
         open-digits: 1;                /* Open digits */
         disambiguation: 2;             /* Disambiguation (with zero) */
         disambiguation-except-zero: 4; /* Disambiguation (no zero) */
-        round-quotes-and-commas: 3;    /* Round quotes &amp; commas */
+        round-quotes-and-commas: 3;    /* Round quotes  commas */
         square-punctuation: 7;         /* Square punctuation */
         square-quotes: 8;              /* Square quotes */
         circled-characters: 5;         /* Circled characters */
@@ -139,7 +139,7 @@
         open-digits: 1;                /* Open digits */
         disambiguation: 2;             /* Disambiguation (with zero) */
         disambiguation-except-zero: 4; /* Disambiguation (no zero) */
-        round-quotes-and-commas: 3;    /* Round quotes &amp; commas */
+        round-quotes-and-commas: 3;    /* Round quotes  commas */
         square-punctuation: 7;         /* Square punctuation */
         square-quotes: 8;              /* Square quotes */
         circled-characters: 5;         /* Circled characters */
