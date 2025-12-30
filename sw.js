@@ -1,4 +1,3 @@
-
 const CACHE_NAME = 'harsha-portfolio-cache-v1';
 const urlsToCache = [
   '/',
@@ -71,13 +70,16 @@ const urlsToCache = [
   'images/c2s.webp',
   'images/cloud-bg.png',
   'images/cursor-close.svg',
+  'images/download.pdf',
   'images/edu-2.svg',
   'images/edu-3.svg',
   'images/favicon.svg',
+  'images/Harsha Resume.pdf',
   'images/harsha.jpg',
   'images/Harsha.png',
   'images/icomoon.svg',
   'images/LIOWEOIGC8HK.jpg',
+  'images/LIOWEOIGC8HK.pdf',
   'images/logo-2.svg',
   'images/logo-3.svg',
   'images/logo.svg',
@@ -119,10 +121,18 @@ const urlsToCache = [
   'js/ScrollSmooth.js',
   'js/ScrollToPlugin.min.js',
   'js/ScrollTrigger.min.js',
+  'js/snowflake_cursor.js',
   'js/SplitText.min.js',
   'js/swiper-bundle.min.js',
+  'media/Borzoi.cur',
+  'media/Cristiano.cur',
   'media/Hacker.mp4',
-  'media/overlay-2.mp4'
+  'media/overlay-2.mp4',
+  'sitemap.xml',
+  'BingSiteAuth.xml',
+  'CNAME',
+  'robots.txt',
+  'manifest.json'
 ];
 
 self.addEventListener('install', event => {
