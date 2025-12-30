@@ -187,13 +187,13 @@ video {
   font-weight: inherit;
 }
 
-
 @media (max-width: 340px) {
   body::before {
     font-size: 36px; 
     font-weight: 600;
   }
 }
+
 
 article,
 aside,
@@ -8419,3 +8419,13 @@ button.animate-btn::after,
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
 }
+
+html, body {
+    cursor: url('../media/Two Soyjaks.ani'), auto;
+    cursor: url("../media/Two Soyjaks.ani"), auto;
+ }
+ 
+ a, button, [role="button"], input[type="submit"], .link {
+    cursor: url('../media/Two Soyjaks.cur'), pointer !important;
+    cursor: url("../media/Two Soyjaks.cur"), pointer !important;
+ }
