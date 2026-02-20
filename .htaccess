@@ -1,0 +1,49 @@
+# --- Disable Directory Listings ---
+# This prevents the server from displaying the contents of a directory if no index file is present.
+Options -Indexes
+
+# --- Deny Access to Sensitive Files ---
+# Block access to files that might contain sensitive information.
+# This includes dotfiles (like .git, .htaccess, .env) and configuration files.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect www to non-www
+    RewriteCond %{HTTP_HOST} ^www\.invaild\.com$ [NC]
+    RewriteRule ^(.*)$ https://invaild.com/$1 [L,R=301]
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Rule to block access to any file or directory starting with a dot.
+    RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+# A more modern approach for Apache 2.4+. This is often used with the above for compatibility.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# --- Control Access to File Types ---
+# The following ruleset is a restrictive policy. It denies access to all files
+# by default and then explicitly allows only the file types necessary for your website to run.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Allow the main index.html file.
+    RewriteRule ^index\.html$ - [L]
+
+    # Allow asset files (CSS, JS, images, fonts, media).
+    # Add any other file extensions your site uses.
+    RewriteRule \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|xml)$ - [L]
+    
+    # Allow sitemap and other verification files
+    RewriteRule ^(sitemap|BingSiteAuth)\.xml$ - [L]
+    RewriteRule ^(CNAME|robots\.txt)$ - [L]
+
+    # Block everything else.
+    # Any request that hasn't been allowed by the rules above will be forbidden.
+    RewriteCond %{REQUEST_URI} !^/$
+    RewriteRule . - [F]
+</IfModule>

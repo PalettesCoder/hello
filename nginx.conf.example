@@ -1,0 +1,84 @@
+# This is an example Nginx server block.
+# You should place this inside the http block of your nginx.conf file,
+# or as a new file in your sites-available directory (e.g., /etc/nginx/sites-available/your-site.com).
+
+server {
+    listen 80;
+    server_name invaild.com www.invaild.com;
+
+    # Redirect www to non-www
+    if ($host = 'www.invaild.com') {
+        return 301 https://invaild.com$request_uri;
+    }
+
+    # Letsencrypt challenge
+    location ~ /.well-known/acme-challenge {
+        allow all;
+        root c:/Harsha\ Portfolio;
+    }
+
+    location / {
+		return 301 https://invaild.com$request_uri;
+	}
+}
+
+server {
+    listen 443 ssl;
+    server_name invaild.com;
+
+    ssl_certificate /etc/letsencrypt/live/invaild.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/invaild.com/privkey.pem;
+
+    # Path to your website's root directory.
+    # Replace with the actual path on your server.
+    root c:/Harsha\ Portfolio;
+
+    # --- Disable Directory Listing ---
+    # This is off by default in recent Nginx versions, but it's good to be explicit.
+    autoindex off;
+
+    # --- Set Default Index File ---
+    index index.html;
+
+    # --- Restrict Access ---
+    # The default behavior will be to deny access unless it's explicitly allowed below.
+
+    # Allow access to the root URL (which serves index.html).
+    location = / {
+        # The 'try_files' directive checks for the existence of files and serves the first one found.
+        # Here, it ensures that a request to the root serves your index.html file.
+        try_files /index.html =404;
+    }
+
+    # Explicitly allow access to index.html if requested directly.
+    location = /index.html {
+        allow all;
+    }
+
+    # --- Allow Access to Assets ---
+    # This location block uses a regular expression to match and allow requests
+    # for common asset file types.
+    # The `~*` makes the match case-insensitive.
+    # Add any other file extensions your site uses.
+    location ~* \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|xml)$ {
+        allow all;
+        # Optional: Add cache headers for assets to improve performance
+        expires 1M;
+        access_log off;
+        add_header Cache-Control "public";
+    }
+
+    # --- Deny Access to Sensitive Files ---
+    # This blocks access to any hidden files or directories (those starting with a dot).
+    # This is a critical security measure.
+    location ~ /\. {
+        deny all;
+    }
+
+    # --- Deny all other requests ---
+    # Any request that doesn't match the locations above will be caught here and denied.
+    # This enforces a "default deny" policy.
+    location / {
+        deny all;
+    }
+}

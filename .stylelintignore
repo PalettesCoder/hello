@@ -1,0 +1,9 @@
+# Ignore third-party and minified CSS
+css/animate.css
+css/bootstrap.min.css
+css/swiper-bundle.min.css
+css/bundle.css
+# Generated or vendor folders
+node_modules
+dist
+build
