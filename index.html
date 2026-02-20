@@ -1564,6 +1564,9 @@
         let lastEmitX = 0;
         let lastEmitY = 0;
         const emitDistance = 50; // Every 50 pixels
+        
+        // Add your languages here
+        const phrases = ["Welcome", "Namaste", "Bienvenue", "Hola", "Ciao", "Konnichiwa", "Aloha", "Hallo"];
 
         document.addEventListener('mousemove', (e) => {
             const distance = Math.hypot(e.clientX - lastEmitX, e.clientY - lastEmitY);
@@ -1578,7 +1581,11 @@
         function createWelcome(x, y) {
             const span = document.createElement('span');
             span.className = 'welcome-emit';
-            span.textContent = 'Welcome';
+            
+            // Randomly select a phrase
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            span.textContent = randomPhrase;
+            
             span.style.left = x + 'px';
             span.style.top = y + 'px';
             

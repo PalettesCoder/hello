@@ -7413,8 +7413,8 @@ button.animate-btn::after,
     font-family: 'Apfel Grotezk', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    color: var(--primary);
-    text-shadow: 0 0 10px rgba(255, 117, 24, 0.5);
+    color: var(--white-56);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
     white-space: nowrap;
     animation: welcomeFadeUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
