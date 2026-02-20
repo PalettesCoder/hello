@@ -7403,3 +7403,33 @@ button.animate-btn::after,
   background: linear-gradient(180deg, #FF7518 0%, rgba(0, 222, 81, 0.4) 100%);
 }
 
+
+
+/* Mouse Welcome Emission */
+.welcome-emit {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    font-family: 'Apfel Grotezk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(255, 117, 24, 0.5);
+    white-space: nowrap;
+    animation: welcomeFadeUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes welcomeFadeUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -100%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -250%) scale(1);
+    }
+}
