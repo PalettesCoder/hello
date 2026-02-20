@@ -135,7 +135,7 @@
                 <li class="nav-item">
                     <a href="#education" class="item-link scroll-link">
                         <i class="icon icon-edu"></i>
-                        <p class="tool-tip text-caption">Education & Experience</p>
+                        <p class="tool-tip text-caption">Experience & Education</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -191,15 +191,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#education" class="item-link scroll-link">
-                    <i class="icon icon-edu"></i>
-                    <p class="tool-tip text-caption">Education</p>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="#work" class="item-link scroll-link">
                     <i class="icon icon-high-light"></i>
                     <p class="tool-tip text-caption">Work</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#education" class="item-link scroll-link">
+                    <i class="icon icon-edu"></i>
+                    <p class="tool-tip text-caption">Work & Education</p>
                 </a>
             </li>
             <li class="nav-item">
@@ -286,28 +286,9 @@
                 <ul class="tf-social-icon-2 user-social d-grid">
                     <li><a href="https://www.behance.net/palettescoder"><img src="images/Behance.png"></i></a></li>
                     <li><a href="https://www.linkedin.com/in/palettescoder/"><i class="icon icon-linkin"></i></a></li>
-                    <li><a href="#">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g opacity="0.72">
-                                    <path opacity="0.2"
-                                        d="M1.51502 11.2356L1.55752 4.87313C1.56502 3.72125 2.37065 2.73375 3.48252 2.51375L9.6269 1.29563C11.1031 1.00313 12.4738 2.15813 12.4638 3.6875L12.4213 10.0513C12.4131 11.2025 11.6075 12.1894 10.4956 12.41L4.35127 13.6281C2.87502 13.9206 1.50502 12.7656 1.51502 11.2356Z"
-                                        fill="black"></path>
-                                    <path opacity="0.5"
-                                        d="M4.52563 13.7744L4.56813 7.41062C4.575 6.25999 5.38125 5.27312 6.49313 5.05249L12.6375 3.83499C14.1138 3.54249 15.4844 4.69749 15.4744 6.22687L15.4319 12.5906C15.4244 13.7419 14.6188 14.7287 13.5069 14.9494L7.3625 16.1675C5.88625 16.46 4.51563 15.305 4.52563 13.7756V13.7744Z"
-                                        fill="black"></path>
-                                    <path opacity="0.8"
-                                        d="M7.53625 16.3125L7.57875 9.94875C7.58625 8.79687 8.39187 7.81062 9.50375 7.59L15.6481 6.37187C17.1244 6.07937 18.495 7.23437 18.485 8.76375L18.4425 15.1275C18.435 16.2794 17.6294 17.2662 16.5175 17.4862L10.3731 18.7044C8.89687 18.9969 7.52625 17.8419 7.53625 16.3125Z"
-                                        fill="black"></path>
-                                </g>
-                            </svg>
-                        </a></li>
+                    <li><a href="https://medium.com/@palettescoder"><img src="images/medium.png"></a></li>
                 </ul>
-                <div class="user-info">
-                    <p class="avaiable-dot text-body-3 fw-medium d-sm-none">
-                        <span class="dot"></span>
-                        <span>Available for Work</span>
-                    </p>
+                <div class="user-intro-top">
                     <h5 class="greeting letter-space--2 text-white animationtext clip">
                         Hey, I’m
                         <span class="cd-words-wrapper">
@@ -318,6 +299,12 @@
                     </h5>
                     <p class="introduce text-white-56 letter-space--05 text-body-3">
                         I turn complex ideas into clean, scalable digital experiences.
+                    </p>
+                </div>
+                <div class="user-info">
+                    <p class="avaiable-dot text-body-3 fw-medium d-sm-none">
+                        <span class="dot"></span>
+                        <span>Available for Work</span>
                     </p>
                     <div class="br-line"></div>
                     <div class="action-group">
@@ -621,7 +608,7 @@
                                                 </div>
                                             </a>
                                             <p class="timeline-role fw-medium text-black-72">Software Engineer &
-                                                Associat UX Designer</p>
+                                                Associate UX Designer</p>
                                             <p class="timeline-desc text-body-3 text-black-56">
                                                 Led projects across branding and digital design, delivering interfaces
                                                 and websites that balanced
@@ -1342,7 +1329,7 @@
                             <!-- /Testimonial -->
 
                             <!-- Contact -->
-                            <div class="contact" id="#contact">
+                            <div class="contact" id="contact">
                                 <div class="sect-tag text-caption fw-medium effectFade fadeUp no-div">
                                     <i class="icon icon-tes"></i>
                                     Contact Me
@@ -1421,6 +1408,14 @@
         </div>
     </main>
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("mrvBP3SZGrUGo31cQ");
+        })();
+    </script>
+
     <!-- Javascript -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -1468,6 +1463,29 @@
         </div>
     </div>
 
+    <!-- Success Popup -->
+    <div class="dev-popup-overlay" id="successPopup">
+        <div class="dev-popup-content">
+            <div class="dev-popup-video-wrap">
+                <video autoplay muted loop playsinline>
+                    <source src="media/overlay-2.mp4" type="video/mp4">
+                </video>
+                <div class="overlay"></div>
+            </div>
+            <div class="dev-popup-body">
+                <h2 class="dev-popup-title">Message Sent!</h2>
+                <p class="dev-popup-msg">
+                    Thank you for reaching out. Your message has been sent successfully and a confirmation email is on its way to you.
+                </p>
+                <div class="dev-popup-actions">
+                    <button type="button" class="dev-btn dev-btn-primary" onclick="closeSuccessPopup()">
+                        Great!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -1479,6 +1497,16 @@
         function closeDevPopup() {
             document.getElementById('devPopup').classList.remove('show');
             document.body.style.overflow = 'auto';
+        }
+
+        function closeSuccessPopup() {
+            document.getElementById('successPopup').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showSuccessPopup() {
+            document.getElementById('successPopup').classList.add('show');
+            document.body.style.overflow = 'hidden';
         }
     </script>
 

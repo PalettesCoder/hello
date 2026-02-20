@@ -4497,6 +4497,12 @@ button.animate-btn::after,
   right: 38px;
   bottom: 38px;
 }
+.sidebar-user .user-intro-top {
+  position: absolute;
+  left: 38px;
+  right: 38px;
+  top: 40px;
+}
 .sidebar-user .user-logo {
   position: absolute;
   top: 38px;
@@ -4507,8 +4513,10 @@ button.animate-btn::after,
   right: 38px;
   top: 38px;
 }
-.sidebar-user .user-info .greeting {
+.sidebar-user .user-info .greeting,
+.sidebar-user .user-intro-top .greeting {
   padding-bottom: 20px;
+  font-size: 26px;
 }
 .sidebar-user .user-info .br-line {
   background-color: var(--white-8);
@@ -5584,7 +5592,6 @@ button.animate-btn::after,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  aspect-ratio: 0.546728972;
 }
 .wg-work .w-tag-list {
   display: flex;
@@ -5705,7 +5712,6 @@ button.animate-btn::after,
 @media (min-width: 992px) and (max-width: 1439px) {
   .wg-work .work-content {
     max-height: calc(100vh - 48px);
-    aspect-ratio: 0.546728972;
     height: unset;
   }
 }
