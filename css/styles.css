@@ -3092,7 +3092,12 @@ h6,
   background-color: #D2D2D2;
 }
 .tf-social-icon-2 .icon {
-  font-size: 20px;
+  font-size: 24px;
+}
+.tf-social-icon-2 a img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .tf-link-icon {
