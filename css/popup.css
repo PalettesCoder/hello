@@ -64,20 +64,23 @@
     padding: 30px;
     background: #0f0f0f;
     color: white;
+    font-family: "Inter", sans-serif;
 }
 
 .dev-popup-title {
-    font-size: 24px;
-    font-weight: 600;
+    font-family: "Apfel Grotezk", sans-serif;
+    font-size: 28px;
+    font-weight: 500;
     margin-bottom: 15px;
-    letter-spacing: -1px;
+    letter-spacing: -0.02em;
 }
 
 .dev-popup-msg {
     color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
     margin-bottom: 30px;
+    font-family: "Inter", sans-serif;
 }
 
 .dev-popup-actions {
@@ -97,6 +100,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    font-family: "Inter", sans-serif;
 }
 
 .dev-btn-primary {
