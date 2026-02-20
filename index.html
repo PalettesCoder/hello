@@ -19,6 +19,7 @@
 
 
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/popup.css">
 
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="images/favicon.svg">
@@ -667,17 +668,19 @@
                                     </div>
                                     <!-- Item 1 -->
                                     <div class="timeline-item effectFade fadeUp no-div">
-                                        <p class="timeline-date text-black-56">2018 - 2022</p>
+                                        <p class="timeline-date text-black-56">2023 - Now</p>
                                         <div class="timeline-dot"></div>
                                         <div class="timeline-content">
                                             <div class="icon">
-                                                <img class="image-switch" data-dark="images/lpu-logo.png"
-                                                    loading="lazy" width="120" height="32" src="images/lpu-logo.png"
+                                                <img class="image-switch" data-dark="images/logo/logo-4.svg"
+                                                    loading="lazy" width="120" height="32" src="images/acuvate.png"
                                                     alt="Image">
                                             </div>
-                                            <p class="timeline-role fw-medium text-black-72">Lovely Professional University</p>
+                                            <p class="timeline-role fw-medium text-black-72">Bachelor of Technology (B.Tech) in Computer Science and Engineering (CSE) Honours</p>
                                             <p class="timeline-desc text-body-3 text-black-56">
-                                                Computer Science and Engineering (Honours)
+                                                Helping startups and creative teams launch websites, scale their brand
+                                                identity,
+                                                and build powerful no-code products with Framer.
                                             </p>
                                         </div>
                                     </div>
@@ -1438,6 +1441,46 @@
     <script src="js/countto.js"></script>
     <script src="js/animation-change-text.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Development Popup -->
+    <div class="dev-popup-overlay" id="devPopup">
+        <div class="dev-popup-content">
+            <div class="dev-popup-video-wrap">
+                <video autoplay muted loop playsinline>
+                    <source src="media/overlay-2.mp4" type="video/mp4">
+                </video>
+                <div class="overlay"></div>
+            </div>
+            <div class="dev-popup-body">
+                <h2 class="dev-popup-title">Website Under Development</h2>
+                <p class="dev-popup-msg">
+                    I'm currently crafting something amazing for you. Some features might be limited as I polish the experience. Feel free to explore or reach out!
+                </p>
+                <div class="dev-popup-actions">
+                    <a href="mailto:palettescoder@gmail.com" class="dev-btn dev-btn-primary">
+                        <i class="icon icon-send"></i> Contact Us
+                    </a>
+                    <button type="button" class="dev-btn dev-btn-secondary" onclick="closeDevPopup()">
+                        Explore Portfolio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('devPopup').classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }, 1000);
+        });
+
+        function closeDevPopup() {
+            document.getElementById('devPopup').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 
 
 </body>
