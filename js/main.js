@@ -321,7 +321,7 @@
     ---------------------------------------------------------- */
     var textTyping = () => {
         if ($(".text-typing").length > 0) {
-            const words = ["Isak", "Designer", "Developer"];
+            const words = ["harsha", "Designer", "Developer"];
             const typedEl = document.getElementById("typed");
 
             let wordIndex = 0;

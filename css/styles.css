@@ -3,7 +3,7 @@
   --white: #ffffff;
   --white-8: rgba(255, 255, 255, 0.08);
   --white-40: rgba(255, 255, 255, 0.40);
-  --white-56: rgba(255, 255, 255, 0.56);
+  --white-56: rgba(122, 114, 114, 0.56);
   --white-72: rgba(255, 255, 255, 0.72);
   --white-92: rgba(255, 255, 255, 0.92);
   --black: #000000;
@@ -60,38 +60,6 @@
   --error: #F44336;
 }
 
-/*------------ Core CSS ---------------- */
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
 /*--------- Abstracts variable ---------- */
 html,
 body,
@@ -553,38 +521,6 @@ p {
   height: 100%;
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 /* Typography
 ============================================================== */
 /* Heading */
@@ -849,38 +785,6 @@ h6,
     line-height: 56px !important;
   }
 }
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 /* General
 ============================================================== */
 /* Margin */
@@ -1177,6 +1081,7 @@ h6,
 
 .text-line-clamp-1 {
   -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -1184,6 +1089,7 @@ h6,
 
 .text-line-clamp-2 {
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -1191,6 +1097,7 @@ h6,
 
 .text-line-clamp-3 {
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -1241,40 +1148,6 @@ h6,
     height: 100% !important;
   }
 }
-/*------------ Component ---------------- */
-/*------------ Layout ---------------- */
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .tf-grid-layout {
   display: grid;
   column-gap: 24px;
@@ -1449,40 +1322,6 @@ h6,
     padding-left: 12px;
   }
 }
-
-/*------------ Header ---------------- */
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .btn-mobile-menu {
   display: flex;
   align-items: center;
@@ -1663,39 +1502,6 @@ h6,
   text-align: end;
 }
 
-/*------------ Blog ---------------- */
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .article-blog {
   border-radius: 12px;
   overflow: hidden;
@@ -1730,6 +1536,7 @@ h6,
 }
 .article-blog .infor_name {
   -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
   display: -webkit-box !important;
   overflow: hidden;
@@ -1809,6 +1616,7 @@ h6,
 }
 .relatest-post-item .title {
   -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
@@ -1992,39 +1800,6 @@ h6,
   height: 100px;
 }
 
-/*------------ Element ---------------- */
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 @keyframes sliderShape {
   0%, 100% {
     border-radius: 42% 58% 70% 30%/45% 45% 55% 55%;
@@ -2563,38 +2338,6 @@ h6,
   opacity: 0;
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .hover-img .img-style {
   overflow: hidden;
 }
@@ -2894,38 +2637,6 @@ h6,
   }
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .box-icon {
   display: flex;
   align-items: center;
@@ -3107,7 +2818,7 @@ h6,
 }
 
 /* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
+    * Name: harsha - Personal Portfolio HTML Template
     * Version: 1.0.0
     * Author: Themesflat
     * Author URI: http://themesflat.com 
@@ -3464,38 +3175,6 @@ h6,
   font-size: 20px;
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .flat-animate-tab .tab-content {
   position: relative;
 }
@@ -3568,38 +3247,6 @@ h6,
   }
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 form {
   position: relative;
   z-index: 30;
@@ -3737,6 +3384,7 @@ select option {
   cursor: pointer;
   outline: 0;
   -webkit-appearance: none;
+  appearance: none;
   width: 24px;
   height: 24px;
   min-width: 24px;
@@ -3820,7 +3468,7 @@ select option {
 }
 
 .form-contact .form-content {
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
 .form-contact .form-action {
   display: flex;
@@ -3854,38 +3502,6 @@ select option {
   color: var(--error);
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .tf-btn {
   display: inline-flex;
   align-items: center;
@@ -4072,6 +3688,7 @@ button.animate-btn::after,
   background-size: 200% 100%;
   background-position: right;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: background-position 0.3s linear;
   cursor: pointer;
@@ -4108,6 +3725,7 @@ button.animate-btn::after,
   background-size: 200% 100%;
   background-position: right;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: background-position 0.3s linear;
 }
@@ -4234,38 +3852,6 @@ button.animate-btn::after,
   transition: all 0.3s ease;
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 #wrapper {
   position: relative;
 }
@@ -5100,38 +4686,6 @@ button.animate-btn::after,
   }
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .sw-dot-default {
   margin-top: 24px;
   display: inline-flex;
@@ -5341,38 +4895,6 @@ button.animate-btn::after,
   object-fit: cover;
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .testimonial-v01 .tes-icon {
   font-size: 32px;
   margin-bottom: 16px;
@@ -5390,38 +4912,6 @@ button.animate-btn::after,
   }
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .wg-counter .counter {
   margin-bottom: 10px;
 }
@@ -6067,38 +5557,6 @@ button.animate-btn::after,
   flex-direction: column;
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .nice-select {
   -webkit-tap-highlight-color: transparent;
   background-color: #fff;
@@ -6252,8 +5710,10 @@ button.animate-btn::after,
   border-radius: 5px;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .nice-select .list::-webkit-scrollbar-thumb {
@@ -6263,8 +5723,10 @@ button.animate-btn::after,
   border-radius: 5px;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .nice-select .list::-webkit-scrollbar {
@@ -6276,8 +5738,10 @@ button.animate-btn::after,
   border-radius: 5px;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .nice-select .list:hover .option:not(:hover) {
@@ -6372,38 +5836,6 @@ button.animate-btn::after,
   transform: rotate(180deg);
 }
 
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .ic-accordion-custom {
   position: relative;
   width: 16px;
@@ -6546,39 +5978,6 @@ button.animate-btn::after,
   }
 }
 
-/*------------ Footer ---------------- */
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .tf-footer .quote-text {
   margin-bottom: 8px;
 }
@@ -6595,7 +5994,7 @@ button.animate-btn::after,
   align-items: center;
   gap: 30px;
 }
-.tf-footer .foot-inner .isak {
+.tf-footer .foot-inner .harsha {
   max-width: 354px;
   width: 100%;
 }
@@ -6605,7 +6004,7 @@ button.animate-btn::after,
   align-items: end;
   gap: 12px;
 }
-.tf-footer .foot-bottom .isak {
+.tf-footer .foot-bottom .harsha {
   max-width: 428px;
   width: 100%;
 }
@@ -6623,7 +6022,7 @@ button.animate-btn::after,
 .tf-footer .text-nocopy {
   white-space: nowrap;
 }
-.tf-footer .isak {
+.tf-footer .harsha {
   width: auto;
 }
 @media (max-width: 767px) {
@@ -6641,39 +6040,6 @@ button.animate-btn::after,
   }
 }
 
-/*------------ Mode ---------------- */
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .body-background {
   position: fixed;
   inset: 0;
@@ -6983,10 +6349,10 @@ button.animate-btn::after,
   backdrop-filter: blur(12px);
   color: var(--white);
 }
-.dark-mode .tf-footer .foot-inner .isak path {
+.dark-mode .tf-footer .foot-inner .harsha path {
   fill: #fff;
 }
-.dark-mode .tf-footer .foot-bottom .isak path {
+.dark-mode .tf-footer .foot-bottom .harsha path {
   stroke: #fff;
 }
 .dark-mode .tf-footer .f-logo {
@@ -7141,40 +6507,6 @@ button.animate-btn::after,
 .choose-item.active .color::before {
   opacity: 1;
 }
-
-/*------------ Landing ---------------- */
-/* ---------------------------------------------------------
-    * Name: Isak - Personal Portfolio HTML Template
-    * Version: 1.0.0
-    * Author: Themesflat
-    * Author URI: http://themesflat.com 
-
-	* Abstracts variable
-
-    * Core CSS
-
-    * Components
-        * Blog
-        * Layout
-        * Header
-        * Accordion
-        * Animation
-        * Box Icon
-        * Button
-        * Carousel
-        * Form
-        * Hover
-        * Nice Select
-        * Popup
-        * Section
-        * Slider
-        * Tabs
-        * Testimonial
-        * Widget
-        * Footer
-
- ------------------------------------------------------------------------------ */
-/*--------- Abstracts variable ---------- */
 .bg-landing {
   background-color: #0c0c0c;
 }
@@ -7412,24 +6744,22 @@ button.animate-btn::after,
     z-index: 99999;
     font-family: 'Apfel Grotezk', sans-serif;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--white-56);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    text-shadow: none;
     white-space: nowrap;
-    animation: welcomeFadeUp 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    will-change: transform, opacity;
+    animation: welcomeFadeUp 1.5s ease-out forwards;
+    user-select: none;
 }
 
 @keyframes welcomeFadeUp {
     0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
-    }
-    20% {
-        opacity: 1;
-        transform: translate(-50%, -100%) scale(1.2);
+        opacity: 0.6;
+        transform: translate(-50%, 0);
     }
     100% {
         opacity: 0;
-        transform: translate(-50%, -250%) scale(1);
+        transform: translate(-50%, -150px);
     }
 }

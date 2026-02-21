@@ -1299,7 +1299,7 @@
                                                         <i class="icon icon-quote"></i>
                                                     </div>
                                                     <h5 class="tes-text letter-space--2 text-black-72">
-                                                        Working with Isak was seamless. The website came out fast,
+                                                        Working with harsha was seamless. The website came out fast,
                                                         modern, and easy to update—exactly
                                                         what
                                                         our team needed.
@@ -1318,7 +1318,7 @@
                                                         <i class="icon icon-quote"></i>
                                                     </div>
                                                     <h5 class="tes-text letter-space--2 text-black-72">
-                                                        Isak shaped our vision into a strong brand. The process was
+                                                        harsha shaped our vision into a strong brand. The process was
                                                         clear, fast, and the result gave
                                                         our startup the professional edge we needed.
                                                     </h5>
@@ -1336,7 +1336,7 @@
                                                         <i class="icon icon-quote"></i>
                                                     </div>
                                                     <h5 class="tes-text letter-space--2 text-black-72">
-                                                        Despite a tight launch schedule, Isak delivered a clean,
+                                                        Despite a tight launch schedule, harsha delivered a clean,
                                                         flexible site in Framer. It’s modern,
                                                         easy to manage, and fits our needs perfectly.
                                                     </h5>
@@ -1474,24 +1474,77 @@
 
     <!-- Development Popup -->
     <div class="dev-popup-overlay" id="devPopup">
-        <div class="dev-popup-content">
-            <div class="dev-popup-video-wrap">
-                <video autoplay muted loop playsinline>
-                    <source src="media/overlay-2.mp4" type="video/mp4">
-                </video>
-                <div class="overlay"></div>
+        <div class="dev-heatmap-overlay" id="heatmapCursor"></div>
+        
+        <div class="split-popup-container" id="splitMain">
+            <button class="close-split-popup" onclick="closeDevPopup()" title="Close Details">&times;</button>
+            
+            <div class="split-main-area">
+                <!-- Left Side: Design -->
+                <div class="split-side side-design">
+                    <div class="visual-stack">
+                        <div class="frame sketch active">
+                            <span class="frame-label">Phase 1: Sketching</span>
+                            <div class="sketch-mock">
+                                <div class="sketch-line long"></div>
+                                <div class="sketch-line short"></div>
+                                <div class="sketch-line box"></div>
+                            </div>
+                        </div>
+                        <div class="frame figma">
+                            <span class="frame-label">Phase 2: High-Fi Design</span>
+                            <div class="figma-mock">
+                                <div class="figma-ui-header"></div>
+                                <div class="figma-ui-card"></div>
+                            </div>
+                        </div>
+                        <div class="frame proto">
+                            <span class="frame-label">Phase 3: Interactivity</span>
+                            <div class="proto-mock">
+                                <div class="proto-screen">
+                                    <div class="proto-content-item"></div>
+                                    <div class="proto-btn"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frame production">
+                            <span class="frame-label">Phase 4: Production UI</span>
+                            <div class="production-mock">
+                                <div class="prod-navbar"></div>
+                                <div class="prod-hero"><div class="prod-circle"></div></div>
+                                <div class="prod-grid"><div class="prod-item"></div><div class="prod-item"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Content -->
+                <div class="split-side side-code">
+                    <!-- Design Notes shown during Phase 1-3 -->
+                    <div class="design-notes active">
+                        <div class="note-item n1">Process Insight:</div>
+                        <div class="note-item n2">Analyzing user pain points and sketching layouts.</div>
+                        <div class="note-item n3">Objective: Foundations</div>
+                    </div>
+
+                    <!-- Code Editor ONLY shown during Phase 4 -->
+                    <div class="code-editor" style="display: none;">
+                        <pre class="code-snippet active"><code></code></pre>
+                        <div class="compiling-indicator">Ready</div>
+                    </div>
+                </div>
             </div>
-            <div class="dev-popup-body">
-                <h2 class="dev-popup-title">Website Under Development</h2>
-                <p class="dev-popup-msg">
-                    I'm currently crafting something amazing for you. Some features might be limited as I polish the experience. Feel free to explore or reach out!
-                </p>
-                <div class="dev-popup-actions">
-                    <a href="#contact" class="dev-btn dev-btn-primary" onclick="closeDevPopup()">
-                        <i class="icon icon-send"></i> Contact Us
-                    </a>
-                    <button type="button" class="dev-btn dev-btn-secondary" onclick="closeDevPopup()">
-                        Explore Portfolio
+
+            <!-- Universal Content Floor -->
+            <div class="split-footer-content">
+                <h2 class="split-headline">From low-fi sketches to production-ready components.</h2>
+                <p class="split-subheadline">Designing delightful flows • Engineering seamless execution</p>
+                <div class="split-actions">
+                    <button class="dev-btn dev-btn-primary" onclick="closeDevPopup()">
+                        <i class="icon icon-send"></i> Validate Journey
+                    </button>
+                    <button class="dev-btn dev-btn-secondary" onclick="closeDevPopup()">
+                         Bridge the Gap
                     </button>
                 </div>
             </div>
@@ -1501,6 +1554,8 @@
     <!-- Success Popup -->
     <div class="dev-popup-overlay" id="successPopup">
         <div class="dev-popup-content">
+            <button class="close-split-popup" onclick="closeSuccessPopup()" title="Close">&times;</button>
+
             <div class="dev-popup-video-wrap">
                 <video autoplay muted loop playsinline>
                     <source src="media/overlay-2.mp4" type="video/mp4">
@@ -1522,15 +1577,104 @@
     </div>
 
     <script>
+        // Split Role Popup Logic
+        const devPopup = document.getElementById('devPopup');
+        const splitMain = document.getElementById('splitMain');
+        const heatmap = document.getElementById('heatmapCursor');
+        const frames = document.querySelectorAll('.frame');
+        
+        // High-fidelity React code for Phase 4 only
+        const reactCode = `<span class="token-keyword">import</span> React <span class="token-keyword">from</span> <span class="token-attr">'react'</span>;
+<span class="token-keyword">import</span> { motion } <span class="token-keyword">from</span> <span class="token-attr">'framer-motion'</span>;
+
+<span class="token-keyword">export default function</span> <span class="token-tag">Component</span>() {
+  <span class="token-keyword">return</span> (
+    &lt;<span class="token-tag">motion.div</span>
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className=<span class="token-attr">"premium-ui"</span>
+    &gt;
+      &lt;<span class="token-tag">Header</span> /&gt;
+      &lt;<span class="token-tag">ProductionArtifact</span> /&gt;
+    &lt;/<span class="token-tag">motion.div</span>&gt;
+  );
+}`;
+
+        const noteSequences = [
+            "Analyzing user pain points and sketching layouts.",
+            "Refining hierarchy and applying design tokens.",
+            "Defining transitions and cognitive load limits."
+        ];
+
+        let viewMode = 0; 
+        let currentPhase = 0;
+
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
-                document.getElementById('devPopup').classList.add('show');
+                devPopup.classList.add('show');
                 document.body.style.overflow = 'hidden';
+                startPhaseStory();
             }, 1000);
         });
 
+        // Phase Sequencing
+        function startPhaseStory() {
+            const editor = document.querySelector('.code-editor');
+            const notes = document.querySelector('.design-notes');
+            const noteItem = document.querySelector('.note-item.n2');
+
+            setInterval(() => {
+                frames[currentPhase].classList.remove('active');
+                currentPhase = (currentPhase + 1) % frames.length;
+                frames[currentPhase].classList.add('active');
+                
+                if (currentPhase === 3) {
+                    // Phase 4: Show React Code
+                    if (notes) notes.style.display = 'none';
+                    if (editor) {
+                        editor.style.display = 'block';
+                        const codeNode = editor.querySelector('code');
+                        codeNode.innerHTML = reactCode;
+                    }
+                    
+                    const indicator = document.querySelector('.compiling-indicator');
+                    if (indicator) {
+                        indicator.style.opacity = '1';
+                        indicator.textContent = "Production Ready";
+                    }
+                } else {
+                    // Phase 1-3: Show Design Notes
+                    if (editor) editor.style.display = 'none';
+                    if (notes) {
+                        notes.style.display = 'flex';
+                        if (noteItem) noteItem.textContent = noteSequences[currentPhase];
+                    }
+                }
+            }, 3000);
+        }
+
+        // Toggle View Logic
+        function toggleDualView() {
+            viewMode = (viewMode + 1) % 3;
+            
+            splitMain.classList.remove('swap-active', 'overlay-active');
+            
+            if (viewMode === 1) {
+                splitMain.classList.add('swap-active');
+            } else if (viewMode === 2) {
+                splitMain.classList.add('overlay-active');
+            }
+        }
+
+        // Heatmap Cursor
+        document.addEventListener('mousemove', (e) => {
+            if (devPopup.classList.contains('show')) {
+                heatmap.style.transform = `translate(${e.clientX - 125}px, ${e.clientY - 125}px)`;
+            }
+        });
+
         function closeDevPopup() {
-            document.getElementById('devPopup').classList.remove('show');
+            devPopup.classList.remove('show');
             document.body.style.overflow = 'auto';
         }
 
@@ -1544,58 +1688,11 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Disable Right Click & Developer Tools Shortcuts
+        // Global Security
         document.addEventListener('contextmenu', (e) => e.preventDefault());
-
         document.onkeydown = function(e) {
-            // Disable F12
-            if(e.keyCode == 123) return false;
-            // Disable Ctrl+Shift+I
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-            // Disable Ctrl+Shift+C
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
-            // Disable Ctrl+Shift+J
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-            // Disable Ctrl+U
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
         };
-
-        // Welcome Emission Logic
-        let lastEmitX = 0;
-        let lastEmitY = 0;
-        const emitDistance = 50; // Every 50 pixels
-        
-        // Add your languages here
-        const phrases = ["Welcome", "Namaste", "Bienvenue", "Hola", "Ciao", "Konnichiwa", "Aloha", "Hallo"];
-
-        document.addEventListener('mousemove', (e) => {
-            const distance = Math.hypot(e.clientX - lastEmitX, e.clientY - lastEmitY);
-            
-            if (distance > emitDistance) {
-                createWelcome(e.clientX, e.clientY);
-                lastEmitX = e.clientX;
-                lastEmitY = e.clientY;
-            }
-        });
-
-        function createWelcome(x, y) {
-            const span = document.createElement('span');
-            span.className = 'welcome-emit';
-            
-            // Randomly select a phrase
-            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
-            span.textContent = randomPhrase;
-            
-            span.style.left = x + 'px';
-            span.style.top = y + 'px';
-            
-            document.body.appendChild(span);
-            
-            // Clean up
-            setTimeout(() => {
-                span.remove();
-            }, 1000);
-        }
     </script>
 
 
