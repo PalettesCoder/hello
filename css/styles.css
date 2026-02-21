@@ -5066,9 +5066,15 @@ button.animate-btn::after,
   padding: 32px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
+}
+.wg-work .work-content .content-top {
+  flex-shrink: 0;
+}
+.wg-work .work-content .content-bottom {
+  flex-shrink: 0;
+  margin-top: auto;
 }
 .wg-work .w-image {
   border-radius: 18px;
