@@ -300,8 +300,8 @@
     /* Wrap Active
     ---------------------------------------------------------- */
     var wrapActive = () => {
-        $(window).on("scroll", function () {
-            $(".wrap-hover-award").each(function () {
+        function checkActive() {
+            $(".wg-work").each(function () {
                 let $this = $(this);
                 let top = $this.offset().top;
                 let bottom = top + $this.outerHeight();
@@ -309,12 +309,14 @@
                 let windowBottom = scrollTop + $(window).height();
 
                 if (bottom > scrollTop && top < windowBottom) {
-                    $this.addClass("active");
+                    $this.find(".wrap").addClass("active");
                 } else {
-                    $this.removeClass("active");
+                    $this.find(".wrap").removeClass("active");
                 }
             });
-        });
+        }
+        $(window).on("scroll", checkActive);
+        checkActive(); // trigger immediately on load
     };
 
     /* Animation Text Typing
