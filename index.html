@@ -453,11 +453,11 @@
                         </p>
                     </div>
                 </div>
-                       <div class="nav-top">
+                       <!-- <div class="nav-top">
             <div class="tf-btn-icon toggle-switch-mode">
                 <i class="icon icon-light"></i>
             </div>
-        </div>
+        </div> -->
                 <ul class="tf-social-icon-2 user-social d-grid">
                     <li><a href="https://www.behance.net/palettescoder"><img src="images/Behance.png"></a></li>
                     <li><a href="https://www.linkedin.com/in/palettescoder/"><i class="icon icon-linkin"></i></a></li>
@@ -1957,53 +1957,27 @@
 
     <!-- Certificate Popup (Split-View Design) -->
     <div class="dev-popup-overlay" id="certificatePopup">
-        <div class="split-popup-container" style="max-width: 1000px; max-height: 600px; height: 85vh; border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.05); overflow: hidden; background: #fff;">
-            <button class="close-split-popup" onclick="closeCertPopup()" title="Close Details" style="background: #f2f2f2; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #333; font-size: 20px; top: 20px; right: 20px; border: none; z-index: 10; cursor: pointer;">&times;</button>
+        <div class="cert-popup-container">
+            <button class="close-split-popup" onclick="closeCertPopup()" title="Close Details">&times;</button>
             
             <div class="swiper certSwiper" style="height: 100%;">
                 <div class="swiper-wrapper">
                     <!-- Slide 1 -->
                     <div class="swiper-slide">
-                        <div class="split-main-area" style="height: 100%; border-radius: 12px; overflow: hidden;">
-                            <!-- Left: Certificate Image -->
-                            <div class="split-side side-design" style="background: #fdfdfd; padding: 40px; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgba(0,0,0,0.05);">
-                                <img src="images/AT4K2YY0SDCR.jpg" alt="Google UX Design" style="width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-                            </div>
-                            <!-- Right: Certificate Details -->
-                            <div class="split-side side-code" style="padding: 60px; flex-direction: column; align-items: flex-start; justify-content: center; display: flex; background: #ffffff;">
-                                <div style="background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 99px; padding: 12px 28px; font-size: 11px; font-weight: 700; color: #888; letter-spacing: 0.05em; text-transform: uppercase; box-shadow: 0 4px 12px rgba(0,0,0,0.04), inset 0 2px 4px rgba(255,255,255,1); margin-bottom: 40px; display: inline-block;">
-                                    Certification Achievement
-                                </div>
-                                <h2 style="text-align: left; font-size: 32px; font-weight: 700; color: #111; margin-bottom: 24px; font-family: 'Inter', sans-serif;">Google UX Design</h2>
-                                <p style="text-align: left; font-size: 16px; color: #777; font-weight: 400; margin-bottom: 0; font-family: 'Inter', sans-serif;">
-                                    Credential ID: AT4K2YY0SDCR
-                                </p>
-                            </div>
+                        <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
+                            <img src="images/AT4K2YY0SDCR.jpg" alt="Google UX Design" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                     <!-- Slide 2 -->
                     <div class="swiper-slide">
-                        <div class="split-main-area" style="height: 100%; border-radius: 12px; overflow: hidden;">
-                            <!-- Left: Certificate Image -->
-                            <div class="split-side side-design" style="background: #fdfdfd; padding: 40px; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgba(0,0,0,0.05);">
-                                <img src="images/LIOWEOIGC8HK.jpg" alt="Foundations of UX" style="width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-                            </div>
-                            <!-- Right: Certificate Details -->
-                            <div class="split-side side-code" style="padding: 60px; flex-direction: column; align-items: flex-start; justify-content: center; display: flex; background: #ffffff;">
-                                <div style="background: #ffffff; border: 1px solid rgba(0,0,0,0.08); border-radius: 99px; padding: 12px 28px; font-size: 11px; font-weight: 700; color: #888; letter-spacing: 0.05em; text-transform: uppercase; box-shadow: 0 4px 12px rgba(0,0,0,0.04), inset 0 2px 4px rgba(255,255,255,1); margin-bottom: 40px; display: inline-block;">
-                                    Certification Achievement
-                                </div>
-                                <h2 style="text-align: left; font-size: 32px; font-weight: 700; color: #111; margin-bottom: 24px; font-family: 'Inter', sans-serif;">Foundations of User Experience (UX) Design</h2>
-                                <p style="text-align: left; font-size: 16px; color: #777; font-weight: 400; margin-bottom: 0; font-family: 'Inter', sans-serif;">
-                                    Credential ID: LIOWEOIGC8HK
-                                </p>
-                            </div>
+                        <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
+                            <img src="images/LIOWEOIGC8HK.jpg" alt="Foundations of UX" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                 </div>
                 <!-- Navigation -->
-                <div class="swiper-button-next cert-nav-next" style="right: 20px; top: 50%;"></div>
-                <div class="swiper-button-prev cert-nav-prev" style="left: 20px; top: 50%;"></div>
+                <div class="swiper-button-next cert-nav next"><i class="icon icon-arrow-right-top"></i></div>
+                <div class="swiper-button-prev cert-nav prev" style="transform: rotate(180deg);"><i class="icon icon-arrow-right-top"></i></div>
                 <div class="swiper-pagination cert-pagination" style="bottom: 20px;"></div>
             </div>
         </div>
@@ -2165,8 +2139,8 @@
                         clickable: true,
                     },
                     navigation: {
-                        nextEl: '.cert-nav-next',
-                        prevEl: '.cert-nav-prev',
+                        nextEl: '.cert-nav.next',
+                        prevEl: '.cert-nav.prev',
                     },
                 });
             }

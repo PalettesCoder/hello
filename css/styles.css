@@ -1505,10 +1505,14 @@ html, body {
     top: 0;
     left: 0;
     right: 0;
-    background: transparent;
-    z-index: 99;
-    padding-right: 60px;
-    height: 80px;
+    background: #ffffff !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08) !important;
+    z-index: 1000 !important;
+    padding: 0 24px !important;
+    height: 70px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
@@ -4243,77 +4247,85 @@ button.animate-btn::after,
   }
 }
 @media (max-width: 991px) {
+  body {
+    background-color: #f8f9fa !important; /* Contrasts with the black card */
+  }
   .sidebar-user {
-    margin: 0px !important;
-    width: 100% !important;
-    height: 100vh !important;
+    margin: 94px 24px 24px !important; /* More breathing room */
+    width: calc(100% - 48px) !important;
+    height: calc(100dvh - 118px) !important;
     max-width: none !important;
     padding: 0px !important;
     position: relative !important;
+    overflow: hidden;
+    border-radius: 28px !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2) !important;
+    z-index: 900 !important;
+    border: 1px solid rgba(0,0,0,0.05); /* Subtle edge definition */
   }
   .sidebar-user .wrap {
-    height: 100vh !important;
-    max-height: 100vh !important;
+    height: 100% !important;
+    max-height: none !important;
     display: flex;
     width: 100%;
-    border-radius: 0;
+    border-radius: 24px !important;
+    background: #000 !important;
   }
-  .sidebar-user .user-image::before {
-    content: "";
+  .sidebar-user .user-image {
     position: absolute;
-    bottom: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .sidebar-user .user-intro-top {
     left: 0;
     right: 0;
-    top: auto;
-    height: 50%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 60%, transparent 100%);
-  }
-}
-@media (min-width: 576px) and (max-width: 991px) {
-  .sidebar-user .user-image .image {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-}
-@media (max-width: 991px) {
-  .sidebar-user {
-  }
-  .sidebar-user .user-logo {
     top: 20px;
-    left: 20px;
+    z-index: 5;
+    text-align: left;
+    padding: 0 24px;
+  }
+  .sidebar-user .user-intro-top .greeting {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
+  .sidebar-user .user-intro-top .intro-title {
+    font-size: 28px;
+    line-height: 1.1;
   }
   .sidebar-user .user-social {
-    right: 20px;
-    top: 20px;
+    right: 16px;
+    top: 16px;
+    z-index: 10;
   }
   .sidebar-user .user-info {
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    padding: 0 24px !important;
   }
   .sidebar-user .user-info .avaiable-dot {
     margin-bottom: 16px;
   }
-  .sidebar-user .user-info .br-line {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
   .sidebar-user .action-group {
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+  .sidebar-user .tf-btn-action {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 0 16px;
+    height: 40px;
+    font-size: 13px;
   }
 }
 @media (max-width: 425px) {
-  .sidebar-user .user-image {
-    display: flex;
-    height: 100% !important;
-  }
-  .sidebar-user .user-image .image {
-    height: 100%;
-    width: 100%;
-  }
   .sidebar-user .user-image .image img {
-    aspect-ratio: auto;
     height: 100%;
     width: 100%;
     object-fit: cover;
