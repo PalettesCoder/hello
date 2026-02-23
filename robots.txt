@@ -1,4 +1,45 @@
+# ============================================
+# robots.txt — harsharoyal.in
+# Professional Portfolio SEO Configuration
+# Last Updated: 2026-02-23
+# ============================================
+
+# Allow all major search engines
 User-agent: *
 Allow: /
 
+# Block sensitive / utility files
+Disallow: /cloudflare-client.crt
+Disallow: /cloudflare-client.key
+Disallow: /nginx.conf.example
+Disallow: /.htaccess
+Disallow: /.stylelintignore
+Disallow: /WEBSITE_PROTECTION_GUIDE.md
+Disallow: /CNAME
+
+# Block 404 page from indexing
+Disallow: /404.html
+
+# Crawl-delay (optional, gentle rate limit)
+Crawl-delay: 1
+
+# Sitemap
 Sitemap: https://harsharoyal.in/sitemap.xml
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Disallow: /404.html
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Disallow: /404.html
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /404.html
+
+# Host directive (Yandex)
+Host: https://harsharoyal.in

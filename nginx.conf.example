@@ -1,6 +1,9 @@
-# This is an example Nginx server block.
-# You should place this inside the http block of your nginx.conf file,
-# or as a new file in your sites-available directory (e.g., /etc/nginx/sites-available/your-site.com).
+# ===========================================
+# Nginx Configuration — harsharoyal.in
+# Last Updated: 2026-02-23
+# ===========================================
+# Place this inside the http block of your nginx.conf,
+# or as a file in /etc/nginx/sites-available/
 
 server {
     listen 80;
@@ -14,77 +17,72 @@ server {
     # Letsencrypt challenge
     location ~ /.well-known/acme-challenge {
         allow all;
-        root c:/Harsha\ Portfolio;
+        root /var/www/harsharoyal.in;
     }
 
+    # Redirect all HTTP to HTTPS
     location / {
-		return 301 https://harsharoyal.in$request_uri;
-	}
+        return 301 https://harsharoyal.in$request_uri;
+    }
 }
 
 server {
-    listen 443 ssl;
+    listen 443 ssl http2;
     server_name harsharoyal.in;
 
     ssl_certificate /etc/letsencrypt/live/harsharoyal.in/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/harsharoyal.in/privkey.pem;
 
-    # --- mTLS (Client Certificate) Configuration ---
-    # To enforce client authentication, uncomment and point to your CA bundle (ca.crt).
-    # ssl_client_certificate /etc/nginx/client_certs/ca.crt;
-    # ssl_verify_client on; # Set to 'optional' to allow, but verify if provided
-    # -----------------------------------------------
+    # SSL Configuration
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
 
-    # Path to your website's root directory.
-    # Replace with the actual path on your server.
-    root c:/Harsha\ Portfolio;
-
-    # --- Disable Directory Listing ---
-    # This is off by default in recent Nginx versions, but it's good to be explicit.
-    autoindex off;
-
-    # --- Set Default Index File ---
+    # Website root directory
+    root /var/www/harsharoyal.in;
     index index.html;
 
-    # --- Restrict Access ---
-    # The default behavior will be to deny access unless it's explicitly allowed below.
+    # Disable directory listing
+    autoindex off;
 
-    # Allow access to the root URL (which serves index.html).
-    location = / {
-        # The 'try_files' directive checks for the existence of files and serves the first one found.
-        # Here, it ensures that a request to the root serves your index.html file.
-        try_files /index.html =404;
+    # --- Custom 404 Page ---
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
     }
 
-    # Explicitly allow access to index.html if requested directly.
-    location = /index.html {
-        allow all;
+    # --- Security Headers ---
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # --- Allow HTML Pages ---
+    location / {
+        try_files $uri $uri/ =404;
     }
 
-    # --- Allow Access to Assets ---
-    # This location block uses a regular expression to match and allow requests
-    # for common asset file types.
-    # The `~*` makes the match case-insensitive.
-    # Add any other file extensions your site uses.
-    location ~* \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|xml)$ {
-        allow all;
-        # Optional: Add cache headers for assets to improve performance
+    # --- Cache Assets ---
+    location ~* \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|ico)$ {
         expires 1M;
         access_log off;
-        add_header Cache-Control "public";
+        add_header Cache-Control "public, immutable";
     }
 
-    # --- Deny Access to Sensitive Files ---
-    # This blocks access to any hidden files or directories (those starting with a dot).
-    # This is a critical security measure.
+    # --- Allow sitemap/robots ---
+    location = /sitemap.xml { }
+    location = /robots.txt { }
+
+    # --- Block Dotfiles ---
     location ~ /\. {
         deny all;
+        access_log off;
+        log_not_found off;
     }
 
-    # --- Deny all other requests ---
-    # Any request that doesn't match the locations above will be caught here and denied.
-    # This enforces a "default deny" policy.
-    location / {
-        deny all;
-    }
+    # --- GZIP Compression ---
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 256;
+    gzip_types text/html text/css application/javascript application/json image/svg+xml;
 }

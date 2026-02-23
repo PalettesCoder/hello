@@ -1,49 +1,73 @@
 # --- Disable Directory Listings ---
-# This prevents the server from displaying the contents of a directory if no index file is present.
 Options -Indexes
 
+# --- Custom 404 Error Page ---
+ErrorDocument 404 /404.html
+
 # --- Deny Access to Sensitive Files ---
-# Block access to files that might contain sensitive information.
-# This includes dotfiles (like .git, .htaccess, .env) and configuration files.
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
     # Redirect www to non-www
-    RewriteCond %{HTTPS_HOST} ^www\.harsharoyal\.in$ [NC]
+    RewriteCond %{HTTP_HOST} ^www\.harsharoyal\.in$ [NC]
     RewriteRule ^(.*)$ https://harsharoyal.in/$1 [L,R=301]
 
     # Force HTTPS
     RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTPS_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # Rule to block access to any file or directory starting with a dot.
-    RewriteRule "(^|/)\." - [F]
+    # Block access to dotfiles (except .well-known for SSL verification)
+    RewriteRule "(^|/)\.(?!well-known)" - [F]
 </IfModule>
 
-# A more modern approach for Apache 2.4+. This is often used with the above for compatibility.
+# Block dotfiles
 <FilesMatch "^\.">
     Require all denied
 </FilesMatch>
 
-# --- Control Access to File Types ---
-# The following ruleset is a restrictive policy. It denies access to all files
-# by default and then explicitly allows only the file types necessary for your website to run.
+# --- Allow HTML Pages & Assets ---
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Allow the main index.html file.
-    RewriteRule ^index\.html$ - [L]
+    # Allow known HTML pages
+    RewriteRule ^(index|project-detail|tech-stack|freelance|404)\.html$ - [L]
 
-    # Allow asset files (CSS, JS, images, fonts, media).
-    # Add any other file extensions your site uses.
-    RewriteRule \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|xml)$ - [L]
+    # Allow asset files (CSS, JS, images, fonts, media)
+    RewriteRule \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|xml|ico|txt)$ - [L]
     
-    # Allow sitemap and other verification files
+    # Allow sitemap, robots, CNAME
     RewriteRule ^(sitemap|BingSiteAuth)\.xml$ - [L]
     RewriteRule ^(CNAME|robots\.txt)$ - [L]
 
-    # Block everything else.
-    # Any request that hasn't been allowed by the rules above will be forbidden.
-    RewriteCond %{REQUEST_URI} !^/$
-    RewriteRule . - [F]
+    # Allow root
+    RewriteRule ^$ - [L]
+
+    # Everything else → 404
+    RewriteRule . /404.html [L,R=404]
+</IfModule>
+
+# --- Security Headers ---
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# --- Cache Control ---
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# --- GZIP Compression ---
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
 </IfModule>
