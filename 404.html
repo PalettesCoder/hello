@@ -1,648 +1,770 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]--><!--[if (gte IE 9)|!(IE)]><!---->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><!--<![endif]-->
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Page Not Found | Harsha Royal</title>
-    <meta name="author" content="Harsha Royal">
+    <title>404 — Lost in the Layers | Harsha Royal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="Oops! This page got lost somewhere in my design layers. Let's get you back to the portfolio.">
+    <meta name="description" content="This page got lost in my infinite component hierarchy. Let's get you back to safety.">
     <meta name="robots" content="noindex, follow">
+    <link rel="shortcut icon" href="images/favicon.svg">
     <link rel="canonical" href="https://harsharoyal.in/">
     <meta name="theme-color" content="#FF7518">
-
-    <!-- font -->
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/inter.css">
     <link rel="stylesheet" href="css/style.css">
-    <!-- css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="images/favicon.svg">
-    <link rel="apple-touch-icon-precomposed" href="images/favicon.svg">
-
     <style>
-        /* ===== 404 Page Specific Styles ===== */
-        .page-404 {
+        html { zoom: 1; }
+        body {
+            background: #0e0e12;
             min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            font-family: "Inter", sans-serif;
+        }
+
+        /* ===== DARK CANVAS ===== */
+        .dark-canvas {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(255,117,24,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(162,89,255,0.04) 0%, transparent 60%),
+                #0e0e12;
+            z-index: 0;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 24px 24px;
+            z-index: 0;
+        }
+
+        /* ===== MAIN STAGE ===== */
+        .stage {
+            position: fixed;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .error-container {
-            text-align: center;
-            max-width: 600px;
-            padding: 40px 24px;
-            position: relative;
             z-index: 2;
         }
 
-        /* Figma-style layer stack */
-        .figma-layers {
-            position: relative;
-            width: 280px;
-            height: 200px;
-            margin: 0 auto 40px;
-            cursor: pointer;
-        }
-
-        .figma-frame {
-            position: absolute;
-            width: 100%;
-            height: 150px;
-            border-radius: 12px;
-            border: 1px solid var(--black-6);
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            user-select: none;
-            touch-action: none;
-            cursor: grab;
-        }
-
-        .figma-frame:active { cursor: grabbing; }
-
-        .figma-frame.dragging {
-            box-shadow: 0 0 0 2px var(--primary), var(--shadow-4);
-            z-index: 100 !important;
-        }
-
-        .figma-frame.removed {
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .figma-frame .frame-bar {
-            height: 28px;
-            background-color: var(--bg-2);
-            border-bottom: 1px solid var(--black-6);
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-            gap: 6px;
-            pointer-events: none;
-        }
-
-        .figma-frame .frame-bar .dot-group {
-            display: flex;
-            gap: 4px;
-        }
-
-        .figma-frame .frame-bar .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-        }
-
-        .figma-frame .frame-bar .frame-label {
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--black-56);
-            letter-spacing: 0.02em;
-            margin-left: 6px;
-        }
-
-        .figma-frame .frame-content {
-            padding: 14px;
+        .stage-inner {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            pointer-events: none;
+            align-items: center;
+            gap: 0;
+            max-width: 700px;
+            width: 100%;
+            padding: 20px;
         }
 
-        .frame-mock-line {
-            height: 6px;
-            border-radius: 3px;
-            background: var(--black-6);
-        }
-
-        .frame-mock-line.w50 { width: 50%; }
-        .frame-mock-line.w70 { width: 70%; }
-        .frame-mock-line.w85 { width: 85%; }
-        .frame-mock-line.w40 { width: 40%; }
-        .frame-mock-line.thick { height: 10px; }
-
-        .frame-mock-boxes {
-            display: flex;
-            gap: 8px;
-            margin-top: 4px;
-        }
-
-        .frame-mock-box {
-            flex: 1;
-            height: 36px;
-            border-radius: 6px;
-            border: 1px dashed var(--black-15);
+        /* ===== AVATAR SECTION ===== */
+        .avatar-zone {
+            position: relative;
+            width: 100%;
+            height: 420px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
         }
 
-        .fl-1 { top: 0; left: 0; z-index: 4; transform: rotate(-2deg) translate(4px, 0); }
-        .fl-1 .dot:nth-child(1) { background: #F24E1E; }
-        .fl-1 .dot:nth-child(2) { background: #FF7518; }
-        .fl-1 .dot:nth-child(3) { background: #0ACF83; }
-
-        .fl-2 { top: 12px; left: 6px; z-index: 3; transform: rotate(1deg) translate(-4px, 4px); }
-        .fl-2 .dot:nth-child(1) { background: #A259FF; }
-        .fl-2 .dot:nth-child(2) { background: #1ABCFE; }
-        .fl-2 .dot:nth-child(3) { background: #0ACF83; }
-
-        .fl-3 { top: 24px; left: -4px; z-index: 2; transform: rotate(-0.5deg) translate(8px, 8px); }
-        .fl-3 .dot:nth-child(1) { background: #5B7FFF; }
-        .fl-3 .dot:nth-child(2) { background: #FFD700; }
-        .fl-3 .dot:nth-child(3) { background: #F24E1E; }
-
-        .fl-4 { top: 36px; left: 2px; z-index: 1; transform: rotate(0.8deg) translate(-2px, 12px); }
-        .fl-4 .dot:nth-child(1) { background: #0ACF83; }
-        .fl-4 .dot:nth-child(2) { background: #FF7518; }
-        .fl-4 .dot:nth-child(3) { background: #A259FF; }
-
-        /* Hover highlight */
-        .figma-frame:hover {
-            box-shadow: 0 0 0 2px var(--primary), var(--shadow-2);
+        /* The buried avatar/character */
+        .buried-avatar {
+            position: absolute;
+            z-index: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+            opacity: 0.15;
         }
 
-        /* 404 Number */
-        .error-code {
-            font-family: "Apfel Grotezk";
-            font-size: clamp(80px, 15vw, 140px);
+        .buried-avatar.revealed {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .avatar-emoji {
+            font-size: 72px;
+            animation: avatar-float 3s ease-in-out infinite;
+            filter: drop-shadow(0 8px 24px rgba(255,117,24,0.3));
+        }
+
+        @keyframes avatar-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .avatar-help-text {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* ===== FIGMA FRAME LAYERS ===== */
+        .figma-layer {
+            position: absolute;
+            width: 480px;
+            max-width: 90vw;
+            border-radius: 14px;
+            background: #1a1a24;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.04),
+                0 4px 16px rgba(0,0,0,0.4),
+                0 12px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+            transition: box-shadow 0.3s;
+        }
+
+        .figma-layer:active { cursor: grabbing; }
+
+        .figma-layer:hover {
+            box-shadow:
+                0 0 0 2px #FF7518,
+                0 8px 32px rgba(255,117,24,0.15),
+                0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .figma-layer.dragging {
+            box-shadow:
+                0 0 0 2px #FF7518,
+                0 20px 60px rgba(255,117,24,0.2),
+                0 40px 80px rgba(0,0,0,0.5);
+            z-index: 200 !important;
+        }
+
+        .figma-layer.removed {
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        /* Position layers dramatically stacked */
+        .layer-1 { z-index: 10; transform: rotate(-1.2deg) translate(-8px, -20px); }
+        .layer-2 { z-index: 9; transform: rotate(1.5deg) translate(12px, -5px); }
+        .layer-3 { z-index: 8; transform: rotate(-0.6deg) translate(-4px, 10px); }
+        .layer-4 { z-index: 7; transform: rotate(0.9deg) translate(6px, 25px); }
+        .layer-5 { z-index: 6; transform: rotate(-1.8deg) translate(-10px, 40px); }
+
+        /* ===== FRAME HEADER BAR ===== */
+        .layer-bar {
+            height: 32px;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            gap: 7px;
+            pointer-events: none;
+        }
+
+        .bar-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .bar-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .bar-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.01em;
+        }
+
+        .bar-badge {
+            margin-left: auto;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ===== FRAME BODY CONTENT ===== */
+        .layer-body {
+            padding: 16px 18px;
+            pointer-events: none;
+        }
+
+        .mock-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
+        .mock-bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.06); }
+        .mock-bar.w30 { width: 30%; } .mock-bar.w40 { width: 40%; } .mock-bar.w50 { width: 50%; }
+        .mock-bar.w60 { width: 60%; } .mock-bar.w70 { width: 70%; } .mock-bar.w80 { width: 80%; }
+        .mock-bar.w90 { width: 90%; } .mock-bar.thick { height: 12px; }
+        .mock-bar.accent { background: rgba(255,117,24,0.15); }
+        .mock-bar.purple { background: rgba(162,89,255,0.12); }
+        .mock-bar.blue { background: rgba(91,127,255,0.12); }
+        .mock-bar.green { background: rgba(10,207,131,0.12); }
+
+        .mock-cards { display: flex; gap: 8px; }
+        .mock-card {
+            flex: 1;
+            height: 44px;
+            border-radius: 8px;
+            border: 1px dashed rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            background: rgba(255,255,255,0.01);
+        }
+
+        .mock-al-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+        }
+
+        .mock-al-cell {
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .layer-comment {
+            margin-top: 8px;
+            font-size: 10px;
+            color: rgba(255,255,255,0.25);
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* ===== INDIVIDUAL LAYER THEMES ===== */
+        .layer-1 .bar-dot:nth-child(1) { background: #F24E1E; }
+        .layer-1 .bar-dot:nth-child(2) { background: #FF7518; }
+        .layer-1 .bar-dot:nth-child(3) { background: #0ACF83; }
+        .layer-1 .bar-badge { background: rgba(242,78,30,0.15); color: #F24E1E; }
+
+        .layer-2 .bar-dot:nth-child(1) { background: #A259FF; }
+        .layer-2 .bar-dot:nth-child(2) { background: #1ABCFE; }
+        .layer-2 .bar-dot:nth-child(3) { background: #A259FF; }
+        .layer-2 .bar-badge { background: rgba(162,89,255,0.15); color: #A259FF; }
+
+        .layer-3 .bar-dot:nth-child(1) { background: #1ABCFE; }
+        .layer-3 .bar-dot:nth-child(2) { background: #5B7FFF; }
+        .layer-3 .bar-dot:nth-child(3) { background: #1ABCFE; }
+        .layer-3 .bar-badge { background: rgba(91,127,255,0.15); color: #5B7FFF; }
+
+        .layer-4 .bar-dot:nth-child(1) { background: #0ACF83; }
+        .layer-4 .bar-dot:nth-child(2) { background: #FFD700; }
+        .layer-4 .bar-dot:nth-child(3) { background: #0ACF83; }
+        .layer-4 .bar-badge { background: rgba(10,207,131,0.15); color: #0ACF83; }
+
+        .layer-5 .bar-dot:nth-child(1) { background: #FF7518; }
+        .layer-5 .bar-dot:nth-child(2) { background: #FFB347; }
+        .layer-5 .bar-dot:nth-child(3) { background: #FF7518; }
+        .layer-5 .bar-badge { background: rgba(255,117,24,0.15); color: #FF7518; }
+
+        /* ===== REVEALED CONTENT ===== */
+        .reveal-content {
+            width: 100%;
+            text-align: center;
+            margin-top: -20px;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.7s cubic-bezier(0.4,0,0.2,1) 0.3s;
+        }
+
+        .reveal-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .reveal-code {
+            font-family: "Apfel Grotezk", sans-serif;
+            font-size: clamp(64px, 12vw, 100px);
             font-weight: 500;
             line-height: 1;
             letter-spacing: -0.04em;
-            color: var(--primary);
+            background: linear-gradient(135deg, #FF7518 0%, #FFB347 50%, #A259FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 16px;
-            opacity: 0;
-            transition: opacity 0.6s ease;
         }
 
-        .error-code.visible { opacity: 1; }
-
-        /* Title & Description */
-        .error-title {
-            font-family: "Apfel Grotezk";
-            font-size: clamp(22px, 3vw, 32px);
+        .reveal-title {
+            font-family: "Apfel Grotezk", sans-serif;
+            font-size: clamp(18px, 3vw, 26px);
             font-weight: 500;
             letter-spacing: -0.02em;
-            color: var(--black-72);
+            color: rgba(255,255,255,0.85);
             margin-bottom: 12px;
         }
 
-        .error-desc {
-            font-family: "Inter";
+        .reveal-desc {
             font-size: 14px;
             line-height: 22px;
-            color: var(--black-56);
-            letter-spacing: -0.005em;
-            margin-bottom: 32px;
-            max-width: 420px;
-            margin-left: auto;
-            margin-right: auto;
+            color: rgba(255,255,255,0.4);
+            max-width: 440px;
+            margin: 0 auto 28px;
         }
 
-        /* CTA Buttons - using the site's tf-btn-action style */
-        .error-actions {
+        .reveal-actions {
             display: flex;
             gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        /* Progress Counter */
-        .layer-progress {
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 999px;
+            background: #FF7518;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 20px rgba(255,117,24,0.3);
+            letter-spacing: -0.01em;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(255,117,24,0.45);
+            background: #ff8a3d;
+        }
+
+        .btn-back svg { width: 16px; height: 16px; }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 24px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.6);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .redirect-note {
+            margin-top: 28px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.2);
+        }
+
+        .redirect-note a { color: #FF7518; text-decoration: none; }
+
+        /* ===== HUD ===== */
+        .hud-progress {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 50;
+            z-index: 100;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(26,26,36,0.9);
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(12px);
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.4);
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            font-size: 12px;
-            color: var(--black-56);
-            font-family: "Inter";
-            font-weight: 500;
         }
 
-        .layer-progress .count {
-            color: var(--primary);
+        .hud-progress .hud-count {
+            color: #FF7518;
             font-weight: 700;
+            font-size: 13px;
         }
 
-        /* Hint */
-        .drag-hint-bar {
+        /* Microcopy header */
+        .micro-header {
             position: fixed;
-            bottom: 30px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
+            z-index: 100;
+            padding: 8px 20px;
             border-radius: 999px;
-            background: var(--surface);
-            box-shadow: var(--shadow);
+            background: rgba(26,26,36,0.9);
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(12px);
             font-size: 12px;
-            font-weight: 500;
-            font-family: "Inter";
-            color: var(--black-56);
-            animation: hint-float 2.5s ease-in-out infinite;
+            color: rgba(255,255,255,0.35);
+            white-space: nowrap;
             transition: opacity 0.4s;
         }
 
-        .drag-hint-bar strong { color: var(--primary); }
-        .drag-hint-bar.hidden { opacity: 0; pointer-events: none; }
+        .micro-header strong { color: #FF7518; font-weight: 600; }
 
-        .hint-icon {
-            animation: wiggle-hand 1.5s ease-in-out infinite;
-            font-size: 16px;
-        }
+        .micro-header.hidden { opacity: 0; }
 
-        @keyframes hint-float {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-6px); }
-        }
-
-        @keyframes wiggle-hand {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-12deg); }
-            75% { transform: rotate(12deg); }
-        }
-
-        /* Lazy redirect */
-        .lazy-redirect {
-            margin-top: 24px;
-            font-size: 12px;
-            color: var(--black-40);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .lazy-redirect.visible { opacity: 1; }
-        .lazy-redirect a {
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        /* Confetti */
-        .confetti-box {
+        /* Hint bar */
+        .hint-bar {
             position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 9999;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            padding: 10px 22px;
+            border-radius: 999px;
+            background: rgba(26,26,36,0.9);
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(12px);
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: hintPulse 2.5s ease-in-out infinite;
+            transition: all 0.4s;
         }
 
-        .confetti-bit {
+        .hint-bar strong { color: #FF7518; }
+        .hint-bar.hidden { opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(20px); }
+
+        .wiggle-icon {
+            font-size: 16px;
+            animation: wiggle 1.2s ease-in-out infinite;
+        }
+
+        @keyframes hintPulse {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0); }
+            20% { transform: rotate(-14deg); }
+            40% { transform: rotate(14deg); }
+            60% { transform: rotate(-8deg); }
+            80% { transform: rotate(8deg); }
+        }
+
+        /* ===== CONFETTI ===== */
+        .confetti-layer { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
+        .conf {
             position: absolute;
-            top: -10px;
-            border-radius: 2px;
-            animation: confetti-drop linear forwards;
+            top: -12px;
+            animation: confDrop linear forwards;
+        }
+        @keyframes confDrop {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(600deg); opacity: 0; }
         }
 
-        @keyframes confetti-drop {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-
-        /* Reveal state */
-        .revealed-state {
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.6s ease 0.2s;
-        }
-
-        .revealed-state.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* Dark mode overrides */
-        .dark-mode .figma-frame {
-            background: var(--bg-3);
-            border-color: rgba(255,255,255,0.08);
-        }
-
-        .dark-mode .figma-frame .frame-bar {
-            background: rgba(255,255,255,0.04);
-            border-bottom-color: rgba(255,255,255,0.06);
-        }
-
-        .dark-mode .frame-mock-line {
-            background: rgba(255,255,255,0.08);
-        }
-
-        .dark-mode .frame-mock-box {
-            border-color: rgba(255,255,255,0.1);
-        }
-
-        .dark-mode .error-title {
-            color: var(--white-72);
-        }
-
-        .dark-mode .error-desc {
-            color: var(--white-56);
-        }
-
-        .dark-mode .layer-progress,
-        .dark-mode .drag-hint-bar {
-            background: var(--bg-3);
-            color: var(--white-56);
-            box-shadow: var(--shadow-3);
-        }
-
-        .dark-mode .figma-frame .frame-bar .frame-label {
-            color: var(--white-56);
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 560px) {
+            .figma-layer { width: 320px; }
+            .avatar-zone { height: 350px; }
+            .micro-header { font-size: 10px; padding: 6px 14px; }
+            .reveal-actions { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
+<body>
+    <div class="dark-canvas"></div>
+    <div class="grid-overlay"></div>
 
-<body class="counter-scroll">
-    <!-- Preload -->
-    <div class="preload preload-container" id="preload">
-        <div class="preload-logo">
-            <div class="spinner"></div>
-        </div>
+    <!-- Microcopy Header -->
+    <div class="micro-header" id="microHeader">
+        Looks like this page got lost in my <strong>infinite component hierarchy</strong>…
     </div>
-    <!-- /Preload -->
 
-    <!-- Body Background -->
-    <div class="body-background">
-        <div class="bg-item">
-            <img loading="lazy" width="1440" height="900" src="images/cloud-bg.png" alt="Image">
-        </div>
-        <div class="bg-video video-dark">
-            <video class="video" muted="" autoplay="" loop="" playsinline="">
-                <source src="media/overlay-2.mp4" type="video/mp4">
-            </video>
-            <div class="overlay-1"></div>
-        </div>
+    <!-- Progress HUD -->
+    <div class="hud-progress">
+        🗂 Layers: <span class="hud-count" id="hudCount">0 / 5</span>
     </div>
-    <!-- /Body Background -->
 
-    <!-- 404 Content -->
-    <div class="page-404">
-        <div class="error-container">
-            <!-- Figma Layer Stack -->
-            <div class="figma-layers" id="figmaLayers">
-                <div class="figma-frame fl-1" data-layer="1" id="fl-1">
-                    <div class="frame-bar">
-                        <div class="dot-group"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                        <span class="frame-label">🚫 Error_Overlay</span>
+    <!-- Stage -->
+    <div class="stage">
+        <div class="stage-inner">
+            <!-- Avatar Zone with Layers -->
+            <div class="avatar-zone" id="avatarZone">
+
+                <!-- Buried Avatar (visible underneath everything) -->
+                <div class="buried-avatar" id="buriedAvatar">
+                    <div class="avatar-emoji">🧑‍💻</div>
+                    <div class="avatar-help-text">help me...</div>
+                </div>
+
+                <!-- Layer 5 (bottom) -->
+                <div class="figma-layer layer-5" data-idx="5">
+                    <div class="layer-bar">
+                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
+                        <span class="bar-label">✨ The_Real_Content</span>
+                        <span class="bar-badge">HIDDEN</span>
                     </div>
-                    <div class="frame-content">
-                        <div class="frame-mock-line thick w85"></div>
-                        <div class="frame-mock-line w50"></div>
-                        <div class="frame-mock-boxes">
-                            <div class="frame-mock-box">⚠️</div>
-                            <div class="frame-mock-box">🔗</div>
-                            <div class="frame-mock-box">💔</div>
+                    <div class="layer-body">
+                        <div class="mock-row"><div class="mock-bar accent w80 thick"></div></div>
+                        <div class="mock-row"><div class="mock-bar accent w50"></div></div>
+                        <div class="mock-row"><div class="mock-bar accent w60"></div></div>
+                        <div class="layer-comment">The content you're looking for is under here somewhere…</div>
+                    </div>
+                </div>
+
+                <!-- Layer 4 -->
+                <div class="figma-layer layer-4" data-idx="4">
+                    <div class="layer-bar">
+                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
+                        <span class="bar-label">🧩 Detached_Instance_v47</span>
+                        <span class="bar-badge">ROGUE</span>
+                    </div>
+                    <div class="layer-body">
+                        <div class="mock-cards">
+                            <div class="mock-card">🔓</div>
+                            <div class="mock-card">⚙️</div>
+                            <div class="mock-card">🔄</div>
                         </div>
+                        <div class="layer-comment">This component detached itself. It's gone rogue.</div>
                     </div>
                 </div>
-                <div class="figma-frame fl-2" data-layer="2" id="fl-2">
-                    <div class="frame-bar">
-                        <div class="dot-group"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                        <span class="frame-label">📐 Broken_AutoLayout</span>
+
+                <!-- Layer 3 -->
+                <div class="figma-layer layer-3" data-idx="3">
+                    <div class="layer-bar">
+                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
+                        <span class="bar-label">🔌 Missing_Dependencies</span>
+                        <span class="bar-badge">BROKEN</span>
                     </div>
-                    <div class="frame-content">
-                        <div class="frame-mock-line w70"></div>
-                        <div class="frame-mock-line w40"></div>
-                        <div class="frame-mock-boxes">
-                            <div class="frame-mock-box">📦</div>
-                            <div class="frame-mock-box">🧩</div>
+                    <div class="layer-body">
+                        <div class="mock-row"><div class="mock-bar blue w70 thick"></div></div>
+                        <div class="mock-row"><div class="mock-bar blue w40"></div><div class="mock-bar blue w30"></div></div>
+                        <div class="mock-cards">
+                            <div class="mock-card">⚡</div>
+                            <div class="mock-card">🔌</div>
+                            <div class="mock-card">💤</div>
                         </div>
+                        <div class="layer-comment">3 components went missing after the last library update</div>
                     </div>
                 </div>
-                <div class="figma-frame fl-3" data-layer="3" id="fl-3">
-                    <div class="frame-bar">
-                        <div class="dot-group"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                        <span class="frame-label">🔌 Missing_Components</span>
+
+                <!-- Layer 2 -->
+                <div class="figma-layer layer-2" data-idx="2">
+                    <div class="layer-bar">
+                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
+                        <span class="bar-label">📐 AutoLayout_Gone_Wrong</span>
+                        <span class="bar-badge">OVERFLOW</span>
                     </div>
-                    <div class="frame-content">
-                        <div class="frame-mock-line thick w70"></div>
-                        <div class="frame-mock-line w85"></div>
-                        <div class="frame-mock-line w50"></div>
+                    <div class="layer-body">
+                        <div class="mock-al-grid">
+                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.5);">H=HUG</div>
+                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.5);">W=FILL(?)</div>
+                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.5);">GAP=∞</div>
+                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.15); color: rgba(162,89,255,0.3);">PAD=???</div>
+                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.15); color: rgba(162,89,255,0.3);">MIN=0</div>
+                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.15); color: rgba(162,89,255,0.3);">CLIP ✗</div>
+                        </div>
+                        <div class="layer-comment">Auto-layout left the chat after that resize…</div>
                     </div>
                 </div>
-                <div class="figma-frame fl-4" data-layer="4" id="fl-4">
-                    <div class="frame-bar">
-                        <div class="dot-group"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-                        <span class="frame-label">✨ The_Real_Content</span>
+
+                <!-- Layer 1 (top) -->
+                <div class="figma-layer layer-1" data-idx="1">
+                    <div class="layer-bar">
+                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
+                        <span class="bar-label">🚫 Error_Overlay_FINAL_v3_REAL</span>
+                        <span class="bar-badge">BLOCKING</span>
                     </div>
-                    <div class="frame-content">
-                        <div class="frame-mock-line w85" style="background: var(--primary); opacity: 0.2;"></div>
-                        <div class="frame-mock-line w50" style="background: var(--primary); opacity: 0.15;"></div>
-                        <div class="frame-mock-line w70" style="background: var(--primary); opacity: 0.1;"></div>
+                    <div class="layer-body">
+                        <div style="text-align: center; padding: 8px 0;">
+                            <div style="font-size: 36px; margin-bottom: 6px;">🚨</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #F24E1E; margin-bottom: 4px;">404 — Page Not Found</div>
+                            <div style="font-size: 11px; color: rgba(255,255,255,0.25);">This frame is blocking everything below.</div>
+                            <div style="font-size: 10px; color: rgba(255,117,24,0.5); margin-top: 6px; font-style: italic;">↕ drag me away to start digging!</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Revealed Content (hidden initially) -->
-            <div class="revealed-state" id="revealedState">
-                <div class="error-code" id="errorCode">404</div>
-
-                <h4 class="error-title letter-space--2">
-                    Lost in the layers? We've all been there.
-                </h4>
-                <p class="error-desc">
-                    This page got buried under infinite nested frames, detached instances, and auto-layout gone wrong. But you've cleared the chaos — let's get you back to safety.
+            <!-- Revealed Content -->
+            <div class="reveal-content" id="revealContent">
+                <div class="reveal-code">404</div>
+                <h1 class="reveal-title">You've cleared the chaos! 🎉</h1>
+                <p class="reveal-desc">
+                    Looks like this page got lost in my infinite component hierarchy. 
+                    But you're clearly a pro at navigating design chaos — let's get you back to safety.
                 </p>
-
-                <div class="error-actions">
-                    <a href="/" class="tf-btn-action">
-                        <span class="ic-wrap">
-                            <i class="icon icon-arrow-right-top"></i>
-                        </span>
-                        <span class="text text-body-3 letter-space--05 fw-medium">
-                            Back to Portfolio
-                        </span>
-                        <span class="ic-wrap">
-                            <i class="icon icon-arrow-right-top"></i>
-                        </span>
+                <div class="reveal-actions">
+                    <a href="/" class="btn-back">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        Back to Portfolio
                     </a>
+                    <a href="/#work" class="btn-ghost">View My Work →</a>
                 </div>
-
-                <p class="lazy-redirect" id="lazyRedirect">
-                    Auto-redirecting in <span id="countdown">15</span>s · <a href="/">skip →</a>
-                </p>
+                <p class="redirect-note">Auto-redirecting in <span id="countdown">20</span>s · <a href="/">skip →</a></p>
             </div>
         </div>
     </div>
-    <!-- /404 Content -->
 
-    <!-- Progress -->
-    <div class="layer-progress" id="layerProgress">
-        <span>🗂 Layers cleared:</span>
-        <span class="count" id="progressCount">0/4</span>
-    </div>
-
-    <!-- Drag Hint -->
-    <div class="drag-hint-bar" id="dragHint">
-        <span class="hint-icon">👆</span>
-        <span><strong>Drag the layers</strong> to uncover the real page</span>
+    <!-- Hint Bar -->
+    <div class="hint-bar" id="hintBar">
+        <span class="wiggle-icon">👆</span>
+        <span><strong>Drag the layers away</strong> to rescue the buried designer</span>
     </div>
 
     <!-- Confetti -->
-    <div class="confetti-box" id="confettiBox"></div>
-
-    <!-- Javascript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <div class="confetti-layer" id="confLayer"></div>
 
     <script>
-        const frames = document.querySelectorAll('.figma-frame');
-        const revealedState = document.getElementById('revealedState');
-        const errorCode = document.getElementById('errorCode');
-        const progressCount = document.getElementById('progressCount');
-        const dragHint = document.getElementById('dragHint');
-        const lazyRedirect = document.getElementById('lazyRedirect');
-        const confettiBox = document.getElementById('confettiBox');
+        const layers = document.querySelectorAll('.figma-layer');
+        const revealContent = document.getElementById('revealContent');
+        const buriedAvatar = document.getElementById('buriedAvatar');
+        const hudCount = document.getElementById('hudCount');
+        const hintBar = document.getElementById('hintBar');
+        const microHeader = document.getElementById('microHeader');
+        const confLayer = document.getElementById('confLayer');
 
-        let removedCount = 0;
-        const totalFrames = frames.length;
-        const DRAG_THRESHOLD = 120;
+        let cleared = 0;
+        const total = layers.length;
+        const THRESHOLD = 100;
 
-        // Original transforms for snap-back
-        const originalTransforms = {
-            '1': 'rotate(-2deg) translate(4px, 0)',
-            '2': 'rotate(1deg) translate(-4px, 4px)',
-            '3': 'rotate(-0.5deg) translate(8px, 8px)',
-            '4': 'rotate(0.8deg) translate(-2px, 12px)'
+        const origins = {
+            '1': 'rotate(-1.2deg) translate(-8px, -20px)',
+            '2': 'rotate(1.5deg) translate(12px, -5px)',
+            '3': 'rotate(-0.6deg) translate(-4px, 10px)',
+            '4': 'rotate(0.9deg) translate(6px, 25px)',
+            '5': 'rotate(-1.8deg) translate(-10px, 40px)'
         };
 
-        // ===== DRAG LOGIC =====
-        frames.forEach(frame => {
-            let startX, startY, currentX = 0, currentY = 0, isDragging = false;
-            const layerNum = frame.dataset.layer;
+        layers.forEach(layer => {
+            let sx, sy, cx = 0, cy = 0, drag = false;
+            const idx = layer.dataset.idx;
 
-            const onStart = (e) => {
-                if (frame.classList.contains('removed')) return;
-                isDragging = true;
-                frame.classList.add('dragging');
-                const point = e.touches ? e.touches[0] : e;
-                startX = point.clientX - currentX;
-                startY = point.clientY - currentY;
+            const start = e => {
+                if (layer.classList.contains('removed')) return;
+                drag = true;
+                layer.classList.add('dragging');
+                const p = e.touches ? e.touches[0] : e;
+                sx = p.clientX - cx;
+                sy = p.clientY - cy;
             };
 
-            const onMove = (e) => {
-                if (!isDragging) return;
+            const move = e => {
+                if (!drag) return;
                 e.preventDefault();
-                const point = e.touches ? e.touches[0] : e;
-                currentX = point.clientX - startX;
-                currentY = point.clientY - startY;
-                frame.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${currentX * 0.04}deg)`;
-
-                const distance = Math.sqrt(currentX * currentX + currentY * currentY);
-                const progress = Math.min(distance / DRAG_THRESHOLD, 1);
-                frame.style.opacity = 1 - (progress * 0.5);
+                const p = e.touches ? e.touches[0] : e;
+                cx = p.clientX - sx;
+                cy = p.clientY - sy;
+                layer.style.transform = `translate(${cx}px, ${cy}px) rotate(${cx * 0.04}deg)`;
+                const d = Math.sqrt(cx*cx + cy*cy);
+                layer.style.opacity = Math.max(0.3, 1 - (d / THRESHOLD) * 0.7);
             };
 
-            const onEnd = () => {
-                if (!isDragging) return;
-                isDragging = false;
-                frame.classList.remove('dragging');
+            const end = () => {
+                if (!drag) return;
+                drag = false;
+                layer.classList.remove('dragging');
+                const d = Math.sqrt(cx*cx + cy*cy);
 
-                const distance = Math.sqrt(currentX ** 2 + currentY ** 2);
+                if (d > THRESHOLD) {
+                    const a = Math.atan2(cy, cx);
+                    layer.style.transition = 'all 0.6s cubic-bezier(0.4,0,0.2,1)';
+                    layer.style.transform = `translate(${Math.cos(a)*1500}px, ${Math.sin(a)*1500}px) rotate(${Math.cos(a)*30}deg)`;
+                    layer.style.opacity = '0';
+                    setTimeout(() => layer.classList.add('removed'), 600);
 
-                if (distance > DRAG_THRESHOLD) {
-                    // Fling away
-                    const angle = Math.atan2(currentY, currentX);
-                    const flingX = Math.cos(angle) * 1200;
-                    const flingY = Math.sin(angle) * 1200;
+                    cleared++;
+                    hudCount.textContent = cleared + ' / ' + total;
 
-                    frame.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                    frame.style.transform = `translate(${flingX}px, ${flingY}px) rotate(${flingX * 0.03}deg)`;
-                    frame.style.opacity = '0';
+                    // Avatar gets more visible as layers clear 
+                    buriedAvatar.style.opacity = 0.15 + (cleared / total) * 0.85;
 
-                    setTimeout(() => frame.classList.add('removed'), 500);
-
-                    removedCount++;
-                    progressCount.textContent = removedCount + '/' + totalFrames;
-
-                    if (removedCount >= totalFrames) {
-                        onAllCleared();
-                    }
+                    if (cleared >= total) allCleared();
                 } else {
-                    // Snap back
-                    frame.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                    frame.style.transform = originalTransforms[layerNum];
-                    frame.style.opacity = '1';
-                    currentX = 0;
-                    currentY = 0;
-                    setTimeout(() => { frame.style.transition = ''; }, 400);
+                    layer.style.transition = 'all 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+                    layer.style.transform = origins[idx];
+                    layer.style.opacity = '1';
+                    cx = 0; cy = 0;
+                    setTimeout(() => layer.style.transition = '', 400);
                 }
             };
 
-            frame.addEventListener('mousedown', onStart);
-            frame.addEventListener('touchstart', onStart, { passive: false });
-            document.addEventListener('mousemove', onMove);
-            document.addEventListener('touchmove', onMove, { passive: false });
-            document.addEventListener('mouseup', onEnd);
-            document.addEventListener('touchend', onEnd);
+            layer.addEventListener('mousedown', start);
+            layer.addEventListener('touchstart', start, { passive: false });
+            document.addEventListener('mousemove', move);
+            document.addEventListener('touchmove', move, { passive: false });
+            document.addEventListener('mouseup', end);
+            document.addEventListener('touchend', end);
         });
 
-        // ===== ALL CLEARED =====
-        function onAllCleared() {
-            revealedState.classList.add('visible');
-            dragHint.classList.add('hidden');
-
-            setTimeout(() => {
-                errorCode.classList.add('visible');
-            }, 300);
-
-            launchConfetti();
+        function allCleared() {
+            buriedAvatar.classList.add('revealed');
+            buriedAvatar.querySelector('.avatar-help-text').textContent = 'thank you! 🙌';
+            revealContent.classList.add('visible');
+            hintBar.classList.add('hidden');
+            microHeader.innerHTML = 'You <strong>rescued the designer</strong> from the layer chaos! 🎉';
+            fireConfetti();
             startCountdown();
         }
 
-        // ===== COUNTDOWN REDIRECT =====
         function startCountdown() {
-            lazyRedirect.classList.add('visible');
-            let seconds = 15;
-            const countdownEl = document.getElementById('countdown');
-
-            const timer = setInterval(() => {
-                seconds--;
-                countdownEl.textContent = seconds;
-                if (seconds <= 0) {
-                    clearInterval(timer);
-                    window.location.href = '/';
-                }
+            let s = 20;
+            const el = document.getElementById('countdown');
+            const t = setInterval(() => {
+                s--;
+                el.textContent = s;
+                if (s <= 0) { clearInterval(t); window.location.href = '/'; }
             }, 1000);
         }
 
-        // ===== CONFETTI =====
-        function launchConfetti() {
-            const colors = ['#FF7518', '#A259FF', '#1ABCFE', '#0ACF83', '#F24E1E', '#FFB347'];
-
-            for (let i = 0; i < 60; i++) {
+        function fireConfetti() {
+            const colors = ['#FF7518','#A259FF','#1ABCFE','#0ACF83','#F24E1E','#FFB347','#FFD700'];
+            for (let i = 0; i < 80; i++) {
                 setTimeout(() => {
-                    const piece = document.createElement('div');
-                    piece.className = 'confetti-bit';
-                    piece.style.left = Math.random() * 100 + '%';
-                    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    piece.style.width = (Math.random() * 8 + 4) + 'px';
-                    piece.style.height = (Math.random() * 8 + 4) + 'px';
-                    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-                    piece.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
-                    confettiBox.appendChild(piece);
-                    setTimeout(() => piece.remove(), 4000);
-                }, i * 25);
+                    const c = document.createElement('div');
+                    c.className = 'conf';
+                    c.style.left = Math.random()*100+'%';
+                    c.style.background = colors[~~(Math.random()*colors.length)];
+                    c.style.width = (Math.random()*8+4)+'px';
+                    c.style.height = (Math.random()*8+4)+'px';
+                    c.style.borderRadius = Math.random()>0.5?'50%':'2px';
+                    c.style.animationDuration = (Math.random()*2+1.5)+'s';
+                    confLayer.appendChild(c);
+                    setTimeout(() => c.remove(), 4000);
+                }, i*20);
             }
         }
     </script>
 </body>
-
 </html>
