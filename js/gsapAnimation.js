@@ -310,19 +310,23 @@ gsap.registerPlugin(ScrollTrigger);
     ---------------------------------------------------------- */
     var scrollLine = () => {
         if ($(".scroll-down").length) {
-            // setup progress line
-            gsap.set(".prg-line", { height: "0%" });
-            gsap.to(".prg-line", {
-                height: "100%",
-                duration: 2,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".scroll-down",
-                    start: "top 40%",
-                    end: "bottom 30%",
-                    scrub: true,
-                    // markers: true,
-                },
+            $(".scroll-down").each(function () {
+                const $section = $(this);
+                const $prgLine = $section.find(".prg-line");
+
+                // setup progress line
+                gsap.set($prgLine, { height: "0%" });
+                gsap.to($prgLine, {
+                    height: "100%",
+                    duration: 2,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: this,
+                        start: "top 40%",
+                        end: "bottom 30%",
+                        scrub: true,
+                    },
+                });
             });
 
             // activate timeline items
