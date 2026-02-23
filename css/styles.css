@@ -3160,8 +3160,15 @@ html, body {
   font-size: 20px;
   padding: 0;
 }
+.offcanvas-color .icon-close-popup:hover {
+  color: var(--primary);
+}
 .offcanvas-color .title {
   margin-bottom: 20px;
+  color: var(--white);
+}
+.offcanvas-color h5 {
+  color: var(--white) !important;
 }
 
 .offcanvas-mb {
@@ -6965,9 +6972,9 @@ button.animate-btn::after,
 /* Perfect Centered Grid */
 .wrap-container {
     width: 100%;
-    margin: 0 auto !important;
-    padding: 0 24px !important;
-    max-width: 740px !important;
+    margin: 0 auto;
+    padding: 0 24px;
+    max-width: 740px;
 }
 
 .article-title {
@@ -7049,6 +7056,12 @@ button.animate-btn::after,
     background-color: var(--primary) !important;
     color: #FFFFFF !important;
     border: none !important;
+    font-family: inherit !important; /* Inherits correctly */
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    border-radius: 12px !important; /* Square-ish curve to match index buttons */
+    padding: 16px 36px !important;
+    text-shadow: none !important;
 }
 
 .article-footer-title {
@@ -7062,5 +7075,5 @@ button.animate-btn::after,
 }
 
 .article-footer p {
-    color: rgba(0, 0, 0, 0.4) !important;
+    color: rgba(0, 0, 0, 0.6) !important;
 }
