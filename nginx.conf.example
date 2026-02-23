@@ -4,11 +4,11 @@
 
 server {
     listen 80;
-    server_name invaild.com www.invaild.com;
+    server_name harsharoyal.in www.harsharoyal.in;
 
     # Redirect www to non-www
-    if ($host = 'www.invaild.com') {
-        return 301 https://invaild.com$request_uri;
+    if ($host = 'www.harsharoyal.in') {
+        return 301 https://harsharoyal.in$request_uri;
     }
 
     # Letsencrypt challenge
@@ -18,16 +18,16 @@ server {
     }
 
     location / {
-		return 301 https://invaild.com$request_uri;
+		return 301 https://harsharoyal.in$request_uri;
 	}
 }
 
 server {
     listen 443 ssl;
-    server_name invaild.com;
+    server_name harsharoyal.in;
 
-    ssl_certificate /etc/letsencrypt/live/invaild.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/invaild.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/harsharoyal.in/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/harsharoyal.in/privkey.pem;
 
     # Path to your website's root directory.
     # Replace with the actual path on your server.

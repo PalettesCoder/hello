@@ -6925,7 +6925,7 @@ button.animate-btn::after,
     background: #F5F5F5 !important;
     min-height: 100vh;
     padding-bottom: 100px;
-    padding-top: 40px !important;
+    padding-top: 0 !important; /* Removes the grey gap above sticky navigation */
     color: #000000 !important;
     width: 100%;
 }
@@ -7050,18 +7050,6 @@ button.animate-btn::after,
     margin-top: 80px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 64px;
-}
-
-.article-footer .tf-btn-action {
-    background-color: var(--primary) !important;
-    color: #FFFFFF !important;
-    border: none !important;
-    font-family: inherit !important; /* Inherits correctly */
-    font-size: 16px !important;
-    font-weight: 500 !important;
-    border-radius: 12px !important; /* Square-ish curve to match index buttons */
-    padding: 16px 36px !important;
-    text-shadow: none !important;
 }
 
 .article-footer-title {

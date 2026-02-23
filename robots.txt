@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://invaild.com/sitemap.xml
+
+Sitemap: https://harsharoyal.in/sitemap.xml
