@@ -16,37 +16,244 @@
     <style>
         html { zoom: 1; }
         body {
-            background: #0e0e12;
+            background: #ffffff;
             min-height: 100vh;
             overflow: hidden;
             position: relative;
             font-family: "Inter", sans-serif;
+            margin: 0; padding: 0;
+        }
+
+        /* ===== FIGMA UI THEME ===== */
+        .figma-app {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            background: #ffffff;
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            font-size: 11px;
+            color: rgba(0,0,0,0.8);
+            user-select: none;
+        }
+        .figma-toolbar {
+            height: 48px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            background: #ffffff;
+            flex-shrink: 0;
+            z-index: 20;
+        }
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .toolbar-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .toolbar-icon.active, .toolbar-icon:hover {
+            background: rgba(0,0,0,0.06);
+            color: #333;
+        }
+        .toolbar-title {
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.02em;
+        }
+        .toolbar-title span { color: rgba(0,0,0,0.4); }
+        .toolbar-title .filename { display: flex; align-items: center; gap: 4px; }
+        .toolbar-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #FF7518;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        .figma-workspace {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 48px);
+            overflow: hidden;
+        }
+        .figma-sidebar {
+            width: 240px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            z-index: 20;
+        }
+        .figma-sidebar-left { border-right: 1px solid rgba(0,0,0,0.1); }
+        .figma-sidebar-right { border-left: 1px solid rgba(0,0,0,0.1); }
+        .sidebar-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            height: 40px;
+            flex-shrink: 0;
+        }
+        .sidebar-tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            color: rgba(0,0,0,0.5);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        .sidebar-tab.active {
+            color: #333;
+            border-bottom-color: #FF7518;
+        }
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px 0;
+        }
+        .layer-item {
+            display: flex;
+            align-items: center;
+            padding: 6px 16px 6px 20px;
+            gap: 10px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
+            color: rgba(0,0,0,0.8);
+        }
+        .layer-item:hover { background: rgba(0,0,0,0.04); }
+        .layer-item.removed {
+            opacity: 0.3;
+            text-decoration: line-through;
+            transform: translateX(-4px);
+        }
+        .layer-icon {
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: "Space Mono", monospace, sans-serif;
+            color: rgba(0,0,0,0.6);
+        }
+        .layer-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 11px;
+            letter-spacing: 0.02em;
+        }
+        .prop-section {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 16px;
+        }
+        .prop-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: rgba(0,0,0,0.85);
+        }
+        .prop-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .prop-label {
+            width: 24px;
+            color: rgba(0,0,0,0.5);
+            text-align: right;
+            padding-right: 4px;
+        }
+        .prop-value {
+            flex: 1;
+            background: rgba(0,0,0,0.04);
+            border: 1px solid transparent;
+            border-radius: 4px;
+            padding: 6px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: inherit;
+            color: #333;
+            transition: border-color 0.2s;
+        }
+        .prop-value:hover { border-color: rgba(0,0,0,0.15); }
+        .figma-canvas {
+            flex: 1;
+            position: relative;
+            background: #e5e5e5;
+            overflow: hidden;
+            display: block; /* Removed flex center since we translate an inner canvas */
+            cursor: grab;
+        }
+        .figma-canvas:active {
+            cursor: grabbing;
+        }
+        
+        @media (max-width: 900px) { .figma-sidebar-right { display: none; } }
+        @media (max-width: 600px) { .figma-sidebar-left { display: none; } .desktop-only { display: none !important; } }
+
+        /* ===== CANVAS PANNING ===== */
+        .pan-canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            z-index: 5;
         }
 
         /* ===== DARK CANVAS ===== */
         .dark-canvas {
-            position: fixed;
+            position: absolute;
             inset: 0;
             background:
                 radial-gradient(ellipse at 30% 20%, rgba(255,117,24,0.06) 0%, transparent 60%),
                 radial-gradient(ellipse at 70% 80%, rgba(162,89,255,0.04) 0%, transparent 60%),
-                #0e0e12;
+                #e5e5e5;
             z-index: 0;
         }
 
         .grid-overlay {
-            position: fixed;
+            position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
             background-size: 24px 24px;
             z-index: 0;
         }
 
         /* ===== MAIN STAGE ===== */
         .stage {
-            position: fixed;
+            position: absolute;
             inset: 0;
             display: flex;
             align-items: center;
@@ -91,8 +298,10 @@
             transform: scale(1.05);
         }
 
-        .avatar-emoji {
-            font-size: 72px;
+        .avatar-img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
             animation: avatar-float 3s ease-in-out infinite;
             filter: drop-shadow(0 8px 24px rgba(255,117,24,0.3));
         }
@@ -104,7 +313,7 @@
 
         .avatar-help-text {
             font-size: 11px;
-            color: rgba(255,255,255,0.3);
+            color: rgba(0,0,0,0.5);
             letter-spacing: 0.1em;
             text-transform: uppercase;
             font-weight: 600;
@@ -114,99 +323,42 @@
         .figma-layer {
             position: absolute;
             width: 480px;
-            max-width: 90vw;
-            border-radius: 14px;
-            background: #1a1a24;
-            border: 1px solid rgba(255,255,255,0.06);
-            box-shadow:
-                0 0 0 1px rgba(255,255,255,0.04),
-                0 4px 16px rgba(0,0,0,0.4),
-                0 12px 40px rgba(0,0,0,0.3);
-            overflow: hidden;
-            cursor: grab;
+            background: #ffffff;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
             user-select: none;
-            touch-action: none;
-            transition: box-shadow 0.3s;
+            cursor: default;
         }
 
-        .figma-layer:active { cursor: grabbing; }
+        /* Position layers across the panoramic canvas in a single row */
+        .layer-1 { top: -100px; left: -1100px; } /* 404 block */
+        .layer-2 { top: -100px; left: -560px; width: 340px; } /* Auto Layout */
+        .layer-3 { top: -100px; left: -160px; width: 440px; } /* Missing Deps */
+        .layer-4 { top: -100px; left: 340px; width: 260px; } /* Detached */
+        .layer-5 { top: -100px; left: 660px; width: 500px; } /* The Safe point */
 
-        .figma-layer:hover {
-            box-shadow:
-                0 0 0 2px #FF7518,
-                0 8px 32px rgba(255,117,24,0.15),
-                0 20px 60px rgba(0,0,0,0.4);
-        }
-
-        .figma-layer.dragging {
-            box-shadow:
-                0 0 0 2px #FF7518,
-                0 20px 60px rgba(255,117,24,0.2),
-                0 40px 80px rgba(0,0,0,0.5);
-            z-index: 200 !important;
-        }
-
-        .figma-layer.removed {
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        /* Position layers dramatically stacked */
-        .layer-1 { z-index: 10; transform: rotate(-1.2deg) translate(-8px, -20px); }
-        .layer-2 { z-index: 9; transform: rotate(1.5deg) translate(12px, -5px); }
-        .layer-3 { z-index: 8; transform: rotate(-0.6deg) translate(-4px, 10px); }
-        .layer-4 { z-index: 7; transform: rotate(0.9deg) translate(6px, 25px); }
-        .layer-5 { z-index: 6; transform: rotate(-1.8deg) translate(-10px, 40px); }
-
-        /* ===== FRAME HEADER BAR ===== */
-        .layer-bar {
-            height: 32px;
-            background: rgba(255,255,255,0.03);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            gap: 7px;
-            pointer-events: none;
-        }
-
-        .bar-dots {
-            display: flex;
-            gap: 5px;
-        }
-
-        .bar-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        .bar-label {
+        .layer-title {
+            position: absolute;
+            top: -24px;
+            left: 0;
             font-size: 11px;
             font-weight: 600;
-            color: rgba(255,255,255,0.5);
-            letter-spacing: 0.01em;
+            color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
         }
 
-        .bar-badge {
-            margin-left: auto;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
+        .layer-title span { opacity: 0.6; font-size: 10px; font-weight: 400; }
 
         /* ===== FRAME BODY CONTENT ===== */
         .layer-body {
-            padding: 16px 18px;
+            padding: 24px;
             pointer-events: none;
         }
 
         .mock-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
-        .mock-bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.06); }
+        .mock-bar { height: 8px; border-radius: 4px; background: rgba(0,0,0,0.05); }
         .mock-bar.w30 { width: 30%; } .mock-bar.w40 { width: 40%; } .mock-bar.w50 { width: 50%; }
         .mock-bar.w60 { width: 60%; } .mock-bar.w70 { width: 70%; } .mock-bar.w80 { width: 80%; }
         .mock-bar.w90 { width: 90%; } .mock-bar.thick { height: 12px; }
@@ -220,12 +372,12 @@
             flex: 1;
             height: 44px;
             border-radius: 8px;
-            border: 1px dashed rgba(255,255,255,0.08);
+            border: 1px dashed rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            background: rgba(255,255,255,0.01);
+            background: rgba(0,0,0,0.02);
         }
 
         .mock-al-grid {
@@ -248,52 +400,16 @@
         .layer-comment {
             margin-top: 8px;
             font-size: 10px;
-            color: rgba(255,255,255,0.25);
+            color: rgba(0,0,0,0.4);
             font-style: italic;
             text-align: center;
         }
-
-        /* ===== INDIVIDUAL LAYER THEMES ===== */
-        .layer-1 .bar-dot:nth-child(1) { background: #F24E1E; }
-        .layer-1 .bar-dot:nth-child(2) { background: #FF7518; }
-        .layer-1 .bar-dot:nth-child(3) { background: #0ACF83; }
-        .layer-1 .bar-badge { background: rgba(242,78,30,0.15); color: #F24E1E; }
-
-        .layer-2 .bar-dot:nth-child(1) { background: #A259FF; }
-        .layer-2 .bar-dot:nth-child(2) { background: #1ABCFE; }
-        .layer-2 .bar-dot:nth-child(3) { background: #A259FF; }
-        .layer-2 .bar-badge { background: rgba(162,89,255,0.15); color: #A259FF; }
-
-        .layer-3 .bar-dot:nth-child(1) { background: #1ABCFE; }
-        .layer-3 .bar-dot:nth-child(2) { background: #5B7FFF; }
-        .layer-3 .bar-dot:nth-child(3) { background: #1ABCFE; }
-        .layer-3 .bar-badge { background: rgba(91,127,255,0.15); color: #5B7FFF; }
-
-        .layer-4 .bar-dot:nth-child(1) { background: #0ACF83; }
-        .layer-4 .bar-dot:nth-child(2) { background: #FFD700; }
-        .layer-4 .bar-dot:nth-child(3) { background: #0ACF83; }
-        .layer-4 .bar-badge { background: rgba(10,207,131,0.15); color: #0ACF83; }
-
-        .layer-5 .bar-dot:nth-child(1) { background: #FF7518; }
-        .layer-5 .bar-dot:nth-child(2) { background: #FFB347; }
-        .layer-5 .bar-dot:nth-child(3) { background: #FF7518; }
-        .layer-5 .bar-badge { background: rgba(255,117,24,0.15); color: #FF7518; }
 
         /* ===== REVEALED CONTENT ===== */
         .reveal-content {
             width: 100%;
             text-align: center;
-            margin-top: -20px;
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-            transition: all 0.7s cubic-bezier(0.4,0,0.2,1) 0.3s;
-        }
-
-        .reveal-content.visible {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
+            padding: 40px;
         }
 
         .reveal-code {
@@ -314,30 +430,88 @@
             font-size: clamp(18px, 3vw, 26px);
             font-weight: 500;
             letter-spacing: -0.02em;
-            color: rgba(255,255,255,0.85);
+            color: #333;
             margin-bottom: 12px;
         }
 
         .reveal-desc {
             font-size: 14px;
             line-height: 22px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(0,0,0,0.5);
             max-width: 440px;
             margin: 0 auto 28px;
         }
 
         .reveal-actions {
             display: flex;
-            gap: 12px;
+            gap: 14px;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
         }
+
+        /* Search Bar */
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 999px;
+            padding: 4px 4px 4px 20px;
+            min-width: 280px;
+            height: 48px;
+            transition: all 0.3s;
+        }
+        
+        .search-bar-container:focus-within {
+            border-color: #FF7518;
+            box-shadow: 0 0 0 2px rgba(255,117,24,0.15);
+            background: rgba(0,0,0,0.06);
+        }
+
+        .search-input {
+            background: transparent;
+            border: none;
+            color: #333;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .search-input::placeholder {
+            color: rgba(0,0,0,0.4);
+        }
+
+        .search-btn {
+            background: rgba(0,0,0,0.08);
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 8px;
+        }
+
+        .search-btn:hover {
+            background: #FF7518;
+            color: #fff;
+        }
+
+        .search-btn svg { width: 14px; height: 14px; }
 
         .btn-back {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            padding: 12px 28px;
+            height: 48px;
+            padding: 0 28px;
             border-radius: 999px;
             background: #FF7518;
             color: #fff;
@@ -360,54 +534,32 @@
 
         .btn-back svg { width: 16px; height: 16px; }
 
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 12px 24px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.6);
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-ghost:hover {
-            background: rgba(255,255,255,0.08);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
         .redirect-note {
             margin-top: 28px;
             font-size: 11px;
-            color: rgba(255,255,255,0.2);
+            color: rgba(0,0,0,0.4);
         }
 
         .redirect-note a { color: #FF7518; text-decoration: none; }
 
         /* ===== HUD ===== */
         .hud-progress {
-            position: fixed;
+            position: absolute;
             top: 20px;
             right: 20px;
             z-index: 100;
             padding: 8px 16px;
             border-radius: 999px;
-            background: rgba(26,26,36,0.9);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(0,0,0,0.1);
             backdrop-filter: blur(12px);
             font-size: 12px;
             font-weight: 500;
-            color: rgba(255,255,255,0.4);
+            color: rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
             gap: 8px;
+            pointer-events: none;
         }
 
         .hud-progress .hud-count {
@@ -418,20 +570,7 @@
 
         /* Microcopy header */
         .micro-header {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            padding: 8px 20px;
-            border-radius: 999px;
-            background: rgba(26,26,36,0.9);
-            border: 1px solid rgba(255,255,255,0.06);
-            backdrop-filter: blur(12px);
-            font-size: 12px;
-            color: rgba(255,255,255,0.35);
-            white-space: nowrap;
-            transition: opacity 0.4s;
+            display: none; /* hidden since HUD implies panning */
         }
 
         .micro-header strong { color: #FF7518; font-weight: 600; }
@@ -440,28 +579,29 @@
 
         /* Hint bar */
         .hint-bar {
-            position: fixed;
+            position: absolute;
             bottom: 28px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
             padding: 10px 22px;
             border-radius: 999px;
-            background: rgba(26,26,36,0.9);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(0,0,0,0.1);
             backdrop-filter: blur(12px);
             font-size: 12px;
             font-weight: 500;
-            color: rgba(255,255,255,0.4);
+            color: rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
             gap: 8px;
             animation: hintPulse 2.5s ease-in-out infinite;
             transition: all 0.4s;
+            pointer-events: none;
         }
 
         .hint-bar strong { color: #FF7518; }
-        .hint-bar.hidden { opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(20px); }
+        .hint-bar.hidden { opacity: 0; }
 
         .wiggle-icon {
             font-size: 16px;
@@ -482,7 +622,7 @@
         }
 
         /* ===== CONFETTI ===== */
-        .confetti-layer { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
+        .confetti-layer { position: absolute; inset: 0; pointer-events: none; z-index: 9999; }
         .conf {
             position: absolute;
             top: -12px;
@@ -503,8 +643,79 @@
     </style>
 </head>
 <body>
-    <div class="dark-canvas"></div>
-    <div class="grid-overlay"></div>
+    <div class="figma-app">
+        <!-- TOP TOOLBAR -->
+        <div class="figma-toolbar">
+            <div class="toolbar-group">
+                <!-- Figma Logo Icon -->
+                <div style="width:14px; height:21px; display:flex; flex-wrap:wrap; gap:0; cursor:pointer;" class="toolbar-icon">
+                    <div style="width:7px;height:7px; background:#F24E1E; border-radius: 3.5px 0 0 3.5px"></div>
+                    <div style="width:7px;height:7px; background:#FF7262; border-radius: 0 3.5px 3.5px 0"></div>
+                    <div style="width:7px;height:7px; background:#A259FF; border-radius: 3.5px 0 0 3.5px"></div>
+                    <div style="width:7px;height:7px; background:#1ABCFE; border-radius: 50%"></div>
+                    <div style="width:7px;height:7px; background:#0ACF83; border-radius: 3.5px 0 3.5px 3.5px"></div>
+                </div>
+                <!-- Icons -->
+                <div class="toolbar-icon active"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2.5 11l8-4.5-5.5-.5L3 1.5v9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+                <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3.5 1v10M8.5 1v10M1 3.5h10M1 8.5h10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="toolbar-icon desktop-only"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" stroke-width="1.5" rx="1"/></svg></div>
+            </div>
+
+            <div class="toolbar-title" style="color: #666;">
+                <span class="desktop-only" style="color: #666;">/</span>
+                <div class="filename" style="color: #333; font-weight: 500;">
+                    📄 404_Page_Lost.fig
+                </div>
+            </div>
+
+            <div class="toolbar-group desktop-only">
+                <div class="toolbar-avatar">HR</div>
+                <div class="toolbar-icon" style="width: auto; padding: 0 12px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 6px; font-weight: 500; font-size: 11px;">Share</div>
+                <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+                <div class="toolbar-icon" style="font-size: 11px; font-weight: 500;">100%</div>
+            </div>
+        </div>
+
+        <div class="figma-workspace">
+            <!-- LEFT SIDEBAR -->
+            <div class="figma-sidebar figma-sidebar-left">
+                <div class="sidebar-tabs">
+                    <div class="sidebar-tab active">Layers</div>
+                    <div class="sidebar-tab">Assets</div>
+                </div>
+                <div class="sidebar-content">
+                    <div class="layer-item" id="nav-layer-1">
+                        <div class="layer-icon">#</div>
+                        <div class="layer-name">Error_Overlay_FINAL_v3</div>
+                    </div>
+                    <div class="layer-item" id="nav-layer-2" style="padding-left: 30px;">
+                        <div class="layer-icon">#</div>
+                        <div class="layer-name">AutoLayout_Gone_Wrong</div>
+                    </div>
+                    <div class="layer-item" id="nav-layer-3" style="padding-left: 40px;">
+                        <div class="layer-icon">#</div>
+                        <div class="layer-name">Missing_Dependencies</div>
+                    </div>
+                    <div class="layer-item" id="nav-layer-4" style="padding-left: 50px;">
+                        <div class="layer-icon">⬡</div>
+                        <div class="layer-name">Detached_Instance_v47</div>
+                    </div>
+                    <div class="layer-item" id="nav-layer-5" style="padding-left: 60px;">
+                        <div class="layer-icon">#</div>
+                        <div class="layer-name">The_Real_Content</div>
+                    </div>
+                    <div class="layer-item" style="padding-left: 70px;">
+                        <div class="layer-icon">T</div>
+                        <div class="layer-name" style="color: rgba(0,0,0,0.5)">🧑‍💻 Designer (Buried)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CANVAS -->
+            <div class="figma-canvas">
+                <!-- ORIGINAL CONTENT -->
+                <div class="dark-canvas"></div>
+                <div class="grid-overlay"></div>
 
     <!-- Microcopy Header -->
     <div class="micro-header" id="microHeader">
@@ -513,258 +724,234 @@
 
     <!-- Progress HUD -->
     <div class="hud-progress">
-        🗂 Layers: <span class="hud-count" id="hudCount">0 / 5</span>
+        🖱️ Tip: <span class="hud-count">Click and drag to pan the canvas</span>
     </div>
 
-    <!-- Stage -->
-    <div class="stage">
-        <div class="stage-inner">
-            <!-- Avatar Zone with Layers -->
-            <div class="avatar-zone" id="avatarZone">
+    <!-- Panning Canvas -->
+    <div class="pan-canvas" id="panCanvas">
+        
+        <!-- Buried Avatar -->
+        <div class="buried-avatar" style="top: 250px; left: -40px; opacity: 1;">
+            <img src="images/avatar-boy.png" alt="Buried Designer" class="avatar-img">
+            <div class="avatar-help-text" style="color: rgba(0,0,0,0.4)">Where did everything go?</div>
+        </div>
 
-                <!-- Buried Avatar (visible underneath everything) -->
-                <div class="buried-avatar" id="buriedAvatar">
-                    <div class="avatar-emoji">🧑‍💻</div>
-                    <div class="avatar-help-text">help me...</div>
-                </div>
-
-                <!-- Layer 5 (bottom) -->
-                <div class="figma-layer layer-5" data-idx="5">
-                    <div class="layer-bar">
-                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
-                        <span class="bar-label">✨ The_Real_Content</span>
-                        <span class="bar-badge">HIDDEN</span>
-                    </div>
-                    <div class="layer-body">
-                        <div class="mock-row"><div class="mock-bar accent w80 thick"></div></div>
-                        <div class="mock-row"><div class="mock-bar accent w50"></div></div>
-                        <div class="mock-row"><div class="mock-bar accent w60"></div></div>
-                        <div class="layer-comment">The content you're looking for is under here somewhere…</div>
-                    </div>
-                </div>
-
-                <!-- Layer 4 -->
-                <div class="figma-layer layer-4" data-idx="4">
-                    <div class="layer-bar">
-                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
-                        <span class="bar-label">🧩 Detached_Instance_v47</span>
-                        <span class="bar-badge">ROGUE</span>
-                    </div>
-                    <div class="layer-body">
-                        <div class="mock-cards">
-                            <div class="mock-card">🔓</div>
-                            <div class="mock-card">⚙️</div>
-                            <div class="mock-card">🔄</div>
-                        </div>
-                        <div class="layer-comment">This component detached itself. It's gone rogue.</div>
-                    </div>
-                </div>
-
-                <!-- Layer 3 -->
-                <div class="figma-layer layer-3" data-idx="3">
-                    <div class="layer-bar">
-                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
-                        <span class="bar-label">🔌 Missing_Dependencies</span>
-                        <span class="bar-badge">BROKEN</span>
-                    </div>
-                    <div class="layer-body">
-                        <div class="mock-row"><div class="mock-bar blue w70 thick"></div></div>
-                        <div class="mock-row"><div class="mock-bar blue w40"></div><div class="mock-bar blue w30"></div></div>
-                        <div class="mock-cards">
-                            <div class="mock-card">⚡</div>
-                            <div class="mock-card">🔌</div>
-                            <div class="mock-card">💤</div>
-                        </div>
-                        <div class="layer-comment">3 components went missing after the last library update</div>
-                    </div>
-                </div>
-
-                <!-- Layer 2 -->
-                <div class="figma-layer layer-2" data-idx="2">
-                    <div class="layer-bar">
-                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
-                        <span class="bar-label">📐 AutoLayout_Gone_Wrong</span>
-                        <span class="bar-badge">OVERFLOW</span>
-                    </div>
-                    <div class="layer-body">
-                        <div class="mock-al-grid">
-                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.5);">H=HUG</div>
-                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.5);">W=FILL(?)</div>
-                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.5);">GAP=∞</div>
-                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.15); color: rgba(162,89,255,0.3);">PAD=???</div>
-                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.15); color: rgba(162,89,255,0.3);">MIN=0</div>
-                            <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.15); color: rgba(162,89,255,0.3);">CLIP ✗</div>
-                        </div>
-                        <div class="layer-comment">Auto-layout left the chat after that resize…</div>
-                    </div>
-                </div>
-
-                <!-- Layer 1 (top) -->
-                <div class="figma-layer layer-1" data-idx="1">
-                    <div class="layer-bar">
-                        <div class="bar-dots"><span class="bar-dot"></span><span class="bar-dot"></span><span class="bar-dot"></span></div>
-                        <span class="bar-label">🚫 Error_Overlay_FINAL_v3_REAL</span>
-                        <span class="bar-badge">BLOCKING</span>
-                    </div>
-                    <div class="layer-body">
-                        <div style="text-align: center; padding: 8px 0;">
-                            <div style="font-size: 36px; margin-bottom: 6px;">🚨</div>
-                            <div style="font-size: 14px; font-weight: 600; color: #F24E1E; margin-bottom: 4px;">404 — Page Not Found</div>
-                            <div style="font-size: 11px; color: rgba(255,255,255,0.25);">This frame is blocking everything below.</div>
-                            <div style="font-size: 10px; color: rgba(255,117,24,0.5); margin-top: 6px; font-style: italic;">↕ drag me away to start digging!</div>
-                        </div>
-                    </div>
+        <!-- Layer 1: Error -->
+        <div class="figma-layer layer-1">
+            <div class="layer-title"># Error_Overlay_FINAL_v3_REAL</div>
+            <div class="layer-body">
+                <div style="text-align: center; padding: 40px 0;">
+                    <div style="font-size: 48px; margin-bottom: 24px;">⛔</div>
+                    <div style="font-size: 24px; font-weight: 600; color: #F24E1E; margin-bottom: 12px;">404 — Page Not Found</div>
+                    <div style="font-size: 14px; color: rgba(0,0,0,0.5); line-height: 1.6;">The component you're looking for<br>has been lost in the infinite canvas.</div>
                 </div>
             </div>
+        </div>
 
-            <!-- Revealed Content -->
+        <!-- Layer 2: AutoLayout -->
+        <div class="figma-layer layer-2">
+            <div class="layer-title"># AutoLayout_Gone_Wrong</div>
+            <div class="layer-body">
+                <div class="mock-al-grid">
+                    <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.7);">H=HUG</div>
+                    <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.7);">W=FILL</div>
+                    <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.7);">GAP=∞</div>
+                    <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.15); color: rgba(162,89,255,0.5);">PAD 0</div>
+                </div>
+                <div class="layer-comment">Auto-layout left the chat after that resize…</div>
+            </div>
+        </div>
+
+        <!-- Layer 3: Dependncies -->
+        <div class="figma-layer layer-3">
+            <div class="layer-title">#Missing_Dependencies</div>
+            <div class="layer-body">
+                <div class="mock-row"><div class="mock-bar blue w70 thick"></div></div>
+                <div class="mock-row"><div class="mock-bar blue w40"></div><div class="mock-bar blue w30"></div></div>
+                <div class="mock-cards" style="margin-top: 20px;">
+                    <div class="mock-card">⚡</div>
+                    <div class="mock-card">🔌</div>
+                    <div class="mock-card">💤</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layer 4: Detached -->
+        <div class="figma-layer layer-4">
+            <div class="layer-title">#Detached_Instance_v47</div>
+            <div class="layer-body">
+                <div class="mock-cards">
+                    <div class="mock-card">🔓</div>
+                    <div class="mock-card">⚙️</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layer 5: Safe Point -->
+        <div class="figma-layer layer-5" style="box-shadow: 0 12px 32px rgba(255,117,24,0.15); border-color: rgba(255,117,24,0.3);">
+            <div class="layer-title" style="color: #FF7518;"># ✨ Safe_Zone <span>(You found it!)</span></div>
             <div class="reveal-content" id="revealContent">
-                <div class="reveal-code">404</div>
-                <h1 class="reveal-title">You've cleared the chaos! 🎉</h1>
+                <h1 class="reveal-title" style="font-size: 28px;">Back to Safety</h1>
                 <p class="reveal-desc">
-                    Looks like this page got lost in my infinite component hierarchy. 
-                    But you're clearly a pro at navigating design chaos — let's get you back to safety.
+                    Looks like this page got lost in my infinite component hierarchy… let's get you back.
                 </p>
                 <div class="reveal-actions">
-                    <a href="/" class="btn-back">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                        Back to Portfolio
+                    <div class="search-bar-container">
+                        <input type="text" class="search-input" placeholder="Search for what you need...">
+                        <button class="search-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </div>
+                    <a href="/#work" class="btn-back">
+                        Back to my work
                     </a>
-                    <a href="/#work" class="btn-ghost">View My Work →</a>
                 </div>
-                <p class="redirect-note">Auto-redirecting in <span id="countdown">20</span>s · <a href="/">skip →</a></p>
             </div>
         </div>
     </div>
-
+    
     <!-- Hint Bar -->
     <div class="hint-bar" id="hintBar">
-        <span class="wiggle-icon">👆</span>
-        <span><strong>Drag the layers away</strong> to rescue the buried designer</span>
+        <span class="wiggle-icon">👋</span>
+        <span><strong>Pan around the canvas</strong> to explore!</span>
+    </div>
+            </div>
+            <!-- RIGHT SIDEBAR -->
+            <div class="figma-sidebar figma-sidebar-right">
+                <div class="sidebar-tabs">
+                    <div class="sidebar-tab active">Design</div>
+                    <div class="sidebar-tab">Prototype</div>
+                </div>
+                <div class="sidebar-content">
+                    <div class="prop-section">
+                        <div class="prop-row">
+                            <div class="prop-label">X</div>
+                            <div class="prop-value">404</div>
+                            <div class="prop-label">Y</div>
+                            <div class="prop-value">-∞</div>
+                        </div>
+                        <div class="prop-row">
+                            <div class="prop-label">W</div>
+                            <div class="prop-value">100%</div>
+                            <div class="prop-label">H</div>
+                            <div class="prop-value">100%</div>
+                        </div>
+                    </div>
+                    <div class="prop-section">
+                        <div class="prop-header" style="color: #FF7518;">
+                            <span>Auto layout</span>
+                            <span>!</span>
+                        </div>
+                        <div style="color: rgba(255,117,24,0.8); line-height: 1.5; font-size: 11px;">
+                            Items exceed container bounds. Layout crashed.
+                        </div>
+                    </div>
+                    <div class="prop-section">
+                        <div class="prop-header">
+                            <span>Fill</span>
+                            <span>+</span>
+                        </div>
+                        <div class="prop-row">
+                            <div style="width: 14px; height: 14px; background: #e5e5e5; border-radius: 2px; border: 1px solid rgba(0,0,0,0.1); margin-right: 8px; flex-shrink: 0;"></div>
+                            <div class="prop-value" style="flex: 1; border: none; padding: 0;">E5E5E5</div>
+                            <div style="color: rgba(0,0,0,0.4)">100%</div>
+                        </div>
+                    </div>
+                    <div class="prop-section">
+                        <div class="prop-header">
+                            <span>Effects</span>
+                            <span>+</span>
+                        </div>
+                        <div class="prop-row" style="margin-bottom: 0;">
+                            <div style="color: rgba(0,0,0,0.8); flex: 1;">Drop shadow</div>
+                            <div style="color: rgba(0,0,0,0.4)">40%</div>
+                        </div>
+                        <div style="color: rgba(0,0,0,0.4); font-size: 10px; margin-top: 4px;">
+                            0 40px 80px 0, #000000
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Confetti -->
     <div class="confetti-layer" id="confLayer"></div>
 
     <script>
-        const layers = document.querySelectorAll('.figma-layer');
-        const revealContent = document.getElementById('revealContent');
-        const buriedAvatar = document.getElementById('buriedAvatar');
-        const hudCount = document.getElementById('hudCount');
+        const viewport = document.querySelector('.figma-canvas');
+        const panCanvas = document.getElementById('panCanvas');
+        const gridOverlay = document.querySelector('.grid-overlay');
         const hintBar = document.getElementById('hintBar');
-        const microHeader = document.getElementById('microHeader');
-        const confLayer = document.getElementById('confLayer');
 
-        let cleared = 0;
-        const total = layers.length;
-        const THRESHOLD = 100;
+        let isDragging = false;
+        let startX, startY;
+        
+        // Center onto the first 404 card layer (-1100 left + 240 center = -860)
+        let translateX = window.innerWidth > 900 ? 860 : 860; 
+        let translateY = 0;
+        
+        // Zoomed-in scale (1 for desktop, scaled to fit the 480px card for mobile)
+        let scale = Math.min(window.innerWidth / 520, 1);
 
-        const origins = {
-            '1': 'rotate(-1.2deg) translate(-8px, -20px)',
-            '2': 'rotate(1.5deg) translate(12px, -5px)',
-            '3': 'rotate(-0.6deg) translate(-4px, 10px)',
-            '4': 'rotate(0.9deg) translate(6px, 25px)',
-            '5': 'rotate(-1.8deg) translate(-10px, 40px)'
-        };
+        function updateTransform() {
+            panCanvas.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            gridOverlay.style.backgroundPosition = `${translateX}px ${translateY}px`;
+        }
 
-        layers.forEach(layer => {
-            let sx, sy, cx = 0, cy = 0, drag = false;
-            const idx = layer.dataset.idx;
-
-            const start = e => {
-                if (layer.classList.contains('removed')) return;
-                drag = true;
-                layer.classList.add('dragging');
-                const p = e.touches ? e.touches[0] : e;
-                sx = p.clientX - cx;
-                sy = p.clientY - cy;
-            };
-
-            const move = e => {
-                if (!drag) return;
-                e.preventDefault();
-                const p = e.touches ? e.touches[0] : e;
-                cx = p.clientX - sx;
-                cy = p.clientY - sy;
-                layer.style.transform = `translate(${cx}px, ${cy}px) rotate(${cx * 0.04}deg)`;
-                const d = Math.sqrt(cx*cx + cy*cy);
-                layer.style.opacity = Math.max(0.3, 1 - (d / THRESHOLD) * 0.7);
-            };
-
-            const end = () => {
-                if (!drag) return;
-                drag = false;
-                layer.classList.remove('dragging');
-                const d = Math.sqrt(cx*cx + cy*cy);
-
-                if (d > THRESHOLD) {
-                    const a = Math.atan2(cy, cx);
-                    layer.style.transition = 'all 0.6s cubic-bezier(0.4,0,0.2,1)';
-                    layer.style.transform = `translate(${Math.cos(a)*1500}px, ${Math.sin(a)*1500}px) rotate(${Math.cos(a)*30}deg)`;
-                    layer.style.opacity = '0';
-                    setTimeout(() => layer.classList.add('removed'), 600);
-
-                    cleared++;
-                    hudCount.textContent = cleared + ' / ' + total;
-
-                    // Avatar gets more visible as layers clear 
-                    buriedAvatar.style.opacity = 0.15 + (cleared / total) * 0.85;
-
-                    if (cleared >= total) allCleared();
-                } else {
-                    layer.style.transition = 'all 0.4s cubic-bezier(0.34,1.56,0.64,1)';
-                    layer.style.transform = origins[idx];
-                    layer.style.opacity = '1';
-                    cx = 0; cy = 0;
-                    setTimeout(() => layer.style.transition = '', 400);
-                }
-            };
-
-            layer.addEventListener('mousedown', start);
-            layer.addEventListener('touchstart', start, { passive: false });
-            document.addEventListener('mousemove', move);
-            document.addEventListener('touchmove', move, { passive: false });
-            document.addEventListener('mouseup', end);
-            document.addEventListener('touchend', end);
+        viewport.addEventListener('mousedown', (e) => {
+            if(e.target.closest('.reveal-actions')) return; // let buttons be clickable
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            viewport.style.cursor = 'grabbing';
+            if(hintBar) hintBar.classList.add('hidden');
         });
 
-        function allCleared() {
-            buriedAvatar.classList.add('revealed');
-            buriedAvatar.querySelector('.avatar-help-text').textContent = 'thank you! 🙌';
-            revealContent.classList.add('visible');
-            hintBar.classList.add('hidden');
-            microHeader.innerHTML = 'You <strong>rescued the designer</strong> from the layer chaos! 🎉';
-            fireConfetti();
-            startCountdown();
-        }
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        });
 
-        function startCountdown() {
-            let s = 20;
-            const el = document.getElementById('countdown');
-            const t = setInterval(() => {
-                s--;
-                el.textContent = s;
-                if (s <= 0) { clearInterval(t); window.location.href = '/'; }
-            }, 1000);
-        }
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+            viewport.style.cursor = 'grab';
+        });
 
-        function fireConfetti() {
-            const colors = ['#FF7518','#A259FF','#1ABCFE','#0ACF83','#F24E1E','#FFB347','#FFD700'];
-            for (let i = 0; i < 80; i++) {
-                setTimeout(() => {
-                    const c = document.createElement('div');
-                    c.className = 'conf';
-                    c.style.left = Math.random()*100+'%';
-                    c.style.background = colors[~~(Math.random()*colors.length)];
-                    c.style.width = (Math.random()*8+4)+'px';
-                    c.style.height = (Math.random()*8+4)+'px';
-                    c.style.borderRadius = Math.random()>0.5?'50%':'2px';
-                    c.style.animationDuration = (Math.random()*2+1.5)+'s';
-                    confLayer.appendChild(c);
-                    setTimeout(() => c.remove(), 4000);
-                }, i*20);
-            }
-        }
+        // Touch implementation for panning
+        viewport.addEventListener('touchstart', (e) => {
+            if(e.target.closest('.reveal-actions')) return;
+            isDragging = true;
+            startX = e.touches[0].clientX - translateX;
+            startY = e.touches[0].clientY - translateY;
+            if(hintBar) hintBar.classList.add('hidden');
+        }, { passive: false });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            translateX = e.touches[0].clientX - startX;
+            translateY = e.touches[0].clientY - startY;
+            updateTransform();
+        }, { passive: false });
+
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        // Add mouse wheel scrolling (panning)
+        viewport.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            translateX -= e.deltaX;
+            translateY -= e.deltaY;
+            updateTransform();
+        }, { passive: false });
+
+        // Initialize view safely scaled
+        setTimeout(updateTransform, 10);
     </script>
 </body>
 </html>
+

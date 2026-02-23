@@ -1,441 +1,896 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]--><!--[if (gte IE 9)|!(IE)]><!-->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><!--<![endif]-->
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Case Study: Project Management Redesign | Harsha Royal</title>
-    <meta name="author" content="Harsha Royal">
+    <title>Project In Progress | Harsha Royal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="Explore my comprehensive case study on refining enterprise project management interfaces. Discover how I reduced cognitive load and improved workflow efficiency.">
-    <meta name="keywords" content="UI Design Case Study, Enterprise Project Management, B2B SaaS Design, Harsha Royal Portfolio, UX Design, Dashboard Redesign, Glassmorphism UI">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="format-detection" content="telephone=no">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://harsharoyal.in/project-detail.html">
-    <meta property="og:title" content="Refining Enterprise Project Management | Harsha Royal">
-    <meta property="og:description" content="A deep dive into redesigning an enterprise dashboard to prioritize clarity over complexity for project managers handling massive datasets.">
-    <meta property="og:image" content="https://harsharoyal.in/images/work-1.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Harsha Royal Portfolio">
-    <meta property="og:locale" content="en_US">
-    <meta property="article:published_time" content="2026-02-23T00:00:00+00:00">
-    <meta property="article:author" content="Harsha Royal">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://harsharoyal.in/project-detail.html">
-    <meta property="twitter:title" content="Refining Enterprise Project Management | Harsha Royal">
-    <meta property="twitter:description" content="A deep dive into redesigning an enterprise dashboard to prioritize clarity over complexity for project managers handling massive datasets.">
-    <meta property="twitter:image" content="https://harsharoyal.in/images/work-1.jpg">
-    <meta property="twitter:creator" content="@palettescoder">
-
-    <link rel="canonical" href="https://harsharoyal.in/project-detail.html">
+    <meta name="description" content="Design in process. Development will follow soon.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="shortcut icon" href="images/favicon.svg">
+    <link rel="canonical" href="https://harsharoyal.in/">
     <meta name="theme-color" content="#FF7518">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- Preconnect / DNS Prefetch -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- JSON-LD Structured Data Base -->
-    <script type="application/ld+json">
-    [{
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://harsharoyal.in/project-detail.html"
-      },
-      "headline": "Refining Enterprise Project Management",
-      "description": "A deep dive into redesigning an enterprise dashboard to prioritize clarity over complexity for project managers handling massive datasets.",
-      "image": "https://harsharoyal.in/images/work-1.jpg",
-      "author": {
-        "@type": "Person",
-        "name": "Harsha Royal",
-        "url": "https://harsharoyal.in/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Harsha Royal",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://harsharoyal.in/images/logo.svg"
-        }
-      },
-      "datePublished": "2026-02-23",
-      "dateModified": "2026-02-23"
-    }]
-    </script>
-    <!-- font -->
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/inter.css">
     <link rel="stylesheet" href="css/style.css">
-    <!-- css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        html { zoom: 1; }
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            font-family: "Inter", sans-serif;
+            margin: 0; padding: 0;
+        }
 
-
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="css/popup.css">
-
-    <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="images/favicon.svg">
-    <link rel="apple-touch-icon-precomposed" href="images/favicon.svg">
-</head>
-<body class="counter-scroll">
-<!-- Preload -->
-    <div class="preload preload-container" id="preload">
-        <div class="preload-logo">
-            <div class="spinner"></div>
-        </div>
-    </div>
-    <!-- /Preload -->
-
-    <!-- Body Background -->
-    <div class="body-background">
-        <div class="bg-item">
-            <img loading="lazy" width="1440" height="900" src="images/cloud-bg.png" alt="Image">
-        </div>
-        <div class="bg-video">
-            <video class="video" muted="" autoplay="" loop="" playsinline="">
-                <source src="media/overlay-2.mp4" type="video/mp4">
-            </video>
-            <div class="overlay-1"></div>
-        </div>
-    </div>
-    <!-- /Body Background -->
-    <!-- /Body Background -->
-
-    <div class="overlay-pop"></div>
-
-        <main id="wrapper" class="medium-layout">
-            <nav class="medium-nav border-bottom border-white-8">
-                <div class="wrap-container">
-                    <a href="index.html" class="medium-logo">
-                        <img src="images/logo.svg" alt="Logo">
-                    </a>
-                    <div class="nav-right text-body-3">
-                        Harsha Royal — Portfolio
-                    </div>
-                </div>
-            </nav>
-
-            <div class="wrap-container">
-                <!-- Simple Header -->
-                <header class="article-header">
-                    <a href="index.html#work" class="back-link">
-                        <i class="icon icon-arrow-caret-left"></i> Back to Portfolio
-                    </a>
-                    <h1 class="article-title">Refining Enterprise Project Management</h1>
-                    <div class="article-meta text-body-3 d-flex gap-16 align-items-center">
-                        <span>Feb 23, 2026</span>
-                        <span class="dot">·</span>
-                        <span>6 min read</span>
-                        <span class="dot">·</span>
-                        <span class="tag-meta">Case Study</span>
-                    </div>
-                </header>
-
-                <!-- Hero Image -->
-                <figure class="article-hero mb-5">
-                    <img src="images/work-1.jpg" alt="Project Hero" class="img-fluid rounded-4 shadow-sm">
-                    <figcaption class="text-center mt-3 text-black-40">Final dashboard interface for enterprise monitoring.</figcaption>
-                </figure>
-
-                <!-- Article Content -->
-                <article class="article-body">
-                    <section class="mb-5">
-                        <h2 class="mb-4">The Challenge</h2>
-                        <p class="mb-4">Enterprise project management often suffers from data density issues. When users are managing hundreds of concurrent projects, the interface must prioritize clarity over complexity. Our mission was to rebuild the core dashboard to reduce cognitive load while maintaining deep functionality.</p>
-                        <p>We started by auditing the existing workflows and identifying the "noise" that distracted users from critical alerts. The result was a design system that scales seamlessly from small internal teams to global operations.</p>
-                    </section>
-
-                    <section class="mb-5">
-                        <h2 class="mb-4">Process & Implementation</h2>
-                        <p class="mb-4">Design is never just about aesthetics—it's about how things work. For this project, we leveraged a glassmorphism aesthetic not just for its beauty, but for the depth it provides in multi-layered interfaces. By using varying levels of blur and transparency, we could create a visual hierarchy that naturally draws the eye to the most important metrics.</p>
-                        
-                        <div class="row g-4 mb-5">
-                            <div class="col-6">
-                                <img src="images/work-2.jpg" class="rounded-3 w-100 shadow-sm" alt="Step 1">
-                            </div>
-                            <div class="col-6">
-                                <img src="images/work-3.jpg" class="rounded-3 w-100 shadow-sm" alt="Step 2">
-                            </div>
-                        </div>
-
-                        <p>The technical implementation involved custom CSS variables for design tokens, ensuring that the interface remains accessible and high-contrast. We optimized the render cycles of complex charts to ensure the UI remains snappy even when processing large data sets in real-time.</p>
-                    </section>
-
-                    <footer class="article-footer pt-5 text-center mb-5">
-                        <h3 class="article-footer-title mb-3">Like the work?</h3>
-                        <p class="mb-4">I'm currently open to new collaborations and projects.</p>
-                        <a href="index.html#contact" class="tf-btn-action">
-                            <span class="ic-wrap">
-                                <i class="icon icon-arrow-right-top"></i>
-                            </span>
-                            <span class="text text-body-3 letter-space--05 fw-medium">
-                                Let's Connect
-                            </span>
-                            <span class="ic-wrap">
-                                <i class="icon icon-arrow-right-top"></i>
-                            </span>
-                        </a>
-                    </footer>
-                </article>
-            </div>
-        </main>
-    <!-- /wrapper -->
-<!-- Javascript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-validate.js"></script>
-    <script src="js/swiper-bundle.min.js"></script>
-    <script src="js/contact.js"></script>
-    <!-- <script src="assets/js/odometer.min.js"></script> -->
-    <script src="js/carousel.js"></script>
-    <script src="js/infinityslide.js"></script>
-    <script src="js/ScrollSmooth.js"></script>
-    <script src="js/gsap.min.js"></script>
-    <script src="js/SplitText.min.js"></script>
-    <script src="js/ScrollTrigger.min.js"></script>
-    <script src="js/ScrollToPlugin.min.js"></script>
-    <script src="js/gsapAnimation.js"></script>
-
-    <script src="js/countto.js"></script>
-    <script src="js/animation-change-text.js"></script>
-    <script src="js/main.js"></script>
-
-    <!-- Development Popup -->
-    <div class="dev-popup-overlay" id="devPopup">
-        <div class="dev-heatmap-overlay" id="heatmapCursor"></div>
+        /* ===== FIGMA UI THEME ===== */
+        .figma-app {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            background: #ffffff;
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            font-size: 11px;
+            color: rgba(0,0,0,0.8);
+            user-select: none;
+        }
+        .figma-toolbar {
+            height: 48px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            background: #ffffff;
+            flex-shrink: 0;
+            z-index: 20;
+        }
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .toolbar-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .toolbar-icon.active, .toolbar-icon:hover {
+            background: rgba(0,0,0,0.06);
+            color: #333;
+        }
+        .toolbar-title {
+            font-size: 12px;
+            font-weight: 500;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.02em;
+        }
+        .toolbar-title span { color: rgba(0,0,0,0.4); }
+        .toolbar-title .filename { display: flex; align-items: center; gap: 4px; }
+        .toolbar-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #FF7518;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        .figma-workspace {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 48px);
+            overflow: hidden;
+        }
+        .figma-sidebar {
+            width: 240px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            z-index: 20;
+        }
+        .figma-sidebar-left { border-right: 1px solid rgba(0,0,0,0.1); }
+        .figma-sidebar-right { border-left: 1px solid rgba(0,0,0,0.1); }
+        .sidebar-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            height: 40px;
+            flex-shrink: 0;
+        }
+        .sidebar-tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            color: rgba(0,0,0,0.5);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        .sidebar-tab.active {
+            color: #333;
+            border-bottom-color: #FF7518;
+        }
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px 0;
+        }
+        .layer-item {
+            display: flex;
+            align-items: center;
+            padding: 6px 16px 6px 20px;
+            gap: 10px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
+            color: rgba(0,0,0,0.8);
+        }
+        .layer-item:hover { background: rgba(0,0,0,0.04); }
+        .layer-item.removed {
+            opacity: 0.3;
+            text-decoration: line-through;
+            transform: translateX(-4px);
+        }
+        .layer-icon {
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: "Space Mono", monospace, sans-serif;
+            color: rgba(0,0,0,0.6);
+        }
+        .layer-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 11px;
+            letter-spacing: 0.02em;
+        }
+        .prop-section {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 16px;
+        }
+        .prop-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: rgba(0,0,0,0.85);
+        }
+        .prop-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .prop-label {
+            width: 24px;
+            color: rgba(0,0,0,0.5);
+            text-align: right;
+            padding-right: 4px;
+        }
+        .prop-value {
+            flex: 1;
+            background: rgba(0,0,0,0.04);
+            border: 1px solid transparent;
+            border-radius: 4px;
+            padding: 6px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: inherit;
+            color: #333;
+            transition: border-color 0.2s;
+        }
+        .prop-value:hover { border-color: rgba(0,0,0,0.15); }
+        .figma-canvas {
+            flex: 1;
+            position: relative;
+            background: #e5e5e5;
+            overflow: hidden;
+            display: block; /* Removed flex center since we translate an inner canvas */
+            cursor: grab;
+        }
+        .figma-canvas:active {
+            cursor: grabbing;
+        }
         
-        <div class="split-popup-container" id="splitMain">
-            <button class="close-split-popup" onclick="closeDevPopup()" title="Close Details">&times;</button>
-            
-            <div class="split-main-area">
-                <!-- Left Side: Design -->
-                <div class="split-side side-design">
-                    <div class="visual-stack">
-                        <div class="frame sketch active">
-                            <span class="frame-label">Phase 1: Sketching</span>
-                            <div class="sketch-mock">
-                                <div class="sketch-line long"></div>
-                                <div class="sketch-line short"></div>
-                                <div class="sketch-line box"></div>
-                            </div>
-                        </div>
-                        <div class="frame figma">
-                            <span class="frame-label">Phase 2: High-Fi Design</span>
-                            <div class="figma-mock">
-                                <div class="figma-ui-header"></div>
-                                <div class="figma-ui-card"></div>
-                            </div>
-                        </div>
-                        <div class="frame proto">
-                            <span class="frame-label">Phase 3: Interactivity</span>
-                            <div class="proto-mock">
-                                <div class="proto-screen">
-                                    <div class="proto-content-item"></div>
-                                    <div class="proto-btn"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="frame production">
-                            <span class="frame-label">Phase 4: Production UI</span>
-                            <div class="production-mock">
-                                <div class="prod-navbar"></div>
-                                <div class="prod-hero"><div class="prod-circle"></div></div>
-                                <div class="prod-grid"><div class="prod-item"></div><div class="prod-item"></div></div>
-                            </div>
-                        </div>
-                    </div>
+        @media (max-width: 900px) { .figma-sidebar-right { display: none; } }
+        @media (max-width: 600px) { .figma-sidebar-left { display: none; } .desktop-only { display: none !important; } }
+
+        /* ===== CANVAS PANNING ===== */
+        .pan-canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            z-index: 5;
+        }
+
+        /* ===== DARK CANVAS ===== */
+        .dark-canvas {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(255,117,24,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(162,89,255,0.04) 0%, transparent 60%),
+                #e5e5e5;
+            z-index: 0;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            z-index: 0;
+        }
+
+        /* ===== MAIN STAGE ===== */
+        .stage {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .stage-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            max-width: 700px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* ===== AVATAR SECTION ===== */
+        .avatar-zone {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* The buried avatar/character */
+        .buried-avatar {
+            position: absolute;
+            z-index: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+            opacity: 0.15;
+        }
+
+        .buried-avatar.revealed {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .avatar-img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            animation: avatar-float 3s ease-in-out infinite;
+            filter: drop-shadow(0 8px 24px rgba(255,117,24,0.3));
+        }
+
+        @keyframes avatar-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .avatar-help-text {
+            font-size: 11px;
+            color: rgba(0,0,0,0.5);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* ===== FIGMA FRAME LAYERS ===== */
+        .figma-layer {
+            position: absolute;
+            width: 480px;
+            background: #ffffff;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+            user-select: none;
+            cursor: default;
+        }
+
+        /* Position layers across the panoramic canvas */
+        .layer-1 { top: -200px; left: -260px; } /* 404 block */
+        .layer-2 { top: -40px; left: 320px; width: 340px; } /* Auto Layout */
+        .layer-3 { top: 200px; left: -360px; width: 440px; } /* Missing Deps */
+        .layer-4 { top: -280px; left: 280px; width: 260px; } /* Detached */
+        .layer-5 { top: 340px; left: 80px; width: 500px; } /* The Safe point */
+
+        .layer-title {
+            position: absolute;
+            top: -24px;
+            left: 0;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .layer-title span { opacity: 0.6; font-size: 10px; font-weight: 400; }
+
+        /* ===== FRAME BODY CONTENT ===== */
+        .layer-body {
+            padding: 24px;
+            pointer-events: none;
+        }
+
+        .mock-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
+        .mock-bar { height: 8px; border-radius: 4px; background: rgba(0,0,0,0.05); }
+        .mock-bar.w30 { width: 30%; } .mock-bar.w40 { width: 40%; } .mock-bar.w50 { width: 50%; }
+        .mock-bar.w60 { width: 60%; } .mock-bar.w70 { width: 70%; } .mock-bar.w80 { width: 80%; }
+        .mock-bar.w90 { width: 90%; } .mock-bar.thick { height: 12px; }
+        .mock-bar.accent { background: rgba(255,117,24,0.15); }
+        .mock-bar.purple { background: rgba(162,89,255,0.12); }
+        .mock-bar.blue { background: rgba(91,127,255,0.12); }
+        .mock-bar.green { background: rgba(10,207,131,0.12); }
+
+        .mock-cards { display: flex; gap: 8px; }
+        .mock-card {
+            flex: 1;
+            height: 44px;
+            border-radius: 8px;
+            border: 1px dashed rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            background: rgba(0,0,0,0.02);
+        }
+
+        .mock-al-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+        }
+
+        .mock-al-cell {
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .layer-comment {
+            margin-top: 8px;
+            font-size: 10px;
+            color: rgba(0,0,0,0.4);
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* ===== REVEALED CONTENT ===== */
+        .reveal-content {
+            width: 100%;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .reveal-code {
+            font-family: "Apfel Grotezk", sans-serif;
+            font-size: clamp(64px, 12vw, 100px);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #FF7518 0%, #FFB347 50%, #A259FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .reveal-title {
+            font-family: "Apfel Grotezk", sans-serif;
+            font-size: clamp(18px, 3vw, 26px);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .reveal-desc {
+            font-size: 14px;
+            line-height: 22px;
+            color: rgba(0,0,0,0.5);
+            max-width: 440px;
+            margin: 0 auto 28px;
+        }
+
+        .reveal-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Search Bar */
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 999px;
+            padding: 4px 4px 4px 20px;
+            min-width: 280px;
+            height: 48px;
+            transition: all 0.3s;
+        }
+        
+        .search-bar-container:focus-within {
+            border-color: #FF7518;
+            box-shadow: 0 0 0 2px rgba(255,117,24,0.15);
+            background: rgba(0,0,0,0.06);
+        }
+
+        .search-input {
+            background: transparent;
+            border: none;
+            color: #333;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .search-input::placeholder {
+            color: rgba(0,0,0,0.4);
+        }
+
+        .search-btn {
+            background: rgba(0,0,0,0.08);
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 8px;
+        }
+
+        .search-btn:hover {
+            background: #FF7518;
+            color: #fff;
+        }
+
+        .search-btn svg { width: 14px; height: 14px; }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 48px;
+            padding: 0 28px;
+            border-radius: 999px;
+            background: #FF7518;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 20px rgba(255,117,24,0.3);
+            letter-spacing: -0.01em;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(255,117,24,0.45);
+            background: #ff8a3d;
+        }
+
+        .btn-back svg { width: 16px; height: 16px; }
+
+        .redirect-note {
+            margin-top: 28px;
+            font-size: 11px;
+            color: rgba(0,0,0,0.4);
+        }
+
+        .redirect-note a { color: #FF7518; text-decoration: none; }
+
+        /* ===== HUD ===== */
+        .hud-progress {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(0,0,0,0.1);
+            backdrop-filter: blur(12px);
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .hud-progress .hud-count {
+            color: #FF7518;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        /* Microcopy header */
+        .micro-header {
+            display: none; /* hidden since HUD implies panning */
+        }
+
+        .micro-header strong { color: #FF7518; font-weight: 600; }
+
+        .micro-header.hidden { opacity: 0; }
+
+        /* Hint bar */
+        .hint-bar {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            padding: 10px 22px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(0,0,0,0.1);
+            backdrop-filter: blur(12px);
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: hintPulse 2.5s ease-in-out infinite;
+            transition: all 0.4s;
+            pointer-events: none;
+        }
+
+        .hint-bar strong { color: #FF7518; }
+        .hint-bar.hidden { opacity: 0; }
+
+        .wiggle-icon {
+            font-size: 16px;
+            animation: wiggle 1.2s ease-in-out infinite;
+        }
+
+        @keyframes hintPulse {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0); }
+            20% { transform: rotate(-14deg); }
+            40% { transform: rotate(14deg); }
+            60% { transform: rotate(-8deg); }
+            80% { transform: rotate(8deg); }
+        }
+
+        /* ===== CONFETTI ===== */
+        .confetti-layer { position: absolute; inset: 0; pointer-events: none; z-index: 9999; }
+        .conf {
+            position: absolute;
+            top: -12px;
+            animation: confDrop linear forwards;
+        }
+        @keyframes confDrop {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(600deg); opacity: 0; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 560px) {
+            .figma-layer { width: 320px; }
+            .avatar-zone { height: 350px; }
+            .micro-header { font-size: 10px; padding: 6px 14px; }
+            .reveal-actions { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="figma-app">
+        <!-- TOP TOOLBAR -->
+        <div class="figma-toolbar">
+            <div class="toolbar-group">
+                <!-- Figma Logo Icon -->
+                <div style="width:14px; height:21px; display:flex; flex-wrap:wrap; gap:0; cursor:pointer;" class="toolbar-icon">
+                    <div style="width:7px;height:7px; background:#F24E1E; border-radius: 3.5px 0 0 3.5px"></div>
+                    <div style="width:7px;height:7px; background:#FF7262; border-radius: 0 3.5px 3.5px 0"></div>
+                    <div style="width:7px;height:7px; background:#A259FF; border-radius: 3.5px 0 0 3.5px"></div>
+                    <div style="width:7px;height:7px; background:#1ABCFE; border-radius: 50%"></div>
+                    <div style="width:7px;height:7px; background:#0ACF83; border-radius: 3.5px 0 3.5px 3.5px"></div>
                 </div>
+                <!-- Icons -->
+                <div class="toolbar-icon active"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2.5 11l8-4.5-5.5-.5L3 1.5v9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+                <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3.5 1v10M8.5 1v10M1 3.5h10M1 8.5h10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="toolbar-icon desktop-only"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" stroke-width="1.5" rx="1"/></svg></div>
+            </div>
 
-                <!-- Right Side: Content -->
-                <div class="split-side side-code">
-                    <!-- Design Notes shown during Phase 1-3 -->
-                    <div class="design-notes active">
-                        <div class="note-item n1">Process Insight:</div>
-                        <div class="note-item n2">Analyzing user pain points and sketching layouts.</div>
-                        <div class="note-item n3">Objective: Foundations</div>
-                    </div>
+            <div class="toolbar-title">
+                <span style="color:#fff; opacity: 1;" class="desktop-only">Harsha Royal</span>
+                <span class="desktop-only">/</span>
+                <div class="filename">
+                    📄 Project_Design_WIP.fig
+                </div>
+            </div>
 
-                    <!-- Code Editor ONLY shown during Phase 4 -->
-                    <div class="code-editor" style="display: none;">
-                        <pre class="code-snippet active"><code></code></pre>
-                        <div class="compiling-indicator">Ready</div>
+            <div class="toolbar-group desktop-only">
+                <div class="toolbar-avatar">HR</div>
+                <div class="toolbar-icon" style="width: auto; padding: 0 12px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 6px; font-weight: 500; font-size: 11px;">Share</div>
+                <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+                <div class="toolbar-icon" style="font-size: 11px; font-weight: 500;">100%</div>
+            </div>
+        </div>
+
+        <div class="figma-workspace">
+            <!-- LEFT SIDEBAR -->
+            <div class="figma-sidebar figma-sidebar-left">
+                <div class="sidebar-tabs">
+                    <div class="sidebar-tab active">Layers</div>
+                    <div class="sidebar-tab">Assets</div>
+                </div>
+                <div class="sidebar-content">
+                    <div class="layer-item" id="nav-layer-1">
+                        <div class="layer-icon">#</div>
+                        <div class="layer-name">Design_In_Process</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Universal Content Floor -->
-            <div class="split-footer-content">
-                <h2 class="split-headline">From low-fi sketches to production-ready components.</h2>
-                <p class="split-subheadline">Designing delightful flows • Engineering seamless execution</p>
-                <div class="split-actions">
-                    <button class="dev-btn dev-btn-primary" onclick="closeDevPopup()">
-                        <i class="icon icon-send"></i> Validate Journey
-                    </button>
-                    <button class="dev-btn dev-btn-secondary" onclick="closeDevPopup(); window.location.href='#contact'">
-                         Bridge the Gap
-                    </button>
+            <!-- CANVAS -->
+            <div class="figma-canvas">
+                <!-- ORIGINAL CONTENT -->
+                <div class="dark-canvas"></div>
+                <div class="grid-overlay"></div>
+
+    <!-- Progress HUD -->
+    <div class="hud-progress">
+        🖱️ Tip: <span class="hud-count">Click and drag canvas to pan</span>
+    </div>
+
+    <!-- Panning Canvas -->
+    <div class="pan-canvas" id="panCanvas">
+        <!-- Main Frame -->
+        <div class="figma-layer layer-1" style="top: -120px; left: -340px; width: 680px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); border-radius: 4px; background: #fff; text-align: left; padding: 0;">
+            <div class="layer-title" style="color: #333;"># Medium_Article_Card <span>(Design_In_Process.fig)</span></div>
+            
+            <div class="reveal-content" style="padding: 24px 32px; text-align: left; display: flex; gap: 40px; align-items: flex-start; cursor: pointer;" onclick="window.location.href='index.html#work'">
+                <!-- Left Content -->
+                <div style="flex: 1; max-width: 440px;">
+                    <!-- Author Row -->
+                    <div style="display: flex; align-items: center; margin-bottom: 8px; gap: 8px;">
+                        <img src="images/profile.png" onerror="this.src='images/avatar-boy.png'" alt="Harsha Royal" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover;">
+                        <div style="font-family: 'Inter', sans-serif; font-size: 13px; color: #242424; font-weight: 500;">
+                            Harsha Royal
+                        </div>
+                        <span style="color: #757575; font-size: 13px;">in</span>
+                        <div style="font-family: 'Inter', sans-serif; font-size: 13px; color: #242424; font-weight: 500;">
+                            Case Studies
+                        </div>
+                    </div>
+
+                    <!-- Title & Desc -->
+                    <h1 class="reveal-title" style="font-size: 20px; font-weight: 800; line-height: 24px; font-family: 'Inter', sans-serif; color: #242424; margin-bottom: 6px; letter-spacing: -0.01em;">
+                        Refining Enterprise Project Management: Design is in Progress
+                    </h1>
+                    
+                    <p class="reveal-desc" style="font-size: 15px; line-height: 22px; color: #242424; font-family: 'Charter', 'Georgia', serif; font-weight: 400; max-width: none; margin: 0 0 16px; text-align: left; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                        Enterprise project management often suffers from data density issues. When users are managing hundreds of concurrent projects, the interface must prioritize clarity over complexity. A deep dive into the user experience, component architecture, and final interface will be available here soon. I'm currently assembling the pixel-perfect mockups and writing the case study.
+                    </p>
+
+                    <!-- Meta Row -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 13px; color: #6B6B6B;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span>Feb 23</span>
+                            <span>·</span>
+                            <span>5 min read</span>
+                            <span>·</span>
+                            <span style="background: #F2F2F2; padding: 4px 10px; border-radius: 99px; font-size: 13px; color: #242424;">Process</span>
+                        </div>
+                        <!-- Bookmark Icon -->
+                        <div style="color: #6B6B6B;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.5 4.5H6.5C5.39543 4.5 4.5 5.39543 4.5 6.5V19.8258C4.5 20.3065 5.09341 20.5348 5.41421 20.1764L10.8753 14.0759C11.4925 13.3865 12.5075 13.3865 13.1247 14.0759L18.5858 20.1764C18.9066 20.5348 19.5 20.3065 19.5 19.8258V6.5C19.5 5.39543 18.6046 4.5 17.5 4.5Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Cover Image Thumbnail -->
+                <div style="width: 140px; height: 112px; margin-top: 24px; flex-shrink: 0; background-color: #f8f8f8; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;">
+                    <img src="images/work-1.jpg" alt="Thumbnail" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); opacity: 0.6;">
+                    <div style="position: absolute; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10px; color: #111; letter-spacing: 0.05em; transform: rotate(-12deg); background: #FF7518; color: #fff; padding: 4px 8px; border-radius: 4px; white-space: nowrap;">COMING SOON</div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+            <!-- RIGHT SIDEBAR -->
+            <div class="figma-sidebar figma-sidebar-right">
+                <div class="sidebar-tabs">
+                    <div class="sidebar-tab active">Design</div>
+                    <div class="sidebar-tab">Prototype</div>
+                </div>
+                <div class="sidebar-content">
+                    <div class="prop-section">
+                        <div class="prop-row">
+                            <div class="prop-label">X</div>
+                            <div class="prop-value">0</div>
+                            <div class="prop-label">Y</div>
+                            <div class="prop-value">0</div>
+                        </div>
+                        <div class="prop-row">
+                            <div class="prop-label">W</div>
+                            <div class="prop-value">680</div>
+                            <div class="prop-label">H</div>
+                            <div class="prop-value">460</div>
+                        </div>
+                    </div>
+                    <div class="prop-section">
+                        <div class="prop-header" style="color: #333;">
+                            <span>Auto layout</span>
+                            <span>+</span>
+                        </div>
+                        <div style="color: rgba(0,0,0,0.5); line-height: 1.5; font-size: 11px;">
+                            Direction: Vertical <br> Align: Center
+                        </div>
+                    </div>
+                    <div class="prop-section">
+                        <div class="prop-header">
+                            <span>Fill</span>
+                            <span>+</span>
+                        </div>
+                        <div class="prop-row">
+                            <div style="width: 14px; height: 14px; background: #e5e5e5; border-radius: 2px; border: 1px solid rgba(0,0,0,0.1); margin-right: 8px; flex-shrink: 0;"></div>
+                            <div class="prop-value" style="flex: 1; border: none; padding: 0;">E5E5E5</div>
+                            <div style="color: rgba(0,0,0,0.4)">100%</div>
+                        </div>
+                    </div>
+                    <div class="prop-section">
+                        <div class="prop-header">
+                            <span>Effects</span>
+                            <span>+</span>
+                        </div>
+                        <div class="prop-row" style="margin-bottom: 0;">
+                            <div style="color: rgba(0,0,0,0.8); flex: 1;">Drop shadow</div>
+                            <div style="color: rgba(0,0,0,0.4)">40%</div>
+                        </div>
+                        <div style="color: rgba(0,0,0,0.4); font-size: 10px; margin-top: 4px;">
+                            0 40px 80px 0, #000000
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Success Popup -->
-    <div class="dev-popup-overlay" id="successPopup">
-        <div class="dev-popup-content">
-            <button class="close-split-popup" onclick="closeSuccessPopup()" title="Close">&times;</button>
-
-            <div class="dev-popup-video-wrap">
-                <video autoplay muted loop playsinline>
-                    <source src="media/overlay-2.mp4" type="video/mp4">
-                </video>
-                <div class="overlay"></div>
-            </div>
-            
-            <div class="dev-popup-body">
-                <h2 class="dev-popup-title">Message Sent!</h2>
-                <p class="dev-popup-msg">
-                    Thank you for reaching out. Your message has been sent successfully and a confirmation email is on its way to you.
-                </p>
-                <div class="dev-popup-actions">
-                    <button type="button" class="dev-btn dev-btn-primary" onclick="closeSuccessPopup()">
-                        Great!
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Confetti -->
+    <div class="confetti-layer" id="confLayer"></div>
 
     <script>
-        // Split Role Popup Logic
-        const devPopup = document.getElementById('devPopup');
-        const splitMain = document.getElementById('splitMain');
-        const heatmap = document.getElementById('heatmapCursor');
-        const frames = document.querySelectorAll('.frame');
-        
-        // High-fidelity React code for Phase 4 only
-        const reactCode = `<span class="token-keyword">import</span> React <span class="token-keyword">from</span> <span class="token-attr">'react'</span>;
-<span class="token-keyword">import</span> { motion } <span class="token-keyword">from</span> <span class="token-attr">'framer-motion'</span>;
+        const viewport = document.querySelector('.figma-canvas');
+        const panCanvas = document.getElementById('panCanvas');
+        const gridOverlay = document.querySelector('.grid-overlay');
+        const hintBar = document.getElementById('hintBar');
 
-<span class="token-keyword">export default function</span> <span class="token-tag">Component</span>() {
-  <span class="token-keyword">return</span> (
-    &lt;<span class="token-tag">motion.div</span>
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className=<span class="token-attr">"premium-ui"</span>
-    &gt;
-      &lt;<span class="token-tag">Header</span> /&gt;
-      &lt;<span class="token-tag">ProductionArtifact</span> /&gt;
-    &lt;/<span class="token-tag">motion.div</span>&gt;
-  );
-}`;
+        let isDragging = false;
+        let startX, startY;
+        let translateX = 0;
+        let translateY = 0;
 
-        const noteSequences = [
-            "Analyzing user pain points and sketching layouts.",
-            "Refining hierarchy and applying design tokens.",
-            "Defining transitions and cognitive load limits."
-        ];
+        function updateTransform() {
+            panCanvas.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            gridOverlay.style.backgroundPosition = `${translateX}px ${translateY}px`;
+        }
 
-        let viewMode = 0; 
-        let currentPhase = 0;
-
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                devPopup.classList.add('show');
-                document.body.style.overflow = 'hidden';
-                startPhaseStory();
-            }, 1000);
+        viewport.addEventListener('mousedown', (e) => {
+            if(e.target.closest('.reveal-actions')) return; // let buttons be clickable
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            viewport.style.cursor = 'grabbing';
+            if(hintBar) hintBar.classList.add('hidden');
         });
 
-        // Phase Sequencing
-        function startPhaseStory() {
-            const editor = document.querySelector('.code-editor');
-            const notes = document.querySelector('.design-notes');
-            const noteItem = document.querySelector('.note-item.n2');
-
-            setInterval(() => {
-                frames[currentPhase].classList.remove('active');
-                currentPhase = (currentPhase + 1) % frames.length;
-                frames[currentPhase].classList.add('active');
-                
-                if (currentPhase === 3) {
-                    // Phase 4: Show React Code
-                    if (notes) notes.style.display = 'none';
-                    if (editor) {
-                        editor.style.display = 'block';
-                        const codeNode = editor.querySelector('code');
-                        codeNode.innerHTML = reactCode;
-                    }
-                    
-                    const indicator = document.querySelector('.compiling-indicator');
-                    if (indicator) {
-                        indicator.style.opacity = '1';
-                        indicator.textContent = "Production Ready";
-                    }
-                } else {
-                    // Phase 1-3: Show Design Notes
-                    if (editor) editor.style.display = 'none';
-                    if (notes) {
-                        notes.style.display = 'flex';
-                        if (noteItem) noteItem.textContent = noteSequences[currentPhase];
-                    }
-                }
-            }, 3000);
-        }
-
-        // Toggle View Logic
-        function toggleDualView() {
-            viewMode = (viewMode + 1) % 3;
-            
-            splitMain.classList.remove('swap-active', 'overlay-active');
-            
-            if (viewMode === 1) {
-                splitMain.classList.add('swap-active');
-            } else if (viewMode === 2) {
-                splitMain.classList.add('overlay-active');
-            }
-        }
-
-        // Heatmap Cursor
-        document.addEventListener('mousemove', (e) => {
-            if (devPopup.classList.contains('show')) {
-                heatmap.style.transform = `translate(${e.clientX - 125}px, ${e.clientY - 125}px)`;
-            }
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
         });
 
-        function closeDevPopup() {
-            devPopup.classList.remove('show');
-            document.body.style.overflow = 'auto';
-        }
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+            viewport.style.cursor = 'grab';
+        });
 
-        function closeSuccessPopup() {
-            document.getElementById('successPopup').classList.remove('show');
-            document.body.style.overflow = 'auto';
-        }
+        // Touch implementation for panning
+        viewport.addEventListener('touchstart', (e) => {
+            if(e.target.closest('.reveal-actions')) return;
+            isDragging = true;
+            startX = e.touches[0].clientX - translateX;
+            startY = e.touches[0].clientY - translateY;
+            if(hintBar) hintBar.classList.add('hidden');
+        }, { passive: false });
 
-        function showSuccessPopup() {
-            document.getElementById('successPopup').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            translateX = e.touches[0].clientX - startX;
+            translateY = e.touches[0].clientY - startY;
+            updateTransform();
+        }, { passive: false });
 
-        // Global Security
-        // document.addEventListener('contextmenu', (e) => e.preventDefault());
-        // document.onkeydown = function(e) {
-        //     if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
-        // };
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        // Add mouse wheel scrolling (panning)
+        viewport.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            translateX -= e.deltaX;
+            translateY -= e.deltaY;
+            updateTransform();
+        }, { passive: false });
+
+        // Initialize view safely scaled
+        setTimeout(updateTransform, 10);
     </script>
+</body>
+</html>
 
-
-
-</body></html>
