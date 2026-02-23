@@ -4163,10 +4163,11 @@ button.animate-btn::after,
   top: 38px;
   z-index: 10;
 }
-.sidebar-user .user-info .greeting,
-.sidebar-user .user-intro-top .greeting {
-  padding-bottom: 20px;
-  font-size: 26px;
+@media (max-width: 991px) {
+  .sidebar-user .user-intro-top .greeting {
+    padding-bottom: 4px !important;
+    font-size: 16px !important;
+  }
 }
 .sidebar-user .user-info .br-line {
   background-color: var(--white-8);
@@ -4270,6 +4271,7 @@ button.animate-btn::after,
     width: 100%;
     border-radius: 24px !important;
     background: #000 !important;
+    padding: 0 !important;
   }
   .sidebar-user .user-image {
     position: absolute;
@@ -4278,27 +4280,29 @@ button.animate-btn::after,
     height: 100%;
     z-index: 1;
   }
-  .sidebar-user .user-intro-top {
-    left: 0;
-    right: 0;
-    top: 20px;
-    z-index: 5;
-    text-align: left;
-    padding: 0 24px;
+  /* Force content to the very top */
+  .sidebar-user .wrap .user-intro-top {
+    top: 0 !important;
+    padding-top: 12px !important; /* Minimal breathing room from top edge */
+    left: 0 !important;
+    right: 0 !important;
+    margin-top: 0 !important;
+    z-index: 20 !important;
   }
   .sidebar-user .user-intro-top .greeting {
     font-size: 16px;
-    margin-top: 0;
-    margin-bottom: 4px;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2;
   }
   .sidebar-user .user-intro-top .intro-title {
     font-size: 28px;
     line-height: 1.1;
   }
-  .sidebar-user .user-social {
-    right: 16px;
-    top: 16px;
-    z-index: 10;
+  .sidebar-user .wrap .user-social {
+    right: 16px !important;
+    top: 12px !important; /* Match text padding */
+    z-index: 30 !important;
   }
   .sidebar-user .user-info {
     bottom: 24px;
