@@ -2,301 +2,937 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Page Not Found | Harsha Royal</title>
+    <title>404 — Lost in the Layers | Harsha Royal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="The page you're looking for doesn't exist. Navigate back to Harsha Royal's portfolio.">
+    <meta name="description" content="Oops! This page got lost somewhere in my design layers. Let's get you back.">
     <meta name="robots" content="noindex, follow">
     <link rel="shortcut icon" href="images/favicon.svg">
     <link rel="canonical" href="https://harsharoyal.in/">
-    <meta name="theme-color" content="#FF7518">
+    <meta name="theme-color" content="#1e1e2e">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --canvas-bg: #1e1e2e;
+            --figma-sidebar: #2c2c3a;
+            --figma-border: #3a3a4a;
+            --figma-blue: #5b7fff;
+            --figma-purple: #a259ff;
+            --figma-green: #0acf83;
+            --figma-orange: #FF7518;
+            --figma-red: #f24e1e;
+            --figma-text: #c4c4d4;
+            --figma-text-dim: #6e6e82;
+            --frame-bg: #2a2a3c;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0a;
-            color: #f5f5f5;
+            background: var(--canvas-bg);
+            color: var(--figma-text);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
+            cursor: default;
             position: relative;
         }
 
-        /* Animated background gradient orbs */
-        .bg-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.15;
-            animation: float 12s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .bg-orb-1 {
-            width: 600px;
-            height: 600px;
-            background: #FF7518;
-            top: -200px;
-            right: -150px;
-            animation-delay: 0s;
-        }
-
-        .bg-orb-2 {
-            width: 500px;
-            height: 500px;
-            background: #ff9a56;
-            bottom: -200px;
-            left: -100px;
-            animation-delay: -4s;
-        }
-
-        .bg-orb-3 {
-            width: 350px;
-            height: 350px;
-            background: #FFD700;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: -8s;
-            opacity: 0.08;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -40px) scale(1.05); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(15px, 30px) scale(1.02); }
-        }
-
-        /* Noise texture overlay */
-        body::before {
-            content: '';
+        /* ===== FIGMA CANVAS GRID ===== */
+        .canvas-grid {
             position: fixed;
             inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 1;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
         }
 
-        .container {
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-            max-width: 640px;
-        }
-
-        /* Glitch-style 404 number */
-        .error-code {
-            font-size: clamp(8rem, 20vw, 14rem);
-            font-weight: 700;
-            line-height: 1;
-            letter-spacing: -0.04em;
-            background: linear-gradient(135deg, #FF7518, #FFB347, #FF7518);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 4s ease-in-out infinite;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .error-code::after {
-            content: '404';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(8rem, 20vw, 14rem);
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            -webkit-text-stroke: 1px rgba(255, 117, 24, 0.1);
-            -webkit-text-fill-color: transparent;
-            z-index: -1;
-            filter: blur(1px);
-        }
-
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .divider {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #FF7518, transparent);
-            margin: 1.5rem auto;
-            border-radius: 2px;
-        }
-
-        .title {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.02em;
-        }
-
-        .description {
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            color: rgba(255, 255, 255, 0.45);
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        .actions {
+        /* ===== TOP FIGMA TOOLBAR ===== */
+        .figma-toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background: #2c2c3a;
+            border-bottom: 1px solid var(--figma-border);
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 1000;
+            gap: 12px;
         }
 
-        .btn {
-            display: inline-flex;
+        .toolbar-logo {
+            width: 28px;
+            height: 28px;
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 2rem;
-            border-radius: 100px;
-            font-family: inherit;
-            font-size: 0.9rem;
+            justify-content: center;
+        }
+
+        .toolbar-logo svg { width: 20px; height: 20px; }
+
+        .toolbar-sep {
+            width: 1px;
+            height: 24px;
+            background: var(--figma-border);
+        }
+
+        .toolbar-file {
+            font-size: 13px;
             font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: none;
+            color: #fff;
             letter-spacing: -0.01em;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #FF7518, #FF9A47);
+        .toolbar-file span {
+            color: var(--figma-text-dim);
+            font-weight: 400;
+        }
+
+        .toolbar-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toolbar-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--figma-orange), #ffb347);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
             color: #fff;
-            box-shadow: 0 4px 24px rgba(255, 117, 24, 0.3);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(255, 117, 24, 0.45);
+        .toolbar-btn {
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.06);
-            color: rgba(255, 255, 255, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.12);
+        .toolbar-btn.share {
+            background: var(--figma-blue);
             color: #fff;
-            transform: translateY(-2px);
         }
 
-        .btn svg {
-            width: 16px;
-            height: 16px;
+        /* ===== LAYER PANEL (LEFT) ===== */
+        .layer-panel {
+            position: fixed;
+            left: 0;
+            top: 48px;
+            bottom: 0;
+            width: 240px;
+            background: var(--figma-sidebar);
+            border-right: 1px solid var(--figma-border);
+            z-index: 900;
+            overflow: hidden;
         }
 
-        .footer-text {
-            margin-top: 4rem;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.2);
+        .layer-panel-header {
+            padding: 12px 16px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--figma-text-dim);
+            border-bottom: 1px solid var(--figma-border);
+        }
+
+        .layer-item {
+            display: flex;
+            align-items: center;
+            padding: 6px 16px;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--figma-text);
+            cursor: pointer;
+            transition: background 0.15s;
+            border-left: 2px solid transparent;
+        }
+
+        .layer-item:hover { background: rgba(255,255,255,0.04); }
+        .layer-item.active {
+            background: rgba(91, 127, 255, 0.12);
+            border-left-color: var(--figma-blue);
+        }
+
+        .layer-item.removed {
+            opacity: 0.3;
+            text-decoration: line-through;
+        }
+
+        .layer-icon {
+            width: 14px;
+            height: 14px;
+            border: 1.5px solid;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .layer-icon.purple { border-color: var(--figma-purple); }
+        .layer-icon.blue { border-color: var(--figma-blue); }
+        .layer-icon.green { border-color: var(--figma-green); }
+        .layer-icon.orange { border-color: var(--figma-orange); }
+        .layer-icon.red { border-color: var(--figma-red); }
+
+        .layer-eye {
+            margin-left: auto;
+            opacity: 0.4;
+            font-size: 10px;
+        }
+
+        /* ===== MAIN CANVAS ===== */
+        .canvas-area {
+            position: fixed;
+            top: 48px;
+            left: 240px;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        /* ===== DRAGGABLE FRAME LAYERS ===== */
+        .frame-stack {
+            position: relative;
+            width: 520px;
+            height: 400px;
+        }
+
+        .design-frame {
+            position: absolute;
+            width: 100%;
+            border-radius: 12px;
+            background: var(--frame-bg);
+            border: 1px solid var(--figma-border);
+            overflow: hidden;
+            cursor: grab;
+            transition: box-shadow 0.3s, opacity 0.4s;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .design-frame:active { cursor: grabbing; }
+
+        .design-frame:hover {
+            box-shadow: 0 0 0 2px var(--figma-blue), 0 12px 40px rgba(0,0,0,0.4);
+        }
+
+        .design-frame.dragging {
+            box-shadow: 0 0 0 2px var(--figma-orange), 0 20px 60px rgba(0,0,0,0.5);
+            z-index: 100 !important;
+        }
+
+        .design-frame.removed {
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .frame-header {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            gap: 8px;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 11px;
+            pointer-events: none;
+        }
+
+        .frame-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .frame-name {
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .frame-badge {
+            margin-left: auto;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
-        .footer-text a {
-            color: #FF7518;
+        .frame-body {
+            padding: 20px;
+            pointer-events: none;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===== INDIVIDUAL FRAME STYLES ===== */
+        .frame-5 { top: 0; left: 0; z-index: 5; transform: rotate(-1.5deg) translate(5px, 8px); }
+        .frame-5 .frame-dot { background: var(--figma-red); }
+        .frame-5 .frame-badge { background: rgba(242,78,30,0.15); color: var(--figma-red); }
+        .frame-5 .frame-body { background: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(242,78,30,0.04) 8px, rgba(242,78,30,0.04) 16px); }
+
+        .frame-4 { top: 15px; left: 10px; z-index: 4; transform: rotate(1deg) translate(-8px, 5px); }
+        .frame-4 .frame-dot { background: var(--figma-purple); }
+        .frame-4 .frame-badge { background: rgba(162,89,255,0.15); color: var(--figma-purple); }
+
+        .frame-3 { top: 30px; left: -5px; z-index: 3; transform: rotate(-0.5deg) translate(12px, -3px); }
+        .frame-3 .frame-dot { background: var(--figma-blue); }
+        .frame-3 .frame-badge { background: rgba(91,127,255,0.15); color: var(--figma-blue); }
+
+        .frame-2 { top: 45px; left: 5px; z-index: 2; transform: rotate(0.8deg) translate(-5px, 10px); }
+        .frame-2 .frame-dot { background: var(--figma-green); }
+        .frame-2 .frame-badge { background: rgba(10,207,131,0.15); color: var(--figma-green); }
+
+        .frame-1 { top: 60px; left: 0; z-index: 1; transform: rotate(0deg); }
+        .frame-1 .frame-dot { background: var(--figma-orange); }
+        .frame-1 .frame-badge { background: rgba(255,117,24,0.15); color: var(--figma-orange); }
+
+        /* ===== FRAME CONTENT MOCKUPS ===== */
+        .mock-lines { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+        .mock-line { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.06); }
+        .mock-line.w60 { width: 60%; }
+        .mock-line.w80 { width: 80%; }
+        .mock-line.w40 { width: 40%; }
+        .mock-line.w70 { width: 70%; }
+        .mock-line.thick { height: 14px; }
+
+        .mock-boxes { display: flex; gap: 10px; width: 100%; margin-top: 12px; }
+        .mock-box {
+            flex: 1;
+            height: 50px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed rgba(255,255,255,0.08);
+        }
+
+        .mock-error-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+
+        .mock-error-text {
+            font-size: 11px;
+            color: var(--figma-text-dim);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .mock-autolayout {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .mock-autolayout-row {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mock-al-item {
+            flex: 1;
+            height: 28px;
+            border-radius: 4px;
+            border: 1px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== REVEALED CONTENT (under all layers) ===== */
+        .revealed-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .revealed-content.visible {
+            opacity: 1;
+        }
+
+        .revealed-404 {
+            font-size: 80px;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, var(--figma-orange), #ffb347, var(--figma-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 12px;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .revealed-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .revealed-desc {
+            font-size: 13px;
+            color: var(--figma-text-dim);
+            line-height: 1.6;
+            max-width: 340px;
+            margin-bottom: 28px;
+        }
+
+        .revealed-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--figma-orange), #ff9a47);
+            color: #fff;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
             text-decoration: none;
-            transition: opacity 0.2s;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 20px rgba(255,117,24,0.3);
         }
 
-        .footer-text a:hover {
-            opacity: 0.7;
+        .btn-home:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(255,117,24,0.45);
         }
 
-        /* Subtle particle dots */
-        .particles {
+        .btn-home svg { width: 14px; height: 14px; }
+
+        .btn-work {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--figma-text);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-work:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ===== HINT TOOLTIP ===== */
+        .drag-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(44, 44, 58, 0.9);
+            border: 1px solid var(--figma-border);
+            border-radius: 10px;
+            backdrop-filter: blur(12px);
+            animation: hint-bounce 2s ease-in-out infinite;
+            transition: opacity 0.4s;
+        }
+
+        .drag-hint.hidden { opacity: 0; pointer-events: none; }
+
+        .drag-hint-icon {
+            font-size: 18px;
+            animation: wiggle 1.5s ease-in-out infinite;
+        }
+
+        .drag-hint-text {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--figma-text);
+        }
+
+        .drag-hint-text strong { color: var(--figma-orange); }
+
+        @keyframes hint-bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        /* ===== PROGRESS RING ===== */
+        .progress-container {
+            position: fixed;
+            top: 60px;
+            right: 16px;
+            z-index: 950;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            background: rgba(44,44,58,0.8);
+            border: 1px solid var(--figma-border);
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .progress-label {
+            font-size: 11px;
+            color: var(--figma-text-dim);
+            font-weight: 500;
+        }
+
+        .progress-count {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--figma-orange);
+            min-width: 24px;
+            text-align: right;
+        }
+
+        /* ===== AUTO-REDIRECT BAR ===== */
+        .auto-redirect {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            font-size: 11px;
+            color: var(--figma-text-dim);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .auto-redirect.visible { opacity: 1; }
+
+        .auto-redirect a {
+            color: var(--figma-orange);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* ===== CONFETTI ===== */
+        .confetti-container {
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 0;
+            z-index: 2000;
         }
 
-        .particle {
+        .confetti-piece {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 117, 24, 0.3);
-            border-radius: 50%;
-            animation: drift linear infinite;
+            width: 8px;
+            height: 8px;
+            border-radius: 1px;
+            top: -20px;
+            animation: confetti-fall linear forwards;
         }
 
-        @keyframes drift {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 860px) {
+            .layer-panel { display: none; }
+            .canvas-area { left: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .frame-stack { width: 340px; height: 340px; }
+            .figma-toolbar { padding: 0 10px; }
+            .toolbar-file span { display: none; }
+            .revealed-404 { font-size: 56px; }
+            .revealed-actions { flex-direction: column; }
+            .drag-hint { bottom: 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- Background Effects -->
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3"></div>
+    <!-- Canvas Grid Background -->
+    <div class="canvas-grid"></div>
 
-    <div class="particles" id="particles"></div>
-
-    <!-- Main Content -->
-    <div class="container">
-        <div class="error-code">404</div>
-        <div class="divider"></div>
-        <h1 class="title">This page doesn't exist</h1>
-        <p class="description">
-            The page you're looking for might have been moved, deleted, or perhaps never existed. Let's get you back on track.
-        </p>
-        <div class="actions">
-            <a href="/" class="btn btn-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-                Back to Home
-            </a>
-            <a href="/#contact" class="btn btn-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                </svg>
-                Contact Me
-            </a>
+    <!-- Figma Toolbar -->
+    <div class="figma-toolbar">
+        <div class="toolbar-logo">
+            <svg viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+                <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+                <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+                <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+            </svg>
         </div>
-        <p class="footer-text">
-            <a href="https://harsharoyal.in">harsharoyal.in</a> — Harsha Royal
-        </p>
+        <div class="toolbar-sep"></div>
+        <div class="toolbar-file">
+            404_page_recovery.fig <span>— Harsha Royal</span>
+        </div>
+        <div class="toolbar-right">
+            <button class="toolbar-btn share">Share</button>
+            <div class="toolbar-avatar">HR</div>
+        </div>
     </div>
 
+    <!-- Layer Panel (Left Sidebar) -->
+    <div class="layer-panel">
+        <div class="layer-panel-header">Layers</div>
+        <div class="layer-item" id="layer-5">
+            <div class="layer-icon red"></div>
+            <span>🚫 Error_Overlay</span>
+            <span class="layer-eye">👁</span>
+        </div>
+        <div class="layer-item" id="layer-4">
+            <div class="layer-icon purple"></div>
+            <span>📐 Broken_AutoLayout</span>
+            <span class="layer-eye">👁</span>
+        </div>
+        <div class="layer-item" id="layer-3">
+            <div class="layer-icon blue"></div>
+            <span>🔗 Missing_Components</span>
+            <span class="layer-eye">👁</span>
+        </div>
+        <div class="layer-item" id="layer-2">
+            <div class="layer-icon green"></div>
+            <span>📦 Detached_Instance</span>
+            <span class="layer-eye">👁</span>
+        </div>
+        <div class="layer-item active" id="layer-1">
+            <div class="layer-icon orange"></div>
+            <span>✨ The_Real_Content</span>
+            <span class="layer-eye">👁</span>
+        </div>
+    </div>
+
+    <!-- Main Canvas -->
+    <div class="canvas-area">
+        <div class="frame-stack" id="frameStack">
+
+            <!-- Layer 5 (Top) — Error Overlay -->
+            <div class="design-frame frame-5" data-layer="5" id="frame-5">
+                <div class="frame-header">
+                    <div class="frame-dot"></div>
+                    <span class="frame-name">Error_Overlay</span>
+                    <span class="frame-badge">BLOCKING</span>
+                </div>
+                <div class="frame-body">
+                    <div class="mock-error-icon">🚨</div>
+                    <div class="mock-error-text">
+                        <strong style="color: var(--figma-red);">404 — Page Not Found</strong><br>
+                        This frame is blocking everything.<br>
+                        <em style="color: var(--figma-text-dim); font-size: 10px;">drag me away to start digging!</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 4 — Broken Auto Layout -->
+            <div class="design-frame frame-4" data-layer="4" id="frame-4">
+                <div class="frame-header">
+                    <div class="frame-dot"></div>
+                    <span class="frame-name">Broken_AutoLayout</span>
+                    <span class="frame-badge">OVERFLOW</span>
+                </div>
+                <div class="frame-body">
+                    <div class="mock-autolayout">
+                        <div class="mock-autolayout-row">
+                            <div class="mock-al-item" style="border-color: var(--figma-purple); color: var(--figma-purple);">H=HUG</div>
+                            <div class="mock-al-item" style="border-color: var(--figma-purple); color: var(--figma-purple); flex: 2;">W=FILL (?)</div>
+                        </div>
+                        <div class="mock-autolayout-row">
+                            <div class="mock-al-item" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.5);">GAP=∞</div>
+                            <div class="mock-al-item" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.5);">PAD=???</div>
+                            <div class="mock-al-item" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.5);">CLIP ✗</div>
+                        </div>
+                    </div>
+                    <div class="mock-error-text" style="margin-top: 10px;">
+                        <em>Auto-layout has left the chat…</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 3 — Missing Components -->
+            <div class="design-frame frame-3" data-layer="3" id="frame-3">
+                <div class="frame-header">
+                    <div class="frame-dot"></div>
+                    <span class="frame-name">Missing_Components</span>
+                    <span class="frame-badge">DETACHED</span>
+                </div>
+                <div class="frame-body">
+                    <div class="mock-lines">
+                        <div class="mock-line thick w80" style="background: repeating-linear-gradient(45deg, rgba(91,127,255,0.1), rgba(91,127,255,0.1) 4px, transparent 4px, transparent 8px);"></div>
+                        <div class="mock-line w60" style="opacity: 0.3;"></div>
+                        <div class="mock-line w40" style="opacity: 0.2;"></div>
+                    </div>
+                    <div class="mock-boxes">
+                        <div class="mock-box" style="border-color: rgba(91,127,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px;">⚡</div>
+                        <div class="mock-box" style="border-color: rgba(91,127,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px;">🔌</div>
+                        <div class="mock-box" style="border-color: rgba(91,127,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px;">💤</div>
+                    </div>
+                    <div class="mock-error-text" style="margin-top: 10px;">
+                        <em>3 missing components detected</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 2 — Detached Instance -->
+            <div class="design-frame frame-2" data-layer="2" id="frame-2">
+                <div class="frame-header">
+                    <div class="frame-dot"></div>
+                    <span class="frame-name">Detached_Instance</span>
+                    <span class="frame-badge">WARNING</span>
+                </div>
+                <div class="frame-body">
+                    <div class="mock-error-icon">🧩</div>
+                    <div class="mock-error-text">
+                        <strong style="color: var(--figma-green);">Instance detached from main</strong><br>
+                        This component has gone rogue.<br>
+                        <em>Almost there… one more layer!</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REVEALED CONTENT (Under all layers) -->
+            <div class="revealed-content" id="revealedContent">
+                <div class="revealed-404">404</div>
+                <h1 class="revealed-title">You found the real content! 🎉</h1>
+                <p class="revealed-desc">
+                    Looks like this page got lost somewhere in my infinite component hierarchy. 
+                    But hey, you're clearly a pro at navigating design chaos.
+                </p>
+                <div class="revealed-actions">
+                    <a href="/" class="btn-home">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        Back to Portfolio
+                    </a>
+                    <a href="/#work" class="btn-work">View My Work →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Counter -->
+    <div class="progress-container">
+        <span class="progress-label">Layers cleared:</span>
+        <span class="progress-count" id="progressCount">0/4</span>
+    </div>
+
+    <!-- Drag Hint -->
+    <div class="drag-hint" id="dragHint">
+        <span class="drag-hint-icon">👆</span>
+        <span class="drag-hint-text"><strong>Drag the layers</strong> to uncover the real page</span>
+    </div>
+
+    <!-- Auto Redirect -->
+    <div class="auto-redirect" id="autoRedirect">
+        Too lazy? <a href="/">Take me home →</a>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
     <script>
-        // Generate floating particles
-        const container = document.getElementById('particles');
-        for (let i = 0; i < 25; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.animationDuration = (Math.random() * 12 + 8) + 's';
-            p.style.animationDelay = (Math.random() * 10) + 's';
-            p.style.width = (Math.random() * 3 + 1) + 'px';
-            p.style.height = p.style.width;
-            container.appendChild(p);
+        const frames = document.querySelectorAll('.design-frame');
+        const revealedContent = document.getElementById('revealedContent');
+        const progressCount = document.getElementById('progressCount');
+        const dragHint = document.getElementById('dragHint');
+        const autoRedirect = document.getElementById('autoRedirect');
+        const confettiContainer = document.getElementById('confettiContainer');
+
+        let removedCount = 0;
+        const totalFrames = frames.length;
+        const DRAG_THRESHOLD = 150;
+
+        // Show auto-redirect link after 5 seconds
+        setTimeout(() => {
+            autoRedirect.classList.add('visible');
+        }, 5000);
+
+        // ===== DRAG LOGIC =====
+        frames.forEach(frame => {
+            let startX, startY, currentX, currentY, isDragging = false;
+            const layerNum = frame.dataset.layer;
+
+            const onStart = (e) => {
+                if (frame.classList.contains('removed')) return;
+                isDragging = true;
+                frame.classList.add('dragging');
+
+                const point = e.touches ? e.touches[0] : e;
+                startX = point.clientX - (currentX || 0);
+                startY = point.clientY - (currentY || 0);
+
+                // Highlight corresponding layer in panel
+                const layerItem = document.getElementById('layer-' + layerNum);
+                if (layerItem) layerItem.classList.add('active');
+            };
+
+            const onMove = (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+
+                const point = e.touches ? e.touches[0] : e;
+                currentX = point.clientX - startX;
+                currentY = point.clientY - startY;
+
+                frame.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${currentX * 0.05}deg)`;
+
+                // Calculate distance
+                const distance = Math.sqrt(currentX * currentX + currentY * currentY);
+
+                // Visual feedback based on distance
+                const progress = Math.min(distance / DRAG_THRESHOLD, 1);
+                frame.style.opacity = 1 - (progress * 0.6);
+                frame.style.filter = `blur(${progress * 2}px)`;
+            };
+
+            const onEnd = () => {
+                if (!isDragging) return;
+                isDragging = false;
+                frame.classList.remove('dragging');
+
+                const distance = Math.sqrt((currentX || 0) ** 2 + (currentY || 0) ** 2);
+
+                if (distance > DRAG_THRESHOLD) {
+                    // Remove the frame with fling animation
+                    const angle = Math.atan2(currentY || 0, currentX || 0);
+                    const flingX = Math.cos(angle) * 1200;
+                    const flingY = Math.sin(angle) * 1200;
+
+                    frame.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    frame.style.transform = `translate(${flingX}px, ${flingY}px) rotate(${flingX * 0.03}deg)`;
+                    frame.style.opacity = '0';
+                    frame.style.filter = 'blur(8px)';
+
+                    setTimeout(() => {
+                        frame.classList.add('removed');
+                    }, 500);
+
+                    // Update layer panel
+                    const layerItem = document.getElementById('layer-' + layerNum);
+                    if (layerItem) {
+                        layerItem.classList.remove('active');
+                        layerItem.classList.add('removed');
+                    }
+
+                    removedCount++;
+                    progressCount.textContent = removedCount + '/' + totalFrames;
+
+                    // Check if all frames removed
+                    if (removedCount >= totalFrames) {
+                        onAllRemoved();
+                    }
+                } else {
+                    // Snap back
+                    frame.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    frame.style.opacity = '1';
+                    frame.style.filter = 'none';
+
+                    const originalTransform = getComputedStyle(frame).getPropertyValue('--original-transform') || '';
+                    if (layerNum === '5') frame.style.transform = 'rotate(-1.5deg) translate(5px, 8px)';
+                    else if (layerNum === '4') frame.style.transform = 'rotate(1deg) translate(-8px, 5px)';
+                    else if (layerNum === '3') frame.style.transform = 'rotate(-0.5deg) translate(12px, -3px)';
+                    else if (layerNum === '2') frame.style.transform = 'rotate(0.8deg) translate(-5px, 10px)';
+
+                    currentX = 0;
+                    currentY = 0;
+
+                    setTimeout(() => { frame.style.transition = ''; }, 400);
+                }
+            };
+
+            frame.addEventListener('mousedown', onStart);
+            frame.addEventListener('touchstart', onStart, { passive: false });
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('touchmove', onMove, { passive: false });
+            document.addEventListener('mouseup', onEnd);
+            document.addEventListener('touchend', onEnd);
+        });
+
+        // ===== ALL FRAMES REMOVED =====
+        function onAllRemoved() {
+            revealedContent.classList.add('visible');
+            dragHint.classList.add('hidden');
+            autoRedirect.classList.remove('visible');
+            launchConfetti();
+
+            // Update toolbar file name
+            document.querySelector('.toolbar-file').innerHTML = '404_page_recovery.fig <span>— ✅ All layers cleared!</span>';
+        }
+
+        // ===== CONFETTI =====
+        function launchConfetti() {
+            const colors = ['#FF7518', '#A259FF', '#1ABCFE', '#0ACF83', '#F24E1E', '#FFB347', '#FFD700'];
+
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const piece = document.createElement('div');
+                    piece.className = 'confetti-piece';
+                    piece.style.left = Math.random() * 100 + '%';
+                    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    piece.style.width = (Math.random() * 8 + 4) + 'px';
+                    piece.style.height = (Math.random() * 8 + 4) + 'px';
+                    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                    piece.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+                    confettiContainer.appendChild(piece);
+
+                    setTimeout(() => piece.remove(), 4000);
+                }, i * 20);
+            }
         }
     </script>
 </body>
