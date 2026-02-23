@@ -1426,8 +1426,17 @@ html, body {
 .action-open-mobile {
   position: fixed;
   right: 16px;
-  top: 24px;
-  z-index: 99;
+  top: 20px;
+  z-index: 1001;
+}
+.action-open-mobile .tf-btn-icon.style-2 {
+  background: var(--primary);
+  border: none;
+}
+.action-open-mobile .btn-mobile-menu span,
+.action-open-mobile .btn-mobile-menu::before,
+.action-open-mobile .btn-mobile-menu::after {
+  background-color: var(--white);
 }
 .action-open-mobile .nav-mobile-list {
   display: grid;
@@ -1489,17 +1498,17 @@ html, body {
 }
 @media (max-width: 991px) {
   .tf-header-wrap .left {
-    padding-right: 56px;
+    padding-right: 60px;
   }
   .tf-header-wrap {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: var(--white);
-    box-shadow: var(--shadow-2);
+    background: transparent;
     z-index: 99;
-    padding-right: 56px;
+    padding-right: 60px;
+    height: 80px;
   }
 }
 
@@ -4127,7 +4136,7 @@ button.animate-btn::after,
   position: absolute;
   left: 38px;
   right: 110px; /* Increased to push text away from icons */
-  top: 60px; /* Moved down slightly */
+  top: 100px; /* Moved down to avoid header overlap on mobile */
 }
 .sidebar-user .user-intro-top .greeting {
   font-size: clamp(16px, 3.2vw, 20px); 
@@ -4235,12 +4244,19 @@ button.animate-btn::after,
 }
 @media (max-width: 991px) {
   .sidebar-user {
-    margin: 0px 16px 0px;
+    margin: 0px !important;
+    width: 100% !important;
+    height: 100vh !important;
+    max-width: none !important;
+    padding: 0px !important;
+    position: relative !important;
   }
   .sidebar-user .wrap {
-    max-height: calc(100vh - 24px - 92px);
+    height: 100vh !important;
+    max-height: 100vh !important;
     display: flex;
     width: 100%;
+    border-radius: 0;
   }
   .sidebar-user .user-image::before {
     content: "";
@@ -4261,9 +4277,6 @@ button.animate-btn::after,
 }
 @media (max-width: 991px) {
   .sidebar-user {
-    max-width: 430px;
-    padding: 0px 15px;
-    margin: 0 auto;
   }
   .sidebar-user .user-logo {
     top: 20px;
@@ -4293,9 +4306,17 @@ button.animate-btn::after,
 @media (max-width: 425px) {
   .sidebar-user .user-image {
     display: flex;
+    height: 100% !important;
+  }
+  .sidebar-user .user-image .image {
+    height: 100%;
+    width: 100%;
   }
   .sidebar-user .user-image .image img {
-    aspect-ratio: 0.546728972;
+    aspect-ratio: auto;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 }
 
