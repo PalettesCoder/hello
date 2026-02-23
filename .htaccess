@@ -9,7 +9,7 @@ Options -Indexes
     RewriteEngine On
 
     # Redirect www to non-www
-    RewriteCond %{HTTP_HOST} ^www\.harsharoyal\.in$ [NC]
+    RewriteCond %{HTTPS_HOST} ^www\.harsharoyal\.in$ [NC]
     RewriteRule ^(.*)$ https://harsharoyal.in/$1 [L,R=301]
 
     # Force HTTPS
