@@ -115,6 +115,52 @@ The `.github/workflows/static.yml` file has been updated to include a more secur
 
 ## Other Security Measures
 
+### Client Certificates (mTLS)
+
+Secure and authenticate your APIs and web applications with client certificates. You can block traffic from devices that do not have a valid client SSL/TLS certificate using mTLS (Mutual TLS) rules.
+
+#### How to Generate the Keys and Certificates
+
+You can use OpenSSL to generate the necessary keys and certificates:
+
+**1. Create a Certificate Authority (CA)**
+```bash
+# Generate CA private key
+openssl genrsa -out ca.key 4096
+
+# Generate CA root certificate
+openssl req -new -x509 -days 3650 -key ca.key -out ca.crt -subj "/CN=My Custom CA"
+```
+
+**2. Generate the Client Certificate**
+```bash
+# Generate client private key
+openssl genrsa -out client.key 2048
+
+# Generate Certificate Signing Request (CSR) for the client
+openssl req -new -key client.key -out client.csr -subj "/CN=Client1"
+
+# Sign the client certificate with your CA
+openssl x509 -req -days 365 -in client.csr -CA ca.crt -CAkey ca.key -set_serial 01 -out client.crt
+```
+
+**3. Package for Browsers / Clients**
+Browsers and OS keychains usually require the client certificate and key to be packaged in a `.p12` or `.pfx` format:
+```bash
+openssl pkcs12 -export -out client.p12 -inkey client.key -in client.crt -certfile ca.crt
+```
+*(You will be prompted to create an export password. The user will need this password when installing the certificate on their device).*
+
+#### Nginx Configuration for mTLS
+
+Once you have generated your `ca.crt`, place it on your server and enforce client certificate verification by adding these lines to your `server { listen 443 ssl; ...}` block:
+
+```nginx
+    # Enforce Client Certificate Verification (mTLS)
+    ssl_client_certificate /path/to/ca.crt;
+    ssl_verify_client on;
+```
+
 ### File and Directory Protection (`.htaccess`)
 
 You can't hide `index.html` itself, but you can protect other files and prevent people from snooping around your directory structure. You can add this to your `.htaccess` file:

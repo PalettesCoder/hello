@@ -25,7 +25,7 @@ If you don't have Python installed, you can use other tools like `npx http-serve
 
 Once the server is running, open your web browser (preferably a modern one like Chrome, Firefox, or Edge) and navigate to:
 
-[http://localhost:8000](http://localhost:8000)
+[https://localhost:8000](https://localhost:8000)
 
 ## 3. Test the PWA features
 
