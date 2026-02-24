@@ -3924,10 +3924,7 @@ button.animate-btn::after,
 }
 
 .main-content {
-  pointer-events: none;
-}
-.main-content .wrap-container {
-  pointer-events: all;
+  position: relative;
 }
 
 .sidebar-tools {

@@ -431,7 +431,7 @@ gsap.registerPlugin(ScrollTrigger);
                 triggers.push(workTrigger);
             });
 
-            let isClickScrolling = false;
+            isClickScrolling = false;
             let clickScrollTimer = null;
 
             document.querySelectorAll('a[href^="#"]').forEach((a) => {
