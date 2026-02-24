@@ -48,10 +48,31 @@ ErrorDocument 404 /404.html
 
 # --- Security Headers ---
 <IfModule mod_headers.c>
+    # Prevent MIME type sniffing
     Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Mitigate Clickjacking
+    Header set X-Frame-Options "DENY"
+    
+    # Enable XSS protection in older browsers
     Header set X-XSS-Protection "1; mode=block"
+    
+    # Referrer Policy
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # HSTS (Strict-Transport-Security) - 2 years, include subdomains, and preload
+    Header set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+    
+    # Cross-Origin-Opener-Policy (COOP)
+    Header set Cross-Origin-Opener-Policy "same-origin"
+    
+    # Content Security Policy (CSP)
+    # Allows: 
+    # - Self for most things
+    # - Google Fonts (apis and gstatic)
+    # - EmailJS via jsdelivr (script) and api.emailjs.com (connect)
+    # - Unsafe-inline for scripts and styles (required by existing codebase animations/styles)
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in; connect-src 'self' https://api.emailjs.com https://*.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
 </IfModule>
 
 # --- Cache Control ---
