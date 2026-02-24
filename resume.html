@@ -479,7 +479,7 @@
             updateTools(); // Allow shield to drop if tools aren't active
         });
 
-        // Zooming logic
+        // Zooming & Panning logic
         window.addEventListener('wheel', (e) => {
             // Force canvas zoom if Ctrl is held, regardless of where the mouse is
             if (e.ctrlKey || e.metaKey) {
@@ -497,14 +497,14 @@
                 
                 scale = newScale;
                 updateTransform();
-            } else if (isSpacePressed || e.target === viewport || e.target === gridOverlay || e.target === shield) {
-                // Pan canvas via scroll if we are in hand tool or over background
+            } else {
+                // Pan canvas via scroll - Always allow on this workspace to prevent iframe trapping
                 e.preventDefault();
                 translateY -= e.deltaY;
                 translateX -= e.deltaX;
                 updateTransform();
             }
-        }, { passive: false });
+        }, { passive: false, capture: true });
 
         // Keyboard shortcuts
         window.addEventListener('keydown', (e) => {
