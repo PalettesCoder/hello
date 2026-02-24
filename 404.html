@@ -656,8 +656,8 @@
                     <div style="width:7px;height:7px; background:#0ACF83; border-radius: 3.5px 0 3.5px 3.5px"></div>
                 </div>
                 <!-- Icons -->
-                <div class="toolbar-icon active"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2.5 11l8-4.5-5.5-.5L3 1.5v9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-                <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3.5 1v10M8.5 1v10M1 3.5h10M1 8.5h10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="toolbar-icon active" id="tool-cursor" title="Move Tool (V)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2.5 11l8-4.5-5.5-.5L3 1.5v9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+                <div class="toolbar-icon" id="tool-hand" title="Hand Tool (H / Space)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3 5.5V3.5a1.5 1.5 0 1 1 3 0v2m0 0V4.5a1.5 1.5 0 1 1 3 0v1m-6 0v1a1.5 1.5 0 1 0 3 0v-1m3 0v1a1.5 1.5 0 1 0 3 0v-2" stroke="currentColor" stroke-width="1.2"/></svg></div>
                 <div class="toolbar-icon desktop-only"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" stroke-width="1.5" rx="1"/></svg></div>
             </div>
 
@@ -675,7 +675,7 @@
                 <div class="toolbar-avatar">HR</div>
                 <div class="toolbar-icon" style="width: auto; padding: 0 12px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 6px; font-weight: 500; font-size: 11px;">Share</div>
                 <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
-                <div class="toolbar-icon" style="font-size: 11px; font-weight: 500;">100%</div>
+                <div class="toolbar-icon" style="font-size: 11px; font-weight: 500;" id="zoom-level">100%</div>
             </div>
         </div>
 
@@ -715,7 +715,7 @@
             </div>
 
             <!-- CANVAS -->
-            <div class="figma-canvas">
+            <div class="figma-canvas" id="viewport">
                 <!-- ORIGINAL CONTENT -->
                 <div class="dark-canvas"></div>
                 <div class="grid-overlay"></div>
@@ -727,7 +727,7 @@
 
     <!-- Progress HUD -->
     <div class="hud-progress">
-        🖱️ Tip: <span class="hud-count">Click and drag to pan the canvas</span>
+        🖱️ Tip: <span class="hud-count">Hold Space to Pan • Scroll to Zoom</span>
     </div>
 
     <!-- Panning Canvas -->
@@ -822,55 +822,23 @@
             <!-- RIGHT SIDEBAR -->
             <div class="figma-sidebar figma-sidebar-right">
                 <div class="sidebar-tabs">
-                    <div class="sidebar-tab active">Design</div>
-                    <div class="sidebar-tab">Prototype</div>
+                    <div class="sidebar-tab">Design</div>
+                    <div class="sidebar-tab active">Prototype</div>
                 </div>
                 <div class="sidebar-content">
                     <div class="prop-section">
-                        <div class="prop-row">
-                            <div class="prop-label">X</div>
-                            <div class="prop-value">404</div>
-                            <div class="prop-label">Y</div>
-                            <div class="prop-value">-∞</div>
-                        </div>
-                        <div class="prop-row">
-                            <div class="prop-label">W</div>
-                            <div class="prop-value">100%</div>
-                            <div class="prop-label">H</div>
-                            <div class="prop-value">100%</div>
+                        <div class="prop-header">Prototype Settings</div>
+                        <div style="padding: 10px; background: rgba(0,0,0,0.03); border-radius: 6px; line-height: 1.5;">
+                            <p style="margin: 0 0 8px 0;">📱 <strong>Device</strong>: Macbook Pro</p>
+                            <p style="margin: 0;">🎥 <strong>Model</strong>: 404_Lost_V3</p>
                         </div>
                     </div>
                     <div class="prop-section">
-                        <div class="prop-header" style="color: #FF7518;">
-                            <span>Auto layout</span>
-                            <span>!</span>
-                        </div>
-                        <div style="color: rgba(255,117,24,0.8); line-height: 1.5; font-size: 11px;">
-                            Items exceed container bounds. Layout crashed.
-                        </div>
-                    </div>
-                    <div class="prop-section">
-                        <div class="prop-header">
-                            <span>Fill</span>
-                            <span>+</span>
-                        </div>
-                        <div class="prop-row">
-                            <div style="width: 14px; height: 14px; background: #e5e5e5; border-radius: 2px; border: 1px solid rgba(0,0,0,0.1); margin-right: 8px; flex-shrink: 0;"></div>
-                            <div class="prop-value" style="flex: 1; border: none; padding: 0;">E5E5E5</div>
-                            <div style="color: rgba(0,0,0,0.4)">100%</div>
-                        </div>
-                    </div>
-                    <div class="prop-section">
-                        <div class="prop-header">
-                            <span>Effects</span>
-                            <span>+</span>
-                        </div>
-                        <div class="prop-row" style="margin-bottom: 0;">
-                            <div style="color: rgba(0,0,0,0.8); flex: 1;">Drop shadow</div>
-                            <div style="color: rgba(0,0,0,0.4)">40%</div>
-                        </div>
-                        <div style="color: rgba(0,0,0,0.4); font-size: 10px; margin-top: 4px;">
-                            0 40px 80px 0, #000000
+                        <div class="prop-header">Interactions</div>
+                        <div style="color: rgba(0,0,0,0.5); line-height: 1.6; font-size: 11px; padding: 0 4px;">
+                            <strong>On Click</strong>: Navigate<br>
+                            <strong>On Drag</strong>: Pan Canvas<br>
+                            <strong>Ctrl + Scroll</strong>: Zoom
                         </div>
                     </div>
                 </div>
@@ -882,33 +850,57 @@
     <div class="confetti-layer" id="confLayer"></div>
 
     <script>
-        const viewport = document.querySelector('.figma-canvas');
+        const viewport = document.getElementById('viewport');
         const panCanvas = document.getElementById('panCanvas');
         const gridOverlay = document.querySelector('.grid-overlay');
+        const zoomLevelDisplay = document.getElementById('zoom-level');
+        const toolCursor = document.getElementById('tool-cursor');
+        const toolHand = document.getElementById('tool-hand');
         const hintBar = document.getElementById('hintBar');
 
         let isDragging = false;
         let startX, startY;
         
-        // Center onto the first 404 card layer (-1100 left + 240 center = -860)
+        // Initial state centered on first layer
         let translateX = window.innerWidth > 900 ? 860 : 860; 
         let translateY = 0;
-        
-        // Zoomed-in scale (1 for desktop, scaled to fit the 480px card for mobile)
         let scale = Math.min(window.innerWidth / 520, 1);
+        
+        let isSpacePressed = false;
+        let isCtrlPressed = false;
 
         function updateTransform() {
-            panCanvas.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            panCanvas.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
             gridOverlay.style.backgroundPosition = `${translateX}px ${translateY}px`;
+            gridOverlay.style.backgroundSize = `${24 * scale}px ${24 * scale}px`;
+            zoomLevelDisplay.innerText = `${Math.round(scale * 100)}%`;
+        }
+
+        function updateTools() {
+            if (isSpacePressed || isCtrlPressed || isDragging) {
+                viewport.classList.add('hand-tool');
+                if (isSpacePressed) {
+                    toolHand.classList.add('active');
+                    toolCursor.classList.remove('active');
+                }
+            } else {
+                viewport.classList.remove('hand-tool');
+                toolHand.classList.remove('active');
+                toolCursor.classList.add('active');
+            }
         }
 
         viewport.addEventListener('mousedown', (e) => {
-            if(e.target.closest('.reveal-actions')) return; // let buttons be clickable
-            isDragging = true;
-            startX = e.clientX - translateX;
-            startY = e.clientY - translateY;
-            viewport.style.cursor = 'grabbing';
-            if(hintBar) hintBar.classList.add('hidden');
+            if (e.target.closest('.reveal-actions') && !isSpacePressed) return;
+            if (e.button === 1 || isSpacePressed || e.target === viewport || e.target === gridOverlay || e.target.classList.contains('dark-canvas')) {
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                viewport.classList.add('grabbing');
+                if(hintBar) hintBar.classList.add('hidden');
+                updateTools();
+                e.preventDefault();
+            }
         });
 
         window.addEventListener('mousemove', (e) => {
@@ -920,40 +912,80 @@
 
         window.addEventListener('mouseup', () => {
             isDragging = false;
-            viewport.style.cursor = 'grab';
+            viewport.classList.remove('grabbing');
+            updateTools();
         });
 
-        // Touch implementation for panning
-        viewport.addEventListener('touchstart', (e) => {
-            if(e.target.closest('.reveal-actions')) return;
-            isDragging = true;
-            startX = e.touches[0].clientX - translateX;
-            startY = e.touches[0].clientY - translateY;
-            if(hintBar) hintBar.classList.add('hidden');
+        window.addEventListener('wheel', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                const zoomSpeed = 0.001;
+                const delta = -e.deltaY;
+                const newScale = Math.min(Math.max(0.1, scale + delta * zoomSpeed * scale), 5);
+                
+                const rect = viewport.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left - rect.width/2;
+                const mouseY = e.clientY - rect.top - rect.height/2;
+                
+                translateX -= (mouseX - translateX) * (newScale / scale - 1);
+                translateY -= (mouseY - translateY) * (newScale / scale - 1);
+                
+                scale = newScale;
+                updateTransform();
+            } else {
+                e.preventDefault();
+                translateY -= e.deltaY;
+                translateX -= e.deltaX;
+                updateTransform();
+            }
         }, { passive: false });
 
-        window.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            translateX = e.touches[0].clientX - startX;
-            translateY = e.touches[0].clientY - startY;
-            updateTransform();
-        }, { passive: false });
-
-        window.addEventListener('touchend', () => {
-            isDragging = false;
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                isCtrlPressed = true;
+                updateTools();
+            }
+            if (e.code === 'Space') {
+                if (!isSpacePressed) {
+                    isSpacePressed = true;
+                    updateTools();
+                }
+            }
+            if (e.key.toLowerCase() === 'h') {
+                isSpacePressed = true;
+                updateTools();
+            }
+            if (e.key.toLowerCase() === 'v') {
+                isSpacePressed = false;
+                updateTools();
+            }
+            if (e.ctrlKey && e.code === 'Digit0') {
+                e.preventDefault();
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+            }
         });
 
-        // Add mouse wheel scrolling (panning)
-        viewport.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            translateX -= e.deltaX;
-            translateY -= e.deltaY;
-            updateTransform();
-        }, { passive: false });
+        window.addEventListener('keyup', (e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+                isCtrlPressed = false;
+            }
+            if (e.code === 'Space') {
+                isSpacePressed = false;
+            }
+            updateTools();
+        });
 
-        // Initialize view safely scaled
-        setTimeout(updateTransform, 10);
+        window.onload = () => {
+            updateTransform();
+            updateTools();
+        };
+
+        viewport.addEventListener('mousedown', (e) => {
+            if (e.button === 1) e.preventDefault();
+        });
     </script>
 </body>
 </html>

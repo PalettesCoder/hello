@@ -50,4 +50,12 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Resume Page -->
+  <url>
+    <loc>https://harsharoyal.in/resume.html</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

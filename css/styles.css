@@ -3992,6 +3992,7 @@ button.animate-btn::after,
   opacity: 1;
   visibility: visible;
   right: calc(100% + 12px);
+  width: max-content;
 }
 .sidebar-tools .tf-btn-icon,
 .sidebar-tools .item-link {
@@ -4140,7 +4141,7 @@ button.animate-btn::after,
   position: absolute;
   left: 38px;
   right: 110px; /* Increased to push text away from icons */
-  top: 100px; /* Moved down to avoid header overlap on mobile */
+  top: 40px; /* Moved down to avoid header overlap on mobile */
 }
 .sidebar-user .user-intro-top .greeting {
   font-size: clamp(16px, 3.2vw, 20px); 
@@ -4277,7 +4278,7 @@ button.animate-btn::after,
   .sidebar-user .user-intro-top {
     left: 0;
     right: 0;
-    top: 60px;
+    top: 30px;
     z-index: 5;
     text-align: left;
     padding: 0 24px;
@@ -4382,6 +4383,7 @@ button.animate-btn::after,
   gap: 24px;
   margin-bottom: 84px;
 }
+
 .section-intro .intro-client {
   display: flex;
   align-items: center;
@@ -4507,13 +4509,16 @@ button.animate-btn::after,
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-  }
-  .section-intro .text-rotate .circle {
     width: 150px;
     height: 150px;
   }
-  .section-intro .text-rotate .text span {
-    transform-origin: 0 75px;
+  .section-intro .text-rotate-svg,
+  .section-intro .text-rotate-svg svg,
+  .wg-curve-text .static-text {
+    width: 150px;
+    height: 150px;
+    font-size: 10px;
+    bottom: 20px;
   }
   .section-intro .intro-title {
     margin-bottom: 30px;
@@ -5388,35 +5393,27 @@ button.animate-btn::after,
   }
 }
 
-.text-rotate {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: max-content;
-  width: max-content;
-  margin: 0;
-  background-color: transparent;
-  animation: spin 10s linear infinite;
-}
-.text-rotate .circle {
-  width: 166px;
-  height: 166px;
-  border-radius: 50%;
-  position: relative;
-}
-.text-rotate .text span {
+.static-circle-text {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform-origin: 0 83px;
-  color: var(--black);
-  text-transform: uppercase;
-  padding-top: 4px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  transform-origin: center center;
+  animation: rotateCircle 10s linear infinite;
+}
+
+@keyframes rotateCircle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .wg-curve-text {
   position: relative;
-  display: inline-flex;
+  width: 166px;
+  height: 166px;
   box-shadow: var(--shadow-4);
   background-color: var(--white);
   border-radius: 50%;
@@ -5426,6 +5423,7 @@ button.animate-btn::after,
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 5;
 }
 .wg-curve-text.style-2 {
   box-shadow: var(--shadow-3);

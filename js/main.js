@@ -251,26 +251,7 @@
     /* Text Rotate
     ---------------------------------------------------------- */
     var textRotate = function () {
-        if ($(".wg-curve-text").length > 0) {
-            if ($(".text-rotate").length > 0) {
-                const text = "Harsha Royal - Software Engineer UI/UX - ";
-                const chars = text.split("");
-                const degree = 360 / chars.length;
-
-                $(".text-rotate .text").each(function () {
-                    const $circularText = $(this);
-                    $circularText.empty();
-                    chars.forEach((char, i) => {
-                        const $span = $("<span></span>")
-                            .text(char)
-                            .css({
-                                transform: `rotate(${i * degree}deg)`,
-                            });
-                        $circularText.append($span);
-                    });
-                });
-            }
-        }
+        // SVG textPath handles this now
     };
 
     /* Active Class

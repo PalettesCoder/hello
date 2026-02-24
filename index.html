@@ -33,6 +33,7 @@
 
     <link rel="canonical" href="https://harsharoyal.in/">
     <meta name="theme-color" content="#FF7518">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -144,18 +145,33 @@
       ]
     }]
     </script>
-    <!-- font -->
+    <!-- fonts -->
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/inter.css">
     <link rel="stylesheet" href="css/style.css">
-    <!-- css -->
+    
+    <!-- critical css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-
-
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="css/popup.css">
+    
+    <!-- non-critical css (deferred) -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/animate.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="css/popup.css" media="print" onload="this.media='all'">
+    
+    <noscript>
+        <link rel="stylesheet" href="css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/popup.css">
+    </noscript>
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="images/image.jpg" as="image" fetchpriority="high">
+    
+    <!-- Preconnect origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="images/favicon.svg">
@@ -176,7 +192,7 @@
     <!-- Body Background -->
     <div class="body-background">
         <div class="bg-item">
-            <img loading="lazy" width="1440" height="900" src="images/cloud-bg.png" alt="Image">
+            <img loading="lazy" width="1440" height="900" src="images/cloud-bg.png" alt="" role="presentation">
         </div>
         <div class="bg-video video-dark">
             <video class="video" muted="" autoplay="" loop="" playsinline="">
@@ -188,7 +204,7 @@
     <!-- /Body Background -->
     <!-- Btn Open Color -->
     <div class="tf-left-bar">
-        <a class="btn-setting-color tf-btn-icon style-2" data-bs-toggle="offcanvas" href="#settingColorMenu"><i
+        <a class="btn-setting-color tf-btn-icon style-2" data-bs-toggle="offcanvas" href="#settingColorMenu" aria-label="Open Theme Color Settings"><i
                 class="icon-gear"></i></a>
     </div>
     <!-- /Btn Open Color -->
@@ -199,7 +215,7 @@
             <!-- Dark Premium Header -->
             <div class="canvas-header" style="background: #bababa; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center;">
                 <h5 class="m-0" style="color: #ffffff; font-size: 20px; font-weight: 500; font-family: 'Inter', sans-serif;">Configuration</h5>
-                <span data-bs-dismiss="offcanvas" style="cursor: pointer; color: #ffffff; font-size: 20px; transition: color 0.2s;" onmouseover="this.style.color='#FF7518'" onmouseout="this.style.color='#ffffff'">
+                <span data-bs-dismiss="offcanvas" style="cursor: pointer; color: #ffffff; font-size: 20px; transition: color 0.2s;" onmouseover="this.style.color='#FF7518'" onmouseout="this.style.color='#ffffff'" aria-label="Close Configuration menu">
                     &times;
                 </span>
             </div>
@@ -250,32 +266,32 @@
                         }
                     </style>
 
-                    <button type="button" class="btn-color theme-light choose-item active">
+                    <button type="button" class="btn-color theme-light choose-item active" aria-label="Select Silver Dawn theme">
                         <span class="color type-body-v1"></span>
                         <span class="text">Silver Dawn</span>
                     </button>
                     
-                    <button type="button" class="btn-color theme-light choose-item">
+                    <button type="button" class="btn-color theme-light choose-item" aria-label="Select Lavender Stone theme">
                         <span class="color type-body-v2"></span>
                         <span class="text">Lavender Stone</span>
                     </button>
                     
-                    <button type="button" class="btn-color theme-light choose-item">
+                    <button type="button" class="btn-color theme-light choose-item" aria-label="Select Ocean Breezes theme">
                         <span class="color type-body-v3"></span>
                         <span class="text">Ocean Breezes</span>
                     </button>
                     
-                    <button type="button" class="btn-color theme-dark choose-item">
+                    <button type="button" class="btn-color theme-dark choose-item" aria-label="Select Midnight Fade theme">
                         <span class="color type-dark-v1"></span>
                         <span class="text">Midnight Fade</span>
                     </button>
                     
-                    <button type="button" class="btn-color theme-dark choose-item">
+                    <button type="button" class="btn-color theme-dark choose-item" aria-label="Select Charcoal Mist theme">
                         <span class="color type-dark-v2"></span>
                         <span class="text">Charcoal Mist</span>
                     </button>
                     
-                    <button type="button" class="btn-color theme-dark choose-item">
+                    <button type="button" class="btn-color theme-dark choose-item" aria-label="Select Forest Shadow theme">
                         <span class="color type-dark-v3"></span>
                         <span class="text">Forest Shadow</span>
                     </button>
@@ -288,7 +304,7 @@
     <!-- Menu Mobile -->
     <div class="action-open-mobile d-lg-none">
         <div class="tf-btn-icon style-2">
-            <div class="btn-mobile-menu">
+            <div class="btn-mobile-menu" aria-label="Open mobile menu">
                 <span></span>
             </div>
         </div>
@@ -353,58 +369,58 @@
     <div class="sidebar-tools pst-v1">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="#home" class="item-link scroll-link">
+                <a href="#home" class="item-link scroll-link" aria-label="Navigate to Home">
                     <i class="icon icon-home"></i>
                     <p class="tool-tip text-caption">Home</p>
                 </a>
             </li>
             <li class="br-line"></li>
             <li class="nav-item">
-                <a href="#about" class="item-link scroll-link">
+                <a href="#about" class="item-link scroll-link" aria-label="Read more About Me">
                     <i class="icon icon-user-circle"></i>
                     <p class="tool-tip text-caption">About</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#education" class="item-link scroll-link">
+                <a href="#education" class="item-link scroll-link" aria-label="View Education and History">
                     <i class="icon icon-edu"></i>
                     <p class="tool-tip text-caption">Work & Education</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#work" class="item-link scroll-link">
+                <a href="#work" class="item-link scroll-link" aria-label="View My Projects">
                     <i class="icon icon-high-light"></i>
                     <p class="tool-tip text-caption">Work</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#service" class="item-link scroll-link">
+                <a href="#service" class="item-link scroll-link" aria-label="View My Services">
                     <i class="icon icon-service"></i>
                     <p class="tool-tip text-caption">Services</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#tech" class="item-link scroll-link">
+                <a href="#tech" class="item-link scroll-link" aria-label="Explore My Tech Stack">
                     <i class="icon icon-tech-stack"></i>
                     <p class="tool-tip text-caption">Tech</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#testimonial" class="item-link scroll-link">
+                <a href="#testimonial" class="item-link scroll-link" aria-label="Read Client Testimonials">
                     <i class="icon icon-tes"></i>
                     <p class="tool-tip text-caption">Testimonials</p>
                 </a>
             </li>
             <li class="br-line"></li>
             <li class="nav-item">
-                <a href="#contact" class="item-link scroll-link">
+                <a href="#contact" class="item-link scroll-link" aria-label="Contact Me">
                     <i class="icon icon-send"></i>
                     <p class="tool-tip text-caption">Contact</p>
                 </a>
             </li>
         </ul>
         <div class="nav-bottom">
-            <a href="#home" class="tf-btn-icon go-top scroll-link">
+            <a href="#home" class="tf-btn-icon go-top scroll-link" aria-label="Back to Top">
                 <i class="icon icon-arrow-top"></i>
             </a>
         </div>
@@ -416,9 +432,9 @@
 
         <!-- Time Local -->
         <div class="tf-header-wrap">
-            <a href="index.html" class="logo-site d-lg-none">
+            <a href="index.html" class="logo-site d-lg-none" aria-label="Go to Home page">
                 <img loading="lazy" width="40" height="40"
-                    src="images/logo.svg" alt="Image">
+                    src="images/logo.svg" alt="Portfolio Logo">
             </a>
             <div class="left">
                 <div class="time-local text-body-3">
@@ -440,12 +456,12 @@
             <div class="wrap">
                 <div class="user-image">
                     <div class="image">
-                        <img loading="lazy" width="468" height="856" src="images/image.jpg" alt="Image" class="profile-image">
+                        <img loading="eager" fetchpriority="high" width="468" height="856" src="images/image.jpg" alt="Harsha Royal Profile Portrait" class="profile-image">
                     </div>
                     <div class="meta-left d-none d-sm-block">
                         <div class="bg-item-svg">
                             <img width="32"
-                                height="227" src="images/vector-user.svg" alt="Image">
+                                height="227" src="images/vector-user.svg" alt="" role="presentation">
                         </div>
                         <p class="avaiable-dot vertical text-body-3 text-black-72 fw-medium">
                             <span class="text-vertical">Open to Network</span>
@@ -454,24 +470,24 @@
                     </div>
                 </div>
                        <div class="nav-top">
-            <div class="tf-btn-icon toggle-switch-mode">
+            <div class="tf-btn-icon toggle-switch-mode" aria-label="Toggle light/dark mode">
                 <i class="icon icon-light"></i>
             </div>
         </div>
                 <ul class="tf-social-icon-2 user-social d-grid">
-                    <li><a href="https://www.behance.net/palettescoder"><img src="images/Behance.png"></a></li>
-                    <li><a href="https://www.linkedin.com/in/palettescoder/"><i class="icon icon-linkin"></i></a></li>
-                    <li><a href="https://medium.com/@palettescoder"><img src="images/medium.png"></a></li>
+                    <li><a href="https://www.behance.net/palettescoder" aria-label="Visit my Behance Profile"><img src="images/Behance.png" alt="Behance logo" width="20" height="20"></a></li>
+                    <li><a href="https://www.linkedin.com/in/palettescoder/" aria-label="Visit my LinkedIn Profile"><i class="icon icon-linkin" aria-hidden="true"></i></a></li>
+                    <li><a href="https://medium.com/@palettescoder" aria-label="Visit my Medium Blog"><img src="images/medium.png" alt="Medium logo" width="20" height="20"></a></li>
                 </ul>
                 <div class="user-intro-top">
-                    <h5 class="greeting letter-space--2 text-white animationtext clip">
+                    <h1 class="greeting letter-space--2 text-white animationtext clip">
                         Hey, I’m
                         <span class="cd-words-wrapper">
                             <span class="item-text is-visible">Harsha Royal</span>
                             <span class="item-text is-hidden">UI Developer</span>
                             <span class="item-text is-hidden">Product Designer</span>
                         </span>
-                    </h5>
+                    </h1>
                     <p class="introduce text-white letter-space--05 text-body-3">
                         I turn complex ideas into clean, scalable digital experiences.
                     </p>
@@ -496,11 +512,11 @@
                             </span>
                         </a>
 
-                        <a href="https://drive.google.com/file/d/1TnIzTd05piS8JqRtZbKAH2g6HsAprv-7/view?usp=sharing"
+                        <a href="resume.html"
                             class="action-down">
-                            <i class="icon icon-download"></i>
+                            <i class="icon icon-user-circle"></i>
                             <span class="text-body-3">
-                                Download CV
+                                View Resume
                             </span>
                         </a>
                     </div>
@@ -519,20 +535,20 @@
                                 <div class="intro-author effectFade fadeUp no-div">
                                     <div class="author-image">
                                         <img loading="lazy" width="23" height="31" src="images/avatar-boy.png"
-                                            alt="Image">
+                                            alt="Avatar of Harsha Royal">
                                     </div>
                                     <div class="author-info letter-space--05">
                                         <p class="info_name text-black">Harsha Royal</p>
-                                        <p class="info_duty text-black-50 text-body-3">Product Designer & UI Developer
+                                        <p class="info_duty text-black-50 text-body-3">UI Developer & Product Designer
                                         </p>
                                     </div>
                                 </div>
-                                <h1 class="intro-title letter-space--2 split-text effect-blur-fade">
+                                <h2 class="h1 intro-title letter-space--2 split-text effect-blur-fade">
                                     I’m building
                                     <span class="">Experiences</span><br>
                                     <span class="type-2">& brands</span>
                                     that people remember
-                                </h1>
+                                </h2>
                                 <div class="intro-item">
                                     <div class="scribble-wrap">
                                         <svg class="scribble" viewBox="0 0 772 320" fill="none"
@@ -552,38 +568,37 @@
                                                 stroke-linecap="round" stroke-linejoin="round"></path>
                                         </svg>
                                     </div>
-                                    <div class="wg-curve-text">
-                                        <div class="icon">
-                                            <svg width="66" height="77" viewBox="0 0 66 77" fill="none"
-                                                xmlns="https://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M36.0087 0.873025C43.5379 -1.39092 54.7025 10.7245 61.1553 28.2867L61.4572 29.1225C67.684 46.6467 66.8028 62.8769 59.3914 65.6003L59.0353 65.7187C57.4604 66.1922 55.7272 66.0345 53.9106 65.3315C52.9107 67.1734 51.5757 68.4719 49.9077 69.0848L49.5517 69.2032C47.8627 69.7111 45.9915 69.494 44.031 68.6556C43.0123 70.6987 41.611 72.1331 39.831 72.7872L39.475 72.9056C37.9 73.3792 36.1669 73.2214 34.3503 72.5184C33.3504 74.3604 32.0154 75.6588 30.3474 76.2717L29.9913 76.3901C22.4621 78.6546 11.2976 66.539 4.84471 48.9764C-1.71056 31.1351 -0.920706 14.4292 6.60864 11.6627L6.96468 11.5444C8.53922 11.071 10.2719 11.2285 12.0881 11.931C13.088 10.089 14.4242 8.79122 16.0923 8.17825L16.4483 8.05992C18.1368 7.55221 20.0078 7.76906 21.9678 8.60692C22.9864 6.56371 24.3889 5.12997 26.169 4.47585L26.525 4.35752C28.0993 3.88414 29.8323 4.04093 31.6481 4.74323C32.648 2.90144 33.9848 1.6043 35.6526 0.991355L36.0087 0.873025ZM35.8705 1.58443C34.3995 2.12506 33.1749 3.2743 32.2327 4.98624C38.9691 7.99365 46.7122 18.2732 51.6716 31.7712L51.9735 32.607C56.6603 45.7969 57.3186 58.2527 54.1982 64.7691C56.0249 65.4639 57.7021 65.5477 59.1734 65.0073C60.8518 64.3905 62.2076 62.9806 63.1915 60.8478C64.1769 58.7115 64.7669 55.8924 64.9241 52.5664C65.2383 45.9169 63.8179 37.3655 60.5622 28.5046C57.3065 19.6437 52.8526 12.2069 48.308 7.34263C46.0347 4.90959 43.7599 3.14315 41.6258 2.153C39.4951 1.16454 37.5489 0.967816 35.8705 1.58443ZM6.82655 12.2558C5.14794 12.8726 3.79152 14.2824 2.80758 16.4156C1.82222 18.552 1.23308 21.3706 1.07586 24.6967C0.761621 31.3462 2.18208 39.8975 5.43778 48.7585C8.69348 57.6194 13.1474 65.0562 17.692 69.9204C19.9653 72.3535 22.2392 74.1202 24.3733 75.1104C26.5043 76.0991 28.4509 76.2954 30.1295 75.6787C31.6006 75.1381 32.8226 73.9877 33.7648 72.2757C27.0291 69.2667 19.2871 58.9881 14.3283 45.4919C9.36933 31.9951 8.61515 19.1484 11.8009 12.4943C9.9744 11.7996 8.29774 11.7153 6.82655 12.2558ZM36.5261 62.8777C36.3921 66.5095 35.7585 69.6155 34.6378 71.956C36.4646 72.6508 38.1418 72.7347 39.6131 72.1942C41.1952 71.6128 42.4898 70.3262 43.4573 68.394C41.2039 67.3015 38.8467 65.4136 36.5261 62.8777ZM46.0097 59.3932C45.883 62.8289 45.3095 65.794 44.2991 68.0858C46.2875 68.9319 48.1076 69.073 49.6898 68.4918C51.1609 67.9512 52.3842 66.8013 53.3264 65.0894C50.9571 64.0312 48.463 62.0742 46.0097 59.3932ZM31.8516 5.74426C30.8663 7.88057 30.277 10.6994 30.1198 14.0253C30.1036 14.3692 30.0931 14.7181 30.0861 15.0719C34.3893 19.9995 38.5256 27.1199 41.5949 35.4736L41.8968 36.3094C44.7598 44.3666 46.1188 52.1502 46.0327 58.4733C46.2671 58.7384 46.501 58.9975 46.736 59.2491C49.0092 61.682 51.2833 63.4488 53.4173 64.439C53.4825 64.4693 53.5487 64.4973 53.6136 64.5261C53.6446 64.4618 53.6776 64.3979 53.7079 64.3323C54.6932 62.1959 55.2833 59.377 55.4405 56.0508C55.7547 49.4014 54.3343 40.8499 51.0786 31.9891C47.8229 23.1282 43.3689 15.6914 38.8243 10.8271C36.5511 8.39407 34.2762 6.62765 32.1421 5.63749C32.0763 5.60697 32.01 5.57889 31.9445 5.54988C31.9136 5.61406 31.8818 5.6787 31.8516 5.74426ZM12.2912 12.9311C11.3059 15.0675 10.7167 17.8862 10.5595 21.2122C10.2453 27.8617 11.6657 36.4131 14.9214 45.274C18.1771 54.1349 22.6311 61.5717 27.1757 66.436C29.4488 68.8689 31.7229 70.6357 33.8569 71.6259C33.9222 71.6562 33.9884 71.6841 34.0533 71.713C34.0843 71.6487 34.1172 71.5848 34.1475 71.5192C35.1329 69.3828 35.7229 66.5639 35.8802 63.2377C35.8964 62.8937 35.9057 62.5446 35.9126 62.1906C31.6099 57.263 27.4742 50.1426 24.4051 41.7895C21.3356 33.4353 19.8764 25.33 19.9657 18.7883C19.7318 18.5237 19.4985 18.265 19.264 18.014C16.9907 15.5809 14.7159 13.8146 12.5818 12.8244C12.516 12.7939 12.4496 12.7658 12.3842 12.7368C12.3532 12.801 12.3215 12.8656 12.2912 12.9311ZM22.2739 9.44015C21.3457 11.5497 20.7883 14.2922 20.6362 17.5098C20.62 17.8537 20.6094 18.2026 20.6025 18.5564C24.9056 23.484 29.042 30.6044 32.1113 38.9581L32.4132 39.7939C35.276 47.8507 36.6347 55.6339 36.5488 61.9569C36.7833 62.2222 37.0172 62.4818 37.2524 62.7336C39.4513 65.0871 41.6518 66.8155 43.7248 67.8223C44.653 65.7128 45.2117 62.9708 45.3638 59.7532C45.38 59.4093 45.3893 59.0601 45.3963 58.7061C41.0935 53.7785 36.9578 46.6581 33.8887 38.305C30.8192 29.9509 29.36 21.8455 29.4493 15.3038C29.2155 15.0393 28.9821 14.7805 28.7476 14.5295C26.5483 12.1756 24.3473 10.4468 22.2739 9.44015ZM20.5948 19.5153C20.6185 25.8361 22.0611 33.5779 24.9981 41.5716C27.935 49.5648 31.8472 56.3989 35.9212 61.2314C35.8973 54.9107 34.4551 47.1693 31.5182 39.176C28.5812 31.1824 24.669 24.3478 20.5948 19.5153ZM30.0776 16.0311C30.1013 22.3518 31.5448 30.0936 34.4818 38.0871C37.4187 46.0804 41.3317 52.914 45.4057 57.7465C45.3818 51.426 43.9387 43.6847 41.0019 35.6915C38.0648 27.6978 34.1518 20.8637 30.0776 16.0311ZM16.3102 8.77132C14.8391 9.31192 13.6146 10.4612 12.6723 12.1731C15.042 13.2311 17.5356 15.1889 19.9894 17.8703C20.1161 14.4345 20.6905 11.4691 21.7009 9.17733C19.7126 8.33121 17.8924 8.19006 16.3102 8.77132ZM26.3869 5.06892C24.8049 5.65025 23.5086 6.93577 22.5411 8.86757C24.7951 9.95982 27.1517 11.8492 29.473 14.3858C29.6069 10.7538 30.2415 7.64767 31.3622 5.30711C29.5355 4.61221 27.8582 4.52839 26.3869 5.06892Z"
-                                                    fill="black"></path>
+                                        <div class="wg-curve-text">
+                                            <svg class="icon" width="66" height="77" viewBox="0 0 66 77" fill="none" xmlns="https://www.w3.org/2000/svg">
+                                                <path d="M36.0087 0.873025C43.5379 -1.39092 54.7025 10.7245 61.1553 28.2867L61.4572 29.1225C67.684 46.6467 66.8028 62.8769 59.3914 65.6003L59.0353 65.7187C57.4604 66.1922 55.7272 66.0345 53.9106 65.3315C52.9107 67.1734 51.5757 68.4719 49.9077 69.0848L49.5517 69.2032C47.8627 69.7111 45.9915 69.494 44.031 68.6556C43.0123 70.6987 41.611 72.1331 39.831 72.7872L39.475 72.9056C37.9 73.3792 36.1669 73.2214 34.3503 72.5184C33.3504 74.3604 32.0154 75.6588 30.3474 76.2717L29.9913 76.3901C22.4621 78.6546 11.2976 66.539 4.84471 48.9764C-1.71056 31.1351 -0.920706 14.4292 6.60864 11.6627L6.96468 11.5444C8.53922 11.071 10.2719 11.2285 12.0881 11.931C13.088 10.089 14.4242 8.79122 16.0923 8.17825L16.4483 8.05992C18.1368 7.55221 20.0078 7.76906 21.9678 8.60692C22.9864 6.56371 24.3889 5.12997 26.169 4.47585L26.525 4.35752C28.0993 3.88414 29.8323 4.04093 31.6481 4.74323C32.648 2.90144 33.9848 1.6043 35.6526 0.991355L36.0087 0.873025ZM35.8705 1.58443C34.3995 2.12506 33.1749 3.2743 32.2327 4.98624C38.9691 7.99365 46.7122 18.2732 51.6716 31.7712L51.9735 32.607C56.6603 45.7969 57.3186 58.2527 54.1982 64.7691C56.0249 65.4639 57.7021 65.5477 59.1734 65.0073C60.8518 64.3905 62.2076 62.9806 63.1915 60.8478C64.1769 58.7115 64.7669 55.8924 64.9241 52.5664C65.2383 45.9169 63.8179 37.3655 60.5622 28.5046C57.3065 19.6437 52.8526 12.2069 48.308 7.34263C46.0347 4.90959 43.7599 3.14315 41.6258 2.153C39.4951 1.16454 37.5489 0.967816 35.8705 1.58443ZM6.82655 12.2558C5.14794 12.8726 3.79152 14.2824 2.80758 16.4156C1.82222 18.552 1.23308 21.3706 1.07586 24.6967C0.761621 31.3462 2.18208 39.8975 5.43778 48.7585C8.69348 57.6194 13.1474 65.0562 17.692 69.9204C19.9653 72.3535 22.2392 74.1202 24.3733 75.1104C26.5043 76.0991 28.4509 76.2954 30.1295 75.6787C31.6006 75.1381 32.8226 73.9877 33.7648 72.2757C27.0291 69.2667 19.2871 58.9881 14.3283 45.4919C9.36933 31.9951 8.61515 19.1484 11.8009 12.4943C9.9744 11.7996 8.29774 11.7153 6.82655 12.2558ZM36.5261 62.8777C36.3921 66.5095 35.7585 69.6155 34.6378 71.956C36.4646 72.6508 38.1418 72.7347 39.6131 72.1942C41.1952 71.6128 42.4898 70.3262 43.4573 68.394C41.2039 67.3015 38.8467 65.4136 36.5261 62.8777ZM46.0097 59.3932C45.883 62.8289 45.3095 65.794 44.2991 68.0858C46.2875 68.9319 48.1076 69.073 49.6898 68.4918C51.1609 67.9512 52.3842 66.8013 53.3264 65.0894C50.9571 64.0312 48.463 62.0742 46.0097 59.3932ZM31.8516 5.74426C30.8663 7.88057 30.277 10.6994 30.1198 14.0253C30.1036 14.3692 30.0931 14.7181 30.0861 15.0719C34.3893 19.9995 38.5256 27.1199 41.5949 35.4736L41.8968 36.3094C44.7598 44.3666 46.1188 52.1502 46.0327 58.4733C46.2671 58.7384 46.501 58.9975 46.736 59.2491C49.0092 61.682 51.2833 63.4488 53.4173 64.439C53.4825 64.4693 53.5487 64.4973 53.6136 64.5261C53.6446 64.4693 53.6776 64.3979 53.7079 64.3323C54.6932 62.1959 55.2833 59.377 55.4405 56.0508C55.7547 49.4014 54.3343 40.8499 51.0786 31.9891C47.8229 23.1282 43.3689 15.6914 38.8243 10.8271C36.5511 8.39407 34.2762 6.62765 32.1421 5.63749C32.0763 5.60697 32.01 5.57889 31.9445 5.54988C31.9136 5.61406 31.8818 5.6787 31.8516 5.74426ZM12.2912 12.9311C11.3059 15.0675 10.7167 17.8862 10.5595 21.2122C10.2453 27.8617 11.6657 36.4131 14.9214 45.274C18.1771 54.1349 22.6311 61.5717 27.1757 66.436C29.4488 68.8689 31.7229 70.6357 33.8569 71.6259C33.9222 71.6562 33.9884 71.6841 34.0533 71.713C34.0843 71.6487 34.1172 71.5848 34.1475 71.5192C35.1329 69.3828 35.7229 66.5639 35.8802 63.2377C35.8964 62.8937 35.9057 62.5446 35.9126 62.1906C31.6099 57.263 27.4742 50.1426 24.4051 41.7895C21.3356 33.4353 19.8764 25.33 19.9657 18.7883C19.7318 18.5237 19.4985 18.265 19.264 18.014C16.9907 15.5809 14.7159 13.8146 12.5818 12.8244C12.516 12.7939 12.4496 12.7658 12.3842 12.7368C12.3532 12.801 12.3215 12.8656 12.2912 12.9311ZM22.2739 9.44015C21.3457 11.5497 20.7883 14.2922 20.6362 17.5098C20.62 17.8537 20.6094 18.2026 20.6025 18.5564C24.9056 23.484 29.042 30.6044 32.1113 38.9581L32.4132 39.7939C35.276 47.8507 36.6347 55.6339 36.5488 61.9569C36.7833 62.2222 37.0172 62.4818 37.2524 62.7336C39.4513 65.0871 41.6518 66.8155 43.7248 67.8223C44.653 65.7128 45.2117 62.9708 45.3638 59.7532C45.38 59.4093 45.3893 59.0601 45.3963 58.7061C41.0935 53.7785 36.9578 46.6581 33.8887 38.305C30.8192 29.9509 29.36 21.8455 29.4493 15.3038C29.2155 15.0393 28.9821 14.7805 28.7476 14.5295C26.5483 12.1756 24.3473 10.4468 22.2739 9.44015ZM20.5948 19.5153C20.6185 25.8361 22.0611 33.5779 24.9981 41.5716C27.935 49.5648 31.8472 56.3989 35.9212 61.2314C35.8973 54.9107 34.4551 47.1693 31.5182 39.176C28.5812 31.1824 24.669 24.3478 20.5948 19.5153ZM30.0776 16.0311C30.1013 22.3518 31.5448 30.0936 34.4818 38.0871C37.4187 46.0804 41.3317 52.914 45.4057 57.7465C45.3818 51.426 43.9387 43.6847 41.0019 35.6915C38.0648 27.6978 34.1518 20.8637 30.0776 16.0311ZM16.3102 8.77132C14.8391 9.31192 13.6146 10.4612 12.6723 12.1731C15.042 13.2311 17.5356 15.1889 19.9894 17.8703C20.1161 14.4345 20.6905 11.4691 21.7009 9.17733C19.7126 8.33121 17.8924 8.19006 16.3102 8.77132ZM26.3869 5.06892C24.8049 5.65025 23.5086 6.93577 22.5411 8.86757C24.7951 9.95982 27.1517 11.8492 29.473 14.3858C29.6069 10.7538 30.2415 7.64767 31.3622 5.30711C29.5355 4.61221 27.8582 4.52839 26.3869 5.06892Z" fill="black"></path>
                                             </svg>
-                                        </div>
-                                        <div class="text-rotate">
-                                            <div class="circle">
-                                                <div class="text" id="circularText"></div>
-                                            </div>
+                                            <svg class="static-circle-text" viewBox="0 0 166 166" width="166" height="166">
+                                                <path id="circlePath" d="M 83, 83 m -62, 0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0" fill="none" />
+                                                <text fill="black" font-family="'Apfel Grotezk', sans-serif" font-size="11" font-weight="500" letter-spacing="1.5">
+                                                    <textPath href="#circlePath">
+                                                        HARSHA ROYAL - SOFTWARE ENGINEER UI/UX - 
+                                                    </textPath>
+                                                </text>
+                                            </svg>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="box-counter effectFade fadeUp no-div">
-                                    <div class="wg-counter">
-                                        <p class="counter h1 d-flex font-2 letter-space--2">
+                                    <div class="wg-counter d-flex align-items-center gap-12">
+                                        <p class="counter h1 font-2 letter-space--2 mb-0">
                                             <span class="number" data-speed="1000" data-to="3.4">0</span>
                                             +
                                         </p>
-                                        <p class="text text-black-56 text-body-3">
+                                        <p class="text text-black-56 text-body-3 mb-0">
                                             Year of experience
                                         </p>
                                     </div>
-                                    <div class="wg-counter">
-                                        <p class="counter h1 d-flex font-2 letter-space--2">
+                                    <div class="wg-counter d-flex align-items-center gap-12">
+                                        <p class="counter h1 font-2 letter-space--2 mb-0">
                                             <span class="number" data-speed="1000" data-to="20">0</span>
                                             +
                                         </p>
-                                        <p class="text text-black-56 text-body-3">
+                                        <p class="text text-black-56 text-body-3 mb-0">
                                             Projects Completed
                                         </p>
                                     </div>
@@ -682,7 +697,7 @@
                                         </h6>
                                         <div class="award_img hover-image">
                                             <img loading="lazy" width="158" height="224" src="images/AT4K2YY0SDCR.jpg"
-                                                alt="Image">
+                                                alt="Google UX Design Certificate">
                                         </div>
                                     </li>
                                     <li class="award-item hover-cursor-img">
@@ -695,7 +710,7 @@
                                         </h6>
                                         <div class="award_img hover-image">
                                             <img loading="lazy" width="158" height="224" src="images/LIOWEOIGC8HK.jpg"
-                                                alt="Image">
+                                                alt="Foundations of User Experience (UX) Design Certificate">
                                         </div>
                                     </li>
                                     <!-- <li class="award-item hover-cursor-img">
@@ -760,7 +775,7 @@
                                             <div class="icon">
                                                 <img
                                                     loading="lazy" width="120" height="32" src="images/acuvate.png"
-                                                    alt="Image">
+                                                    alt="Acuvate Software logo">
                                             </div>
                                             <p class="timeline-role fw-medium text-black-72">Software Engineer - UI</p>
                                             <p class="timeline-desc text-body-3 text-black-56">
@@ -775,10 +790,10 @@
                                         <p class="timeline-date text-black-56">May 2023 - Aug 2025</p>
                                         <div class="timeline-dot"></div>
                                         <div class="timeline-content">
-                                            <a href="https://www.c2stechs.com">
+                                            <a href="https://www.c2stechs.com" aria-label="Visit C2S Technologies website">
                                                 <div class="icon">
                                                     <img width="120"
-                                                        height="32" src="images/c2s.webp" alt="Image">
+                                                        height="32" src="images/c2s.webp" alt="C2S Technologies logo">
                                                 </div>
                                             </a>
                                             <p class="timeline-role fw-medium text-black-72">Software Engineer &
@@ -795,10 +810,10 @@
                                         <p class="timeline-date text-black-56">Oct 2022 - April 2023</p>
                                         <div class="timeline-dot"></div>
                                         <div class="timeline-content">
-                                            <a href="https://www.c2stechs.com">
+                                            <a href="https://www.c2stechs.com" aria-label="Visit C2S Technologies website">
                                                 <div class="icon">
                                                     <img width="120"
-                                                        height="32" src="images/c2s.webp" alt="Image">
+                                                        height="32" src="images/c2s.webp" alt="C2S Technologies logo">
                                                 </div>
                                             </a>
                                             <p class="timeline-role fw-medium text-black-72">Software Engineer Intern
@@ -834,7 +849,7 @@
                                             <div class="icon">
                                                 <img
                                                     loading="lazy" width="120" height="32" src="images/lpu.png"
-                                                    alt="Image">
+                                                    alt="Lovely Professional University logo">
                                             </div>
                                             <p class="timeline-role fw-medium text-black-72">Bachelor of Technology (B.Tech) in Computer Science and Engineering (CSE) Honours</p>
                                             <p class="timeline-desc text-body-3 text-black-56">
@@ -858,19 +873,19 @@
                                         <div class="wg-work">
                                             <div class="work-image">
                                                 <img loading="lazy" width="700" height="427" src="images/work-1.jpg"
-                                                    alt="Image">
+                                                    alt="WSP Global project screenshot">
                                             </div>
                                             <div class="wrap">
                                                 <div class="work-content">
                                                     <div class="w-image">
                                                         <img loading="lazy" width="468" height="856"
-                                                            src="images/work-1.jpg" alt="Image">
+                                                            src="images/work-1.jpg" alt="WSP Global project screenshot">
                                                     </div>
                                                     <div class="content">
                                                         <div class="content-top">
                                                             <div class="w-logo">
                                                                 <img loading="lazy" width="40" height="40"
-                                                                    src="images/logo-2.svg" alt="Image">
+                                                                    src="images/logo-2.svg" alt="WSP Global logo">
                                                             </div>
                                                             <h4 class="w-title letter-space--2 text-white-72">
                                                                 WSP Global
@@ -917,7 +932,7 @@
                                                         <div class="content-bottom">
                                                             <div class="br-line"></div>
                                                             <div class="group-action">
-                                                                <a href="project-detail.html" class="tf-btn-action style-white">
+                                                                <a href="project-detail.html" class="tf-btn-action style-white" aria-label="View WSP Global Project Details">
                                                                     <span class="ic-wrap">
                                                                         <i class="icon icon-arrow-right-top"></i>
                                                                     </span>
@@ -1031,19 +1046,19 @@
                                         <div class="wg-work">
                                             <div class="work-image">
                                                 <img loading="lazy" width="700" height="427" src="images/work-1.jpg"
-                                                    alt="Image">
+                                                    alt="Intel Chat Bots project screenshot">
                                             </div>
                                             <div class="wrap">
                                                 <div class="work-content">
                                                     <div class="w-image">
                                                         <img loading="lazy" width="468" height="856"
-                                                            src="images/work-1.jpg" alt="Image">
+                                                            src="images/work-1.jpg" alt="Intel Chat Bots project screenshot">
                                                     </div>
                                                     <div class="content">
                                                         <div class="content-top">
                                                             <div class="w-logo">
                                                                 <img loading="lazy" width="40" height="40"
-                                                                    src="images/logo-2.svg" alt="Image">
+                                                                    src="images/logo-2.svg" alt="Intel logo">
                                                             </div>
                                                             <h4 class="w-title letter-space--2 text-white-72">
                                                                 Intel Chat Bots
@@ -1090,7 +1105,7 @@
                                                         <div class="content-bottom">
                                                             <div class="br-line"></div>
                                                             <div class="group-action">
-                                                                <a href="project-detail.html" class="tf-btn-action style-white">
+                                                                <a href="project-detail.html" class="tf-btn-action style-white" aria-label="View Intel Chat Bots Project Details">
                                                                     <span class="ic-wrap">
                                                                         <i class="icon icon-arrow-right-top"></i>
                                                                     </span>
@@ -1290,19 +1305,19 @@
                                         <div class="wg-work">
                                             <div class="work-image">
                                                 <img loading="lazy" width="700" height="427" src="images/work-1.jpg"
-                                                    alt="Image">
+                                                    alt="Bajaj Pay App and Websites project screenshot">
                                             </div>
                                             <div class="wrap">
                                                 <div class="work-content">
                                                     <div class="w-image">
                                                         <img loading="lazy" width="468" height="856"
-                                                            src="images/work-1.jpg" alt="Image">
+                                                            src="images/work-1.jpg" alt="Bajaj Pay App and Websites project screenshot">
                                                     </div>
                                                     <div class="content">
                                                         <div class="content-top">
                                                             <div class="w-logo">
                                                                 <img loading="lazy" width="40" height="40"
-                                                                    src="images/logo-2.svg" alt="Image">
+                                                                    src="images/logo-2.svg" alt="Bajaj Pay logo">
                                                             </div>
                                                             <h4 class="w-title letter-space--2 text-white-72">
                                                                 Bajaj Pay App and Websites
@@ -1349,7 +1364,7 @@
                                                         <div class="content-bottom">
                                                             <div class="br-line"></div>
                                                             <div class="group-action">
-                                                                <a href="project-detail.html" class="tf-btn-action style-white">
+                                                                <a href="project-detail.html" class="tf-btn-action style-white" aria-label="View Bajaj Pay App and Websites Project Details">
                                                                     <span class="ic-wrap">
                                                                         <i class="icon icon-arrow-right-top"></i>
                                                                     </span>
@@ -1374,7 +1389,7 @@
                                 </div>
                                 
                                 <div class="group-action text-end mt-4 d-flex justify-content-end" style="margin-top:20px; text-decoration: underline">
-                                    <a href="project-detail.html" class="view-all-projects text-body-3 fw-medium letter-space--05">
+                                    <a href="project-detail.html" class="view-all-projects text-body-3 fw-medium letter-space--05" aria-label="View All Projects">
                                         View All Projects <i class="icon icon-arrow-right-top"></i>
                                     </a>
                                 </div>
@@ -1391,7 +1406,7 @@
                                     <div class="service-accordion_item scrolling-effect effectBottom"
                                         role="presentation">
                                         <div class="accordion-action" data-bs-target="#service-1" role="button"
-                                            data-bs-toggle="collapse" aria-controls="service-1" aria-expanded="true">
+                                            data-bs-toggle="collapse" aria-controls="service-1" aria-expanded="true" aria-label="Toggle Web Design services details">
                                             <h4 class="text letter-space--2 text-black-72">Web Design</h4>
                                             <div class="ic-wrap">
                                                 <span class="ic-accordion-custom"></span>
@@ -1403,27 +1418,27 @@
                                                     <div class="service-image">
                                                         <div class="wrap_image">
                                                             <img width="340" height="206" src="images/service-1.jpg"
-                                                                alt="Image">
+                                                                alt="Web Design service example 1">
                                                         </div>
                                                     </div>
                                                     <div class="service-image">
                                                         <div class="wrap_image">
                                                             <img width="340" height="206" src="images/service-2.jpg"
-                                                                alt="Image">
+                                                                alt="Web Design service example 2">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="service-tag">
                                                     <a href="project-detail.html"
-                                                        class="tag-item text-body-3 fw-medium text-black-72 link">
+                                                        class="tag-item text-body-3 fw-medium text-black-72 link" aria-label="View projects related to Visual Design">
                                                         Visual Design
                                                     </a>
                                                     <a href="project-detail.html"
-                                                        class="tag-item text-body-3 fw-medium text-black-72 link">
+                                                        class="tag-item text-body-3 fw-medium text-black-72 link" aria-label="View projects related to Interaction Design">
                                                         Interaction Design
                                                     </a>
                                                     <a href="project-detail.html"
-                                                        class="tag-item text-body-3 fw-medium text-black-72 link">
+                                                        class="tag-item text-body-3 fw-medium text-black-72 link" aria-label="View projects related to Responsive Layouts">
                                                         Responsive Layouts
                                                     </a>
                                                 </div>
@@ -1440,7 +1455,7 @@
                                         role="presentation">
                                         <div class="accordion-action collapsed" data-bs-target="#service-2"
                                             role="button" data-bs-toggle="collapse" aria-controls="service-2"
-                                            aria-expanded="true">
+                                            aria-expanded="true" aria-label="Toggle No-Code Development services details">
                                             <h4 class="text letter-space--2 text-black-72">No-Code Development</h4>
                                             <div class="ic-wrap">
                                                 <span class="ic-accordion-custom"></span>
@@ -1452,27 +1467,27 @@
                                                     <div class="service-image">
                                                         <div class="wrap_image">
                                                             <img width="340" height="206" src="images/service-3.jpg"
-                                                                alt="Image">
+                                                                alt="No-Code Development service example 1">
                                                         </div>
                                                     </div>
                                                     <div class="service-image">
                                                         <div class="wrap_image">
                                                             <img width="340" height="206" src="images/service-4.jpg"
-                                                                alt="Image">
+                                                                alt="No-Code Development service example 2">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="service-tag">
                                                     <a href="project-detail.html"
-                                                        class="tag-item text-body-3 fw-medium text-black-72 link">
+                                                        class="tag-item text-body-3 fw-medium text-black-72 link" aria-label="View projects related to Framer Builds">
                                                         Framer Builds
                                                     </a>
                                                     <a href="project-detail.html"
-                                                        class="tag-item text-body-3 fw-medium text-black-72 link">
+                                                        class="tag-item text-body-3 fw-medium text-black-72 link" aria-label="View projects related to Webflow Sites">
                                                         Webflow Sites
                                                     </a>
                                                     <a href="project-detail.html"
-                                                        class="tag-item text-body-3 fw-medium text-black-72 link">
+                                                        class="tag-item text-body-3 fw-medium text-black-72 link" aria-label="View projects related to Scalable Launches">
                                                         Scalable Launches
                                                     </a>
                                                 </div>
@@ -1489,7 +1504,7 @@
                                         role="presentation">
                                         <div class="accordion-action collapsed" data-bs-target="#service-3"
                                             role="button" data-bs-toggle="collapse" aria-controls="service-3"
-                                            aria-expanded="true">
+                                            aria-expanded="true" aria-label="Toggle Brand Identity services details">
                                             <h4 class="text letter-space--2 text-black-72">Brand Identity</h4>
                                             <div class="ic-wrap">
                                                 <span class="ic-accordion-custom"></span>
@@ -1501,27 +1516,27 @@
                                                     <div class="service-image">
                                                         <div class="wrap_image">
                                                             <img width="340" height="206" src="images/service-5.jpg"
-                                                                alt="Image">
+                                                                alt="Brand Identity service example 1">
                                                         </div>
                                                     </div>
                                                     <div class="service-image">
                                                         <div class="wrap_image">
                                                             <img width="340" height="206" src="images/service-6.jpg"
-                                                                alt="Image">
+                                                                alt="Brand Identity service example 2">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="service-tag">
                                                     <a href="project-detail.html"
-                                                        class="tag-item text-body-3 fw-medium text-black-72 link">
+                                                        class="tag-item text-body-3 fw-medium text-black-72 link" aria-label="View projects related to Logo Design">
                                                         Logo Design
                                                     </a>
                                                     <a href="project-detail.html"
-                                                        class="tag-item text-body-3 fw-medium text-black-72 link">
+                                                        class="tag-item text-body-3 fw-medium text-black-72 link" aria-label="View projects related to Visual Systems">
                                                         Visual Systems
                                                     </a>
                                                     <a href="project-detail.html"
-                                                        class="tag-item text-body-3 fw-medium text-black-72 link">
+                                                        class="tag-item text-body-3 fw-medium text-black-72 link" aria-label="View projects related to Brand Guidelines">
                                                         Brand Guidelines
                                                     </a>
                                                 </div>
@@ -1552,7 +1567,7 @@
                                         <div class="tech-infor effectFade fadeUp no-div">
                                             <div class="tech_image">
                                                 <img loading="lazy" width="19" height="28" src="images/tech-1.svg"
-                                                    alt="Image">
+                                                    alt="Figma logo">
                                             </div>
                                             <div class="tech_info">
                                                 <p class="info__name fw-medium text-black-72">Figma</p>
@@ -1575,7 +1590,7 @@
                                         <div class="tech-infor effectFade fadeUp no-div">
                                             <div class="tech_image">
                                                 <img width="18"
-                                                    height="28" src="images/tech-2.svg" alt="Image">
+                                                    height="28" src="images/tech-2.svg" alt="CSS logo">
                                             </div>
                                             <div class="tech_info">
                                                 <p class="info__name fw-medium text-black-72">CSS</p>
@@ -1599,7 +1614,7 @@
                                         <div class="tech-infor effectFade fadeUp no-div">
                                             <div class="tech_image">
                                                 <img loading="lazy" width="29" height="28" src="images/tech-3.svg"
-                                                    alt="Image">
+                                                    alt="Javascript logo">
                                             </div>
                                             <div class="tech_info">
                                                 <p class="info__name fw-medium text-black-72">Javascript</p>
@@ -1620,7 +1635,7 @@
                                     </li>
                                 </ul>
                                 <div style="display: flex; justify-content: center; margin-top: 32px;" class="effectFade fadeUp no-div">
-                                    <a href="tech-stack.html" class="tf-btn-action" style="padding: 12px 24px; border-radius: 99px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); font-size: 13px; font-weight: 600; text-decoration: none; color: #333; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;" onmouseover="this.style.background='#FF7518'; this.style.color='#fff';" onmouseout="this.style.background='rgba(0,0,0,0.04)'; this.style.color='#333';">
+                                    <a href="tech-stack.html" class="tf-btn-action" style="padding: 12px 24px; border-radius: 99px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); font-size: 13px; font-weight: 600; text-decoration: none; color: #333; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s;" onmouseover="this.style.background='#FF7518'; this.style.color='#fff';" onmouseout="this.style.background='rgba(0,0,0,0.04)'; this.style.color='#333';" aria-label="View Full Tech Stack">
                                         View Full Tech Stack
                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                                     </a>
@@ -1668,7 +1683,7 @@
                                                 <div class="head-image">
                                                     <div class="wrap-image">
                                                         <img loading="lazy" width="236" height="297"
-                                                            src="images/tes-1.jpg" alt="Image">
+                                                            src="images/tes-1.jpg" alt="Testimonial image 1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1677,7 +1692,7 @@
                                                 <div class="head-image">
                                                     <div class="wrap-image">
                                                         <img loading="lazy" width="236" height="297"
-                                                            src="images/tes-2.jpg" alt="Image">
+                                                            src="images/tes-2.jpg" alt="Testimonial image 2">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1686,7 +1701,7 @@
                                                 <div class="head-image">
                                                     <div class="wrap-image">
                                                         <img loading="lazy" width="236" height="297"
-                                                            src="images/tes-3.jpg" alt="Image">
+                                                            src="images/tes-3.jpg" alt="Testimonial image 3">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1757,10 +1772,10 @@
                                     </div>
                                     <div class="number-pagination"></div>
                                     <div class="group-btn">
-                                        <div class="sw-nav sw-nav-prev link">
+                                        <div class="sw-nav sw-nav-prev link" aria-label="Previous testimonial">
                                             <i class="icon icon-arrow-caret-left"></i>
                                         </div>
-                                        <div class="sw-nav sw-nav-next link">
+                                        <div class="sw-nav sw-nav-next link" aria-label="Next testimonial">
                                             <i class="icon icon-arrow-caret-right"></i>
                                         </div>
                                     </div>
@@ -1828,12 +1843,12 @@
                                     <div href="project-detail.html" class="f-logo effectFade fadeZoom">
                                         <div class="logo">
                                             <img loading="lazy" width="32"
-                                                height="32" src="images/logo.svg" alt="Image">
+                                                height="32" src="images/logo.svg" alt="Footer Logo">
                                         </div>
                                     </div>
                                     <div class="foot-bottom">
                                     <p class="text-nocopy text-black-56 effectFade fadeUp no-div">
-                                        All rights reserved © 2025 Harsha Royal
+                                        All rights reserved © 2025 Designed and Developed by <a href="https://harsharoyal.in">Harsha Royal</a>
                                     </p>
                                 </div>
 
@@ -1881,7 +1896,7 @@
         <div class="dev-heatmap-overlay" id="heatmapCursor"></div>
         
         <div class="split-popup-container" id="splitMain">
-            <button class="close-split-popup" onclick="closeDevPopup()" title="Close Details">&times;</button>
+            <button class="close-split-popup" onclick="closeDevPopup()" title="Close Details" aria-label="Close development details popup">&times;</button>
             
             <div class="split-main-area">
                 <!-- Left Side: Design -->
@@ -1944,10 +1959,10 @@
                 <h2 class="split-headline">From low-fi sketches to production-ready components.</h2>
                 <p class="split-subheadline">Designing delightful flows • Engineering seamless execution</p>
                 <div class="split-actions">
-                    <button class="dev-btn dev-btn-primary" onclick="closeDevPopup()">
+                    <button class="dev-btn dev-btn-primary" onclick="closeDevPopup()" aria-label="Validate Journey">
                         <i class="icon icon-send"></i> Validate Journey
                     </button>
-                    <button class="dev-btn dev-btn-secondary" onclick="closeDevPopup(); window.location.href='#contact'">
+                    <button class="dev-btn dev-btn-secondary" onclick="closeDevPopup(); window.location.href='#contact'" aria-label="Bridge the Gap by contacting me">
                          Bridge the Gap
                     </button>
                 </div>
@@ -1958,26 +1973,26 @@
     <!-- Certificate Popup (Split-View Design) -->
     <div class="dev-popup-overlay" id="certificatePopup">
         <div class="cert-popup-container">
-            <button class="close-split-popup" onclick="closeCertPopup()" title="Close Details">&times;</button>
+            <button class="close-split-popup" onclick="closeCertPopup()" title="Close Details" aria-label="Close certificate popup">&times;</button>
             
             <div class="swiper certSwiper" style="height: 100%;">
                 <div class="swiper-wrapper">
                     <!-- Slide 1 -->
                     <div class="swiper-slide">
                         <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
-                            <img src="images/AT4K2YY0SDCR.jpg" alt="Google UX Design" style="max-height: 90%; max-width: 90%;">
+                            <img src="images/AT4K2YY0SDCR.jpg" alt="Google UX Design Certificate" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                     <!-- Slide 2 -->
                     <div class="swiper-slide">
                         <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
-                            <img src="images/LIOWEOIGC8HK.jpg" alt="Foundations of UX" style="max-height: 90%; max-width: 90%;">
+                            <img src="images/LIOWEOIGC8HK.jpg" alt="Foundations of UX Certificate" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                 </div>
                 <!-- Navigation -->
-                <div class="swiper-button-next cert-nav next"><i class="icon icon-arrow-right-top"></i></div>
-                <div class="swiper-button-prev cert-nav prev" style="transform: rotate(180deg);"><i class="icon icon-arrow-right-top"></i></div>
+                <div class="swiper-button-next cert-nav next" aria-label="Next certificate"><i class="icon icon-arrow-right-top"></i></div>
+                <div class="swiper-button-prev cert-nav prev" style="transform: rotate(180deg);" aria-label="Previous certificate"><i class="icon icon-arrow-right-top"></i></div>
                 <div class="swiper-pagination cert-pagination" style="bottom: 20px;"></div>
             </div>
         </div>
@@ -1986,12 +2001,12 @@
     <!-- Success Popup -->
     <div class="dev-popup-overlay" id="successPopup">
         <div class="dev-popup-content">
-            <button class="close-split-popup" onclick="closeSuccessPopup()" title="Close">&times;</button>
+            <button class="close-split-popup" onclick="closeSuccessPopup()" title="Close" aria-label="Close success message popup">&times;</button>
 
             <div class="dev-popup-video-wrap">
-                <video autoplay muted loop playsinline>
-                    <source src="media/overlay-2.mp4" type="video/mp4">
-                </video>
+                        <video autoplay loop muted playsinline class="video">
+                            <source src="media/overlay-2.mp4" type="video/mp4">
+                        </video>
                 <div class="overlay"></div>
             </div>
             

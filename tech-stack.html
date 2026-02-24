@@ -2,70 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Tech Stack & Tools — Skills & Proficiency | Harsha Royal</title>
+    <title>Tech Stack — Harsha Royal | UI Developer & Product Designer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="Discover Harsha Royal's professional tech stack — Figma, CSS, JavaScript, Webflow, WordPress, Bootstrap, HTML5, and more. Detailed proficiency breakdown of design and development tools.">
+    <meta name="description" content="Explore Harsha Royal's specialized tech stack — including Figma, React, Angular, Javascript, and SEO tools. A blend of design and development for modern web solutions.">
     <meta name="author" content="Harsha Royal">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta name="keywords" content="Tech Stack, UI Developer Skills, Design Tools, Figma Expert, CSS JavaScript HTML, Webflow Developer, Product Designer Tools, Harsha Royal Skills">
     <link rel="shortcut icon" href="images/favicon.svg">
-    <link rel="canonical" href="https://harsharoyal.in/tech-stack.html">
-    <meta name="theme-color" content="#FF7518">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://harsharoyal.in/tech-stack.html">
-    <meta property="og:title" content="Tech Stack & Tools — Harsha Royal">
-    <meta property="og:description" content="Detailed proficiency breakdown of design and development tools used by Harsha Royal.">
-    <meta property="og:image" content="https://harsharoyal.in/images/profile.png">
-    <meta property="og:site_name" content="Harsha Royal Portfolio">
-    <meta property="og:locale" content="en_US">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tech Stack & Tools — Harsha Royal">
-    <meta name="twitter:description" content="Detailed proficiency breakdown of design and development tools.">
-    <meta name="twitter:image" content="https://harsharoyal.in/images/profile.png">
-    <meta name="twitter:creator" content="@palettescoder">
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Tech Stack & Tools — Harsha Royal",
-      "description": "Professional tech stack and design tools proficiency overview.",
-      "url": "https://harsharoyal.in/tech-stack.html",
-      "author": {
-        "@type": "Person",
-        "@id": "https://harsharoyal.in/#person",
-        "name": "Harsha Royal"
-      },
-      "about": {
-        "@type": "ItemList",
-        "name": "Professional Skills",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Figma — 80%" },
-          { "@type": "ListItem", "position": 2, "name": "CSS — 90%" },
-          { "@type": "ListItem", "position": 3, "name": "JavaScript — 60%" },
-          { "@type": "ListItem", "position": 4, "name": "Webflow — 85%" },
-          { "@type": "ListItem", "position": 5, "name": "UX/UI Design — 95%" },
-          { "@type": "ListItem", "position": 6, "name": "WordPress — 75%" },
-          { "@type": "ListItem", "position": 7, "name": "Framer — 70%" },
-          { "@type": "ListItem", "position": 8, "name": "HTML5 — 95%" },
-          { "@type": "ListItem", "position": 9, "name": "Bootstrap — 85%" },
-          { "@type": "ListItem", "position": 10, "name": "Analytics & SEO — 75%" }
-        ]
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://harsharoyal.in/" },
-          { "@type": "ListItem", "position": 2, "name": "Tech Stack", "item": "https://harsharoyal.in/tech-stack.html" }
-        ]
-      }
-    }
-    </script>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/inter.css">
     <link rel="stylesheet" href="css/style.css">
@@ -203,11 +144,6 @@
             color: rgba(0,0,0,0.8);
         }
         .layer-item:hover { background: rgba(0,0,0,0.04); }
-        .layer-item.removed {
-            opacity: 0.3;
-            text-decoration: line-through;
-            transform: translateX(-4px);
-        }
         .layer-icon {
             opacity: 0.6;
             display: flex;
@@ -247,6 +183,7 @@
             color: rgba(0,0,0,0.5);
             text-align: right;
             padding-right: 4px;
+            font-size: 10px;
         }
         .prop-value {
             flex: 1;
@@ -260,6 +197,7 @@
             font-family: inherit;
             color: #333;
             transition: border-color 0.2s;
+            font-size: 11px;
         }
         .prop-value:hover { border-color: rgba(0,0,0,0.15); }
         .figma-canvas {
@@ -267,7 +205,7 @@
             position: relative;
             background: #e5e5e5;
             overflow: hidden;
-            display: block; /* Removed flex center since we translate an inner canvas */
+            display: block;
             cursor: grab;
         }
         .figma-canvas:active {
@@ -309,89 +247,14 @@
         }
 
         /* ===== MAIN STAGE ===== */
-        .stage {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-        }
-
-        .stage-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-            max-width: 700px;
-            width: 100%;
-            padding: 20px;
-        }
-
-        /* ===== AVATAR SECTION ===== */
-        .avatar-zone {
-            position: relative;
-            width: 100%;
-            height: 420px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* The buried avatar/character */
-        .buried-avatar {
-            position: absolute;
-            z-index: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
-            opacity: 0.15;
-        }
-
-        .buried-avatar.revealed {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        .avatar-img {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-            animation: avatar-float 3s ease-in-out infinite;
-            filter: drop-shadow(0 8px 24px rgba(255,117,24,0.3));
-        }
-
-        @keyframes avatar-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .avatar-help-text {
-            font-size: 11px;
-            color: rgba(0,0,0,0.5);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* ===== FIGMA FRAME LAYERS ===== */
         .figma-layer {
             position: absolute;
-            width: 480px;
             background: #ffffff;
-            box-shadow: 0 2px 14px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
-            user-select: none;
-            cursor: default;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            z-index: 2;
+            overflow: hidden;
         }
-
-        /* Position layers across the panoramic canvas */
-        .layer-1 { top: -200px; left: -260px; } /* 404 block */
-        .layer-2 { top: -40px; left: 320px; width: 340px; } /* Auto Layout */
-        .layer-3 { top: 200px; left: -360px; width: 440px; } /* Missing Deps */
-        .layer-4 { top: -280px; left: 280px; width: 260px; } /* Detached */
-        .layer-5 { top: 340px; left: 80px; width: 500px; } /* The Safe point */
 
         .layer-title {
             position: absolute;
@@ -405,298 +268,30 @@
             gap: 6px;
             white-space: nowrap;
         }
-
-        .layer-title span { opacity: 0.6; font-size: 10px; font-weight: 400; }
-
-        /* ===== FRAME BODY CONTENT ===== */
-        .layer-body {
-            padding: 24px;
-            pointer-events: none;
-        }
-
-        .mock-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
-        .mock-bar { height: 8px; border-radius: 4px; background: rgba(0,0,0,0.05); }
-        .mock-bar.w30 { width: 30%; } .mock-bar.w40 { width: 40%; } .mock-bar.w50 { width: 50%; }
-        .mock-bar.w60 { width: 60%; } .mock-bar.w70 { width: 70%; } .mock-bar.w80 { width: 80%; }
-        .mock-bar.w90 { width: 90%; } .mock-bar.thick { height: 12px; }
-        .mock-bar.accent { background: rgba(255,117,24,0.15); }
-        .mock-bar.purple { background: rgba(162,89,255,0.12); }
-        .mock-bar.blue { background: rgba(91,127,255,0.12); }
-        .mock-bar.green { background: rgba(10,207,131,0.12); }
-
-        .mock-cards { display: flex; gap: 8px; }
-        .mock-card {
-            flex: 1;
-            height: 44px;
-            border-radius: 8px;
-            border: 1px dashed rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            background: rgba(0,0,0,0.02);
-        }
-
-        .mock-al-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 6px;
-        }
-
-        .mock-al-cell {
-            padding: 6px;
-            border-radius: 4px;
-            border: 1px solid;
-            font-size: 8px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-align: center;
-            text-transform: uppercase;
-        }
-
-        .layer-comment {
-            margin-top: 8px;
-            font-size: 10px;
-            color: rgba(0,0,0,0.4);
-            font-style: italic;
-            text-align: center;
-        }
-
-        /* ===== REVEALED CONTENT ===== */
-        .reveal-content {
-            width: 100%;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .reveal-code {
-            font-family: "Apfel Grotezk", sans-serif;
-            font-size: clamp(64px, 12vw, 100px);
-            font-weight: 500;
-            line-height: 1;
-            letter-spacing: -0.04em;
-            background: linear-gradient(135deg, #FF7518 0%, #FFB347 50%, #A259FF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 16px;
-        }
-
-        .reveal-title {
-            font-family: "Apfel Grotezk", sans-serif;
-            font-size: clamp(18px, 3vw, 26px);
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            color: #333;
-            margin-bottom: 12px;
-        }
-
-        .reveal-desc {
-            font-size: 14px;
-            line-height: 22px;
-            color: rgba(0,0,0,0.5);
-            max-width: 440px;
-            margin: 0 auto 28px;
-        }
-
-        .reveal-actions {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* Search Bar */
-        .search-bar-container {
-            display: flex;
-            align-items: center;
-            background: rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 999px;
-            padding: 4px 4px 4px 20px;
-            min-width: 280px;
-            height: 48px;
-            transition: all 0.3s;
-        }
         
-        .search-bar-container:focus-within {
-            border-color: #FF7518;
-            box-shadow: 0 0 0 2px rgba(255,117,24,0.15);
-            background: rgba(0,0,0,0.06);
-        }
-
-        .search-input {
-            background: transparent;
-            border: none;
-            color: #333;
-            outline: none;
-            flex: 1;
-            font-size: 14px;
-            font-family: inherit;
-        }
-
-        .search-input::placeholder {
-            color: rgba(0,0,0,0.4);
-        }
-
-        .search-btn {
-            background: rgba(0,0,0,0.08);
-            border: none;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-left: 8px;
-        }
-
-        .search-btn:hover {
-            background: #FF7518;
-            color: #fff;
-        }
-
-        .search-btn svg { width: 14px; height: 14px; }
-
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            height: 48px;
-            padding: 0 28px;
-            border-radius: 999px;
-            background: #FF7518;
-            color: #fff;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 0 4px 20px rgba(255,117,24,0.3);
-            letter-spacing: -0.01em;
-        }
-
-        .btn-back:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(255,117,24,0.45);
-            background: #ff8a3d;
-        }
-
-        .btn-back svg { width: 16px; height: 16px; }
-
-        .redirect-note {
-            margin-top: 28px;
-            font-size: 11px;
-            color: rgba(0,0,0,0.4);
-        }
-
-        .redirect-note a { color: #FF7518; text-decoration: none; }
-
-        /* ===== HUD ===== */
         .hud-progress {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            padding: 8px 16px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid rgba(0,0,0,0.1);
-            backdrop-filter: blur(12px);
-            font-size: 12px;
-            font-weight: 500;
-            color: rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            pointer-events: none;
-        }
-
-        .hud-progress .hud-count {
-            color: #FF7518;
-            font-weight: 700;
-            font-size: 13px;
-        }
-
-        /* Microcopy header */
-        .micro-header {
-            display: none; /* hidden since HUD implies panning */
-        }
-
-        .micro-header strong { color: #FF7518; font-weight: 600; }
-
-        .micro-header.hidden { opacity: 0; }
-
-        /* Hint bar */
-        .hint-bar {
-            position: absolute;
-            bottom: 28px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 100;
-            padding: 10px 22px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.9);
+            background: #ffffff;
             border: 1px solid rgba(0,0,0,0.1);
-            backdrop-filter: blur(12px);
-            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: 99px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            z-index: 100;
+            font-size: 11px;
             font-weight: 500;
             color: rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
             gap: 8px;
-            animation: hintPulse 2.5s ease-in-out infinite;
-            transition: all 0.4s;
             pointer-events: none;
         }
 
-        .hint-bar strong { color: #FF7518; }
-        .hint-bar.hidden { opacity: 0; }
+        .grabbing { cursor: grabbing !important; }
+        .hand-tool { cursor: grab !important; }
 
-        .wiggle-icon {
-            font-size: 16px;
-            animation: wiggle 1.2s ease-in-out infinite;
-        }
-
-        @keyframes hintPulse {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-5px); }
-        }
-
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0); }
-            20% { transform: rotate(-14deg); }
-            40% { transform: rotate(14deg); }
-            60% { transform: rotate(-8deg); }
-            80% { transform: rotate(8deg); }
-        }
-
-        /* ===== CONFETTI ===== */
-        .confetti-layer { position: absolute; inset: 0; pointer-events: none; z-index: 9999; }
-        .conf {
-            position: absolute;
-            top: -12px;
-            animation: confDrop linear forwards;
-        }
-        @keyframes confDrop {
-            0% { transform: translateY(0) rotate(0); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(600deg); opacity: 0; }
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 560px) {
-            .figma-layer { width: 320px; }
-            .avatar-zone { height: 350px; }
-            .micro-header { font-size: 10px; padding: 6px 14px; }
-            .reveal-actions { flex-direction: column; align-items: center; }
-        }
     </style>
 </head>
 <body>
@@ -704,7 +299,6 @@
         <!-- TOP TOOLBAR -->
         <div class="figma-toolbar">
             <div class="toolbar-group">
-                <!-- Figma Logo Icon -->
                 <div style="width:14px; height:21px; display:flex; flex-wrap:wrap; gap:0; cursor:pointer;" class="toolbar-icon">
                     <div style="width:7px;height:7px; background:#F24E1E; border-radius: 3.5px 0 0 3.5px"></div>
                     <div style="width:7px;height:7px; background:#FF7262; border-radius: 0 3.5px 3.5px 0"></div>
@@ -713,8 +307,8 @@
                     <div style="width:7px;height:7px; background:#0ACF83; border-radius: 3.5px 0 3.5px 3.5px"></div>
                 </div>
                 <!-- Icons -->
-                <div class="toolbar-icon active"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2.5 11l8-4.5-5.5-.5L3 1.5v9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-                <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3.5 1v10M8.5 1v10M1 3.5h10M1 8.5h10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="toolbar-icon active" id="tool-cursor" title="Move Tool (V)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2.5 11l8-4.5-5.5-.5L3 1.5v9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+                <div class="toolbar-icon" id="tool-hand" title="Hand Tool (H / Space)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3 5.5V3.5a1.5 1.5 0 1 1 3 0v2m0 0V4.5a1.5 1.5 0 1 1 3 0v1m-6 0v1a1.5 1.5 0 1 0 3 0v-1m3 0v1a1.5 1.5 0 1 0 3 0v-2" stroke="currentColor" stroke-width="1.2"/></svg></div>
                 <div class="toolbar-icon desktop-only"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" stroke-width="1.5" rx="1"/></svg></div>
             </div>
 
@@ -732,7 +326,7 @@
                 <div class="toolbar-avatar">HR</div>
                 <div class="toolbar-icon" style="width: auto; padding: 0 12px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 6px; font-weight: 500; font-size: 11px;">Share</div>
                 <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
-                <div class="toolbar-icon" style="font-size: 11px; font-weight: 500;">100%</div>
+                <div class="toolbar-icon" style="font-size: 11px; font-weight: 500;" id="zoom-level">100%</div>
             </div>
         </div>
 
@@ -752,261 +346,115 @@
             </div>
 
             <!-- CANVAS -->
-            <div class="figma-canvas">
+            <div class="figma-canvas" id="viewport">
                 <!-- ORIGINAL CONTENT -->
                 <div class="dark-canvas"></div>
                 <div class="grid-overlay"></div>
 
-    <!-- Progress HUD -->
-    <div class="hud-progress">
-        🖱️ Tip: <span class="hud-count">Click and drag canvas to pan</span>
-    </div>
+                <div class="hud-progress">
+                    🖱️ Tip: <span class="hud-count">Hold Space to Pan • Scroll to Zoom</span>
+                </div>
 
-    <!-- Panning Canvas -->
-    <div class="pan-canvas" id="panCanvas">
-        <!-- Main Frame -->
-        <div class="figma-layer layer-1" style="top: -160px; left: -210px; width: 420px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); border-radius: 12px; background: #fff; text-align: left; padding: 0;">
-            <div class="layer-title" style="color: #333;"># Tech_Stack_Grid <span>(Tech_Stack_Architecture.fig)</span></div>
-            
-            <div class="reveal-content" style="padding: 16px 20px; text-align: left; font-family: 'Inter', sans-serif;">
-                
-                <!-- ROW 1: Figma -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <img src="./images/tech-1.svg" alt="Figma" style="width: 16px; height: auto;">
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 2px;">
-                            <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Figma</div>
-                            <div style="font-size: 11px; color: rgba(0,0,0,0.5);">Leading design tool</div>
-                        </div>
-                    </div>
-                    <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 80%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">80 %</div>
+                <!-- Panning Canvas -->
+                <div class="pan-canvas" id="panCanvas">
+                    <!-- Main Frame -->
+                    <div class="figma-layer layer-1" style="top: -160px; left: -210px; width: 420px; text-align: left; padding: 0;">
+                        <div class="layer-title" style="color: #333;"># Tech_Stack_Grid <span>(Tech_Stack_Architecture.fig)</span></div>
+                        
+                        <div class="reveal-content" style="padding: 16px 20px; text-align: left; font-family: 'Inter', sans-serif;">
+                            
+                            <!-- ROW 1: Figma -->
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <img src="./images/tech-1.svg" alt="Figma" style="width: 16px; height: auto;">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 2px;">
+                                        <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Figma</div>
+                                        <div style="font-size: 11px; color: rgba(0,0,0,0.5);">Leading design tool</div>
+                                    </div>
+                                </div>
+                                <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
+                                    <div style="height: 100%; width: 80%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
+                                        <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">80 %</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 2: React -->
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #61DAFB;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 2px;">
+                                        <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">React</div>
+                                        <div style="font-size: 11px; color: rgba(0,0,0,0.5);">Frontend library for UI</div>
+                                    </div>
+                                </div>
+                                <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
+                                    <div style="height: 100%; width: 90%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
+                                        <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">90 %</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 3: Angular -->
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #DD0031;">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3.19 5.16l1.34 11.66L12 22l7.47-5.18 1.34-11.66L12 2zM12 4.07l6.23 2.22-1.12 9.7L12 19.55l-5.11-3.56-1.12-9.7L12 4.07zM12 7l-2.5 5.5h5L12 7z"/></svg>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 2px;">
+                                        <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Angular</div>
+                                        <div style="font-size: 11px; color: rgba(0,0,0,0.5);">Enterprise framework</div>
+                                    </div>
+                                </div>
+                                <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
+                                    <div style="height: 100%; width: 75%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
+                                        <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">75 %</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 4: CSS -->
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <img src="./images/tech-2.svg" alt="CSS" style="width: 16px; height: auto;">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 2px;">
+                                        <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">CSS</div>
+                                        <div style="font-size: 11px; color: rgba(0,0,0,0.5);">Styling expertise</div>
+                                    </div>
+                                </div>
+                                <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
+                                    <div style="height: 100%; width: 90%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
+                                        <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">90 %</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 5: Javascript -->
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <img src="./images/tech-3.svg" alt="Javascript" style="width: 18px; height: auto;">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 2px;">
+                                        <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Javascript</div>
+                                        <div style="font-size: 11px; color: rgba(0,0,0,0.5);">Core scripting</div>
+                                    </div>
+                                </div>
+                                <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
+                                    <div style="height: 100%; width: 85%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
+                                        <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">85 %</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- ROW 2: React -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #61DAFB;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 2px;">
-                            <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">React</div>
-                            <div style="font-size: 11px; color: rgba(0,0,0,0.5);">Frontend library for UI</div>
-                        </div>
-                    </div>
-                    <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 90%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">90 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 3: Angular -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #DD0031;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3.19 5.16l1.34 11.66L12 22l7.47-5.18 1.34-11.66L12 2zM12 4.07l6.23 2.22-1.12 9.7L12 19.55l-5.11-3.56-1.12-9.7L12 4.07zM12 7l-2.5 5.5h5L12 7z"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 2px;">
-                            <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Angular</div>
-                            <div style="font-size: 11px; color: rgba(0,0,0,0.5);">Enterprise framework</div>
-                        </div>
-                    </div>
-                    <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 75%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">75 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 2: CSS -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 56px; height: 56px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <img src="./images/tech-2.svg" alt="CSS" style="width: 20px; height: auto;">
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                            <div style="font-size: 16px; font-weight: 500; color: #333; letter-spacing: -0.01em;">CSS</div>
-                            <div style="font-size: 13px; color: rgba(0,0,0,0.5);">No-code website builder</div>
-                        </div>
-                    </div>
-                    <div style="width: 200px; height: 32px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 90%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 99px; letter-spacing: 0.02em;">90 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 3: Javascript -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 56px; height: 56px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <img src="./images/tech-3.svg" alt="Javascript" style="width: 24px; height: auto;">
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                            <div style="font-size: 16px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Javascript</div>
-                            <div style="font-size: 13px; color: rgba(0,0,0,0.5);">Raster graphics editor</div>
-                        </div>
-                    </div>
-                    <div style="width: 200px; height: 32px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 60%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 99px; letter-spacing: 0.02em;">60 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 4: Webflow -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 56px; height: 56px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #4353FF;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 0h-9L0 12l7.5 12h9l7.5-12zM12 18l-3.75-6 3.75-6L15.75 12z"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                            <div style="font-size: 16px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Webflow</div>
-                            <div style="font-size: 13px; color: rgba(0,0,0,0.5);">Advanced visual development</div>
-                        </div>
-                    </div>
-                    <div style="width: 200px; height: 32px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 85%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 99px; letter-spacing: 0.02em;">85 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 7: UX/UI Design -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #FF7518;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 0-4-4 2 2 0 0 1-2-2 4 4 0 0 0-4-4z"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                            <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">UX/UI Design</div>
-                            <div style="font-size: 11px; color: rgba(0,0,0,0.5);">Core design principles</div>
-                        </div>
-                    </div>
-                    <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 95%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">95 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 8: UX Research -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #FF7518;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 2px;">
-                            <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">UX Research</div>
-                            <div style="font-size: 11px; color: rgba(0,0,0,0.5);">User behavior analysis</div>
-                        </div>
-                    </div>
-                    <div style="width: 120px; height: 28px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 85%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.02em;">85 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 6: WordPress -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 56px; height: 56px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #21759B;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365a11.95 11.95 0 0 0 4.192-.747l-4.034-7.458zm-7.618-1.545c0 .548.194 1.13.548 1.13.387 0 .548-.838.548-1.16 0-.484-.216-1.13-.548-1.13-.387 0-.548.742-.548 1.16zm11.2 5.064l1.693-5.226c-1.32.064-2.29.193-2.29.193l-1.613.193.1 5.033 2.11-.193zm-.484-9.355c.677 0 1.29.21 1.742.548.56.403.935 1.097.935 1.871 0 .742-.37 1.403-.935 1.839a2.53 2.53 0 0 1-1.742.58 2.53 2.53 0 0 1-1.742-.58c-.565-.436-.935-1.097-.935-1.839 0-.774.37-1.468.935-1.871a2.53 2.53 0 0 1 1.742-.548zM12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zm0 1.053c-6.046 0-10.947 4.9-10.947 10.947 0 .91.112 1.796.326 2.642l4.895-13.43c.12-.34.22-.582.22-.582a10.94 10.94 0 0 0-4.44.423z"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                            <div style="font-size: 16px; font-weight: 500; color: #333; letter-spacing: -0.01em;">WordPress</div>
-                            <div style="font-size: 13px; color: rgba(0,0,0,0.5);">Content Management System</div>
-                        </div>
-                    </div>
-                    <div style="width: 200px; height: 32px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 75%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 999px; letter-spacing: 0.02em;">75 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 7: Framer -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 56px; height: 56px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #00AFFF;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 12h12v12l12-12H12V0z"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                            <div style="font-size: 16px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Framer</div>
-                            <div style="font-size: 13px; color: rgba(0,0,0,0.5);">Interactive high-fidelity prototypes</div>
-                        </div>
-                    </div>
-                    <div style="width: 200px; height: 32px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 70%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 999px; letter-spacing: 0.02em;">70 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 8: HTML -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 56px; height: 56px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #E34F26;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                            <div style="font-size: 16px; font-weight: 500; color: #333; letter-spacing: -0.01em;">HTML5</div>
-                            <div style="font-size: 13px; color: rgba(0,0,0,0.5);">Semantic structure & modern web standards</div>
-                        </div>
-                    </div>
-                    <div style="width: 200px; height: 32px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 95%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 999px; letter-spacing: 0.02em;">95 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 9: Bootstrap -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 56px; height: 56px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #7952B3;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3.877 15.65c0 1.944-1.638 2.067-2.618 2.067H8.25V6.283h3.84c.98 0 2.214.123 2.214 1.844 0 1.258-.858 1.638-1.42 1.76v.05c.783.123 1.993.588 1.993 2.156v3.557zm-2.067-6.023c0-.612-.49-.783-1.053-.783H9.938v1.613h1.053c.563 0 1.053-.221 1.053-.83zM10.99 15.7h1.053c.563 0 1.15-.172 1.15-.907s-.587-.907-1.15-.907H9.938v1.814h1.052z"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                            <div style="font-size: 16px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Bootstrap</div>
-                            <div style="font-size: 13px; color: rgba(0,0,0,0.5);">Responsive frontend framework</div>
-                        </div>
-                    </div>
-                    <div style="width: 200px; height: 32px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 85%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 999px; letter-spacing: 0.02em;">85 %</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 10: Analytics -->
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0;">
-                    <div style="display: flex; align-items: center; gap: 20px;">
-                        <div style="width: 56px; height: 56px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #F9AB00;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 4px;">
-                            <div style="font-size: 16px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Analytics & SEO</div>
-                            <div style="font-size: 13px; color: rgba(0,0,0,0.5);">Data-driven design & optimization</div>
-                        </div>
-                    </div>
-                    <div style="width: 200px; height: 32px; border-radius: 999px; background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); padding: 4px; display: flex; align-items: center;">
-                        <div style="height: 100%; width: 75%; background: #fff; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: flex-end; padding-right: 4px;">
-                            <div style="background: #6D6D6D; color: #fff; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 999px; letter-spacing: 0.02em;">75 %</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
             </div>
             <!-- RIGHT SIDEBAR -->
             <div class="figma-sidebar figma-sidebar-right">
@@ -1026,40 +474,24 @@
                             <div class="prop-label">W</div>
                             <div class="prop-value">420</div>
                             <div class="prop-label">H</div>
-                            <div class="prop-value">840</div>
+                            <div class="prop-value">AUTO</div>
                         </div>
                     </div>
                     <div class="prop-section">
-                        <div class="prop-header" style="color: #333;">
-                            <span>Auto layout</span>
-                            <span>+</span>
-                        </div>
-                        <div style="color: rgba(0,0,0,0.5); line-height: 1.5; font-size: 11px;">
-                            Direction: Vertical <br> Gap: 24px <br> Padding: 40px
-                        </div>
-                    </div>
-                    <div class="prop-section">
-                        <div class="prop-header">
-                            <span>Fill</span>
-                            <span>+</span>
-                        </div>
+                        <div class="prop-header">Export</div>
                         <div class="prop-row">
-                            <div style="width: 14px; height: 14px; background: #e5e5e5; border-radius: 2px; border: 1px solid rgba(0,0,0,0.1); margin-right: 8px; flex-shrink: 0;"></div>
-                            <div class="prop-value" style="flex: 1; border: none; padding: 0;">E5E5E5</div>
-                            <div style="color: rgba(0,0,0,0.4)">100%</div>
+                            <div class="prop-label" style="width: auto; padding-right: 12px;">File</div>
+                            <select class="prop-value" style="font-size: 11px; cursor: pointer; border: none; background: rgba(0,0,0,0.05); width: 100%;">
+                                <option>PNG (Original)</option>
+                                <option>JPG (Preview)</option>
+                                <option>SVG (Vector)</option>
+                                <option>SVG (Animated)</option>
+                            </select>
                         </div>
-                    </div>
-                    <div class="prop-section">
-                        <div class="prop-header">
-                            <span>Effects</span>
-                            <span>+</span>
-                        </div>
-                        <div class="prop-row" style="margin-bottom: 0;">
-                            <div style="color: rgba(0,0,0,0.8); flex: 1;">Drop shadow</div>
-                            <div style="color: rgba(0,0,0,0.4)">40%</div>
-                        </div>
-                        <div style="color: rgba(0,0,0,0.4); font-size: 10px; margin-top: 4px;">
-                            0 40px 80px 0, #000000
+                        <div style="margin-top: 12px;">
+                            <button class="toolbar-icon" style="width: 100%; height: 32px; background: #FF7518; color: #fff; font-weight: 600; font-size: 11px; border: none; border-radius: 4px; cursor: pointer;" onclick="alert('Exporting project preview...')">
+                                Export Stack
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1071,28 +503,52 @@
     <div class="confetti-layer" id="confLayer"></div>
 
     <script>
-        const viewport = document.querySelector('.figma-canvas');
+        const viewport = document.getElementById('viewport');
         const panCanvas = document.getElementById('panCanvas');
         const gridOverlay = document.querySelector('.grid-overlay');
-        const hintBar = document.getElementById('hintBar');
+        const zoomLevelDisplay = document.getElementById('zoom-level');
+        const toolCursor = document.getElementById('tool-cursor');
+        const toolHand = document.getElementById('tool-hand');
 
         let isDragging = false;
         let startX, startY;
         let translateX = 0;
         let translateY = 0;
+        let scale = 1; 
+        
+        let isSpacePressed = false;
+        let isCtrlPressed = false;
 
         function updateTransform() {
-            panCanvas.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            panCanvas.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
             gridOverlay.style.backgroundPosition = `${translateX}px ${translateY}px`;
+            gridOverlay.style.backgroundSize = `${24 * scale}px ${24 * scale}px`;
+            zoomLevelDisplay.innerText = `${Math.round(scale * 100)}%`;
+        }
+
+        function updateTools() {
+            if (isSpacePressed || isCtrlPressed || isDragging) {
+                viewport.classList.add('hand-tool');
+                if (isSpacePressed) {
+                    toolHand.classList.add('active');
+                    toolCursor.classList.remove('active');
+                }
+            } else {
+                viewport.classList.remove('hand-tool');
+                toolHand.classList.remove('active');
+                toolCursor.classList.add('active');
+            }
         }
 
         viewport.addEventListener('mousedown', (e) => {
-            if(e.target.closest('.reveal-actions')) return; // let buttons be clickable
-            isDragging = true;
-            startX = e.clientX - translateX;
-            startY = e.clientY - translateY;
-            viewport.style.cursor = 'grabbing';
-            if(hintBar) hintBar.classList.add('hidden');
+            if (isSpacePressed || e.button === 1 || e.target === viewport || e.target === gridOverlay || e.target.classList.contains('dark-canvas')) {
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                viewport.classList.add('grabbing');
+                updateTools();
+                e.preventDefault();
+            }
         });
 
         window.addEventListener('mousemove', (e) => {
@@ -1104,41 +560,86 @@
 
         window.addEventListener('mouseup', () => {
             isDragging = false;
-            viewport.style.cursor = 'grab';
+            viewport.classList.remove('grabbing');
+            updateTools();
         });
 
-        // Touch implementation for panning
-        viewport.addEventListener('touchstart', (e) => {
-            if(e.target.closest('.reveal-actions')) return;
-            isDragging = true;
-            startX = e.touches[0].clientX - translateX;
-            startY = e.touches[0].clientY - translateY;
-            if(hintBar) hintBar.classList.add('hidden');
+        window.addEventListener('wheel', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                const zoomSpeed = 0.001;
+                const delta = -e.deltaY;
+                const newScale = Math.min(Math.max(0.1, scale + delta * zoomSpeed * scale), 5);
+                
+                const rect = viewport.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left - rect.width/2;
+                const mouseY = e.clientY - rect.top - rect.height/2;
+                
+                translateX -= (mouseX - translateX) * (newScale / scale - 1);
+                translateY -= (mouseY - translateY) * (newScale / scale - 1);
+                
+                scale = newScale;
+                updateTransform();
+            } else {
+                e.preventDefault();
+                translateY -= e.deltaY;
+                translateX -= e.deltaX;
+                updateTransform();
+            }
         }, { passive: false });
 
-        window.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            translateX = e.touches[0].clientX - startX;
-            translateY = e.touches[0].clientY - startY;
-            updateTransform();
-        }, { passive: false });
-
-        window.addEventListener('touchend', () => {
-            isDragging = false;
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                isCtrlPressed = true;
+                updateTools();
+            }
+            if (e.code === 'Space') {
+                if (!isSpacePressed) {
+                    isSpacePressed = true;
+                    updateTools();
+                }
+            }
+            if (e.key.toLowerCase() === 'h') {
+                isSpacePressed = true;
+                updateTools();
+            }
+            if (e.key.toLowerCase() === 'v') {
+                isSpacePressed = false;
+                updateTools();
+            }
+            if (e.ctrlKey && e.code === 'Digit0') {
+                e.preventDefault();
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+            }
         });
 
-        // Add mouse wheel scrolling (panning)
-        viewport.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            translateX -= e.deltaX;
-            translateY -= e.deltaY;
-            updateTransform();
-        }, { passive: false });
+        window.addEventListener('keyup', (e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+                isCtrlPressed = false;
+            }
+            if (e.code === 'Space') {
+                isSpacePressed = false;
+            }
+            updateTools();
+        });
 
-        // Initialize view safely scaled
-        setTimeout(updateTransform, 10);
+        window.onload = () => {
+            // Initial center align horizontally, but align top vertically
+            const rect = viewport.getBoundingClientRect();
+            // -160 is the top offset of the frame in the pan-canvas
+            translateY = 60 + (160 * scale); 
+            translateX = 0;
+            
+            updateTransform();
+            updateTools();
+        };
+
+        viewport.addEventListener('mousedown', (e) => {
+            if (e.button === 1) e.preventDefault();
+        });
     </script>
 </body>
 </html>
-

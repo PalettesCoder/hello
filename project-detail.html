@@ -699,13 +699,13 @@
                     <div style="width:7px;height:7px; background:#0ACF83; border-radius: 3.5px 0 3.5px 3.5px"></div>
                 </div>
                 <!-- Icons -->
-                <div class="toolbar-icon active"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2.5 11l8-4.5-5.5-.5L3 1.5v9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-                <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3.5 1v10M8.5 1v10M1 3.5h10M1 8.5h10" stroke="currentColor" stroke-width="1.5"/></svg></div>
-                <div class="toolbar-icon desktop-only"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" stroke-width="1.5" rx="1"/></svg></div>
+                <div class="toolbar-icon active" id="tool-cursor" title="Move Tool (V)" aria-label="Select Move Tool (V)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2.5 11l8-4.5-5.5-.5L3 1.5v9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+                <div class="toolbar-icon" id="tool-hand" title="Hand Tool (H / Space)" aria-label="Select Hand Tool (H / Space)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3 5.5V3.5a1.5 1.5 0 1 1 3 0v2m0 0V4.5a1.5 1.5 0 1 1 3 0v1m-6 0v1a1.5 1.5 0 1 0 3 0v-1m3 0v1a1.5 1.5 0 1 0 3 0v-2" stroke="currentColor" stroke-width="1.2"/></svg></div>
+                <div class="toolbar-icon desktop-only" aria-label="Toggle frame view"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" stroke-width="1.5" rx="1"/></svg></div>
             </div>
 
             <div class="toolbar-title">
-                <a href="index.html" style="display: flex; align-items: center; gap: 6px; color: rgba(0,0,0,0.5); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#FF7518'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">
+                <a href="index.html" style="display: flex; align-items: center; gap: 6px; color: rgba(0,0,0,0.5); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#FF7518'" onmouseout="this.style.color='rgba(0,0,0,0.5)'" aria-label="Go to Home page">
                     <span class="desktop-only">Home</span>
                 </a>
                 <span>/</span>
@@ -716,9 +716,9 @@
 
             <div class="toolbar-group desktop-only">
                 <div class="toolbar-avatar">HR</div>
-                <div class="toolbar-icon" style="width: auto; padding: 0 12px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 6px; font-weight: 500; font-size: 11px;">Share</div>
-                <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
-                <div class="toolbar-icon" style="font-size: 11px; font-weight: 500;">100%</div>
+                <div class="toolbar-icon" style="width: auto; padding: 0 12px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 6px; font-weight: 500; font-size: 11px;" aria-label="Share this project">Share</div>
+                <div class="toolbar-icon" aria-label="Run Prototype"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+                <div class="toolbar-icon" style="font-size: 11px; font-weight: 500;" id="zoom-level" aria-label="Current zoom level">100%</div>
             </div>
         </div>
 
@@ -738,14 +738,14 @@
             </div>
 
             <!-- CANVAS -->
-            <div class="figma-canvas">
+            <div class="figma-canvas" id="viewport">
                 <!-- ORIGINAL CONTENT -->
                 <div class="dark-canvas"></div>
                 <div class="grid-overlay"></div>
 
     <!-- Progress HUD -->
     <div class="hud-progress">
-        🖱️ Tip: <span class="hud-count">Click and drag canvas to pan</span>
+        🖱️ Tip: <span class="hud-count">Hold Space to Pan • Scroll to Zoom</span>
     </div>
 
     <!-- Panning Canvas -->
@@ -847,16 +847,20 @@
                         </div>
                     </div>
                     <div class="prop-section">
-                        <div class="prop-header">
-                            <span>Effects</span>
-                            <span>+</span>
+                        <div class="prop-header">Export</div>
+                        <div class="prop-row">
+                            <div class="prop-label" style="width: auto; padding-right: 12px;">File</div>
+                            <select class="prop-value" style="font-size: 11px; cursor: pointer; border: none; background: rgba(0,0,0,0.05); width: 100%;">
+                                <option>PNG (Original)</option>
+                                <option>JPG (Preview)</option>
+                                <option>SVG (Vector)</option>
+                                <option>PDF (Document)</option>
+                            </select>
                         </div>
-                        <div class="prop-row" style="margin-bottom: 0;">
-                            <div style="color: rgba(0,0,0,0.8); flex: 1;">Drop shadow</div>
-                            <div style="color: rgba(0,0,0,0.4)">40%</div>
-                        </div>
-                        <div style="color: rgba(0,0,0,0.4); font-size: 10px; margin-top: 4px;">
-                            0 40px 80px 0, #000000
+                        <div style="margin-top: 12px;">
+                            <button class="toolbar-icon" style="width: 100%; height: 32px; background: #FF7518; color: #fff; font-weight: 600; font-size: 11px; border: none; border-radius: 4px; cursor: pointer;" onclick="alert('Exporting project preview...')">
+                                Export Design
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -868,28 +872,53 @@
     <div class="confetti-layer" id="confLayer"></div>
 
     <script>
-        const viewport = document.querySelector('.figma-canvas');
+        const viewport = document.getElementById('viewport');
         const panCanvas = document.getElementById('panCanvas');
         const gridOverlay = document.querySelector('.grid-overlay');
-        const hintBar = document.getElementById('hintBar');
+        const zoomLevelDisplay = document.getElementById('zoom-level');
+        const toolCursor = document.getElementById('tool-cursor');
+        const toolHand = document.getElementById('tool-hand');
 
         let isDragging = false;
         let startX, startY;
         let translateX = 0;
         let translateY = 0;
+        let scale = 1; 
+        
+        let isSpacePressed = false;
+        let isCtrlPressed = false;
 
         function updateTransform() {
-            panCanvas.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            panCanvas.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
             gridOverlay.style.backgroundPosition = `${translateX}px ${translateY}px`;
+            gridOverlay.style.backgroundSize = `${24 * scale}px ${24 * scale}px`;
+            zoomLevelDisplay.innerText = `${Math.round(scale * 100)}%`;
+        }
+
+        function updateTools() {
+            if (isSpacePressed || isCtrlPressed || isDragging) {
+                viewport.classList.add('hand-tool');
+                if (isSpacePressed) {
+                    toolHand.classList.add('active');
+                    toolCursor.classList.remove('active');
+                }
+            } else {
+                viewport.classList.remove('hand-tool');
+                toolHand.classList.remove('active');
+                toolCursor.classList.add('active');
+            }
         }
 
         viewport.addEventListener('mousedown', (e) => {
-            if(e.target.closest('.reveal-actions')) return; // let buttons be clickable
-            isDragging = true;
-            startX = e.clientX - translateX;
-            startY = e.clientY - translateY;
-            viewport.style.cursor = 'grabbing';
-            if(hintBar) hintBar.classList.add('hidden');
+            if (e.target.closest('.reveal-actions') && !isSpacePressed) return;
+            if (e.button === 1 || isSpacePressed || e.target === viewport || e.target === gridOverlay || e.target.classList.contains('dark-canvas')) {
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                viewport.classList.add('grabbing');
+                updateTools();
+                e.preventDefault();
+            }
         });
 
         window.addEventListener('mousemove', (e) => {
@@ -901,41 +930,86 @@
 
         window.addEventListener('mouseup', () => {
             isDragging = false;
-            viewport.style.cursor = 'grab';
+            viewport.classList.remove('grabbing');
+            updateTools();
         });
 
-        // Touch implementation for panning
-        viewport.addEventListener('touchstart', (e) => {
-            if(e.target.closest('.reveal-actions')) return;
-            isDragging = true;
-            startX = e.touches[0].clientX - translateX;
-            startY = e.touches[0].clientY - translateY;
-            if(hintBar) hintBar.classList.add('hidden');
+        window.addEventListener('wheel', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                const zoomSpeed = 0.001;
+                const delta = -e.deltaY;
+                const newScale = Math.min(Math.max(0.1, scale + delta * zoomSpeed * scale), 5);
+                
+                const rect = viewport.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left - rect.width/2;
+                const mouseY = e.clientY - rect.top - rect.height/2;
+                
+                translateX -= (mouseX - translateX) * (newScale / scale - 1);
+                translateY -= (mouseY - translateY) * (newScale / scale - 1);
+                
+                scale = newScale;
+                updateTransform();
+            } else {
+                e.preventDefault();
+                translateY -= e.deltaY;
+                translateX -= e.deltaX;
+                updateTransform();
+            }
         }, { passive: false });
 
-        window.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            translateX = e.touches[0].clientX - startX;
-            translateY = e.touches[0].clientY - startY;
-            updateTransform();
-        }, { passive: false });
-
-        window.addEventListener('touchend', () => {
-            isDragging = false;
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                isCtrlPressed = true;
+                updateTools();
+            }
+            if (e.code === 'Space') {
+                if (!isSpacePressed) {
+                    isSpacePressed = true;
+                    updateTools();
+                }
+            }
+            if (e.key.toLowerCase() === 'h') {
+                isSpacePressed = true;
+                updateTools();
+            }
+            if (e.key.toLowerCase() === 'v') {
+                isSpacePressed = false;
+                updateTools();
+            }
+            if (e.ctrlKey && e.code === 'Digit0') {
+                e.preventDefault();
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+            }
         });
 
-        // Add mouse wheel scrolling (panning)
-        viewport.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            translateX -= e.deltaX;
-            translateY -= e.deltaY;
-            updateTransform();
-        }, { passive: false });
+        window.addEventListener('keyup', (e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+                isCtrlPressed = false;
+            }
+            if (e.code === 'Space') {
+                isSpacePressed = false;
+            }
+            updateTools();
+        });
 
-        // Initialize view safely scaled
-        setTimeout(updateTransform, 10);
+        window.onload = () => {
+            const rect = viewport.getBoundingClientRect();
+            // Align top of frame to y=60px
+            // Frame is 1000px tall (min-height), top is -500px from center
+            translateY = 60 + (1000 * scale / 2) - (rect.height / 2);
+            translateX = 0;
+            
+            updateTransform();
+            updateTools();
+        };
+
+        viewport.addEventListener('mousedown', (e) => {
+            if (e.button === 1) e.preventDefault();
+        });
     </script>
 </body>
 </html>
-
