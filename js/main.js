@@ -109,15 +109,15 @@
     ---------------------------------------------------------- */
     var counter = function () {
         if ($(document.body).hasClass("counter-scroll")) {
-            function isInViewport(el) {
-                var rect = el.getBoundingClientRect();
-                return rect.top < window.innerHeight && rect.bottom > 0;
-            }
+            const observerOptions = {
+                root: null,
+                threshold: 0.1
+            };
 
-            function startCount($el) {
+            const startCount = ($el) => {
                 if ($().countTo) {
                     $el.find(".number").each(function () {
-                        var to = $(this).data("to"),
+                        const to = $(this).data("to"),
                             speed = $(this).data("speed");
                         $(this).countTo({
                             to: to,
@@ -125,26 +125,25 @@
                         });
                     });
                 }
-            }
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const $this = $(entry.target);
+                        if (!$this.data("started")) {
+                            startCount($this);
+                            $this.data("started", true);
+                            observer.unobserve(entry.target);
+                        }
+                    }
+                });
+            }, observerOptions);
 
             $(".counter").each(function () {
                 $(this).data("started", false);
+                observer.observe(this);
             });
-
-            function checkAndStart() {
-                $(".counter").each(function () {
-                    var $this = $(this);
-                    var started = $this.data("started");
-
-                    if (!started && isInViewport(this)) {
-                        startCount($this);
-                        $this.data("started", true);
-                    }
-                });
-            }
-
-            checkAndStart();
-            $(window).on("scroll resize", checkAndStart);
         }
     };
 

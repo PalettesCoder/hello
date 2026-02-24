@@ -56,6 +56,8 @@
     <link rel="stylesheet" href="css/inter.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/popup.css">
     <style>
         html { zoom: 1; }
         body {
@@ -997,6 +999,32 @@
         });
     </script>
 
+    <!-- Success Popup -->
+    <div class="dev-popup-overlay" id="successPopup">
+        <div class="dev-popup-content">
+            <button class="close-split-popup" onclick="closeSuccessPopup()" title="Close" aria-label="Close success message popup">&times;</button>
+
+            <div class="dev-popup-video-wrap">
+                        <video autoplay loop muted playsinline class="video">
+                            <source src="media/overlay-2.mp4" type="video/mp4">
+                        </video>
+                <div class="overlay"></div>
+            </div>
+            
+            <div class="dev-popup-body">
+                <h2 class="dev-popup-title">Message Sent!</h2>
+                <p class="dev-popup-msg">
+                    Thank you for reaching out. Your message has been sent successfully and a confirmation email is on its way to you.
+                </p>
+                <div class="dev-popup-actions">
+                    <button type="button" class="dev-btn dev-btn-primary" onclick="closeSuccessPopup()">
+                        Great!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Utility Scripts -->
     <script src="js/figma-notify.js"></script>
     
@@ -1006,6 +1034,16 @@
         (function() {
             emailjs.init("mrvBP3SZGrUGo31cQ");
         })();
+
+        function closeSuccessPopup() {
+            document.getElementById('successPopup').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showSuccessPopup() {
+            document.getElementById('successPopup').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
 
         document.getElementById('freelanceForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -1051,6 +1089,8 @@ ${summary}
                 .then(function(responses) {
                     btn.innerText = "Sent Successfully!";
                     btn.style.background = "#0ACF83"; // Figma green
+                    figmaNotify("Message Sent Successfully!");
+                    showSuccessPopup();
                     setTimeout(() => {
                         document.getElementById("freelanceForm").reset();
                         btn.innerText = originalText;
