@@ -37,7 +37,7 @@ function sendMail(event) {
         })
         .catch(function(error) {
             console.error('EmailJS ERROR:', error);
-            alert("Error: " + (error.text || "Something went wrong. Check the console (F12) for details."));
+            figmaNotify("Error: " + (error.text || "Something went wrong. Check the console (F12) for details."));
         })
         .finally(() => {
             btnText.innerText = originalText;

@@ -7092,3 +7092,30 @@ button.animate-btn::after,
 .article-footer p {
     color: rgba(0, 0, 0, 0.6) !important;
 }
+
+/* ===== FIGMA NOTIFICATION ===== */
+.figma-notification {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #333333;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.figma-notification.show {
+    transform: translateX(-50%) translateY(0);
+}
