@@ -7,9 +7,15 @@
     <meta name="description" content="View Harsha Royal's professional resume. UI Developer and Product Designer specializing in clean, scalable digital experiences.">
     <meta name="author" content="Harsha Royal">
     <link rel="shortcut icon" href="images/favicon.svg">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/inter.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- fonts -->
+    <link rel="stylesheet" href="css/fonts.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/inter.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/inter.css">
+        <link rel="stylesheet" href="css/style.css">
+    </noscript>
     <link rel="stylesheet" href="css/styles.css">
     <style>
         html { zoom: 1; }
@@ -563,6 +569,24 @@
         viewport.addEventListener('mousedown', (e) => {
             if (e.button === 1) e.preventDefault();
         });
+    </script>
+    <script type="text/javascript">
+        // Global Security
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
+        };
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
     </script>
 </body>
 </html>

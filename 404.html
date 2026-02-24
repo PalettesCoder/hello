@@ -9,9 +9,15 @@
     <link rel="shortcut icon" href="images/favicon.svg">
     <link rel="canonical" href="https://harsharoyal.in/">
     <meta name="theme-color" content="#FF7518">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/inter.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- fonts -->
+    <link rel="stylesheet" href="css/fonts.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/inter.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/inter.css">
+        <link rel="stylesheet" href="css/style.css">
+    </noscript>
     <link rel="stylesheet" href="css/styles.css">
     <style>
         html { zoom: 1; }
@@ -735,7 +741,7 @@
         
         <!-- Buried Avatar -->
         <div class="buried-avatar" style="top: 250px; left: -40px; opacity: 1;">
-            <img src="images/avatar-boy.png" alt="Buried Designer" class="avatar-img">
+            <img src="images/avatar-boy.png" alt="Buried Designer" loading="lazy" decoding="async" width="90" height="90" class="avatar-img">
             <div class="avatar-help-text" style="color: rgba(0,0,0,0.4)">Where did everything go?</div>
         </div>
 
@@ -986,6 +992,24 @@
         viewport.addEventListener('mousedown', (e) => {
             if (e.button === 1) e.preventDefault();
         });
+    </script>
+    <script type="text/javascript">
+        // Global Security
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
+        };
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
     </script>
 </body>
 </html>

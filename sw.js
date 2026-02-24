@@ -2,6 +2,11 @@ const CACHE_NAME = 'harsha-portfolio-cache-v1';
 const urlsToCache = [
   '/',
   'index.html',
+  'freelance.html',
+  'resume.html',
+  'tech-stack.html',
+  'project-detail.html',
+  '404.html',
   'css/animate.css',
   'css/bootstrap.min.css',
   'css/fonts.css',

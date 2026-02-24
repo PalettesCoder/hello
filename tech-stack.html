@@ -7,9 +7,15 @@
     <meta name="description" content="Explore Harsha Royal's specialized tech stack — including Figma, React, Angular, Javascript, and SEO tools. A blend of design and development for modern web solutions.">
     <meta name="author" content="Harsha Royal">
     <link rel="shortcut icon" href="images/favicon.svg">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/inter.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- fonts -->
+    <link rel="stylesheet" href="css/fonts.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/inter.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/inter.css">
+        <link rel="stylesheet" href="css/style.css">
+    </noscript>
     <link rel="stylesheet" href="css/styles.css">
     <style>
         html { zoom: 1; }
@@ -367,7 +373,7 @@
                             <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <img src="./images/tech-1.svg" alt="Figma" style="width: 16px; height: auto;">
+                                        <img src="./images/tech-1.svg" alt="Figma" loading="lazy" decoding="async" style="width: 16px; height: auto;">
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 2px;">
                                         <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Figma</div>
@@ -421,7 +427,7 @@
                             <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <img src="./images/tech-2.svg" alt="CSS" style="width: 16px; height: auto;">
+                                        <img src="./images/tech-2.svg" alt="CSS" loading="lazy" decoding="async" style="width: 16px; height: auto;">
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 2px;">
                                         <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">CSS</div>
@@ -439,7 +445,7 @@
                             <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0;">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <img src="./images/tech-3.svg" alt="Javascript" style="width: 18px; height: auto;">
+                                        <img src="./images/tech-3.svg" alt="Javascript" loading="lazy" decoding="async" style="width: 18px; height: auto;">
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 2px;">
                                         <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Javascript</div>
@@ -642,5 +648,23 @@
         });
     </script>
     <script src="js/figma-notify.js"></script>
+    <script type="text/javascript">
+        // Global Security
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
+        };
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
