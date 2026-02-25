@@ -63,6 +63,7 @@
 /*--------- Abstracts variable ---------- */
 html {
   zoom: 0.9;
+  scroll-behavior: auto !important;
 }
 html,
 body,
@@ -176,7 +177,7 @@ section {
 -------------------------------------------------------------- */
 html {
   margin-right: 0 !important;
-  scroll-behavior: smooth;
+  scroll-behavior: auto !important;
 }
 
 * {
@@ -7121,15 +7122,49 @@ button.animate-btn::after,
 }
 
 /* Sticky Notes Overlay */
-.sticky-notes-overlay { position: fixed; inset: 0; z-index: 20000; display: none; align-items: center; justify-content: center; overflow: hidden; }
+.sticky-notes-overlay { position: fixed; inset: 0; z-index: 20000; display: none; align-items: center; justify-content: center; overflow: hidden; perspective: 1200px; }
 .sticky-notes-overlay.show { display: flex; }
 .sticky-overlay-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); }
-.sticky-note { position: absolute; width: 200px; height: 200px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); font-family: 'Inter' , sans-serif; font-size: 13px; color: #333; line-height: 1.5; display: flex; flex-direction: column; justify-content: center; transform-origin: center; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: auto; }
-.sticky-note:hover { transform: scale(1.1) rotate(0deg) !important; z-index: 20001; }
+
+.sticky-note { 
+    position: absolute; 
+    width: 180px; 
+    min-height: 180px; 
+    padding: 18px; 
+    box-shadow: 
+        0 3px 6px rgba(0,0,0,0.1),
+        0 10px 25px rgba(0,0,0,0.15); 
+    font-family: 'Inter' , sans-serif; 
+    font-size: 11px; 
+    color: #333; 
+    line-height: 1.4; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    pointer-events: auto;
+    border-radius: 2px;
+}
+
+.sticky-note strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #000;
+}
+
+.sticky-note:hover { 
+    transform: scale(1.05) rotate(0deg) !important; 
+    z-index: 20001; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
 .sticky-note.yellow { background: #fff7d1; border-bottom: 3px solid #f2e6a1; }
 .sticky-note.blue { background: #d1f7ff; border-bottom: 3px solid #a1e6f2; }
 .sticky-note.pink { background: #ffd1f7; border-bottom: 3px solid #f2a1e6; }
 .sticky-note.green { background: #d1ffd7; border-bottom: 3px solid #a1f2b1; }
-.note-push-pin { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 14px; height: 14px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
-.btn-continue-lab { margin-top: 16px; background: #333; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; font-size: 11px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+
+.note-push-pin { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 2; }
+.btn-continue-lab { margin-top: auto; background: #111; color: #fff; border: none; padding: 12px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; }
 .btn-continue-lab:hover { background: #000; }

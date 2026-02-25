@@ -1912,32 +1912,100 @@
     <!-- UX Research Sticky Notes Overlay (Under Development) -->
     <div id="uxResearchOverlay" class="sticky-notes-overlay">
         <div class="sticky-overlay-backdrop" onclick="closeUXOverlay()"></div>
-        <div class="sticky-note yellow" style="top: 20%; left: 15%; transform: rotate(-8deg);">
+        
+        <div class="sticky-note yellow">
             <div class="note-push-pin"></div>
-            <strong>UX Research in Progress 🧠</strong><br>
-            Iterating on the optimal component hierarchy.
+            <strong>UX Strategy 📝</strong>
+            "Is this layer locked?" <br><br>
+            Welcome to the <b>Messy Middle</b>—where ideas live before they become 'Final'.
+            <button class="btn-continue-lab" onclick="closeUXOverlay()">Final Result →</button>
         </div>
-        <div class="sticky-note blue" style="top: 15%; right: 20%; transform: rotate(5deg);">
+
+        <div class="sticky-note blue">
             <div class="note-push-pin"></div>
-            "Is the hover state too much?"<br>
-            — <em>Self-critique at 2 AM</em> 🌙
+            <strong>User Feedback 🔄</strong>
+            "I love the colors, but can we make it more... synergistic?"
         </div>
-        <div class="sticky-note pink" style="bottom: 25%; left: 10%; transform: rotate(12deg);">
+
+        <div class="sticky-note green">
             <div class="note-push-pin"></div>
-            <strong>Status: Testing 🛠️</strong><br>
-            Breaking things so they work better later.
+            <strong>Code Review 🖥️</strong>
+            "Looks good to me." - Famous last words of a developer.
         </div>
-        <div class="sticky-note green" style="bottom: 20%; right: 15%; transform: rotate(-5deg);">
+
+        <div class="sticky-note pink">
             <div class="note-push-pin"></div>
-            <strong>Design System Update:</strong><br>
-            Standardizing #FF7518 across all layers. 🎨
+            <strong>Design Handoff 🤝</strong>
+            The moment design intention meets CSS reality.
         </div>
-        <div class="sticky-note yellow" style="top: 45%; left: 45%; transform: rotate(3deg); z-index: 100;">
+
+        <div class="sticky-note pink">
             <div class="note-push-pin"></div>
-            <strong>Welcome to the Lab! 🔬</strong><br>
-            Still fine-tuning the experience. <br>
-            <button class="btn-continue-lab" onclick="closeUXOverlay()">Enter Lab anyway</button>
+            <strong>Debugging 🐛</strong>
+            Found the bug! It was a semicolon having an identity crisis.
         </div>
+
+        <div class="sticky-note green">
+            <div class="note-push-pin"></div>
+            <strong>Typography 🏔️</strong>
+            If everything is bold, nothing is bold. Deep thoughts at 3 AM.
+        </div>
+
+        <div class="sticky-note yellow">
+            <div class="note-push-pin"></div>
+            <strong>Performance 📱</strong>
+            It works on my machine. Also works on my smart fridge.
+        </div>
+
+        <div class="sticky-note blue">
+            <div class="note-push-pin"></div>
+            <strong>Client Scope 🔭</strong>
+            "It's just a small change," they said. 48 hours ago.
+        </div>
+
+        <div class="sticky-note green">
+            <div class="note-push-pin"></div>
+            <strong>Accessibility ♿</strong>
+            Contrast ratio: 4.5:1. My empathy score: 100:1.
+        </div>
+
+        <div class="sticky-note blue">
+            <div class="note-push-pin"></div>
+            <strong>Empathy Map 🫂</strong>
+            User: "It's fine."<br>
+            Translation: "I've been staring at this for 10 minutes and I'm lost."
+        </div>
+
+        <div class="sticky-note yellow">
+            <div class="note-push-pin"></div>
+            <strong>Consistency 📐</strong>
+            Standardized 4px border radius. My life is finally in order.
+        </div>
+
+        <div class="sticky-note pink">
+            <div class="note-push-pin"></div>
+            <strong>Secret Layer 🛠️</strong>
+            Buried under here is the original 'final_final_v2_TRUE' file.
+        </div>
+
+        <div class="sticky-note green">
+            <div class="note-push-pin"></div>
+            <strong>Dark Mode 🕶️</strong>
+            Saving retinas one `background: #111` at a time.
+        </div>
+
+        <div class="sticky-note blue">
+            <div class="note-push-pin"></div>
+            <strong>IA Map 🗺️</strong>
+            Site architecture: Now with 40% less "where did that page go?".
+        </div>
+
+        <div class="sticky-note pink">
+            <div class="note-push-pin"></div>
+            <strong>SVG Magic ✨</strong>
+            Scaling to infinity and beyond. No pixels were harmed.
+        </div>
+    </div>
     </div>
 
     <!-- Certificate Popup (Split-View Design) -->
@@ -2027,15 +2095,94 @@
         let viewMode = 0; 
         let currentPhase = 0;
 
+        function jumbleNotes() {
+            const container = document.getElementById('uxResearchOverlay');
+            if (!container) return;
+
+            const notes = Array.from(container.querySelectorAll('.sticky-note'));
+            const isMobile = window.innerWidth < 768;
+            const noteSize = isMobile ? 140 : 160; 
+            const padding = 20;
+            const placedNotes = [];
+
+            // Sort notes to prioritize the main one (UX Strategy)
+            notes.sort((a, b) => {
+                const isAMain = a.querySelector('strong')?.innerText.includes('UX Strategy');
+                const isBMain = b.querySelector('strong')?.innerText.includes('UX Strategy');
+                return (isBMain ? 1 : 0) - (isAMain ? 1 : 0);
+            });
+
+            notes.forEach((note, index) => {
+                // On mobile, only show first 6 notes to avoid clutter
+                if (isMobile && index > 5) {
+                    note.style.display = 'none';
+                    return;
+                }
+
+                let x, y, overlap;
+                let attempts = 0;
+                const buffer = isMobile ? 5 : 15;
+
+                do {
+                    overlap = false;
+                    x = Math.random() * (window.innerWidth - noteSize - padding * 2) + padding;
+                    y = Math.random() * (window.innerHeight - noteSize - padding * 2) + padding;
+
+                    for (let placed of placedNotes) {
+                        const overlapX = x < placed.x + noteSize + buffer && x + noteSize + buffer > placed.x;
+                        const overlapY = y < placed.y + noteSize + buffer && y + noteSize + buffer > placed.y;
+                        
+                        if (overlapX && overlapY) {
+                            overlap = true;
+                            break;
+                        }
+                    }
+                    attempts++;
+                } while (overlap && attempts < 200);
+
+                if (attempts >= 200 && index > 0) {
+                    // Could not find a spot for non-primary note
+                    note.style.display = 'none';
+                } else {
+                    note.style.display = 'flex';
+                    note.style.width = `${noteSize}px`;
+                    note.style.minHeight = `${noteSize}px`;
+                    note.style.left = `${x}px`;
+                    note.style.top = `${y}px`;
+                    const rotation = (Math.random() * 16) - 8;
+                    note.style.transform = `rotate(${rotation}deg)`;
+                    placedNotes.push({ x, y });
+                }
+            });
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
+            // Persistent scroll lock for initial load
+            const forceScrollTop = () => {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            };
+
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+            
+            forceScrollTop();
+
+            // Keep forcing to top while initializing
+            const scrollInterval = setInterval(forceScrollTop, 100);
+            setTimeout(() => clearInterval(scrollInterval), 3000);
+
+            jumbleNotes();
+            
             setTimeout(() => {
                 const uxOverlay = document.getElementById('uxResearchOverlay');
                 if (uxOverlay) {
+                    forceScrollTop();
                     uxOverlay.classList.add('show');
                     document.body.style.overflow = 'hidden';
                 }
-                // devPopup.classList.add('show');
-                // startPhaseStory();
             }, 1500);
         });
 
