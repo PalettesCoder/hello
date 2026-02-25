@@ -166,6 +166,7 @@
     <!-- critical css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/figma-nav.css">
     
     <!-- non-critical css (deferred) -->
     <link rel="stylesheet" href="css/swiper-bundle.min.css" media="print" onload="this.media='all'">
@@ -851,7 +852,7 @@
                                     </div>
                                     <!-- Item 1 -->
                                     <div class="timeline-item effectFade fadeUp no-div">
-                                        <p class="timeline-date text-black-56">2023 - Now</p>
+                                        <p class="timeline-date text-black-56">Aug 2018 - <br>Oct 2022</p>
                                         <div class="timeline-dot"></div>
                                         <div class="timeline-content">
                                             <div class="icon">
@@ -893,7 +894,7 @@
                                                         <div class="content-top">
                                                             <div class="w-logo">
                                                                 <img loading="lazy" width="40" height="40"
-                                                                    src="images/logo-2.svg" alt="WSP Global logo">
+                                                                    src="images/logo-3.svg" alt="WSP Global logo">
                                                             </div>
                                                             <h4 class="w-title letter-space--2 text-white-72">
                                                                 WSP Global
@@ -980,7 +981,7 @@
                                                         <div class="content-top">
                                                             <div class="w-logo">
                                                                 <img loading="lazy" width="40" height="40"
-                                                                    src="images/logo-2.svg" alt="Image">
+                                                                    src="images/logo.svg" alt="Image">
                                                             </div>
                                                             <h4 class="w-title letter-space--2 text-white-72">
                                                                 Hanger Clinic Cara Dashboards
@@ -1066,7 +1067,7 @@
                                                         <div class="content-top">
                                                             <div class="w-logo">
                                                                 <img loading="lazy" width="40" height="40"
-                                                                    src="images/logo-2.svg" alt="Intel logo">
+                                                                    src="images/logo.svg" alt="Intel logo">
                                                             </div>
                                                             <h4 class="w-title letter-space--2 text-white-72">
                                                                 Intel Chat Bots
@@ -1152,7 +1153,7 @@
                                                         <div class="content-top">
                                                             <div class="w-logo">
                                                                 <img loading="lazy" width="40" height="40"
-                                                                    src="images/logo-2.svg" alt="Image">
+                                                                    src="images/logo.svg" alt="Image">
                                                             </div>
                                                             <h4 class="w-title letter-space--2 text-white-72">
                                                                 Supply Integrity Tool
@@ -1239,7 +1240,7 @@
                                                         <div class="content-top">
                                                             <div class="w-logo">
                                                                 <img loading="lazy" width="40" height="40"
-                                                                    src="images/logo-2.svg" alt="Image">
+                                                                    src="images/logo.svg" alt="Image">
                                                             </div>
                                                             <h4 class="w-title letter-space--2 text-white-72">
                                                                 Harman International
@@ -1325,7 +1326,7 @@
                                                         <div class="content-top">
                                                             <div class="w-logo">
                                                                 <img loading="lazy" width="40" height="40"
-                                                                    src="images/logo-2.svg" alt="Bajaj Pay logo">
+                                                                    src="images/logo.svg" alt="Bajaj Pay logo">
                                                             </div>
                                                             <h4 class="w-title letter-space--2 text-white-72">
                                                                 Bajaj Pay App and Websites
@@ -1901,81 +1902,41 @@
     <script src="js/main.js"></script>
 
     <!-- Development Popup -->
+    <!-- Development Popup (Commented Out) -->
+    <!--
     <div class="dev-popup-overlay" id="devPopup">
-        <div class="dev-heatmap-overlay" id="heatmapCursor"></div>
-        
-        <div class="split-popup-container" id="splitMain">
-            <button class="close-split-popup" onclick="closeDevPopup()" title="Close Details" aria-label="Close development details popup">&times;</button>
-            
-            <div class="split-main-area">
-                <!-- Left Side: Design -->
-                <div class="split-side side-design">
-                    <div class="visual-stack">
-                        <div class="frame sketch active">
-                            <span class="frame-label">Phase 1: Sketching</span>
-                            <div class="sketch-mock">
-                                <div class="sketch-line long"></div>
-                                <div class="sketch-line short"></div>
-                                <div class="sketch-line box"></div>
-                            </div>
-                        </div>
-                        <div class="frame figma">
-                            <span class="frame-label">Phase 2: High-Fi Design</span>
-                            <div class="figma-mock">
-                                <div class="figma-ui-header"></div>
-                                <div class="figma-ui-card"></div>
-                            </div>
-                        </div>
-                        <div class="frame proto">
-                            <span class="frame-label">Phase 3: Interactivity</span>
-                            <div class="proto-mock">
-                                <div class="proto-screen">
-                                    <div class="proto-content-item"></div>
-                                    <div class="proto-btn"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="frame production">
-                            <span class="frame-label">Phase 4: Production UI</span>
-                            <div class="production-mock">
-                                <div class="prod-navbar"></div>
-                                <div class="prod-hero"><div class="prod-circle"></div></div>
-                                <div class="prod-grid"><div class="prod-item"></div><div class="prod-item"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        ... (existing content) ...
+    </div>
+    -->
 
-                <!-- Right Side: Content -->
-                <div class="split-side side-code">
-                    <!-- Design Notes shown during Phase 1-3 -->
-                    <div class="design-notes active">
-                        <div class="note-item n1">Process Insight:</div>
-                        <div class="note-item n2">Analyzing user pain points and sketching layouts.</div>
-                        <div class="note-item n3">Objective: Foundations</div>
-                    </div>
-
-                    <!-- Code Editor ONLY shown during Phase 4 -->
-                    <div class="code-editor" style="display: none;">
-                        <pre class="code-snippet active"><code></code></pre>
-                        <div class="compiling-indicator">Ready</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Universal Content Floor -->
-            <div class="split-footer-content">
-                <h2 class="split-headline">From low-fi sketches to production-ready components.</h2>
-                <p class="split-subheadline">Designing delightful flows • Engineering seamless execution</p>
-                <div class="split-actions">
-                    <button class="dev-btn dev-btn-primary" onclick="closeDevPopup()" aria-label="Validate Journey">
-                        <i class="icon icon-send"></i> Validate Journey
-                    </button>
-                    <button class="dev-btn dev-btn-secondary" onclick="closeDevPopup(); window.location.href='#contact'" aria-label="Bridge the Gap by contacting me">
-                         Bridge the Gap
-                    </button>
-                </div>
-            </div>
+    <!-- UX Research Sticky Notes Overlay (Under Development) -->
+    <div id="uxResearchOverlay" class="sticky-notes-overlay">
+        <div class="sticky-overlay-backdrop" onclick="closeUXOverlay()"></div>
+        <div class="sticky-note yellow" style="top: 20%; left: 15%; transform: rotate(-8deg);">
+            <div class="note-push-pin"></div>
+            <strong>UX Research in Progress 🧠</strong><br>
+            Iterating on the optimal component hierarchy.
+        </div>
+        <div class="sticky-note blue" style="top: 15%; right: 20%; transform: rotate(5deg);">
+            <div class="note-push-pin"></div>
+            "Is the hover state too much?"<br>
+            — <em>Self-critique at 2 AM</em> 🌙
+        </div>
+        <div class="sticky-note pink" style="bottom: 25%; left: 10%; transform: rotate(12deg);">
+            <div class="note-push-pin"></div>
+            <strong>Status: Testing 🛠️</strong><br>
+            Breaking things so they work better later.
+        </div>
+        <div class="sticky-note green" style="bottom: 20%; right: 15%; transform: rotate(-5deg);">
+            <div class="note-push-pin"></div>
+            <strong>Design System Update:</strong><br>
+            Standardizing #FF7518 across all layers. 🎨
+        </div>
+        <div class="sticky-note yellow" style="top: 45%; left: 45%; transform: rotate(3deg); z-index: 100;">
+            <div class="note-push-pin"></div>
+            <strong>Welcome to the Lab! 🔬</strong><br>
+            Still fine-tuning the experience. <br>
+            <button class="btn-continue-lab" onclick="closeUXOverlay()">Enter Lab anyway</button>
         </div>
     </div>
 
@@ -2068,11 +2029,23 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
-                devPopup.classList.add('show');
-                document.body.style.overflow = 'hidden';
-                startPhaseStory();
-            }, 2000);
+                const uxOverlay = document.getElementById('uxResearchOverlay');
+                if (uxOverlay) {
+                    uxOverlay.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+                // devPopup.classList.add('show');
+                // startPhaseStory();
+            }, 1500);
         });
+
+        function closeUXOverlay() {
+            const uxOverlay = document.getElementById('uxResearchOverlay');
+            if (uxOverlay) {
+                uxOverlay.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
 
         // Phase Sequencing
         function startPhaseStory() {
@@ -2209,6 +2182,8 @@
     </script>
 
 
+    <script src="js/snowflake_cursor.js"></script>
+    <script src="js/figma-app.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="css/style.css">
     </noscript>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/figma-nav.css">
     <style>
         html { zoom: 1; }
         body {
@@ -28,198 +29,7 @@
             margin: 0; padding: 0;
         }
 
-        /* ===== FIGMA UI THEME ===== */
-        .figma-app {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            width: 100vw;
-            background: #ffffff;
-            position: fixed;
-            inset: 0;
-            z-index: 10;
-            font-size: 11px;
-            color: rgba(0,0,0,0.8);
-            user-select: none;
-        }
-        .figma-toolbar {
-            height: 48px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 16px;
-            background: #ffffff;
-            flex-shrink: 0;
-            z-index: 20;
-        }
-        .toolbar-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .toolbar-icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-            color: rgba(0,0,0,0.5);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .toolbar-icon.active, .toolbar-icon:hover {
-            background: rgba(0,0,0,0.06);
-            color: #333;
-        }
-        .toolbar-title {
-            font-size: 12px;
-            font-weight: 500;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            letter-spacing: 0.02em;
-        }
-        .toolbar-title span { color: rgba(0,0,0,0.4); }
-        .toolbar-title .filename { display: flex; align-items: center; gap: 4px; }
-        .toolbar-avatar {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #FF7518;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
-        .figma-workspace {
-            display: flex;
-            flex: 1;
-            height: calc(100vh - 48px);
-            overflow: hidden;
-        }
-        .figma-sidebar {
-            width: 240px;
-            background: #ffffff;
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-            z-index: 20;
-        }
-        .figma-sidebar-left { border-right: 1px solid rgba(0,0,0,0.1); }
-        .figma-sidebar-right { border-left: 1px solid rgba(0,0,0,0.1); }
-        .sidebar-tabs {
-            display: flex;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            height: 40px;
-            flex-shrink: 0;
-        }
-        .sidebar-tab {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-            color: rgba(0,0,0,0.5);
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-        }
-        .sidebar-tab.active {
-            color: #333;
-            border-bottom-color: #FF7518;
-        }
-        .sidebar-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 8px 0;
-        }
-        .layer-item {
-            display: flex;
-            align-items: center;
-            padding: 6px 16px 6px 20px;
-            gap: 10px;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            position: relative;
-            color: rgba(0,0,0,0.8);
-        }
-        .layer-item:hover { background: rgba(0,0,0,0.04); }
-        .layer-icon {
-            opacity: 0.6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-family: "Space Mono", monospace, sans-serif;
-            color: rgba(0,0,0,0.6);
-        }
-        .layer-name {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            font-size: 11px;
-            letter-spacing: 0.02em;
-        }
-        .prop-section {
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding: 16px;
-        }
-        .prop-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: rgba(0,0,0,0.85);
-        }
-        .prop-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-        .prop-label {
-            width: 24px;
-            color: rgba(0,0,0,0.5);
-            text-align: right;
-            padding-right: 4px;
-            font-size: 10px;
-        }
-        .prop-value {
-            flex: 1;
-            background: rgba(0,0,0,0.04);
-            border: 1px solid transparent;
-            border-radius: 4px;
-            padding: 6px 8px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            font-family: inherit;
-            color: #333;
-            transition: border-color 0.2s;
-            font-size: 11px;
-        }
-        .prop-value:hover { border-color: rgba(0,0,0,0.15); }
-        .figma-canvas {
-            flex: 1;
-            position: relative;
-            background: #e5e5e5;
-            overflow: hidden;
-            display: block;
-            cursor: grab;
-        }
-        .figma-canvas:active {
-            cursor: grabbing;
-        }
-        
-        @media (max-width: 900px) { .figma-sidebar-right { display: none; } }
-        @media (max-width: 600px) { .figma-sidebar-left { display: none; } .desktop-only { display: none !important; } }
+        /* Relying on figma-nav.css for core app layout */
 
         /* ===== CANVAS PANNING ===== */
         .pan-canvas {
@@ -301,70 +111,130 @@
     </style>
 </head>
 <body>
-    <div class="figma-app">
-        <!-- TOP TOOLBAR -->
-        <div class="figma-toolbar">
-            <div class="toolbar-group">
-                <div style="width:14px; height:21px; display:flex; flex-wrap:wrap; gap:0; cursor:pointer;" class="toolbar-icon">
-                    <div style="width:7px;height:7px; background:#F24E1E; border-radius: 3.5px 0 0 3.5px"></div>
-                    <div style="width:7px;height:7px; background:#FF7262; border-radius: 0 3.5px 3.5px 0"></div>
-                    <div style="width:7px;height:7px; background:#A259FF; border-radius: 3.5px 0 0 3.5px"></div>
-                    <div style="width:7px;height:7px; background:#1ABCFE; border-radius: 50%"></div>
-                    <div style="width:7px;height:7px; background:#0ACF83; border-radius: 3.5px 0 3.5px 3.5px"></div>
-                </div>
-                <!-- Icons -->
-                <div class="toolbar-icon active" id="tool-cursor" title="Move Tool (V)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2.5 11l8-4.5-5.5-.5L3 1.5v9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-                <div class="toolbar-icon" id="tool-hand" title="Hand Tool (H / Space)"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3 5.5V3.5a1.5 1.5 0 1 1 3 0v2m0 0V4.5a1.5 1.5 0 1 1 3 0v1m-6 0v1a1.5 1.5 0 1 0 3 0v-1m3 0v1a1.5 1.5 0 1 0 3 0v-2" stroke="currentColor" stroke-width="1.2"/></svg></div>
-                <div class="toolbar-icon desktop-only"><svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" stroke-width="1.5" rx="1"/></svg></div>
+    <div class="figma-container">
+        <!-- TOP BAR -->
+        <header class="figma-top-bar">
+            <div class="top-bar-icons">
+                <svg width="24" height="24" viewBox="0 0 38 57" fill="none">
+                    <path d="M19 28.5C19 25.8478 20.0536 23.3043 21.9289 21.4289C23.8043 19.5536 26.3478 18.5 29 18.5C31.6522 18.5 34.1957 19.5536 36.0711 21.4289C37.9464 23.3043 39 25.8478 39 28.5C39 31.1522 37.9464 33.6957 36.0711 35.5711C34.1957 37.4464 31.6522 38.5 29 38.5C26.3478 38.5 23.8043 37.4464 21.9289 35.5711C20.0536 33.6957 19 31.1522 19 28.5Z" fill="#1ABCFE"/>
+                    <path d="M0 47.5C0 44.8478 1.05357 42.3043 2.92893 40.4289C4.8043 38.5536 7.34784 37.5 10 37.5C12.6522 37.5 15.1957 38.5536 17.0711 40.4289C18.9464 42.3043 20 44.8478 20 47.5C20 50.1522 18.9464 52.6957 17.0711 54.5711C15.1957 56.4464 12.6522 57.5 10 57.5C7.34784 57.5 4.8043 56.4464 2.92893 54.5711C1.05357 52.6957 0 50.1522 0 47.5Z" fill="#0ACF83"/>
+                    <path d="M0 28.5C0 25.8478 1.05357 23.3043 2.92893 21.4289C4.8043 19.5536 7.34784 18.5 10 18.5L19 18.5L19 38.5L10 38.5C7.34784 38.5 4.8043 37.4464 2.92893 35.5711C1.05357 33.6957 0 31.1522 0 28.5Z" fill="#A259FF"/>
+                    <path d="M0 9.5C0 6.84784 1.05357 4.3043 2.92893 2.42893C4.8043 0.553571 7.34784 0 10 0L19 0L19 19L10 19C7.34784 19 4.8043 17.9464 2.92893 16.0711C1.05357 14.1957 0 11.6522 0 9.5Z" fill="#F24E1E"/>
+                    <path d="M19 0L28.5 0C31.1522 0 33.6957 1.05357 35.5711 2.92893C37.4464 4.8043 38.5 7.34784 38.5 9.5C38.5 11.6522 37.4464 14.1957 35.5711 16.0711C33.6957 17.9464 31.1522 19 28.5 19L19 19L19 0Z" fill="#FF7262"/>
+                </svg>
             </div>
-
-            <div class="toolbar-title">
-                <a href="index.html" style="display: flex; align-items: center; gap: 6px; color: rgba(0,0,0,0.5); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#FF7518'" onmouseout="this.style.color='rgba(0,0,0,0.5)'">
-                    <span class="desktop-only">Home</span>
+            <div class="top-bar-tabs">
+                <a href="index.html" class="figma-tab">
+                    Home
+                    <span class="tab-close">&times;</span>
                 </a>
-                <span>/</span>
-                <div class="filename">
-                    Tech_Stack_Architecture.fig
+                <a href="resume.html" class="figma-tab">
+                    Resume
+                    <span class="tab-close">&times;</span>
+                </a>
+                <a href="tech-stack.html" class="figma-tab active">
+                    Tech Stack
+                    <span class="tab-close">&times;</span>
+                </a>
+                <a href="project-detail.html" class="figma-tab">
+                    Project Detail
+                    <span class="tab-close">&times;</span>
+                </a>
+                <a href="freelance.html" class="figma-tab">
+                    Freelance
+                    <span class="tab-close">&times;</span>
+                </a>
+                <a href="404.html" class="figma-tab">
+                    404 Page
+                    <span class="tab-close">&times;</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="figma-app">
+        <!-- LEFT SIDEBAR (RAIL + PANEL) -->
+        <aside class="figma-sidebar-left">
+            <div class="sidebar-rail">
+                <div class="rail-icon active" title="Layers">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L1 5L9 9L17 5L9 1Z" stroke="currentColor" stroke-width="1.2"/><path d="M1 9L9 13L17 9" stroke="currentColor" stroke-width="1.2"/><path d="M1 13L9 17L17 13" stroke="currentColor" stroke-width="1.2"/></svg>
+                </div>
+                <div class="rail-icon" title="Assets">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="10" y="2" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="10" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><circle cx="13" cy="13" r="3" stroke="currentColor" stroke-width="1.2"/></svg>
                 </div>
             </div>
 
-            <div class="toolbar-group desktop-only">
-                <div class="toolbar-avatar">HR</div>
-                <div class="toolbar-icon" style="width: auto; padding: 0 12px; background: rgba(255,255,255,0.08); color: #fff; border-radius: 6px; font-weight: 500; font-size: 11px;">Share</div>
-                <div class="toolbar-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
-                <div class="toolbar-icon" style="font-size: 11px; font-weight: 500;" id="zoom-level">100%</div>
-            </div>
-        </div>
-
-        <div class="figma-workspace">
-            <!-- LEFT SIDEBAR -->
-            <div class="figma-sidebar figma-sidebar-left">
-                <div class="sidebar-tabs">
-                    <div class="sidebar-tab active">Layers</div>
-                    <div class="sidebar-tab">Assets</div>
+            <div class="sidebar-panel">
+                <div class="sidebar-panel-header">
+                    <div class="panel-title-row">
+                        Tech Stack <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+                    </div>
                 </div>
-                <div class="sidebar-content">
-                    <div class="layer-item" id="nav-layer-1">
-                        <div class="layer-icon">#</div>
-                        <div class="layer-name">Stack_Grid</div>
+
+                <div class="sidebar-section">
+                    <div class="section-label">
+                        Pages <span class="label-action">+</span>
+                    </div>
+                    <ul class="sidebar-list">
+                        <li class="list-item"><span>#</span> Cover</li>
+                        <li class="list-item active"><span>#</span> Stack_Inventory</li>
+                        <li class="list-item"><span>#</span> Asset_Library</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="section-label">Layers</div>
+                    <div class="sidebar-list">
+                        <div class="list-item active">
+                            <span>#</span> Stack_Grid
+                        </div>
                     </div>
                 </div>
             </div>
+        </aside>
 
-            <!-- CANVAS -->
+        <!-- MAIN CANVAS CONTAINER -->
+        <main class="figma-canvas-container">
+            <!-- RULERS -->
+            <div class="ruler-h">
+                <div class="ruler-tick" style="left: 0;">0</div>
+                <div class="ruler-tick" style="left: 100px;">1000</div>
+                <div class="ruler-tick" style="left: 200px;">2000</div>
+            </div>
+            <div class="ruler-v">
+                <div class="ruler-tick" style="top: 0;">0</div>
+                <div class="ruler-tick" style="top: 100px;">1000</div>
+                <div class="ruler-tick" style="top: 200px;">2000</div>
+            </div>
+
             <div class="figma-canvas" id="viewport">
-                <!-- ORIGINAL CONTENT -->
-                <div class="dark-canvas"></div>
                 <div class="grid-overlay"></div>
-
+                
+                <!-- Progress HUD -->
                 <div class="hud-progress">
                     🖱️ Tip: <span class="hud-count">Hold Space to Pan • Scroll to Zoom</span>
                 </div>
 
-                <!-- Panning Canvas -->
+                <!-- FLOATING TOOLBAR PILL -->
+                <div class="figma-toolbar-pill">
+                    <div class="toolbar-group">
+                        <div class="toolbar-tool active" id="tool-cursor" title="Move (V)">
+                            <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3.5 2l7.5 4.5-5 .5-2 4.5V2z" fill="currentColor"/></svg>
+                        </div>
+                        <div class="toolbar-tool" title="Frame (F)">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 1v12M10 1v12M1 4h12M1 10h12" stroke="currentColor" stroke-width="1.2"/></svg>
+                        </div>
+                        <div class="toolbar-tool" title="Hand (H)" id="tool-hand">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 4.5V3a1.5 1.5 0 013 0v1.5m0 0V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="toolbar-tool" title="Comment (C)">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 10.5V2a1 1 0 011-1h10a1 1 0 011 1v7" stroke="currentColor" stroke-width="1.2"/></svg>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="pan-canvas" id="panCanvas">
                     <!-- Main Frame -->
-                    <div class="figma-layer layer-1" style="top: -160px; left: -210px; width: 420px; text-align: left; padding: 0;">
+                    <div class="figma-layer" style="top: -240px; left: -210px; width: 420px; text-align: left; padding: 0;">
                         <div class="layer-title" style="color: #333;"># Tech_Stack_Grid <span>(Tech_Stack_Architecture.fig)</span></div>
                         
                         <div class="reveal-content" style="padding: 16px 20px; text-align: left; font-family: 'Inter', sans-serif;">
@@ -373,7 +243,7 @@
                             <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <img src="./images/tech-1.svg" alt="Figma" loading="lazy" decoding="async" style="width: 16px; height: auto;">
+                                        <img src="images/tech-1.svg" alt="Figma" loading="lazy" decoding="async" style="width: 20px; height: auto;">
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 2px;">
                                         <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Figma</div>
@@ -391,7 +261,7 @@
                             <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #61DAFB;">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 2px;">
                                         <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">React</div>
@@ -409,7 +279,7 @@
                             <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #DD0031;">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3.19 5.16l1.34 11.66L12 22l7.47-5.18 1.34-11.66L12 2zM12 4.07l6.23 2.22-1.12 9.7L12 19.55l-5.11-3.56-1.12-9.7L12 4.07zM12 7l-2.5 5.5h5L12 7z"/></svg>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3.19 5.16l1.34 11.66L12 22l7.47-5.18 1.34-11.66L12 2zM12 4.07l6.23 2.22-1.12 9.7L12 19.55l-5.11-3.56-1.12-9.7L12 4.07zM12 7l-2.5 5.5h5L12 7z"/></svg>
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 2px;">
                                         <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Angular</div>
@@ -427,7 +297,7 @@
                             <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05);">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <img src="./images/tech-2.svg" alt="CSS" loading="lazy" decoding="async" style="width: 16px; height: auto;">
+                                        <img src="images/tech-2.svg" alt="CSS" loading="lazy" decoding="async" style="width: 22px; height: auto;">
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 2px;">
                                         <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">CSS</div>
@@ -445,7 +315,7 @@
                             <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0;">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <div style="width: 40px; height: 40px; border-radius: 50%; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.02); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <img src="./images/tech-3.svg" alt="Javascript" loading="lazy" decoding="async" style="width: 18px; height: auto;">
+                                        <img src="images/tech-3.svg" alt="Javascript" loading="lazy" decoding="async" style="width: 22px; height: auto;">
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 2px;">
                                         <div style="font-size: 14px; font-weight: 500; color: #333; letter-spacing: -0.01em;">Javascript</div>
@@ -462,47 +332,181 @@
                     </div>
                 </div>
             </div>
-            <!-- RIGHT SIDEBAR -->
-            <div class="figma-sidebar figma-sidebar-right">
-                <div class="sidebar-tabs">
-                    <div class="sidebar-tab active">Design</div>
-                    <div class="sidebar-tab">Prototype</div>
-                </div>
-                <div class="sidebar-content">
-                    <div class="prop-section">
-                        <div class="prop-row">
-                            <div class="prop-label">X</div>
-                            <div class="prop-value">0</div>
-                            <div class="prop-label">Y</div>
-                            <div class="prop-value">0</div>
-                        </div>
-                        <div class="prop-row">
-                            <div class="prop-label">W</div>
-                            <div class="prop-value">420</div>
-                            <div class="prop-label">H</div>
-                            <div class="prop-value">AUTO</div>
-                        </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="figma-sidebar-right">
+            <div class="sidebar-right-header">
+                <div class="user-avatar">H</div>
+                <div class="header-user-actions">
+                    <div class="rail-icon" title="Present">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                     </div>
-                    <div class="prop-section">
-                        <div class="prop-header">Export</div>
-                        <div class="prop-row">
-                            <div class="prop-label" style="width: auto; padding-right: 12px;">File</div>
-                            <select class="prop-value" style="font-size: 11px; cursor: pointer; border: none; background: rgba(0,0,0,0.05); width: 100%;">
-                                <option>PNG (Original)</option>
-                                <option>JPG (Preview)</option>
-                                <option>SVG (Vector)</option>
-                                <option>SVG (Animated)</option>
-                            </select>
-                        </div>
-                        <div style="margin-top: 12px;">
-                            <button class="toolbar-icon" style="width: 100%; height: 32px; background: #FF7518; color: #fff; font-weight: 600; font-size: 11px; border: none; border-radius: 4px; cursor: pointer;" onclick="figmaNotify('Exporting project preview...')">
-                                Export Stack
-                            </button>
-                        </div>
+                    <button class="btn-share">Share</button>
+                    <div class="zoom-dropdown" style="margin-left: 12px; font-size: 11px; display: flex; align-items: center; gap: 4px; color: rgba(0,0,0,0.7);">
+                        <span id="zoom-level">33%</span> <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="property-tabs">
+                <div style="display: flex; gap: 4px;">
+                    <div class="prop-tab active">Design</div>
+                    <div class="prop-tab">Prototype</div>
+                </div>
+            </div>
+
+            <div class="sidebar-panel-content">
+                <!-- LAYOUT SECTION -->
+                <div class="sidebar-section">
+                    <div class="section-label">Layout</div>
+                    <div style="padding: 0 16px 8px 16px;">
+                        <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 8px;">Resizing</div>
+                        <div class="resizing-group">
+                            <div class="resizing-item active">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M15 8l4 4-4 4"/></svg>
+                            </div>
+                            <div class="resizing-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                            </div>
+                            <div class="resizing-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom">
+                        <div class="input-with-icon">
+                            <span style="color: rgba(0,0,0,0.4); width: 12px;">W</span>
+                            <span>141</span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" style="margin-left: auto;"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+                        </div>
+                        <div class="input-with-icon">
+                            <span style="color: rgba(0,0,0,0.4); width: 12px;">H</span>
+                            <span>16</span>
+                            <span style="margin-left: auto; font-size: 10px; color: rgba(0,0,0,0.4);">Hug</span>
+                        </div>
+                        <div class="resizing-item" style="background: rgba(0,0,0,0.03); width: 28px; height: 28px;">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8v8H8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- APPEARANCE SECTION -->
+                <div class="sidebar-section">
+                    <div class="section-label">
+                        Appearance
+                        <div class="section-actions">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom">
+                        <div style="flex: 1;">
+                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Opacity</div>
+                            <div class="input-with-icon">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="2 2"/></svg>
+                                <span>100%</span>
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Corner radius</div>
+                            <div class="input-with-icon">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11c0-4.418-3.582-8-8-8M3 13c0 4.418 3.582 8 8 8"/></svg>
+                                <span style="color: rgba(0,0,0,0.3);">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TYPOGRAPHY SECTION -->
+                <div class="sidebar-section">
+                    <div class="section-label">
+                        Typography
+                        <div class="section-actions">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom">
+                        <div class="prop-block-custom select" style="justify-content: space-between;">
+                            <span>Segoe UI</span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom">
+                        <div class="prop-block-custom select" style="flex: 1.5;">
+                            <span>Regular</span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+                        </div>
+                        <div class="prop-block-custom select" style="flex: 1;">
+                            <span>14</span>
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom">
+                        <div style="flex: 1;">
+                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Line height</div>
+                            <div class="input-with-icon">
+                                <span style="font-size: 14px; margin-top: -2px;">A</span>
+                                <span>16</span>
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Letter spacing</div>
+                            <div class="input-with-icon">
+                                <span style="font-size: 14px; margin-top: -2px;">|A|</span>
+                                <span>0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding: 4px 16px 12px 16px;">
+                        <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 8px;">Alignment</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div class="align-group">
+                                <div class="align-item active">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 10H3M21 6H3M13 14H3M19 18H3"/></svg>
+                                </div>
+                                <div class="align-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10H6M21 6H3M14 14H10M16 18H8"/></svg>
+                                </div>
+                                <div class="align-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10H7M21 6H3M21 14H11M21 18H5"/></svg>
+                                </div>
+                            </div>
+                            <div class="align-group">
+                                <div class="align-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+                                </div>
+                                <div class="align-item active">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="4" rx="1"/><path d="M12 3v7M12 14v7"/></svg>
+                                </div>
+                                <div class="align-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+                                </div>
+                            </div>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.5;"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FILL SECTION -->
+                <div class="sidebar-section" style="border-bottom: none;">
+                    <div class="section-label">
+                        Fill
+                        <div class="section-actions">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                            <span style="font-size: 18px; line-height: 1;">+</span>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom fill-row">
+                        <div class="color-swatch" style="background: #0F172A;"></div>
+                        <div class="hex-input">0F172A</div>
+                        <div class="opacity-input">100%</div>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.5;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <span style="opacity: 0.5; font-size: 16px;">−</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
     </div>
 
     <!-- Confetti -->
@@ -666,5 +670,9 @@
             });
         }
     </script>
+        </div> <!-- End figma-app -->
+    </div> <!-- End figma-container -->
+    <script src="js/snowflake_cursor.js"></script>
+    <script src="js/figma-app.js"></script>
 </body>
 </html>

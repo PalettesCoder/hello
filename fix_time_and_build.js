@@ -53,7 +53,7 @@ let projectSidebarStr = `
                         <div class="content" style="position: relative; z-index: 1; padding: 32px; display: flex; flex-direction: column; height: 100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
                             <div class="content-top" style="flex-shrink: 0;">
                                 <div class="w-logo" style="margin-bottom: 64px;">
-                                    <img loading="lazy" width="40" height="40" src="images/logo-2.svg" alt="Image">
+                                    <img loading="lazy" width="40" height="40" src="images/logo.svg" alt="Image">
                                 </div>
                                 <h4 class="w-title letter-space--2 text-white-72" style="margin-bottom: 16px;">
                                     WSP Global

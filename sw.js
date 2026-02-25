@@ -85,7 +85,7 @@ const urlsToCache = [
   'images/icomoon.svg',
   'images/LIOWEOIGC8HK.jpg',
   'images/LIOWEOIGC8HK.pdf',
-  'images/logo-2.svg',
+  'images/logo.svg',
   'images/logo-3.svg',
   'images/logo.svg',
   'images/lpu.png',

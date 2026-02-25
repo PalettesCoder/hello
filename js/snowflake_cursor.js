@@ -33,7 +33,7 @@ const snowflakeCursor = (element) => {
   };
 
   const createEmojiImages = () => {
-    context.font = '18px serif';
+    context.font = '12px serif';
     context.textBaseline = 'middle';
     context.textAlign = 'center';
     possibleEmoji.forEach((emoji) => {
@@ -44,7 +44,7 @@ const snowflakeCursor = (element) => {
       bgCanvas.width = measurements.width;
       bgCanvas.height = measurements.actualBoundingBoxAscent * 2;
       bgContext.textAlign = 'center';
-      bgContext.font = '18px serif';
+      bgContext.font = '12px serif';
       bgContext.textBaseline = 'middle';
       bgContext.fillText(
         emoji,
