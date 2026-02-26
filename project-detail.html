@@ -979,12 +979,8 @@
         });
 
         window.onload = () => {
-            const rect = viewport.getBoundingClientRect();
-            // Align top of frame to y=60px
-            // Frame is 1000px tall (min-height), top is -500px from center
-            translateY = 60 + (1000 * scale / 2) - (rect.height / 2);
             translateX = 0;
-            
+            translateY = 0;
             updateTransform();
             updateTools();
         };

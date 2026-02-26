@@ -441,6 +441,34 @@ gsap.registerPlugin(ScrollTrigger);
                     clearTimeout(clickScrollTimer);
                     clickScrollTimer = setTimeout(() => {
                         isClickScrolling = false;
+
+                        // After click-scroll ends, manually sync the active states
+                        ScrollTrigger.refresh();
+
+                        // Re-evaluate which sticky-item is in view
+                        const viewportTop = window.scrollY || document.documentElement.scrollTop;
+                        const triggerLine = viewportTop + 132;
+                        let anyWorkInView = false;
+
+                        works.forEach((work) => {
+                            const wrap = work.querySelector(".wrap");
+                            if (!wrap) return;
+                            const rect = work.getBoundingClientRect();
+                            const workTop = rect.top + window.scrollY;
+                            const workBottom = workTop + rect.height;
+
+                            if (triggerLine >= workTop && triggerLine <= workBottom) {
+                                gsap.utils.toArray(".wrap").forEach((el) => el.classList.remove("active"));
+                                wrap.classList.add("active");
+                                anyWorkInView = true;
+                            }
+                        });
+
+                        if (anyWorkInView) {
+                            sidebar.classList.add("active");
+                        } else {
+                            sidebar.classList.remove("active");
+                        }
                     }, 800);
                 });
             });
