@@ -1911,7 +1911,7 @@
 
     <!-- UX Research Sticky Notes Overlay (Under Development) -->
     <div id="uxResearchOverlay" class="sticky-notes-overlay">
-        <div class="sticky-overlay-backdrop" onclick="closeUXOverlay()"></div>
+        <div class="sticky-overlay-backdrop"></div>
         
         <div class="sticky-note yellow">
             <div class="note-push-pin"></div>
@@ -2004,6 +2004,30 @@
             <div class="note-push-pin"></div>
             <strong>SVG Magic ✨</strong>
             Scaling to infinity and beyond. No pixels were harmed.
+        </div>
+
+        <div class="sticky-note pink">
+            <div class="note-push-pin"></div>
+            <strong>Motion Design 🛸</strong>
+            Smooth-as-butter transitions. Dropping frame-rates is not an option.
+        </div>
+
+        <div class="sticky-note yellow">
+            <div class="note-push-pin"></div>
+            <strong>Product Vision 🚀</strong>
+            Bridging the gap between 'Can we build it?' and 'Should we build it?'.
+        </div>
+
+        <div class="sticky-note green">
+            <div class="note-push-pin"></div>
+            <strong>User Testing 🧪</strong>
+            "Wait, why did they click there?" - The eternal question.
+        </div>
+
+        <div class="sticky-note blue">
+            <div class="note-push-pin"></div>
+            <strong>Microinteractions 🪄</strong>
+            The difference between a good product and a great one is in the details.
         </div>
     </div>
     </div>
@@ -2173,18 +2197,16 @@
             // Keep forcing to top while initializing
             const scrollInterval = setInterval(forceScrollTop, 100);
             setTimeout(() => clearInterval(scrollInterval), 3000);
-
-            jumbleNotes();
-            
-            setTimeout(() => {
-                const uxOverlay = document.getElementById('uxResearchOverlay');
-                if (uxOverlay) {
-                    forceScrollTop();
-                    uxOverlay.classList.add('show');
-                    document.body.style.overflow = 'hidden';
-                }
-            }, 1500);
         });
+
+        function openUXOverlay() {
+            jumbleNotes();
+            const uxOverlay = document.getElementById('uxResearchOverlay');
+            if (uxOverlay) {
+                uxOverlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
         function closeUXOverlay() {
             const uxOverlay = document.getElementById('uxResearchOverlay');
