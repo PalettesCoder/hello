@@ -63,7 +63,7 @@
 /*--------- Abstracts variable ---------- */
 html {
   zoom: 0.9;
-  scroll-behavior: auto !important;
+  scroll-behavior: smooth !important;
 }
 html,
 body,
@@ -177,7 +177,7 @@ section {
 -------------------------------------------------------------- */
 html {
   margin-right: 0 !important;
-  scroll-behavior: auto !important;
+  scroll-behavior: smooth !important;
 }
 
 * {

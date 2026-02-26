@@ -58,12 +58,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Handle section layer clicks if they exist in the sidebar
-    const layerLinks = document.querySelectorAll('.layers-list .layer-item a.scroll-link');
-    layerLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            document.querySelectorAll('.layer-item').forEach(p => p.classList.remove('active'));
-            link.closest('.layer-item').classList.add('active');
+    // 4. Smooth Scroll for all navigation links (sidebar, mobile, layers)
+    const allScrollLinks = document.querySelectorAll('a.scroll-link, .go-top.scroll-link');
+    allScrollLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return;
+
+            const targetEl = document.querySelector(href);
+            if (!targetEl) return;
+
+            e.preventDefault();
+
+            // Calculate offset (account for any fixed headers)
+            const offset = 20;
+            const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
+
+            // Smooth scroll with visible animation
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+
+            // Update active state for layer items
+            const layerParent = link.closest('.layer-item');
+            if (layerParent) {
+                document.querySelectorAll('.layer-item').forEach(p => p.classList.remove('active'));
+                layerParent.classList.add('active');
+            }
+
+            // Close mobile menu if open
+            const mobileNav = document.querySelector('.nav-mobile-list');
+            const overlayPop = document.querySelector('.overlay-pop');
+            const btnMobile = document.querySelector('.btn-mobile-menu');
+            if (mobileNav && mobileNav.classList.contains('open')) {
+                mobileNav.classList.remove('open');
+                if (overlayPop) overlayPop.classList.remove('open');
+                if (btnMobile) btnMobile.classList.remove('close');
+                document.body.classList.remove('overflow-hidden');
+            }
         });
     });
 });
