@@ -157,4 +157,4 @@ class Particle {
 
 // Initialize the cursor effect
 // Keeping it simple for now -> turning off words emit
-// snowflakeCursor();
+snowflakeCursor();
