@@ -7145,6 +7145,18 @@ button.animate-btn::after,
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     pointer-events: auto;
     border-radius: 2px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.note-body {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
 }
 
 .sticky-note strong {
@@ -7152,11 +7164,14 @@ button.animate-btn::after,
     margin-bottom: 8px;
     font-size: 13px;
     color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .sticky-note:hover { 
     transform: scale(1.05) rotate(0deg) !important; 
-    z-index: 20001; 
+    z-index: 99999 !important; 
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
@@ -7166,5 +7181,17 @@ button.animate-btn::after,
 .sticky-note.green { background: #d1ffd7; border-bottom: 3px solid #a1f2b1; }
 
 .note-push-pin { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 2; }
-.btn-continue-lab { margin-top: auto; background: #111; color: #fff; border: none; padding: 12px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; }
+.btn-continue-lab { margin-top: auto; background: #111; color: #fff; border: none; padding: 12px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; flex-shrink: 0; }
 .btn-continue-lab:hover { background: #000; }
+
+/* SUS BRO and PLEASE SPEED cursors (Using user provided .cur files) */
+html, body {
+    cursor: url("../media/fallguys.cur"), auto;
+}
+a, button, [onclick], input, select, textarea, .btn, .figma-tab, .rail-icon, .layer-item, .award-item,
+a *, button *, [onclick] *, .btn *, .figma-tab *, .rail-icon *, .layer-item *, .award-item * {
+    cursor: url("../media/speed.cur"), pointer !important;
+}
+*:active {
+    cursor: url("../media/speed.cur"), pointer !important;
+}

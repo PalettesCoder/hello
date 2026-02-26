@@ -126,7 +126,7 @@ const urlsToCache = [
   'js/ScrollSmooth.js',
   'js/ScrollToPlugin.min.js',
   'js/ScrollTrigger.min.js',
-  'js/snowflake_cursor.js',
+  'js/paint_trail.js',
   'js/SplitText.min.js',
   'js/swiper-bundle.min.js',
   'media/Borzoi.cur',

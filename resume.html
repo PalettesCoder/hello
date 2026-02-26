@@ -93,6 +93,7 @@
             background: #fff;
             /* Remove scaling to prevent bluriness */
             transform: none;
+            pointer-events: none; /* Prevent PDF from swallowing scroll/zoom */
         }
 
         /* The shield captures drag events only when we WANT to pan */
@@ -405,11 +406,10 @@
         }
 
         function updateTools() {
-            // If dragging, panning, or zooming -> Block PDF to catch events
+            // If dragging, panning, or zooming
             if (isSpacePressed || isCtrlPressed || isDragging) {
                 viewport.classList.add('hand-tool');
                 shield.style.display = 'block';
-                pdfFrame.style.pointerEvents = 'none';
                 if (isSpacePressed) {
                     toolHand.classList.add('active');
                     toolCursor.classList.remove('active');
@@ -417,7 +417,6 @@
             } else {
                 viewport.classList.remove('hand-tool');
                 shield.style.display = 'none';
-                pdfFrame.style.pointerEvents = 'auto';
                 toolHand.classList.remove('active');
                 toolCursor.classList.add('active');
             }
@@ -425,7 +424,7 @@
         
         // Handle Mouse and Panning
         viewport.addEventListener('mousedown', (e) => {
-            if (e.button === 1 || isSpacePressed || e.target === viewport || e.target === gridOverlay || e.target === shield) {
+            if (e.button === 1 || isSpacePressed || e.target === viewport || e.target === gridOverlay || e.target === shield || e.target.closest('.figma-layer')) {
                 isDragging = true;
                 startX = e.clientX - translateX;
                 startY = e.clientY - translateY;
@@ -553,7 +552,7 @@
         </script>
         </div> <!-- End figma-app -->
     </div> <!-- End figma-container -->
-    <script src="js/snowflake_cursor.js"></script>
+    <script src="js/paint_trail.js"></script>
     <script src="js/figma-app.js"></script>
 </body>
 </html>
