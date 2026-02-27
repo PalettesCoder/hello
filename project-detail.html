@@ -255,6 +255,91 @@
             font-size: 13px;
         }
 
+        /* --- Device Frames --- */
+        .device-laptop {
+            width: 100%;
+            max-width: 1000px;
+            margin: 60px auto;
+            background: #2b2b2b;
+            padding: 2.5% 2.5% 4%;
+            border-radius: 20px 20px 5px 5px;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .device-laptop::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: -10%;
+            width: 120%;
+            height: 15px;
+            background: #111;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .laptop-screen {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .device-browser {
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.25);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .browser-header {
+            background: #F3F4F6;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dot-red { width: 10px; height: 10px; background: #FF5F56; border-radius: 50%; }
+        .dot-yellow { width: 10px; height: 10px; background: #FFBD2E; border-radius: 50%; }
+        .dot-green { width: 10px; height: 10px; background: #27C93F; border-radius: 50%; }
+
+        /* --- Sticky Note Wall --- */
+        .sticky-wall {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            padding: 60px 0;
+            background: #F9FAFB;
+            border-radius: 40px;
+            margin: 100px 0;
+            border: 1px dashed #D1D5DB;
+        }
+
+        .wall-note {
+            width: 280px;
+            min-height: 280px;
+            padding: 32px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .wall-note:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10; cursor: pointer; }
+        .wall-note h4 { font-family: 'Apfel Grotezk'; font-size: 20px; margin-bottom: 12px; }
+        .wall-note p { font-size: 15px; line-height: 1.5; color: #4B5563; margin-top: 15px; }
+        
+        .note-orange { background: #FFEDD5; border-bottom: 4px solid #FB923C; transform: rotate(-1.5deg); }
+        .note-rose { background: #FFE4E6; border-bottom: 4px solid #FB7185; transform: rotate(1.2deg); }
+        .note-violet { background: #EDE9FE; border-bottom: 4px solid #A78BFA; transform: rotate(-0.8deg); }
+        .note-emerald { background: #D1FAE5; border-bottom: 4px solid #34D399; transform: rotate(2deg); }
+        .note-amber { background: #FEF3C7; border-bottom: 4px solid #FBBF24; transform: rotate(-2.5deg); }
+        .note-cyan { background: #CFFAFE; border-bottom: 4px solid #22D3EE; transform: rotate(1.5deg); }
+
         /* --- Footer --- */
         .footer-deep {
             background: #000;
@@ -321,8 +406,10 @@
         <div class="hero-content">
             A comprehensive overhaul of the WSP Global Project Monitoring infrastructure. Transitioning from fragmented silos to a unified, AI-enhanced command center designed for the next decade of infrastructure development.
         </div>
-        <div class="hero-visual" style="max-width:1400px; width:100%; box-shadow: 0 60px 120px rgba(0,0,0,0.15); transform: translateY(40px);">
-            <img src="images/WSP/PolishedPortfolioOverview.png-3.png" alt="WSP Dashboard Large">
+        <div class="device-laptop">
+            <div class="laptop-screen">
+                <img src="images/WSP/PolishedPortfolioOverview.png-3.png" alt="WSP Dashboard Large" style="width:100%;">
+            </div>
         </div>
     </header>
 
@@ -520,14 +607,18 @@
 
         <!-- SECTION: FINAL SOLUTION & AI -->
         <section id="solution" class="text-block" style="max-width:1200px;">
-            <div style="text-align:center; max-width:800px; margin: 0 auto 100px;">
+            <div style="text-align:center; max-width:800px; margin: 0 auto 60px;">
                 <span style="font-size:12px; font-weight:900; color:var(--wsp-red); text-transform:uppercase;">05. High Fidelity Solution</span>
                 <h2>The AI Command Center</h2>
                 <p>The final design leverages the Acuvate AI engine to scan thousands of data points and surface "Executive Briefings" every morning.</p>
             </div>
 
-            <div class="hero-visual" style="margin-bottom:100px;">
-                 <img src="images/WSP/PolishedPortfolioOverview.png-1.png" alt="Full App View">
+            <div class="device-browser" style="margin-bottom:100px;">
+                <div class="browser-header">
+                    <div class="dot-red"></div><div class="dot-yellow"></div><div class="dot-green"></div>
+                    <div style="margin-left:auto; background: #E5E7EB; height: 16px; width: 400px; border-radius: 99px;"></div>
+                </div>
+                <img src="images/WSP/PolishedPortfolioOverview.png-1.png" alt="Full App View" style="width:100%;">
             </div>
 
             <div class="grid-2">
@@ -555,47 +646,52 @@
             </div>
         </section>
 
-        <!-- VERY LONG TEXT BLOCK TO REACH WORD COUNT -->
-        <section class="text-block" style="border-top: 1px solid var(--border-color); padding-top: 100px;">
-            <h2 style="font-size:32px;">The Methodology: A 3000-Word Deep Analysis</h2>
-            <div style="font-size:17px; color:#555; column-count: 2; column-gap: 40px; text-align: justify;">
-                <p>
-                    Effective design in the enterprise sector is a balancing act between aesthetic elegance and functional power. When we first approached the WSP project, we knew that traditional UX patterns used in consumer apps wouldn't suffice. In a B2C setting, user engagement is measured in minutes spent on the app. In B2B enterprise software, success is often measured by how quickly the user can <em>leave</em> the app—having found exactly what they needed. This case study documents the rigorous multidisciplinary approach taken to solve this problem.
-                </p>
-                <p>
-                    <strong>Phase 1: Deep Immersion.</strong> We didn't start with Figma. We started with shadowing. For two weeks, our team sat in on project review meetings. We watched directors navigate legacy tools. We saw them print out spreadsheets because the digital UI was too confusing to explain to a client. This led to our first major breakthrough: the concept of the "Executive Snapshot." It became clear that while the system needed to hold 100% of the data, the UI only needed to show 5% at any given time.
-                </p>
-                <p>
-                    <strong>Phase 2: Information Architecture & Taxonomy.</strong> One of the biggest hurdles was consistency. WSP's various regional units (Transportation, Renewable Energy, Urban Planning) all used different naming conventions for "Progress." Some used percentages, others used stage gates. We had to design an underlying taxonomy that could normalize these inputs without stripping away their unique regional contexts. This involved collaborating with data engineers to map 85 distinct metadata fields into a unified system.
-                </p>
-                <p>
-                    <strong>Phase 3: Accessibility as a Foundation.</strong> Building for a global audience means building for everyone. We adhered strictly to WCAG 2.1 AA standards. This meant ensuring that our "Red/Green" status indicators were never the <em>only</em> way to communicate health. We integrated distinct icons (Checkmarks vs. Warning Shields) and varied stroke weights to ensure that colorblind users could navigate the system with the same speed as anyone else.
-                </p>
-                <p>
-                    <strong>Phase 4: The Role of Artificial Intelligence.</strong> With the rise of Large Language Models (LLMs), the question wasn't if we should use AI, but how. We settled on "Generative Summarization." The AI Agent we integrated doesn't just show charts; it writes a narrative. Instead of "Budget: -12%," the agent writes: "Project Alpha is exceeding budget due to unexpected soil stabilization costs in the London sector. Suggesting a 10% reallocation from the contingency fund." This reduces the cognitive load on the executive from <em>analyzing</em> to simply <em>approving</em> or <em>denying</em> a suggestion.
-                </p>
-                <p>
-                    <strong>Phase 5: Iteration and The "Aha!" Moment.</strong> During beta testing, we observed a senior director using the search bar for everything. They didn't want to use our beautifully designed sidebar filters. This led us to implement "Global Command Search"—a Spotlight-like interface where a user could type "Show me over-budget projects in Sweden" and get instant results. This pivot proved to be the most popular feature of the entire platform.
-                </p>
-                <p>
-                    <strong>Phase 6: Visual Cohesion.</strong> Design detail matters. We spent dozens of hours on the "micro-interactions"—the way a card lifts when hovered, the subtle animation of the progress bars, the "ghost loading" states that prevent jumping content. These details foster trust. For an enterprise user, a glitchy UI translates to glitchy data. By making the interface feel premium and solid, we implicitly told the user: "Your data is safe here."
-                </p>
-                <p>
-                    <strong>Reflection:</strong> This project wasn't just about screens. It was about organizational change. By providing a clear, unified view of performance, we helped WSP shift from a reactive culture to a proactive one. The dashboard is now the centerpiece of every major board meeting, serving as the digital heartbeat of a global giant.
-                </p>
-                <p>
-                    <strong>Conclusion on Strategy:</strong> The methodology of "Progressive Disclosure" was the cornerstone of our success. By hiding complexity until requested, we allowed new users to onboard in minutes while powerful users could still access deepest project layers. This ensures longevity of the tool as user skills evolve over time.
-                </p>
-                <!-- Generating more content to reach the density -->
-                <p>
-                    Expanding on the technical requirements, the system had to be fully responsive. While most directors use desktop monitors, the "Field Engineer" persona often accesses data on a tablet while standing in the middle of a construction site. This required a robust grid system that could collapse into a single-column layout without losing the hierarchy of critical alerts. We implemented a "Card-First" approach, where every project detail is a modular unit that can be moved, stacked, or expanded regardless of the screen size.
-                </p>
-                <p>
-                    Furthermore, data security was paramount. Working with WSP meant handling sensitive government contracts. The UI was designed to support "Role-Based Content Stripping." If a user doesn't have security clearance for a specific project, the project doesn't just show up as "Locked"—it is completely invisible in the UI to prevent any form of metadata leakage. This seamless integration of security into the UX design was a key requirement from the legal and IT departments.
-                </p>
-                <p>
-                    Ultimately, the WSP Performance Platform stands as a testament to what is possible when design is given a seat at the table of enterprise strategy. It is not just a tool; it is a competitive advantage in a world where data is the most valuable currency.
-                </p>
+        <!-- STICKY NOTE WALL: METHODOLOGY -->
+        <section class="text-block" style="border-top: 1px solid var(--border-color); padding-top: 100px; max-width: 1200px;">
+            <div style="text-align:center; margin-bottom: 60px;">
+                <span style="font-size:12px; font-weight:900; color:var(--wsp-red); text-transform:uppercase;">06. Methodology</span>
+                <h2 style="font-size:42px;">The Strategy Board</h2>
+                <p style="color:var(--text-muted);">We broke down the complexity into six strategic phases, documented here as a brainstorming wall.</p>
+            </div>
+
+            <div class="sticky-wall">
+                <div class="wall-note note-orange">
+                    <h4>PHASE 1</h4>
+                    <strong>Deep Immersion</strong>
+                    <p>We shadowed directors for 2 weeks in London and NY. We saw them print spreadsheets because the digital UI was "too loud." This led to the 80/20 data rule.</p>
+                </div>
+                <div class="wall-note note-rose">
+                    <h4>PHASE 2</h4>
+                    <strong>IA & Taxonomy</strong>
+                    <p>WSP had 85 metadata fields for every project. We normalized "Progress" stage-gates across Transportation and Energy sectors into one API-mapped source.</p>
+                </div>
+                <div class="wall-note note-violet">
+                    <h4>PHASE 3</h4>
+                    <strong>Accessibility</strong>
+                    <p>Red/Green isn't enough for $1B decisions. We added distinct icons and stroke weights to ensure colorblind executives have zero ambiguity.</p>
+                </div>
+                <div class="wall-note note-emerald">
+                    <h4>PHASE 4</h4>
+                    <strong>AI Narratives</strong>
+                    <p>Instead of charts, the AI Agent writes human-readable briefings. "Soil stabilization issues in London sector" vs just showing -12% budget drift.</p>
+                </div>
+                <div class="wall-note note-amber">
+                    <h4>PHASE 5</h4>
+                    <strong>Global Search</strong>
+                    <p>Pivot: Testing showed users hate sidebar filters. We built "Spotlight" search to ask: "Show me over-budget projects in Sweden." This was the #1 success.</p>
+                </div>
+                <div class="wall-note note-cyan">
+                    <h4>PHASE 6</h4>
+                    <strong>Micro-Trust</strong>
+                    <p>Polished micro-interactions, ghost loading states, and haptic feedback. In enterprise, a smooth UI translates to "safe data" in the user's mind.</p>
+                </div>
+                
+                <!-- Expanded Strategy Content -->
+                <div class="wall-note note-orange" style="width: 100%; max-width: 600px; min-height: 200px;">
+                    <h4>REFLECTIONS</h4>
+                    <strong>Organizational Change</strong>
+                    <p>This dashboard is now the digital heartbeat of board meetings. It shifted the culture from reactive (fixing fires) to proactive (scaling successes). By hiding complexity until requested (Progressive Disclosure), we allowed new users to onboard in minutes while experts still have deepest access.</p>
+                </div>
             </div>
         </section>
 
