@@ -5,1015 +5,561 @@
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in; connect-src 'self' https://api.emailjs.com https://*.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <title>Project Case Study — Design & Development | Harsha Royal</title>
+    <title>WSP Project — UX/UI Case Study | Harsha Royal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="Explore Harsha Royal's project case studies — detailed breakdowns of UI/UX design process, development workflow, and creative problem-solving for real-world digital products.">
-    <meta name="author" content="Harsha Royal">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <meta name="keywords" content="UI Design Case Study, UX Project, Product Design Portfolio, Harsha Royal Projects, Web Development Case Study, Design Process">
     <link rel="shortcut icon" href="images/favicon.svg">
     <link rel="canonical" href="https://harsharoyal.in/project-detail.html">
     <meta name="theme-color" content="#FF7518">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://harsharoyal.in/project-detail.html">
-    <meta property="og:title" content="Project Case Study — Harsha Royal">
-    <meta property="og:description" content="Detailed breakdown of UI/UX design process and development workflow for real-world digital products.">
-    <meta property="og:image" content="https://harsharoyal.in/images/work-1.jpg">
-    <meta property="og:site_name" content="Harsha Royal Portfolio">
-    <meta property="og:locale" content="en_US">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Project Case Study — Harsha Royal">
-    <meta name="twitter:description" content="Detailed breakdown of UI/UX design process and development workflow.">
-    <meta name="twitter:image" content="https://harsharoyal.in/images/work-1.jpg">
-    <meta name="twitter:creator" content="@palettescoder">
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      "name": "Project Case Study by Harsha Royal",
-      "description": "A detailed UI/UX design case study showcasing the design process, problem-solving approach, and final implementation.",
-      "url": "https://harsharoyal.in/project-detail.html",
-      "image": "https://harsharoyal.in/images/work-1.jpg",
-      "author": {
-        "@type": "Person",
-        "@id": "https://harsharoyal.in/",
-        "name": "Harsha Royal"
-      },
-      "datePublished": "2026-02-23T17:15:00+05:30",
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://harsharoyal.in/" },
-          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://harsharoyal.in/project-detail.html" }
-        ]
-      }
-    }
-    </script>
-    <!-- fonts -->
-    <link rel="stylesheet" href="css/fonts.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/inter.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="css/fonts.css">
-        <link rel="stylesheet" href="css/inter.css">
-        <link rel="stylesheet" href="css/style.css">
-    </noscript>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/inter.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/figma-nav.css">
+
     <style>
-        html { zoom: 1; }
+        /* Medium/Behance Style Case Study Layout */
+        :root {
+            --brand-blue: #3E7DFF;
+            --brand-light: #F0F6FF;
+            --text-dark: #1A1A1A;
+            --text-muted: #666666;
+        }
+
         body {
-            background: #ffffff;
-            min-height: 100vh;
-            overflow: hidden;
-            position: relative;
-            font-family: "Inter", sans-serif;
-            margin: 0; padding: 0;
+            background-color: #FAFAFA;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Relying on figma-nav.css for core app layout */
-
-        /* ===== CANVAS PANNING ===== */
-        .pan-canvas {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            z-index: 5;
-        }
-
-        /* ===== DARK CANVAS ===== */
-        .dark-canvas {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 30% 20%, rgba(255,117,24,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 80%, rgba(162,89,255,0.04) 0%, transparent 60%),
-                #e5e5e5;
-            z-index: 0;
-        }
-
-        .grid-overlay {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 24px 24px;
-            z-index: 0;
-        }
-
-        /* ===== MAIN STAGE ===== */
-        .stage {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-        }
-
-        .stage-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-            max-width: 700px;
+        /* Minimal Nav */
+        .case-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 20px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250,250,250,0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* ===== AVATAR SECTION ===== */
-        .avatar-zone {
+        .case-nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .case-nav a:hover {
+            color: var(--brand-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 20px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #DFECFF 0%, #FFFFFF 100%);
             position: relative;
-            width: 100%;
-            height: 420px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        /* The buried avatar/character */
-        .buried-avatar {
-            position: absolute;
-            z-index: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
-            opacity: 0.15;
-        }
-
-        .buried-avatar.revealed {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        .avatar-img {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-            animation: avatar-float 3s ease-in-out infinite;
-            filter: drop-shadow(0 8px 24px rgba(255,117,24,0.3));
-        }
-
-        @keyframes avatar-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .avatar-help-text {
-            font-size: 11px;
-            color: rgba(0,0,0,0.5);
+        .hero-badge {
+            background: rgba(62,125,255,0.1);
+            color: var(--brand-blue);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 24px;
         }
 
-        /* ===== FIGMA FRAME LAYERS ===== */
-        .figma-layer {
-            position: absolute;
-            width: 480px;
-            background: #ffffff;
-            box-shadow: 0 2px 14px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
-            user-select: none;
-            cursor: default;
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin: 0 auto 24px;
+            max-width: 800px;
+            line-height: 1.1;
         }
 
-        /* Position layers across the panoramic canvas */
-        .layer-1 { top: -200px; left: -260px; } /* 404 block */
-        .layer-2 { top: -40px; left: 320px; width: 340px; } /* Auto Layout */
-        .layer-3 { top: 200px; left: -360px; width: 440px; } /* Missing Deps */
-        .layer-4 { top: -280px; left: 280px; width: 260px; } /* Detached */
-        .layer-5 { top: 340px; left: 80px; width: 500px; } /* The Safe point */
-
-        .layer-title {
-            position: absolute;
-            top: -24px;
-            left: 0;
-            font-size: 11px;
-            font-weight: 600;
-            color: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
-        .layer-title span { opacity: 0.6; font-size: 10px; font-weight: 400; }
-
-        /* ===== FRAME BODY CONTENT ===== */
-        .layer-body {
+        .hero-image {
+            max-width: 1000px;
+            width: 90%;
+            margin: 0 auto;
+            border-radius: 16px;
+            box-shadow: 0 24px 80px rgba(0,0,100,0.1);
+            overflow: hidden;
+            display: block;
+            background: #fff;
             padding: 24px;
-            pointer-events: none;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
         }
 
-        .mock-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
-        .mock-bar { height: 8px; border-radius: 4px; background: rgba(0,0,0,0.05); }
-        .mock-bar.w30 { width: 30%; } .mock-bar.w40 { width: 40%; } .mock-bar.w50 { width: 50%; }
-        .mock-bar.w60 { width: 60%; } .mock-bar.w70 { width: 70%; } .mock-bar.w80 { width: 80%; }
-        .mock-bar.w90 { width: 90%; } .mock-bar.thick { height: 12px; }
-        .mock-bar.accent { background: rgba(255,117,24,0.15); }
-        .mock-bar.purple { background: rgba(162,89,255,0.12); }
-        .mock-bar.blue { background: rgba(91,127,255,0.12); }
-        .mock-bar.green { background: rgba(10,207,131,0.12); }
+        /* Content Blocks */
+        .section {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-        .mock-cards { display: flex; gap: 8px; }
-        .mock-card {
-            flex: 1;
-            height: 44px;
-            border-radius: 8px;
-            border: 1px dashed rgba(0,0,0,0.1);
+        .section.wide {
+            max-width: 1000px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--brand-blue);
+            color: white;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            background: rgba(0,0,0,0.02);
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 24px rgba(62,125,255,0.3);
         }
 
-        .mock-al-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 6px;
-        }
-
-        .mock-al-cell {
-            padding: 6px;
-            border-radius: 4px;
-            border: 1px solid;
-            font-size: 8px;
+        .section-title {
+            font-size: 32px;
             font-weight: 700;
-            letter-spacing: 0.05em;
+            margin: 0 0 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Design Process Steps */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 60px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+        }
+
+        .step {
             text-align: center;
+            flex: 1;
+            min-width: 120px;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            right: -10%;
+            width: 20%;
+            height: 1px;
+            border-top: 2px dashed #E0E0E0;
+        }
+
+        .step-num {
+            font-size: 24px;
+            font-weight: 800;
+            color: #DFECFF;
+            text-shadow: 0 0 1px var(--brand-blue);
+            margin-bottom: 8px;
+        }
+
+        .step-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
             text-transform: uppercase;
         }
 
-        .layer-comment {
-            margin-top: 8px;
-            font-size: 10px;
-            color: rgba(0,0,0,0.4);
-            font-style: italic;
-            text-align: center;
-        }
-
-        /* ===== REVEALED CONTENT ===== */
-        .reveal-content {
-            width: 100%;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .reveal-code {
-            font-family: "Apfel Grotezk", sans-serif;
-            font-size: clamp(64px, 12vw, 100px);
-            font-weight: 500;
-            line-height: 1;
-            letter-spacing: -0.04em;
-            background: linear-gradient(135deg, #FF7518 0%, #FFB347 50%, #A259FF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 16px;
-        }
-
-        .reveal-title {
-            font-family: "Apfel Grotezk", sans-serif;
-            font-size: clamp(18px, 3vw, 26px);
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            color: #333;
-            margin-bottom: 12px;
-        }
-
-        .reveal-desc {
-            font-size: 14px;
-            line-height: 22px;
-            color: rgba(0,0,0,0.5);
-            max-width: 440px;
-            margin: 0 auto 28px;
-        }
-
-        .reveal-actions {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* Search Bar */
-        .search-bar-container {
-            display: flex;
-            align-items: center;
-            background: rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 999px;
-            padding: 4px 4px 4px 20px;
-            min-width: 280px;
-            height: 48px;
-            transition: all 0.3s;
+        /* Media Grid */
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
         }
         
-        .search-bar-container:focus-within {
-            border-color: #FF7518;
-            box-shadow: 0 0 0 2px rgba(255,117,24,0.15);
-            background: rgba(0,0,0,0.06);
+        .media-grid.single {
+            grid-template-columns: 1fr;
         }
 
-        .search-input {
-            background: transparent;
-            border: none;
-            color: #333;
-            outline: none;
-            flex: 1;
-            font-size: 14px;
-            font-family: inherit;
+        .media-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.05);
+            background: #fff;
+            padding: 12px;
         }
 
-        .search-input::placeholder {
-            color: rgba(0,0,0,0.4);
+        .media-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
         }
 
-        .search-btn {
-            background: rgba(0,0,0,0.08);
-            border: none;
-            width: 38px;
-            height: 38px;
+        /* Style Guide */
+        .colors {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .color-card {
+            width: 140px;
+            height: 100px;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-end;
+            padding: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Personas */
+        .personas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .persona-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .persona-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .persona-avatar {
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
+            background: var(--brand-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-left: 8px;
+            font-size: 24px;
         }
 
-        .search-btn:hover {
-            background: #FF7518;
-            color: #fff;
+        .persona-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
         }
 
-        .search-btn svg { width: 14px; height: 14px; }
+        .persona-role {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
 
-        .btn-back {
+        .persona-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .persona-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .persona-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--brand-blue);
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        .case-footer {
+            text-align: center;
+            padding: 80px 20px;
+            background: #fff;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .btn-primary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            height: 48px;
-            padding: 0 28px;
-            border-radius: 999px;
-            background: #FF7518;
+            padding: 16px 32px;
+            background: #1A1A1A;
             color: #fff;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
             text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 0 4px 20px rgba(255,117,24,0.3);
-            letter-spacing: -0.01em;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
         }
-
-        .btn-back:hover {
+        
+        .btn-primary:hover {
+            background: var(--brand-blue);
             transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(255,117,24,0.45);
-            background: #ff8a3d;
+            box-shadow: 0 8px 24px rgba(62,125,255,0.3);
         }
 
-        .btn-back svg { width: 16px; height: 16px; }
-
-        .redirect-note {
-            margin-top: 28px;
-            font-size: 11px;
-            color: rgba(0,0,0,0.4);
-        }
-
-        .redirect-note a { color: #FF7518; text-decoration: none; }
-
-        /* ===== HUD ===== */
-        .hud-progress {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            padding: 8px 16px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid rgba(0,0,0,0.1);
-            backdrop-filter: blur(12px);
-            font-size: 12px;
-            font-weight: 500;
-            color: rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            pointer-events: none;
-        }
-
-        .hud-progress .hud-count {
-            color: #FF7518;
-            font-weight: 700;
-            font-size: 13px;
-        }
-
-        /* Microcopy header */
-        .micro-header {
-            display: none; /* hidden since HUD implies panning */
-        }
-
-        .micro-header strong { color: #FF7518; font-weight: 600; }
-
-        .micro-header.hidden { opacity: 0; }
-
-        /* Hint bar */
-        .hint-bar {
-            position: absolute;
-            bottom: 28px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            padding: 10px 22px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid rgba(0,0,0,0.1);
-            backdrop-filter: blur(12px);
-            font-size: 12px;
-            font-weight: 500;
-            color: rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: hintPulse 2.5s ease-in-out infinite;
-            transition: all 0.4s;
-            pointer-events: none;
-        }
-
-        .hint-bar strong { color: #FF7518; }
-        .hint-bar.hidden { opacity: 0; }
-
-        .wiggle-icon {
-            font-size: 16px;
-            animation: wiggle 1.2s ease-in-out infinite;
-        }
-
-        @keyframes hintPulse {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-5px); }
-        }
-
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0); }
-            20% { transform: rotate(-14deg); }
-            40% { transform: rotate(14deg); }
-            60% { transform: rotate(-8deg); }
-            80% { transform: rotate(8deg); }
-        }
-
-        /* ===== CONFETTI ===== */
-        .confetti-layer { position: absolute; inset: 0; pointer-events: none; z-index: 9999; }
-        .conf {
-            position: absolute;
-            top: -12px;
-            animation: confDrop linear forwards;
-        }
-        @keyframes confDrop {
-            0% { transform: translateY(0) rotate(0); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(600deg); opacity: 0; }
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 560px) {
-            .figma-layer { width: 320px; }
-            .avatar-zone { height: 350px; }
-            .micro-header { font-size: 10px; padding: 6px 14px; }
-            .reveal-actions { flex-direction: column; align-items: center; }
+        @media (max-width: 768px) {
+            .step:not(:last-child)::after { display: none; }
+            .media-grid, .personas { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 32px; }
         }
     </style>
 </head>
 <body>
-    <div class="figma-container">
-        <!-- TOP BAR -->
-        <header class="figma-top-bar">
-            <div class="top-bar-icons">
-                <svg width="24" height="24" viewBox="0 0 38 57" fill="none">
-                    <path d="M19 28.5C19 25.8478 20.0536 23.3043 21.9289 21.4289C23.8043 19.5536 26.3478 18.5 29 18.5C31.6522 18.5 34.1957 19.5536 36.0711 21.4289C37.9464 23.3043 39 25.8478 39 28.5C39 31.1522 37.9464 33.6957 36.0711 35.5711C34.1957 37.4464 31.6522 38.5 29 38.5C26.3478 38.5 23.8043 37.4464 21.9289 35.5711C20.0536 33.6957 19 31.1522 19 28.5Z" fill="#1ABCFE"/>
-                    <path d="M0 47.5C0 44.8478 1.05357 42.3043 2.92893 40.4289C4.8043 38.5536 7.34784 37.5 10 37.5C12.6522 37.5 15.1957 38.5536 17.0711 40.4289C18.9464 42.3043 20 44.8478 20 47.5C20 50.1522 18.9464 52.6957 17.0711 54.5711C15.1957 56.4464 12.6522 57.5 10 57.5C7.34784 57.5 4.8043 56.4464 2.92893 54.5711C1.05357 52.6957 0 50.1522 0 47.5Z" fill="#0ACF83"/>
-                    <path d="M0 28.5C0 25.8478 1.05357 23.3043 2.92893 21.4289C4.8043 19.5536 7.34784 18.5 10 18.5L19 18.5L19 38.5L10 38.5C7.34784 38.5 4.8043 37.4464 2.92893 35.5711C1.05357 33.6957 0 31.1522 0 28.5Z" fill="#A259FF"/>
-                    <path d="M0 9.5C0 6.84784 1.05357 4.3043 2.92893 2.42893C4.8043 0.553571 7.34784 0 10 0L19 0L19 19L10 19C7.34784 19 4.8043 17.9464 2.92893 16.0711C1.05357 14.1957 0 11.6522 0 9.5Z" fill="#F24E1E"/>
-                    <path d="M19 0L28.5 0C31.1522 0 33.6957 1.05357 35.5711 2.92893C37.4464 4.8043 38.5 7.34784 38.5 9.5C38.5 11.6522 37.4464 14.1957 35.5711 16.0711C33.6957 17.9464 31.1522 19 28.5 19L19 19L19 0Z" fill="#FF7262"/>
-                </svg>
-            </div>
-            <div class="top-bar-tabs">
-                <a href="index.html" class="figma-tab">
-                    Home
-                    <span class="tab-close">&times;</span>
-                </a>
-                <a href="resume.html" class="figma-tab">
-                    Resume
-                    <span class="tab-close">&times;</span>
-                </a>
-                <a href="tech-stack.html" class="figma-tab">
-                    Tech Stack
-                    <span class="tab-close">&times;</span>
-                </a>
-                <a href="project-detail.html" class="figma-tab active">
-                    Project Detail
-                    <span class="tab-close">&times;</span>
-                </a>
-                <a href="freelance.html" class="figma-tab">
-                    Freelance
-                    <span class="tab-close">&times;</span>
-                </a>
-            </div>
-        </header>
 
-        <div class="figma-app">
-        <!-- LEFT SIDEBAR (RAIL + PANEL) -->
-        <aside class="figma-sidebar-left">
-            <div class="sidebar-rail">
-                <div class="rail-icon active" title="Layers">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L1 5L9 9L17 5L9 1Z" stroke="currentColor" stroke-width="1.2"/><path d="M1 9L9 13L17 9" stroke="currentColor" stroke-width="1.2"/><path d="M1 13L9 17L17 13" stroke="currentColor" stroke-width="1.2"/></svg>
-                </div>
-                <div class="rail-icon" title="Assets">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="10" y="2" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="10" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><circle cx="13" cy="13" r="3" stroke="currentColor" stroke-width="1.2"/></svg>
-                </div>
-            </div>
+    <!-- Navigation -->
+    <nav class="case-nav">
+        <a href="index.html">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Portfolio
+        </a>
+        <a href="resume.html">Resume</a>
+    </nav>
 
-            <div class="sidebar-panel">
-                <div class="sidebar-panel-header">
-                    <div class="panel-title-row">
-                        Project Page <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                    </div>
-                    <div class="panel-status-row">
-                        <span class="status-badge">Team project</span>
-                        <span class="status-badge blue">Free</span>
-                    </div>
-                </div>
-
-                <div class="sidebar-section">
-                    <div class="section-label">
-                        Pages <span class="label-action">+</span>
-                    </div>
-                    <ul class="sidebar-list">
-                        <li class="list-item"><span>#</span> Cover</li>
-                        <li class="list-item active"><span>#</span> Project_View</li>
-                        <li class="list-item"><span>#</span> Assets</li>
-                    </ul>
-                </div>
-
-                <div class="sidebar-section">
-                    <div class="section-label">Layers</div>
-                    <div class="sidebar-list">
-                        <div class="list-item active">
-                            <span>#</span> Project_Mockup_v1
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- MAIN CANVAS CONTAINER -->
-        <main class="figma-canvas-container">
-            <!-- RULERS -->
-            <div class="ruler-h">
-                <div class="ruler-tick" style="left: 0;">0</div>
-                <div class="ruler-tick" style="left: 100px;">1000</div>
-                <div class="ruler-tick" style="left: 200px;">2000</div>
-            </div>
-            <div class="ruler-v">
-                <div class="ruler-tick" style="top: 0;">0</div>
-                <div class="ruler-tick" style="top: 100px;">1000</div>
-                <div class="ruler-tick" style="top: 200px;">2000</div>
-            </div>
-
-            <div class="figma-canvas" id="viewport">
-                <div class="grid-overlay"></div>
-                
-                <!-- Progress HUD -->
-                <div class="hud-progress">
-                    🖱️ Tip: <span class="hud-count">Hold Space to Pan • Scroll to Zoom</span>
-                </div>
-
-                <!-- FLOATING TOOLBAR PILL -->
-                <div class="figma-toolbar-pill">
-                    <div class="toolbar-group">
-                        <div class="toolbar-tool active" id="tool-cursor" title="Move (V)">
-                            <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3.5 2l7.5 4.5-5 .5-2 4.5V2z" fill="currentColor"/></svg>
-                        </div>
-                        <div class="toolbar-tool" title="Frame (F)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 1v12M10 1v12M1 4h12M1 10h12" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                        <div class="toolbar-tool" title="Hand (H)" id="tool-hand">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 4.5V3a1.5 1.5 0 013 0v1.5m0 0V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                        </div>
-                        <div class="toolbar-tool" title="Comment (C)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 10.5V2a1 1 0 011-1h10a1 1 0 011 1v7" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pan-canvas" id="panCanvas">
-                    <!-- Main Frame -->
-                    <div class="figma-layer" style="top: -120px; left: -340px; width: 680px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); border-radius: 4px; background: #fff; text-align: left; padding: 0;">
-            <div class="layer-title" style="color: #333;"># Medium_Article_Card <span>(Design_In_Process.fig)</span></div>
-            
-            <div class="reveal-content" style="padding: 24px 32px; text-align: left; display: flex; gap: 40px; align-items: flex-start; cursor: pointer;" onclick="window.location.href='index.html#work'">
-                <!-- Left Content -->
-                <div style="flex: 1; max-width: 440px;">
-                    <!-- Author Row -->
-                    <div style="display: flex; align-items: center; margin-bottom: 8px; gap: 8px;">
-                        <img src="images/profile.png" onerror="this.src='images/avatar-boy.png'" alt="Harsha Royal" loading="lazy" decoding="async" width="20" height="20" style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover;">
-                        <div style="font-family: 'Inter', sans-serif; font-size: 13px; color: #242424; font-weight: 500;">
-                            Harsha Royal
-                        </div>
-                        <span style="color: #757575; font-size: 13px;">in</span>
-                        <div style="font-family: 'Inter', sans-serif; font-size: 13px; color: #242424; font-weight: 500;">
-                            Case Studies
-                        </div>
-                    </div>
-
-                    <!-- Title & Desc -->
-                    <h1 class="reveal-title" style="font-size: 20px; font-weight: 800; line-height: 24px; font-family: 'Inter', sans-serif; color: #242424; margin-bottom: 6px; letter-spacing: -0.01em;">
-                        Refining Enterprise Project Management: Design is in Progress
-                    </h1>
-                    
-                    <p class="reveal-desc" style="font-size: 15px; line-height: 22px; color: #242424; font-family: 'Charter', 'Georgia', serif; font-weight: 400; max-width: none; margin: 0 0 16px; text-align: left; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                        Enterprise project management often suffers from data density issues. When users are managing hundreds of concurrent projects, the interface must prioritize clarity over complexity. A deep dive into the user experience, component architecture, and final interface will be available here soon. I'm currently assembling the pixel-perfect mockups and writing the case study.
-                    </p>
-
-                    <!-- Meta Row -->
-                    <div style="display: flex; align-items: center; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 13px; color: #6B6B6B;">
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <span>Feb 23</span>
-                            <span>·</span>
-                            <span>5 min read</span>
-                            <span>·</span>
-                            <span style="background: #F2F2F2; padding: 4px 10px; border-radius: 99px; font-size: 13px; color: #242424;">Process</span>
-                        </div>
-                        <!-- Bookmark Icon -->
-                        <div style="color: #6B6B6B;">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="https://www.w3.org/2000/svg">
-                                <path d="M17.5 4.5H6.5C5.39543 4.5 4.5 5.39543 4.5 6.5V19.8258C4.5 20.3065 5.09341 20.5348 5.41421 20.1764L10.8753 14.0759C11.4925 13.3865 12.5075 13.3865 13.1247 14.0759L18.5858 20.1764C18.9066 20.5348 19.5 20.3065 19.5 19.8258V6.5C19.5 5.39543 18.6046 4.5 17.5 4.5Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Cover Image Thumbnail -->
-                <div style="width: 140px; height: 112px; margin-top: 24px; flex-shrink: 0; background-color: #f8f8f8; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;">
-                    <img src="images/work-1.jpg" alt="Thumbnail" loading="lazy" decoding="async" width="140" height="112" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); opacity: 0.6;">
-                    <div style="position: absolute; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10px; color: #111; letter-spacing: 0.05em; transform: rotate(-12deg); background: #FF7518; color: #fff; padding: 4px 8px; border-radius: 4px; white-space: nowrap;">COMING SOON</div>
-                </div>
-            </div>
-                </div>
-            </div>
-        </main>
-        <aside class="figma-sidebar-right">
-            <div class="sidebar-right-header">
-                <div class="user-avatar">H</div>
-                <div class="header-user-actions">
-                    <div class="rail-icon" title="Present">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                    </div>
-                    <button class="btn-share">Share</button>
-                    <div class="zoom-dropdown" style="margin-left: 12px; font-size: 11px; display: flex; align-items: center; gap: 4px; color: rgba(0,0,0,0.7);">
-                        <span id="zoom-level">33%</span> <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="property-tabs">
-                <div style="display: flex; gap: 4px;">
-                    <div class="prop-tab active">Design</div>
-                    <div class="prop-tab">Prototype</div>
-                </div>
-            </div>
-
-            <div class="sidebar-panel-content">
-                <!-- LAYOUT SECTION -->
-                <div class="sidebar-section">
-                    <div class="section-label">Layout</div>
-                    <div style="padding: 0 16px 8px 16px;">
-                        <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 8px;">Resizing</div>
-                        <div class="resizing-group">
-                            <div class="resizing-item active">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M15 8l4 4-4 4"/></svg>
-                            </div>
-                            <div class="resizing-item">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-                            </div>
-                            <div class="resizing-item">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="prop-row-custom">
-                        <div class="input-with-icon">
-                            <span style="color: rgba(0,0,0,0.4); width: 12px;">W</span>
-                            <span>680</span>
-                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" style="margin-left: auto;"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                        <div class="input-with-icon">
-                            <span style="color: rgba(0,0,0,0.4); width: 12px;">H</span>
-                            <span>712</span>
-                            <span style="margin-left: auto; font-size: 10px; color: rgba(0,0,0,0.4);">Hug</span>
-                        </div>
-                        <div class="resizing-item" style="background: rgba(0,0,0,0.03); width: 28px; height: 28px;">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8v8H8z"/></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- APPEARANCE SECTION -->
-                <div class="sidebar-section">
-                    <div class="section-label">
-                        Appearance
-                        <div class="section-actions">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                        </div>
-                    </div>
-                    <div class="prop-row-custom">
-                        <div style="flex: 1;">
-                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Opacity</div>
-                            <div class="input-with-icon">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="2 2"/></svg>
-                                <span>100%</span>
-                            </div>
-                        </div>
-                        <div style="flex: 1;">
-                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Corner radius</div>
-                            <div class="input-with-icon">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11c0-4.418-3.582-8-8-8M3 13c0 4.418 3.582 8 8 8"/></svg>
-                                <span style="color: rgba(0,0,0,0.3);">4</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TYPOGRAPHY SECTION -->
-                <div class="sidebar-section">
-                    <div class="section-label">
-                        Typography
-                        <div class="section-actions">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                        </div>
-                    </div>
-                    <div class="prop-row-custom">
-                        <div class="prop-block-custom select" style="justify-content: space-between;">
-                            <span>Segoe UI</span>
-                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                    </div>
-                    <div class="prop-row-custom">
-                        <div class="prop-block-custom select" style="flex: 1.5;">
-                            <span>Semibold</span>
-                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                        <div class="prop-block-custom select" style="flex: 1;">
-                            <span>20</span>
-                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                    </div>
-                    <div class="prop-row-custom">
-                        <div style="flex: 1;">
-                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Line height</div>
-                            <div class="input-with-icon">
-                                <span style="font-size: 14px; margin-top: -2px;">A</span>
-                                <span>24</span>
-                            </div>
-                        </div>
-                        <div style="flex: 1;">
-                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Letter spacing</div>
-                            <div class="input-with-icon">
-                                <span style="font-size: 14px; margin-top: -2px;">|A|</span>
-                                <span>-1%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="padding: 4px 16px 12px 16px;">
-                        <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 8px;">Alignment</div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div class="align-group">
-                                <div class="align-item active">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 10H3M21 6H3M13 14H3M19 18H3"/></svg>
-                                </div>
-                                <div class="align-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10H6M21 6H3M14 14H10M16 18H8"/></svg>
-                                </div>
-                                <div class="align-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10H7M21 6H3M21 14H11M21 18H5"/></svg>
-                                </div>
-                            </div>
-                            <div class="align-group">
-                                <div class="align-item active">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
-                                </div>
-                                <div class="align-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="4" rx="1"/><path d="M12 3v7M12 14v7"/></svg>
-                                </div>
-                                <div class="align-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
-                                </div>
-                            </div>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.5;"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FILL SECTION -->
-                <div class="sidebar-section" style="border-bottom: none;">
-                    <div class="section-label">
-                        Fill
-                        <div class="section-actions">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                            <span style="font-size: 18px; line-height: 1;">+</span>
-                        </div>
-                    </div>
-                    <div class="prop-row-custom fill-row">
-                        <div class="color-swatch" style="background: #ffffff;"></div>
-                        <div class="hex-input">FFFFFF</div>
-                        <div class="opacity-input">100%</div>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.5;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                        <span style="opacity: 0.5; font-size: 16px;">−</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
-    </div>
-
-    <!-- Confetti -->
-    <div class="confetti-layer" id="confLayer"></div>
-
-    <script>
-        const viewport = document.getElementById('viewport');
-        const panCanvas = document.getElementById('panCanvas');
-        const gridOverlay = document.querySelector('.grid-overlay');
-        const zoomLevelDisplay = document.getElementById('zoom-level');
-        const toolCursor = document.getElementById('tool-cursor');
-        const toolHand = document.getElementById('tool-hand');
-
-        let isDragging = false;
-        let startX, startY;
-        let translateX = 0;
-        let translateY = 0;
-        let scale = 1; 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">UX/UI Case Study</div>
+        <h1>WSP Project Dashboard</h1>
+        <p>A comprehensive re-imagining of the enterprise dashboard to enhance data-driven decision making and streamline workflow architecture.</p>
         
-        let isSpacePressed = false;
-        let isCtrlPressed = false;
+        <div class="hero-image">
+            <img src="images/work-1.jpg" alt="WSP Dashboard Mockup">
+        </div>
+    </section>
 
-        function updateTransform() {
-            panCanvas.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
-            gridOverlay.style.backgroundPosition = `${translateX}px ${translateY}px`;
-            gridOverlay.style.backgroundSize = `${24 * scale}px ${24 * scale}px`;
-            zoomLevelDisplay.innerText = `${Math.round(scale * 100)}%`;
-        }
+    <!-- Overview Section -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h2 class="section-title">Overview</h2>
+            <p class="section-desc">A detailed overview of the information architecture and workflow within the dashboard designed to improve the end-user experience. It revolves around allowing users to make data-driven decisions and track KPIs efficiently, reducing time spent on administrative tasks and increasing overall productivity.</p>
+        </div>
 
-        function updateTools() {
-            if (isSpacePressed || isCtrlPressed || isDragging) {
-                viewport.classList.add('hand-tool');
-                if (isSpacePressed) {
-                    toolHand.classList.add('active');
-                    toolCursor.classList.remove('active');
-                }
-            } else {
-                viewport.classList.remove('hand-tool');
-                toolHand.classList.remove('active');
-                toolCursor.classList.add('active');
-            }
-        }
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-num">01</div>
+                <div class="step-name">Discover</div>
+            </div>
+            <div class="step">
+                <div class="step-num">02</div>
+                <div class="step-name">Design</div>
+            </div>
+            <div class="step">
+                <div class="step-num">03</div>
+                <div class="step-name">Prototype</div>
+            </div>
+            <div class="step">
+                <div class="step-num">04</div>
+                <div class="step-name">Testing</div>
+            </div>
+            <div class="step">
+                <div class="step-num">05</div>
+                <div class="step-name">Develop</div>
+            </div>
+        </div>
+    </section>
 
-        viewport.addEventListener('mousedown', (e) => {
-            if (e.target.closest('.reveal-actions') && !isSpacePressed) return;
-            if (e.button === 1 || isSpacePressed || e.target === viewport || e.target === gridOverlay || e.target.classList.contains('dark-canvas')) {
-                isDragging = true;
-                startX = e.clientX - translateX;
-                startY = e.clientY - translateY;
-                viewport.classList.add('grabbing');
-                updateTools();
-                e.preventDefault();
-            }
-        });
+    <!-- UI Previews Section -->
+    <section class="section wide">
+        <div class="media-grid single">
+            <div class="media-item">
+                <img src="images/work-2.jpg" alt="Dashboard Main View">
+            </div>
+        </div>
+        <div class="media-grid">
+            <div class="media-item">
+                <img src="images/work-3.jpg" alt="Dashboard Detail View 1">
+            </div>
+            <div class="media-item">
+                <img src="images/work-4.jpg" alt="Dashboard Detail View 2">
+            </div>
+        </div>
+    </section>
 
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            translateX = e.clientX - startX;
-            translateY = e.clientY - startY;
-            updateTransform();
-        });
+    <!-- User Flow Section -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v6h-2zm0 8h2v2h-2z"/></svg>
+            </div>
+            <h2 class="section-title">User Flow</h2>
+            <p class="section-desc">The user flow defines the primary path taken by the end-user. It aims to reduce friction points and make the navigation simple and straightforward, allowing for quick access to essential features like analytics and reporting.</p>
+        </div>
+        
+        <div class="media-item" style="max-width: 800px; margin: 0 auto; background: #fff; padding: 40px; display: flex; align-items: center; justify-content: center;">
+            <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; text-align: center; font-family: 'Inter', sans-serif;">
+                <div style="background: rgba(62,125,255,0.1); color: #3E7DFF; padding: 12px 24px; border-radius: 8px; font-weight: 600;">Log In / Authenticate</div>
+                <div style="width: 2px; height: 24px; background: #E0E0E0;"></div>
+                <div style="display: flex; gap: 24px;">
+                    <div style="background: rgba(62,125,255,0.1); color: #3E7DFF; padding: 12px 24px; border-radius: 8px; font-weight: 600;">Main Dashboard (KPIs)</div>
+                    <div style="background: rgba(62,125,255,0.1); color: #3E7DFF; padding: 12px 24px; border-radius: 8px; font-weight: 600;">Data Search & Filter</div>
+                </div>
+                <div style="width: 2px; height: 24px; background: #E0E0E0;"></div>
+                <div style="display: flex; gap: 24px;">
+                    <div style="background: #F0F6FF; padding: 12px 24px; border-radius: 8px;">Export Reports</div>
+                    <div style="background: #F0F6FF; padding: 12px 24px; border-radius: 8px;">User Profile</div>
+                    <div style="background: #F0F6FF; padding: 12px 24px; border-radius: 8px;">Settings UI</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        window.addEventListener('mouseup', () => {
-            isDragging = false;
-            viewport.classList.remove('grabbing');
-            updateTools();
-        });
+    <!-- Style Guide Section -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4-9 4-9-4 9-4zm0 18v-8M3.5 9v6.5l8.5 4.5"/></svg>
+            </div>
+            <h2 class="section-title">Style Guide</h2>
+            <p class="section-desc">Maintaining visual consistency is key to giving a polished feel to the product. Here are the primary colors and typography chosen for the interface.</p>
+        </div>
 
-        window.addEventListener('wheel', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                e.preventDefault();
-                const zoomSpeed = 0.001;
-                const delta = -e.deltaY;
-                const newScale = Math.min(Math.max(0.1, scale + delta * zoomSpeed * scale), 5);
-                
-                const rect = viewport.getBoundingClientRect();
-                const mouseX = e.clientX - rect.left - rect.width/2;
-                const mouseY = e.clientY - rect.top - rect.height/2;
-                
-                translateX -= (mouseX - translateX) * (newScale / scale - 1);
-                translateY -= (mouseY - translateY) * (newScale / scale - 1);
-                
-                scale = newScale;
-                updateTransform();
-            } else {
-                e.preventDefault();
-                translateY -= e.deltaY;
-                translateX -= e.deltaX;
-                updateTransform();
-            }
-        }, { passive: false });
+        <div style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.03); margin-bottom: 40px;">
+            <h3 style="margin-top:0; font-size: 20px; font-weight: 600;">Color Palette</h3>
+            <div class="colors">
+                <div class="color-card" style="background: #3E7DFF;">#3E7DFF<br>Primary Blue</div>
+                <div class="color-card" style="background: #23B24D;">#23B24D<br>Success Green</div>
+                <div class="color-card" style="background: #102B5F;">#102B5F<br>Dark Navy</div>
+                <div class="color-card" style="background: #1A1A1A;">#1A1A1A<br>Off Black</div>
+            </div>
+        </div>
 
-        window.addEventListener('keydown', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                isCtrlPressed = true;
-                updateTools();
-            }
-            if (e.code === 'Space') {
-                if (!isSpacePressed) {
-                    isSpacePressed = true;
-                    updateTools();
-                }
-            }
-            if (e.key.toLowerCase() === 'h') {
-                isSpacePressed = true;
-                updateTools();
-            }
-            if (e.key.toLowerCase() === 'v') {
-                isSpacePressed = false;
-                updateTools();
-            }
-            if (e.ctrlKey && e.code === 'Digit0') {
-                e.preventDefault();
-                scale = 1;
-                translateX = 0;
-                translateY = 0;
-                updateTransform();
-            }
-        });
+        <div style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.03);">
+            <h3 style="margin-top:0; font-size: 20px; font-weight: 600;">Typography</h3>
+            <div style="display: flex; align-items: center; gap: 40px; margin-top: 24px;">
+                <div style="font-size: 72px; font-weight: 600; line-height: 1; letter-spacing: -0.04em;">Aa</div>
+                <div>
+                    <div style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Inter</div>
+                    <div style="display: flex; gap: 16px; font-size: 14px; color: var(--text-muted);">
+                        <span style="font-weight: 400;">Regular</span>
+                        <span style="font-weight: 500;">Medium</span>
+                        <span style="font-weight: 600;">Semi Bold</span>
+                        <span style="font-weight: 700;">Bold</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        window.addEventListener('keyup', (e) => {
-            if (!e.ctrlKey && !e.metaKey) {
-                isCtrlPressed = false;
-            }
-            if (e.code === 'Space') {
-                isSpacePressed = false;
-            }
-            updateTools();
-        });
+    <!-- User Persona -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h2 class="section-title">User Personas</h2>
+            <p class="section-desc">A detailed look at the primary end-users of the application, analyzing their fundamental needs, technical constraints, and strategic goals.</p>
+        </div>
 
-        window.onload = () => {
-            translateX = 0;
-            translateY = 0;
-            updateTransform();
-            updateTools();
-        };
+        <div class="personas">
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">👩🏻‍💼</div>
+                    <div>
+                        <h3 class="persona-title">System Manager</h3>
+                        <p class="persona-role">Age: 34 • Tech-Savvy</p>
+                    </div>
+                </div>
+                <h4 style="font-size: 14px; color: var(--text-dark); margin-bottom: 12px;">Needs</h4>
+                <ul class="persona-list">
+                    <li>Quick overview of vital statistics.</li>
+                    <li>Intuitive data visualization templates.</li>
+                    <li>Easily track department workflows.</li>
+                </ul>
+                <h4 style="font-size: 14px; color: var(--text-dark); margin-top: 24px; margin-bottom: 12px;">Frustrations</h4>
+                <ul class="persona-list">
+                    <li>Too much clutter on the dashboard.</li>
+                    <li>Slow loading times for complex reports.</li>
+                </ul>
+            </div>
 
-        viewport.addEventListener('mousedown', (e) => {
-            if (e.button === 1) e.preventDefault();
-        });
-    </script>
-    <script src="js/figma-notify.js"></script>
-    <script type="text/javascript">
-        // Global Security
-        document.addEventListener('contextmenu', (e) => e.preventDefault());
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
-        };
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">👨🏼‍💻</div>
+                    <div>
+                        <h3 class="persona-title">Data Analyst</h3>
+                        <p class="persona-role">Age: 28 • Highly Analytical</p>
+                    </div>
+                </div>
+                <h4 style="font-size: 14px; color: var(--text-dark); margin-bottom: 12px;">Needs</h4>
+                <ul class="persona-list">
+                    <li>Deep dive capabilities into secondary metrics.</li>
+                    <li>Quick export options for CSV & PDF.</li>
+                    <li>Advanced filtering mechanisms.</li>
+                </ul>
+                <h4 style="font-size: 14px; color: var(--text-dark); margin-top: 24px; margin-bottom: 12px;">Frustrations</h4>
+                <ul class="persona-list">
+                    <li>Hidden tools behind nested menus.</li>
+                    <li>Lack of keyboard shortcuts.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        // Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('SW registered: ', registration);
-                }).catch(registrationError => {
-                    console.log('SW registration failed: ', registrationError);
-                });
-            });
-        }
-    </script>
-        </div> <!-- End figma-app -->
-    </div> <!-- End figma-container -->
-    <script src="js/snowflake_cursor.js"></script>
-    <script src="js/figma-app.js"></script>
+    <footer class="case-footer">
+        <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 24px;">Loved this case study?</h2>
+        <a href="freelance.html" class="btn-primary">Get in Touch</a>
+    </footer>
+
 </body>
 </html>
