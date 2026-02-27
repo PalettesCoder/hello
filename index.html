@@ -208,8 +208,8 @@
             <img loading="lazy" decoding="async" width="1440" height="900" src="images/cloud-bg.png" alt="" role="presentation">
         </div>
         <div class="bg-video video-dark">
-            <video class="video" muted="" autoplay="" loop="" playsinline="">
-                <source src="media/overlay-2.mp4" type="video/mp4">
+            <video class="video" muted="" autoplay="" loop="" playsinline="" preload="none" onerror="this.parentElement.style.display='none'">
+                <source src="media/overlay-2.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none'">
             </video>
             <div class="overlay-1"></div>
         </div>
