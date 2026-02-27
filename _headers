@@ -1,0 +1,36 @@
+# Security & Performance Headers
+# NOTE: GitHub Pages IGNORES this file.
+# This file works with: Cloudflare Pages, Netlify, Vercel.
+# If you migrate from GitHub Pages, these headers will automatically apply.
+
+/*
+  # Security
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in; connect-src 'self' https://api.emailjs.com https://*.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-XSS-Protection: 1; mode=block
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+  # Performance  
+  X-DNS-Prefetch-Control: on
+
+# Immutable assets (fonts, images)
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS and JS
+/css/*
+  Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
+
+/js/*
+  Cache-Control: public, max-age=31536000, stale-while-revalidate=86400
+
+# HTML pages
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
