@@ -1,802 +1,1601 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in; connect-src 'self' https://api.emailjs.com https://*.emailjs.com; frame-src 'self' https://www.figma.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <title>WSP Enterprise — Ultra-Detail UX/UI Case Study | Harsha Royal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <link rel="shortcut icon" href="images/favicon.svg">
-    <link rel="canonical" href="https://harsharoyal.in/project-detail.html">
-    <meta name="theme-color" content="#ED2024">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSP PM | Senior Product Strategy Case Study</title>
+    
+    <!-- Restoring Site Consistency: Fonts -->
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/inter.css">
-    <link rel="stylesheet" href="css/styles.css">
-
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
+    
     <style>
         :root {
-            --wsp-red: #ED2024;
-            --wsp-dark: #111111;
-            --wsp-bg: #F5F7FA;
-            --text-main: #1A1A1A;
-            --text-muted: #4B5563;
-            --border-color: rgba(0,0,0,0.08);
-            --card-shadow: 0 12px 40px rgba(0,0,0,0.04);
-            --neon-red: rgba(237,32,36,0.1);
-            
-            /* Global Website Colors used for harmony */
-            --white: #ffffff;
-            --black: #000000;
-            --primary-orange: #FF7518; /* Main site primary, keeping for context */
+            --primary: #FF7518;
+            --primary-dark: #E65A00; /* Darker variant for text contrast */
+            --surface: #F9F9F9;
+            --bg-base: #EBEBEB;
+            --black-92: #050505;
+            --black-72: #222222;
+            --black-56: #505050; /* Deepened for contrast */
+            --black-40: #666666;
+            --border: rgba(0, 0, 0, 0.08);
+            --font-heading: "Apfel Grotezk", sans-serif;
+            --font-body: "Inter", sans-serif;
+            --font-serif: "EB Garamond", serif;
+            --shadow-subtle: 0px 2px 12px rgba(0,0,0,0.03);
+            --shadow-medium: 0px 16px 48px -8px rgba(0,0,0,0.08);
+            --transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            --max-width-container: 1400px;
+            --max-width-narrative: 850px;
+            --column-gap: 80px;
+            --section-padding: clamp(120px, 15vw, 200px);
+            --gutter: 5%;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            background-color: var(--wsp-bg);
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
+            background-color: var(--surface);
+            color: var(--black-92);
+            font-family: var(--font-body);
+            font-size: 21px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            scroll-behavior: smooth;
-            cursor: url("media/fallguys.cur"), auto;
+            margin: 0;
+            cursor: url("../media/fallguys.cur"), auto;
         }
-
-        /* Custom Cursors from Main Site */
-        .award-item,.award-item *,.btn,.btn *,.figma-tab,.figma-tab *,.layer-item,.layer-item *,.rail-icon,.rail-icon *,[onclick],[onclick] *,a,a *,button,button *,input,select,textarea{cursor:url("media/speed.cur"),pointer!important}
-        :active{cursor:url("media/speed.cur"),pointer!important}
-
-        /* --- Custom Progress Nav --- */
-        .page-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: var(--wsp-red);
-            z-index: 2000;
-        }
-
-        .scroll-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
+        
+        .container {
+            max-width: var(--max-width-container);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
             width: 100%;
-            height: 80px;
-            padding: 0 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255,255,255,0.9);
-            backdrop-filter: blur(16px);
-            z-index: 1001;
-            border-bottom: 1px solid var(--border-color);
-            box-sizing: border-box;
-            transition: transform 0.4s ease;
         }
 
-        .scroll-nav.hidden { transform: translateY(-100%); }
+        .wrap-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--column-gap);
+            align-items: flex-start;
+        }
 
-        .nav-logo {
+        /* Reading Measure: The core of the alignment feel */
+        .mega-text {
+            max-width: var(--max-width-narrative);
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .narrative-copy {
+            font-size: 26px;
+            line-height: 1.65;
+            color: var(--black-92);
+            font-family: var(--font-serif);
+            margin-bottom: 40px;
+            max-width: var(--max-width-narrative);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 50; /* BELOW the header and navigation */
+        }
+
+        h1 { font-family: var(--font-heading); font-size: clamp(64px, 12vw, 140px); line-height: 0.85; font-weight: 700; letter-spacing: -0.05em; margin-bottom: 32px; color: var(--black-92); }
+        h2 { font-family: var(--font-heading); font-size: clamp(48px, 6vw, 78px); line-height: 1.0; font-weight: 700; letter-spacing: -0.03em; color: var(--black-92); margin: 0 0 40px 0; }
+        h3 { font-family: var(--font-heading); font-size: clamp(36px, 5vw, 64px); line-height: 1.1; font-weight: 700; color: var(--black-92); margin-bottom: 32px; }
+        h4 { font-family: var(--font-heading); font-size: 28px; line-height: 1.25; font-weight: 700; color: var(--black-92); margin-bottom: 16px; }
+        
+        /* Nav Spy: Premium Sidebar */
+        .mini-nav {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            padding: 24px 12px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--black-40);
+            border-radius: 50%;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        /* Fitts's Law: Enlarge clickable area without changing visual size */
+        .nav-dot::before {
+            content: "";
+            position: absolute;
+            top: -12px; left: -12px; right: -12px; bottom: -12px;
+            border-radius: 50%;
+        }
+        
+        .nav-dot.active {
+            background: var(--primary);
+            transform: scale(1.5);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .nav-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%) translateX(20px);
+            background: var(--black-92);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform:uppercase;
+            letter-spacing:0.1em;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .nav-dot:hover::after {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        /* Interactive Sticky Notes */
+        .sticky-note {
+            position: absolute;
+            width: 220px;
+            min-height: 220px;
+            padding: 28px;
+            background: #fff7d1;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.4;
+            transform: rotate(-2deg);
+            z-index: 10;
+            transition: var(--transition);
+            border-radius: 4px;
+            cursor: pointer;
+            border-bottom: 4px solid rgba(0,0,0,0.15);
+        }
+        
+        .sticky-note::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: #e63946;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3), inset -4px -4px 8px rgba(0,0,0,0.2);
+            z-index: 11;
+        }
+
+        .sticky-note::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 15px;
+            background: #999;
+            z-index: 12;
+        }
+
+        .sticky-note:hover {
+            transform: translateX(10px) rotate(3deg) scale(0.98);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+
+        body.clean-mode .sticky-note,
+        body.clean-mode .ui-fragment,
+        body.clean-mode .director-sidebar {
+            display: none !important;
+        }
+
+        .reading-mode-toggle {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-subtle);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reading-mode-toggle::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .reading-mode-toggle:hover { background: var(--black-92); color: #fff; transform: translateY(-2px); }
+        body.clean-mode .reading-mode-toggle { background: var(--primary); color: #fff; border-color: var(--primary); }
+        body.clean-mode .reading-mode-toggle::before { background: #fff; }
+
+        .sticky-note.blue { background: #d1f7ff; }
+        .sticky-note.pink { background: #ffd1f7; }
+        .sticky-note.orange { background: #ffe6d1; }
+        .sticky-note.yellow { background: #fff7d1; }
+
+        /* Floating UI Elements */
+        .ui-fragment {
+            position: absolute;
+            background: #fff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             gap: 12px;
+            z-index: 2;
+            pointer-events: none;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(46, 125, 50, 0.1);
+            color: #1B5E20; /* Darker for accessibility */
+            font-size: 10px;
             font-weight: 800;
-            color: var(--wsp-red);
-            font-size: 20px;
-            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
-
-        /* --- Sections --- */
-        .content-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .hero-section {
+        
+        .hero-narrative {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+            padding: 200px var(--gutter) 140px;
             background: #fff;
-            padding-top: 120px;
             position: relative;
-            overflow: hidden;
         }
 
-        .hero-section h1 {
-            font-family: 'Apfel Grotezk', sans-serif;
-            font-size: clamp(48px, 8vw, 110px);
+        .hero-tagline {
+            font-size: 16px;
             font-weight: 900;
-            letter-spacing: -0.06em;
-            line-height: 0.95;
-            margin-bottom: 40px;
-            max-width: 1100px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            margin-bottom: 32px;
         }
 
-        .hero-content {
+        .hero-narrative h1 {
+            font-size: clamp(64px, 14vw, 160px);
+            line-height: 0.8;
+            margin-bottom: 50px;
+            max-width: 1400px;
+            color: var(--black-92);
+        }
+
+        .hero-insight {
+            font-size: clamp(24px, 2.8vw, 32px);
+            color: var(--black-92);
             max-width: 800px;
-            font-size: 24px;
-            color: var(--text-muted);
-            margin-bottom: 80px;
-            font-family: 'Inter', sans-serif;
+            border-left: 6px solid var(--primary);
+            padding-left: 32px;
+            margin-top: 32px;
+            font-weight: 400;
+            line-height: 1.4;
+            font-family: var(--font-serif);
         }
 
-        /* --- Sticky Whiteboard / Panning Section --- */
-        .workspace-canvas {
+        /* Global Navigation Header */
+        .main-header {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 48px);
+            max-width: 1280px;
+            height: 72px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 9999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .header-logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--black-92);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo span {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .back-link {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--black-72);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+            transform: translateX(-4px);
+        }
+
+        .back-link span {
+            font-size: 18px;
+        }
+
+        .story-block { padding: var(--section-padding) 0; overflow: hidden; }
+        .story-block.white { background: #fff; }
+
+        .block-text { position: sticky; top: 140px; }
+        .block-text h2 { font-size: clamp(44px, 6.5vw, 78px); line-height: 1.0; margin-bottom: 32px; }
+        .block-text .body-copy { 
+            font-size: 24px; 
+            color: var(--black-72); 
+            margin-bottom: 32px; 
+            font-family: var(--font-serif); 
+            max-width: var(--max-text-width);
+            line-height: 1.6;
+        }
+
+        .pull-quote {
+            font-family: var(--font-heading);
+            font-size: clamp(24px, 3vw, 36px);
+            line-height: 1.1;
+            color: var(--text-main);
+            margin: 60px 0;
             position: relative;
-            width: 100%;
-            height: 800px;
-            background: #FAFAFA;
-            background-image: 
-                radial-gradient(#E5E7EB 1.5px, transparent 0);
-            background-size: 40px 40px;
-            border-radius: 32px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            margin: 100px 0;
-            cursor: grab;
+            padding-left: 20px;
         }
 
-        .workspace-canvas:active { cursor: grabbing; }
-
-        .canvas-inner {
+        .pull-quote::before {
+            content: "“";
             position: absolute;
-            width: 3000px;
-            height: 2000px;
+            left: -30px;
+            top: -20px;
+            font-size: 120px;
+            color: var(--primary);
+            opacity: 0.2;
+        }
+
+        .insight-card {
+            background: #fff;
+            padding: 48px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            margin-top: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+            position: relative;
+        }
+
+        .insight-card strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 13px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 16px;
+            letter-spacing: 0.1em;
+        }
+
+        .block-visual {
+            background: #fff;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 60px 120px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .block-visual img { width: 100%; height: auto; border-radius: 6px; }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .strategy-item h4 { font-size: 20px; margin-bottom: 12px; color: var(--text-main); }
+        .strategy-item p { font-size: 15px; color: var(--text-muted); font-family: var(--font-serif); }
+
+        /* Floating Nav */
+        .mini-nav {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(0,0,0,0.15);
+            border-radius: 50%;
+            transition: all 0.4s var(--transition);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: var(--font-heading);
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            white-space: nowrap;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .nav-dot:hover::after, .nav-dot.active::after { opacity: 1; }
+        .nav-dot.active { background: var(--primary); transform: scale(1.6); }
+
+        .progress-bar-top {
+            position: fixed;
             top: 0;
             left: 0;
-            transition: transform 0.1s ease-out;
-            will-change: transform;
+            height: 6px;
+            background: var(--primary);
+            width: 0%;
+            z-index: 10001;
         }
 
-        /* --- Sticky Notes --- */
-        .sticky-note {
-            position: absolute;
-            width: 220px;
-            padding: 24px;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            transform: rotate(-2deg);
+        /* Metrics */
+        .metric-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 80px;
         }
-
-        .sticky-yellow { background: #FFFBCC; border-left: 4px solid #F5E8A9; }
-        .sticky-blue { background: #E0F2FF; border-left: 4px solid #B3D7FF; }
-        .sticky-green { background: #E0FFE0; border-left: 4px solid #B3FFB3; }
-
-        /* --- Figma Frames in Canvas --- */
-        .figma-frame {
-            position: absolute;
+        
+        .metric-card {
+            padding: 32px;
             background: #fff;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .metric-val { font-size: clamp(48px, 6vw, 64px); font-weight: 700; color: var(--primary); line-height: 1; margin-bottom: 8px; }
+        .metric-label { font-size: 14px; font-weight: 700; color: var(--black-72); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .showcase-item {
+            background: #fff;
+            padding: 16px;
             border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s var(--transition);
         }
 
-        .frame-header {
-            background: #F3F4F6;
-            padding: 8px 16px;
-            font-size: 11px;
-            font-weight: 600;
-            color: #9CA3AF;
-            display: flex;
-            justify-content: space-between;
-        }
+        .showcase-item:hover { transform: translateY(-10px); }
+        .showcase-item img { width: 100%; border-radius: 4px; border: 1px solid var(--border); }
+        .showcase-item p { margin-top: 20px; font-family: var(--font-heading); font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--black-92); }
 
-        /* --- Detailed Text Content --- */
-        .text-block {
-            max-width: 800px;
-            margin: 120px auto;
-        }
-
-        .text-block h2 {
-            font-family: 'Apfel Grotezk', sans-serif;
-            font-size: 48px;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            margin-bottom: 32px;
-        }
-
-        .text-block p {
-            margin-bottom: 32px;
-            font-size: 19px;
-            color: #374151;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* --- User Personas --- */
         .persona-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
             gap: 40px;
-            margin: 80px 0;
+            margin-top: 60px;
         }
 
-        .persona-detailed {
+        .persona-card {
             background: #fff;
-            border-radius: 32px;
-            padding: 50px;
-            border: 1px solid var(--border-color);
+            padding: 40px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            position: relative;
         }
 
-        .persona-top {
+        .persona-header {
             display: flex;
             align-items: center;
             gap: 24px;
-            margin-bottom: 40px;
+            margin-bottom: 24px;
         }
 
         .persona-avatar {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
+            background: #eee;
             border-radius: 50%;
-            background: var(--wsp-bg);
             overflow: hidden;
         }
+
+        .persona-info h4 { margin: 0; font-size: 28px; color: var(--black-92); }
+        .persona-info p { margin: 4px 0 0; color: var(--primary); font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 0.1em; }
 
         .persona-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 30px;
+            gap: 20px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
         }
 
-        .stat-item {
-            background: var(--wsp-bg);
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 13px;
-        }
+        .stat-item span { display: block; font-size: 13px; text-transform: uppercase; opacity: 0.7; margin-bottom: 8px; font-weight: 700; color: var(--black-56); }
+        .stat-item strong { font-size: 18px; color: var(--black-92); }
 
-        /* --- Device Frames --- */
-        .device-laptop {
-            width: 100%;
-            max-width: 1000px;
-            margin: 60px auto;
-            background: #2b2b2b;
-            padding: 2.5% 2.5% 4%;
-            border-radius: 20px 20px 5px 5px;
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.4);
+        /* Director Sidebar: Executive Dark Theme */
+        .director-sidebar {
+            background: var(--black-92);
+            color: #fff;
+            padding: 60px;
+            margin-top: 60px;
+            border-left: 12px solid var(--primary);
             position: relative;
-        }
-
-        .device-laptop::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: -10%;
-            width: 120%;
-            height: 15px;
-            background: #111;
-            border-radius: 0 0 20px 20px;
-        }
-
-        .laptop-screen {
-            background: #fff;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.2);
             border-radius: 4px;
-            overflow: hidden;
-            display: block;
-            aspect-ratio: 16 / 10;
+        }
+
+        .director-sidebar h5 {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.3em;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .director-sidebar p { 
+            font-size: 24px; 
+            line-height: 1.5; 
+            color: #ffffff !important; 
+            font-family: var(--font-serif); 
+            margin: 0;
+            opacity: 1 !important;
+            visibility: visible !important;
+            font-weight: 400;
+        }
+
+        /* Strategy Banner - Full Width */
+        .strategy-banner {
+            background: var(--black-92);
+            color: #fff;
+            padding: 120px 8%;
+            border-radius: 12px;
+            margin: 100px auto;
+            text-align: center;
             position: relative;
         }
 
-        .laptop-screen img, .device-browser img {
-            width: 100%;
-            height: auto;
+        .strategy-banner .banner-tag {
+            color: #FF8B3D; /* Lighter Orange for Dark BG Visibility */
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.3em;
+            font-weight: 800;
             display: block;
+            margin-bottom: 24px;
         }
 
-        /* Allow internal scrolling for long screenshots in frames */
-        .scrollable-frame {
-            overflow-y: auto;
-            max-height: 100%;
-            scrollbar-width: thin;
-        }
-        .scrollable-frame::-webkit-scrollbar { width: 4px; }
-        .scrollable-frame::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        .strategy-banner h3 { color: #ffffff !important; font-size: 56px; line-height: 1.1; margin-bottom: 24px; }
+        .strategy-banner p { color: #E0E0E0 !important; font-size: 26px; font-family: var(--font-serif); max-width: 900px; margin: 0 auto; line-height: 1.4; opacity: 1 !important; }
 
-        .device-browser {
-            border-radius: 12px;
+        /* Design System Specs */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .spec-item {
+            padding: 32px;
             background: #fff;
-            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.25);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            aspect-ratio: 16 / 10;
+            border: 1px solid var(--border);
+        }
+
+        .spec-label { font-size: 14px; text-transform: uppercase; opacity: 0.8; margin-bottom: 12px; display: block; font-weight: 800; color: var(--black-56); letter-spacing: 0.1em; }
+        .spec-value { font-family: var(--font-heading); font-size: 22px; color: var(--black-92); }
+
+        /* Focus states for accessibility */
+        a:focus, button:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+        }
+
+        .section-tag {
+            background: rgba(255,117,24,0.08);
+            color: var(--primary-dark);
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .mega-text {
+            max-width: 1000px; /* Reduced for better reading measure */
+            margin: 0 auto;
+            padding: 0 var(--container-gutter); /* Standardize side padding */
+        }
+
+        .mega-text h3 { margin-bottom: 32px; font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.03em; }
+        .mega-text p { font-size: 26px; color: var(--black-92); font-family: var(--font-serif); margin-bottom: 32px; line-height: 1.6; }
+        
+        .list-narrative { list-style: none; padding: 0; margin: 40px 0; }
+        .list-narrative li { margin-bottom: 24px; padding-left: 48px; position: relative; font-size: 22px; color: var(--black-72); line-height: 1.5; font-weight: 500; }
+        .list-narrative li::before { content: ""; position: absolute; left: 0; top: 12px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); }
+
+        /* Component: Design Token Card */
+        .token-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
-            max-width: 1000px;
-            margin: 0 auto;
+            gap: 16px;
         }
+        .token-swatch { width: 100%; height: 80px; border-radius: 8px; }
+        .token-meta { font-size: 14px; font-weight: 800; text-transform: uppercase; color: var(--black-56); letter-spacing: 0.1em; }
+        .token-value { font-family: "IBM Plex Mono", monospace; font-size: 16px; color: var(--black-72); font-weight: 700; }
 
-        .browser-header {
-            background: #F3F4F6;
-            padding: 12px 20px;
+        /* Component: Logic Bridge */
+        .logic-bridge {
             display: flex;
             align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .dot-red { width: 10px; height: 10px; background: #FF5F56; border-radius: 50%; }
-        .dot-yellow { width: 10px; height: 10px; background: #FFBD2E; border-radius: 50%; }
-        .dot-green { width: 10px; height: 10px; background: #27C93F; border-radius: 50%; }
-
-        /* --- Sticky Note Wall --- */
-        .sticky-wall {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
-            padding: 60px 0;
-            background: #F9FAFB;
-            border-radius: 40px;
-            margin: 100px 0;
-            border: 1px dashed #D1D5DB;
-        }
-
-        .wall-note {
-            width: 280px;
-            min-height: 280px;
-            padding: 32px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            font-family: 'Inter', sans-serif;
-            position: relative;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .wall-note:hover { transform: scale(1.05) rotate(0deg) !important; z-index: 10; cursor: pointer; }
-        .wall-note h4 { font-family: 'Apfel Grotezk'; font-size: 20px; margin-bottom: 12px; }
-        .wall-note p { font-size: 15px; line-height: 1.5; color: #4B5563; margin-top: 15px; }
-        
-        .note-orange { background: #FFEDD5; border-bottom: 4px solid #FB923C; transform: rotate(-1.5deg); }
-        .note-rose { background: #FFE4E6; border-bottom: 4px solid #FB7185; transform: rotate(1.2deg); }
-        .note-violet { background: #EDE9FE; border-bottom: 4px solid #A78BFA; transform: rotate(-0.8deg); }
-        .note-emerald { background: #D1FAE5; border-bottom: 4px solid #34D399; transform: rotate(2deg); }
-        .note-amber { background: #FEF3C7; border-bottom: 4px solid #FBBF24; transform: rotate(-2.5deg); }
-        .note-cyan { background: #CFFAFE; border-bottom: 4px solid #22D3EE; transform: rotate(1.5deg); }
-
-        /* --- Footer --- */
-        .footer-deep {
-            background: #000;
-            color: #fff;
-            padding: 160px 0 80px;
-            text-align: center;
-        }
-
-        /* --- Typography Display --- */
-        .typo-sample {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        /* --- Floating UI HUD --- */
-        .canvas-hud {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            background: rgba(255,255,255,0.9);
-            padding: 12px 20px;
-            border-radius: 99px;
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255,117,24,0.05);
+            border-radius: 8px;
             font-size: 12px;
+            color: var(--primary);
             font-weight: 600;
-            display: flex;
-            gap: 20px;
         }
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1024px) {
+            .container { padding: 0 32px; }
+            .wrap-container { grid-template-columns: 1fr; gap: 80px; }
+            .metric-wrap { grid-template-columns: repeat(2, 1fr); }
+            .showcase-grid { grid-template-columns: 1fr; }
             .persona-grid { grid-template-columns: 1fr; }
-            .scroll-nav { padding: 0 20px; }
+            /* Hick's Law / Cognitive Load: Simplify complex overlapping elements on smaller screens */
+            .sticky-note, .ui-fragment { display: none !important; } 
+            .hero-narrative h1 { font-size: clamp(48px, 10vw, 84px); }
+        }
+
+        @keyframes pulseScale {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Under Construction Overlay */
+        .construction-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(249, 249, 249, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+        }
+
+        .construction-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .construction-note {
+            position: relative !important;
+            transform: rotate(-3deg) scale(1) !important;
+            max-width: 440px !important;
+            width: 90% !important;
+            margin: 0 !important;
+            animation: floatNote 4s ease-in-out infinite alternate;
+            z-index: 10001;
+            cursor: default !important;
+        }
+        
+        .construction-note:hover {
+            transform: rotate(-3deg) scale(1) !important;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
+        }
+
+        @keyframes floatNote {
+            0% { transform: translateY(0px) rotate(-3deg); }
+            100% { transform: translateY(-10px) rotate(-1deg); }
+        }
+
+        .btn-dismiss {
+            margin-top: 32px;
+            background: var(--black-92);
+            color: #fff;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 13px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            display: block;
+        }
+
+        .btn-dismiss:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
-    <div class="page-progress" id="progressBar"></div>
-
-    <header class="tf-header-wrap" style="position:fixed; top:0; left:0; width:100%; height:auto; padding:20px 32px; background:rgba(255,255,255,0.8); backdrop-filter:blur(20px); border-bottom:1px solid rgba(0,0,0,0.05); z-index:1001;">
-        <div class="left">
-            <a href="index.html" class="logo-site">
-                <img src="images/logo.png" alt="Logo" style="width:32px;">
+    <!-- Creative Under Construction Modal -->
+    <div class="construction-overlay" id="constructionOverlay">
+        <div class="sticky-note yellow construction-note">
+            <strong>⚠️ Project Under Construction</strong>
+            <p style="margin-top: 16px; font-size: 22px; line-height: 1.4; color: var(--black-92); font-family: var(--font-heading);">This case study is currently being assembled in the Gravity Lab.</p>
+            <p style="margin-top: 16px; font-size: 16px; font-family: var(--font-serif); color: var(--black-56); line-height: 1.5;">Pardon the cognitive dust. The narrative structures, custom components, and high-fidelity artifacts are actively being refined. Things might shift while you observe.</p>
+            <button class="btn-dismiss" onclick="document.getElementById('constructionOverlay').classList.add('hidden')">Proceed Anyway</button>
+        </div>
+    </div>    <header class="main-header">
+        <a href="index.html" class="header-logo">
+            <span></span>
+            Harsha Royal
+        </a>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div class="reading-mode-toggle" onclick="document.body.classList.toggle('clean-mode')">Toggle Case Study Mode</div>
+            <a href="index.html" class="back-link">
+                <span>←</span> Back to Home
             </a>
-            <div style="font-family:'Apfel Grotezk'; font-weight:800; font-size:18px; color:var(--black); letter-spacing:-0.02em;">
-                WSP PERFORMANCE
-            </div>
-        </div>
-        <div class="right" style="display: flex; gap: 30px; font-family:'Inter'; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; align-items:center;">
-            <a href="#about" style="text-decoration:none; color:var(--black);">About</a>
-            <a href="#process" style="text-decoration:none; color:var(--black);">Process</a>
-            <a href="#visuals" style="text-decoration:none; color:var(--black);">Visuals</a>
-            <a href="freelance.html" style="text-decoration:none; color:var(--wsp-red);">Hire</a>
         </div>
     </header>
 
-    <header class="hero-section">
-        <div style="text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; font-weight: 900; color: var(--wsp-red); margin-bottom: 20px;">UX CASE STUDY: GLOBAL ENTERPRISE</div>
-        <h1>REDEFINING DATA AT INFINITE SCALE</h1>
-        <div class="hero-content">
-            A comprehensive overhaul of the WSP Global Project Monitoring infrastructure. Transitioning from fragmented silos to a unified, AI-enhanced command center designed for the next decade of infrastructure development.
-        </div>
-        <div class="device-laptop">
-            <div class="laptop-screen">
-                <iframe 
-                    style="border: none; width: 100%; height: 100%; border-radius: 4px;" 
-                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FLhmWCD0OrkDUxOGZL752lh%2FWSP-Project-Management-Tool%3Fnode-id%3D221-131%26viewport%3D-876%252C230%252C0.09%26t%3D5grJBLUeDxrHrOVy-1%26scaling%3Dscale-down-width%26content-scaling%3Dfixed%26starting-point-node-id%3D221%253A131%26page-id%3D0%253A1%26hide-ui%3D1" 
-                    allowfullscreen>
-                </iframe>
+    <div class="progress-bar-top" id="progressBar"></div>
+
+    <nav class="mini-nav" aria-label="Case study navigation">
+        <a href="#hero" class="nav-dot active" data-label="Vision" aria-label="Navigate to Vision section"></a>
+        <a href="#context" class="nav-dot" data-label="Context" aria-label="Navigate to Context section"></a>
+        <a href="#problem" class="nav-dot" data-label="The Gap" aria-label="Navigate to The Gap section"></a>
+        <a href="#behavior" class="nav-dot" data-label="Behavior" aria-label="Navigate to Behavioral Science section"></a>
+        <a href="#research" class="nav-dot" data-label="Discovery" aria-label="Navigate to Discovery section"></a>
+        <a href="#personas" class="nav-dot" data-label="Ecosystem" aria-label="Navigate to Ecosystem section"></a>
+        <a href="#ia" class="nav-dot" data-label="Architecture" aria-label="Navigate to Architecture section"></a>
+        <a href="#dashboard" class="nav-dot" data-label="Dashboard HUD" aria-label="Navigate to Dashboard HUD section"></a>
+        <a href="#ai" class="nav-dot" data-label="Agentic AI" aria-label="Navigate to Agentic AI section"></a>
+        <a href="#system" class="nav-dot" data-label="Gravity Lab" aria-label="Navigate to Gravity Lab section"></a>
+        <a href="#outcomes" class="nav-dot" data-label="Impact" aria-label="Navigate to Impact section"></a>
+        <a href="#reflection" class="nav-dot" data-label="Director's Log" aria-label="Navigate to Director's Log section"></a>
+    </nav>
+
+    <!-- 1️⃣ HERO NARRATIVE -->
+    <header class="hero-narrative" id="hero" style="min-height:90vh; display:flex; align-items:center; position:relative; overflow:hidden; background:#050505; color:#fff;">
+        <div class="container" style="position:relative; z-index:2;">
+            <div class="hero-tagline" style="color:var(--primary); font-weight:800; letter-spacing:0.3em; margin-bottom:40px;">DIRECTOR LEVEL CASE STUDY</div>
+            <h1 style="color:#fff; margin-bottom:40px;">Designing <br>Organizational <br>Clarity.</h1>
+            <div class="hero-insight" style="max-width:800px; line-height:1.2;">
+                <p style="font-size:clamp(24px, 3vw, 36px); font-family:var(--font-serif); opacity:0.8; margin-bottom:60px;">Reimagining Enterprise Project Management as an AI-Augmented Decision Intelligence System.</p>
+                
+                <div class="logic-bridge" style="display:flex; align-items:center; gap:32px;">
+                    <div style="width:40px; height:2px; background:var(--primary);"></div>
+                    <span style="font-size:18px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Mission: Moving from visibility to understanding</span>
+                </div>
+            </div>
+
+            <div class="hero-metrics" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:20px; margin-top:100px;">
+                 <div style="padding:40px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px;">
+                    <div style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase; margin-bottom:12px;">Pillar 01</div>
+                    <h4 style="color:#fff; margin:0;">Cognitive Flow</h4>
+                 </div>
+                 <div style="padding:40px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px;">
+                    <div style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase; margin-bottom:12px;">Pillar 02</div>
+                    <h4 style="color:#fff; margin:0;">Decision Latency</h4>
+                 </div>
+                 <div style="padding:40px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px;">
+                    <div style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase; margin-bottom:12px;">Pillar 03</div>
+                    <h4 style="color:#fff; margin:0;">Trust Architecture</h4>
+                 </div>
+                 <div style="padding:40px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px;">
+                    <div style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase; margin-bottom:12px;">Pillar 04</div>
+                    <h4 style="color:#fff; margin:0;">Agentic UI</h4>
+                 </div>
+            </div>
+            
+            <div class="sticky-note yellow" style="bottom: 100px; right: -80px; transform: rotate(4deg); width:320px; color:#000;">
+                <strong>Strategic Insight</strong>
+                "Traditional dashboards stop at context. Decision systems continue toward action."
             </div>
         </div>
+        <!-- Background Ambient Glow -->
+        <div style="position:absolute; top:-20%; right:-10%; width:800px; height:800px; background:radial-gradient(circle, rgba(255,117,24,0.1) 0%, transparent 70%); filter:blur(100px);"></div>
     </header>
 
-    <div class="content-container">
-        
-        <!-- SECTION: ABOUT -->
-        <section id="about" class="text-block">
-            <span style="font-size:12px; font-weight:900; color:var(--wsp-red); text-transform:uppercase;">01. Introduction</span>
-            <h2>The Billion Dollar Blindspot</h2>
-            <p>
-                As one of the world's leading professional services firms, WSP manages a portfolio of projects that literally shape the physical world. From high-speed rail networks in Europe to sustainable skyscrapers in Dubai, the scale of operations is staggering. However, as the organization grew, so did the complexity of its internal monitoring systems. 
-            </p>
-            <p>
-                In 2024, an internal audit revealed that project managers were spending upwards of 15 hours per week manually consolidating reports from disparate sources—Excel sheets, legacy ERP systems, and internal emails. This wasn't just an efficiency problem; it was a risk management crisis. Real-time data was a myth, and by the time an executive saw a "red flag" on a budget, the window for intervention had often already closed.
-            </p>
-            <p>
-                My mission was to design a <strong>Unified Performance Ecosystem</strong> that wouldn't just display data, but would proactively surface insights. The goal was to build a system that speaks the language of both the meticulous Operations Manager and the high-level Global Executive.
-            </p>
-        </section>
-
-        <!-- SECTION: PROCESS (CANVAS) -->
-        <section id="process">
-            <div style="text-align:center; margin-bottom:40px;">
-                <span style="font-size:12px; font-weight:900; color:var(--wsp-red); text-transform:uppercase;">02. Discovery Phase</span>
-                <h2 style="font-size:42px; font-weight:800; letter-spacing:-0.03em;">The Research Canvas</h2>
-                <p style="color:var(--text-muted);">Explore the raw brainstorming, empathy mapping, and low-fidelity ideation board. <br><strong>(Click and drag to pan the board)</strong></p>
-            </div>
-
-            <div class="workspace-canvas" id="canvasContainer">
-                <div class="canvas-hud">
-                    <span>STATUS: DRAFT</span>
-                    <span>LAYERS: 12</span>
-                    <span>STAKEHOLDERS: ACUVATE AI + WSP LEADERSHIP</span>
-                </div>
-                <div class="canvas-inner" id="canvasInner">
-                    
-                    <!-- Sticky Notes Layer -->
-                    <div class="sticky-note sticky-yellow" style="top: 100px; left: 150px;">
-                        <strong>User Pain Point #1</strong><br>
-                        "I have to open 4 different tools to see if the UK project is on budget."
+    <!-- 2️⃣ CONTEXT & INTRODUCTION -->
+    <section class="story-block white" id="context">
+        <div class="container">
+            <div class="mega-text">
+                <span class="section-tag">Context</span>
+                <h3>The Reality of Enterprise Complexity.</h3>
+                <p class="narrative-copy">The platform served large organizations managing hundreds of concurrent initiatives across multiple departments, regions, and timelines. Operational visibility for Portfolio performance, execution, risk exposure, and financial health was functionally complete.</p>
+                
+                <div class="insight-card" style="border-left: 4px solid var(--primary); position: relative;">
+                    <div class="sticky-note pink" style="top: -80px; right: 0; transform: rotate(-3deg); width:280px;">
+                        <strong>User Sentiment</strong>
+                        "From a functional perspective, nothing was missing. From a human perspective, everything was overwhelming."
                     </div>
-                    <div class="sticky-note sticky-blue" style="top: 140px; left: 450px; transform: rotate(3deg);">
-                        <strong>Opportunity</strong><br>
-                        Integration of AI for automatic anomaly detection.
-                    </div>
-                    <div class="sticky-note sticky-green" style="top: 350px; left: 220px;">
-                        <strong>Feedback</strong><br>
-                        "Executive team loves the dark mode, but needs clear accessibility for audits."
-                    </div>
-
-                    <!-- Frames Layer (Actual Images) -->
-                    <div class="figma-frame" style="top: 100px; left: 800px; width: 600px;">
-                        <div class="frame-header">
-                            <span>FRAME: INITIAL LOGIN FLOW</span>
-                            <span>PROTOTYPE v1.2</span>
-                        </div>
-                        <img src="images/WSP/Login.png" style="width:100%;" alt="Login Flow">
-                    </div>
-
-                    <div class="figma-frame" style="top: 500px; left: 200px; width: 800px;">
-                        <div class="frame-header">
-                            <span>FRAME: DASHBOARD WIREFRAME</span>
-                            <span>WIREFRAME v0.9</span>
-                        </div>
-                        <img src="images/WSP/Background+Shadow.png" style="width:100%;" alt="Dashboard Base">
-                    </div>
-
-                    <div class="figma-frame" style="top: 800px; left: 1100px; width: 400px;">
-                        <div class="frame-header">
-                            <span>MOBILE PREVIEW</span>
-                            <span>RESPONSIVE TEST</span>
-                        </div>
-                        <img src="images/WSP/Aside - User Profile Sidebar.png" style="width:100%;" alt="Profile View">
-                    </div>
-
-                    <!-- Sticky Child (The image provided) -->
-                    <div style="position:absolute; top:400px; left:950px; opacity:0.8;">
-                        <img src="images/WSP/sticky child.png" alt="Process asset">
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: USER PERSONAS (EXPANDED) -->
-        <section id="personas" class="text-block" style="max-width:1200px;">
-            <div style="text-align:center; max-width:800px; margin: 0 auto;">
-                <span style="font-size:12px; font-weight:900; color:var(--wsp-red); text-transform:uppercase;">03. Empathy Mapping</span>
-                <h2>Who are we building for?</h2>
-                <p>Enterprise UX is often criticized for being "soulless." To combat this, we spent 4 weeks interviewing 30+ project directors to understand the emotional stakes of their data.</p>
-            </div>
-
-            <div class="persona-grid">
-                <!-- PERSONA 1 -->
-                <div class="persona-detailed">
-                    <div class="persona-top">
-                        <div class="persona-avatar">
-                            <img src="images/avatar.png" style="width:100%;" alt="Sarah">
-                        </div>
-                        <div>
-                            <h3 style="margin:0; font-size:24px;">Sarah Jenkins</h3>
-                            <span style="color:var(--wsp-red); font-weight:700;">Director of Global Operations</span>
-                        </div>
-                    </div>
-                    <div class="persona-stats">
-                        <div class="stat-item"><strong>AGE:</strong> 42</div>
-                        <div class="stat-item"><strong>EXPERIENCE:</strong> 15y</div>
-                        <div class="stat-item"><strong>TECH LITERACY:</strong> High</div>
-                        <div class="stat-item"><strong>GOAL:</strong> Efficiency</div>
-                    </div>
-                    <div class="section-text" style="font-size:16px;">
-                        <strong>Bio:</strong> Sarah is responsible for a $400M budget across 4 continents. She spends 80% of her day in meetings and needs "Scanning Clarity"—the ability to know exactly what is wrong in under 10 seconds.
-                        <br><br>
-                        <strong>Frustrations:</strong>
-                        <ul style="padding-left:20px; color:var(--text-muted);">
-                            <li>Waiting for IT to generate monthly reports.</li>
-                            <li>"Data Overload" in existing systems.</li>
-                            <li>Lack of mobile access for on-site visits.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- PERSONA 2 -->
-                <div class="persona-detailed">
-                    <div class="persona-top">
-                        <div class="persona-avatar">
-                            <img src="images/avatar-boy.png" style="width:100%;" alt="David">
-                        </div>
-                        <div>
-                            <h3 style="margin:0; font-size:24px;">David Ross</h3>
-                            <span style="color:var(--wsp-red); font-weight:700;">Lead Data Analyst</span>
-                        </div>
-                    </div>
-                    <div class="persona-stats">
-                        <div class="stat-item"><strong>AGE:</strong> 29</div>
-                        <div class="stat-item"><strong>EXPERIENCE:</strong> 6y</div>
-                        <div class="stat-item"><strong>TECH LITERACY:</strong> Expert</div>
-                        <div class="stat-item"><strong>GOAL:</strong> Granularity</div>
-                    </div>
-                    <div class="section-text" style="font-size:16px;">
-                        <strong>Bio:</strong> David is the "Engine Room." He doesn't want summaries; he wants raw data, filterable tables, and the ability to export CSVs for his own modeling. He needs tools that won't get in his way.
-                        <br><br>
-                        <strong>Frustrations:</strong>
-                        <ul style="padding-left:20px; color:var(--text-muted);">
-                            <li>Slow table loading speeds.</li>
-                            <li>Rigid UI that hides essential metadata.</li>
-                            <li>Inconsistent naming conventions across units.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: STYLES & FONTS -->
-        <section id="visuals" class="text-block" style="max-width:1200px;">
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:center;">
-                <div>
-                    <span style="font-size:12px; font-weight:900; color:var(--wsp-red); text-transform:uppercase;">04. Design System</span>
-                    <h2>A Visual Language for Precision</h2>
-                    <p>
-                        The "WSP RED" is iconic. In this project, however, we had to redefine its use. In an enterprise dashboard, <strong>Red = Error</strong>. If we used the brand red for every button, we would create a permanent state of anxiety for the user.
-                    </p>
-                    <p>
-                        We developed a hierarchy where the brand red is used exclusively for strategic highlights and high-priority filters, while a neutral slate palette provides the foundation for deep focus.
-                    </p>
-                    
-                    <div class="typo-sample">
-                        <div style="font-family:'Apfel Grotezk'; font-weight:900; font-size:48px; line-height:1;">Apfel Grotezk</div>
-                        <div style="font-family:'Apfel Grotezk'; font-weight:700; font-size:24px;">Extra Bold - Dashboard Headers</div>
-                        <div style="font-family:'Inter'; font-weight:400; font-size:16px; color:var(--text-muted);">Inter Regular - Data entry & body copy used for deep legibility across small devices.</div>
-                    </div>
-                </div>
-
-                <div style="background:#fff; border-radius:32px; padding:40px; border:1px solid var(--border-color);">
-                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
-                        <div style="height:120px; background:#ED2024; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700;">#ED2024</div>
-                        <div style="height:120px; background:#111111; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700;">#111111</div>
-                        <div style="height:120px; background:#2563EB; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700;">#2563EB</div>
-                        <div style="height:120px; background:#10B981; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700;">#10B981</div>
-                    </div>
-                    <div style="margin-top:40px;">
-                        <h4 style="margin-bottom:10px;">UI Component Samples</h4>
-                        <div style="display:flex; gap:10px; margin-bottom:10px;">
-                            <button style="padding:10px 20px; background:var(--wsp-red); border:none; border-radius:6px; color:#fff; font-weight:700; cursor:pointer;">Primary Button</button>
-                            <button style="padding:10px 20px; background:#eee; border:none; border-radius:6px; color:#111; font-weight:700; cursor:pointer;">Secondary</button>
-                        </div>
-                        <div style="display:flex; gap:10px;">
-                            <span style="padding:4px 12px; background:rgba(16,185,129,0.1); color:#10B981; border-radius:99px; font-size:11px; font-weight:700;">ACTIVE</span>
-                            <span style="padding:4px 12px; background:rgba(237,32,36,0.1); color:var(--wsp-red); border-radius:99px; font-size:11px; font-weight:700;">ALERT</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: FINAL SOLUTION & AI -->
-        <section id="solution" class="text-block" style="max-width:1200px;">
-            <div style="text-align:center; max-width:800px; margin: 0 auto 60px;">
-                <span style="font-size:12px; font-weight:900; color:var(--wsp-red); text-transform:uppercase;">05. High Fidelity Solution</span>
-                <h2>The AI Command Center</h2>
-                <p>The final design leverages the Acuvate AI engine to scan thousands of data points and surface "Executive Briefings" every morning.</p>
-            </div>
-
-            <div class="device-browser" style="margin-bottom:100px;">
-                <div class="browser-header">
-                    <div class="dot-red"></div><div class="dot-yellow"></div><div class="dot-green"></div>
-                    <div style="margin-left:auto; background: #E5E7EB; height: 16px; width: 400px; border-radius: 99px;"></div>
-                </div>
-                <div class="scrollable-frame" style="flex:1;">
-                    <img src="images/WSP/PolishedPortfolioOverview.png-1.png" alt="Full App View">
-                </div>
-            </div>
-
-            <div class="grid-2">
-                <div>
-                    <h3 style="font-size:32px; font-weight:800; margin-bottom:20px;">Contextual Intelligence</h3>
-                    <p style="font-size:18px;">
-                        Rather than overwhelming the user with every project at once, the system uses a <strong>Dynamic Priority Funnel</strong>. Projects requiring immediate attention are pulled to the top using a custom "Health Score" algorithm that weighs Budget Variance, Timeline Drift, and Risk Complexity.
-                    </p>
-                </div>
-                <div class="img-display" style="margin:0;">
-                    <img src="images/WSP/PolishedPortfolioOverview.png-2.png" alt="AI Insights detail">
-                </div>
-            </div>
-
-            <div class="grid-2" style="margin-top:100px;">
-                 <div class="img-display" style="margin:0; width: 100%; height: 500px; overflow-y: auto;">
-                    <img src="images/WSP/My Projects.png" alt="Large Data Table">
-                </div>
-                <div>
-                    <h3 style="font-size:32px; font-weight:800; margin-bottom:20px;">The Infinite Table</h3>
-                    <p style="font-size:18px;">
-                        For users like David, we implemented a virtualization engine capable of rendering 10,000+ rows with zero lag. Advanced filtering allows for cross-stack queries (e.g., "Show me all UK projects under $5M with a risk score over 8").
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- STICKY NOTE WALL: METHODOLOGY -->
-        <section class="text-block" style="border-top: 1px solid var(--border-color); padding-top: 100px; max-width: 1200px;">
-            <div style="text-align:center; margin-bottom: 60px;">
-                <span style="font-size:12px; font-weight:900; color:var(--wsp-red); text-transform:uppercase;">06. Methodology</span>
-                <h2 style="font-size:42px;">The Strategy Board</h2>
-                <p style="color:var(--text-muted);">We broke down the complexity into six strategic phases, documented here as a brainstorming wall.</p>
-            </div>
-
-            <div class="sticky-wall">
-                <div class="wall-note note-orange">
-                    <h4>PHASE 1</h4>
-                    <strong>Deep Immersion</strong>
-                    <p>We shadowed directors for 2 weeks in London and NY. We saw them print spreadsheets because the digital UI was "too loud." This led to the 80/20 data rule.</p>
-                </div>
-                <div class="wall-note note-rose">
-                    <h4>PHASE 2</h4>
-                    <strong>IA & Taxonomy</strong>
-                    <p>WSP had 85 metadata fields for every project. We normalized "Progress" stage-gates across Transportation and Energy sectors into one API-mapped source.</p>
-                </div>
-                <div class="wall-note note-violet">
-                    <h4>PHASE 3</h4>
-                    <strong>Accessibility</strong>
-                    <p>Red/Green isn't enough for $1B decisions. We added distinct icons and stroke weights to ensure colorblind executives have zero ambiguity.</p>
-                </div>
-                <div class="wall-note note-emerald">
-                    <h4>PHASE 4</h4>
-                    <strong>AI Narratives</strong>
-                    <p>Instead of charts, the AI Agent writes human-readable briefings. "Soil stabilization issues in London sector" vs just showing -12% budget drift.</p>
-                </div>
-                <div class="wall-note note-amber">
-                    <h4>PHASE 5</h4>
-                    <strong>Global Search</strong>
-                    <p>Pivot: Testing showed users hate sidebar filters. We built "Spotlight" search to ask: "Show me over-budget projects in Sweden." This was the #1 success.</p>
-                </div>
-                <div class="wall-note note-cyan">
-                    <h4>PHASE 6</h4>
-                    <strong>Micro-Trust</strong>
-                    <p>Polished micro-interactions, ghost loading states, and haptic feedback. In enterprise, a smooth UI translates to "safe data" in the user's mind.</p>
+                    <strong>The Comprehension Gap</strong>
+                    "I still have to call my PM to understand what's actually happening despite having 150 project views."
                 </div>
                 
-                <!-- Expanded Strategy Content -->
-                <div class="wall-note note-orange" style="width: 100%; max-width: 600px; min-height: 200px;">
-                    <h4>REFLECTIONS</h4>
-                    <strong>Organizational Change</strong>
-                    <p>This dashboard is now the digital heartbeat of board meetings. It shifted the culture from reactive (fixing fires) to proactive (scaling successes). By hiding complexity until requested (Progressive Disclosure), we allowed new users to onboard in minutes while experts still have deepest access.</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <footer class="footer-deep">
-        <div class="content-container">
-            <h2 style="font-size:62px; font-weight:900; letter-spacing:-0.05em; margin-bottom:40px;">BEYOND THE PIXELS.</h2>
-            <p style="font-size:20px; color:#888; margin-bottom:60px; max-width:600px; margin-left:auto; margin-right:auto;">
-                Enterprise design is about respect—respect for the user's time, their expertise, and the gravity of their decisions.
-            </p>
-            <a href="freelance.html" class="cta-btn" style="padding: 24px 60px; border-radius: 99px;">
-                START A PROJECT
-            </a>
-            <div style="margin-top:100px; opacity:0.3; font-size:12px; font-weight:700; border-top:1px solid #333; padding-top:40px;">
-                © 2026 HARSHA ROYAL. ALL RIGHTS RESERVED. DESIGNED FOR GLOBAL IMPACT.
+                <p class="narrative-copy">The system optimized for completeness. But humans operate on comprehension. This project was a redesign that would move beyond interface improvement into something fundamentally different — designing software that helps organizations <strong>understand themselves.</strong></p>
             </div>
         </div>
+    </section>
+
+    <!-- 3️⃣ THE GAP (PROBLEM) -->
+    <section class="story-block" id="problem">
+        <div class="container">
+            <div class="wrap-container" style="gap:100px;">
+                <div class="block-visual">
+                    <div class="sticky-note yellow" style="top: -40px; left: -40px; transform: rotate(-2deg); z-index: 5;" role="note">
+                        <strong>The Core Paradox</strong>
+                        "We have more data than ever, yet we understand less than before."
+                    </div>
+                    <div style="background:#fff; border:1px solid var(--border); padding:24px; border-radius:12px; box-shadow:var(--shadow-medium);">
+                         <img src="images/WSP/PolishedPortfolioOverview.png.png" alt="Operational Dashboard showing the 'Data Density Paradox'" style="border-radius:4px; filter: grayscale(0.2);">
+                         <div style="margin-top:24px; padding:24px; background:rgba(0,0,0,0.02); border-radius:8px; border-left:4px solid var(--primary);">
+                            <span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:0.1em;">Visual Symptom Identified</span>
+                            <p style="font-size:15px; margin-top:12px; line-height:1.5; color:var(--black-72);">High-density cards prioritize <strong>Existence over Importance.</strong> Every metric is screaming for attention simultaneously, leading to immediate executive paralysis.</p>
+                         </div>
+                    </div>
+                </div>
+                <div class="block-text">
+                    <span class="section-tag">Prologue — The Problem</span>
+                    <h2>Failure Appears Subtly.</h2>
+                    <p class="narrative-copy">Enterprise software rarely fails loudly. Instead, it fails through <strong>Cognitive Latency.</strong> Lack of clarity leads to longer meetings and duplicated efforts.</p>
+                    
+                    <div style="display:grid; grid-template-columns:1fr; gap:32px; margin-top:60px;">
+                        <!-- Symptom 01 -->
+                        <div style="display:flex; gap:24px; align-items:flex-start;">
+                            <div style="width:32px; height:32px; background:var(--primary); border-radius:4px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0;">!</div>
+                            <div>
+                                <h4 style="font-size:22px; margin-bottom:8px;">The Burden of Synthesis</h4>
+                                <p style="font-size:18px; color:var(--black-56); line-height:1.4;">Users were mentally cross-referencing fragmented data points just to build a cohesive narrative for the board.</p>
+                            </div>
+                        </div>
+                        <!-- Symptom 02 -->
+                        <div style="display:flex; gap:24px; align-items:flex-start;">
+                            <div style="width:32px; height:32px; background:var(--black-92); border-radius:4px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0;">?</div>
+                            <div>
+                                <h4 style="font-size:22px; margin-bottom:8px;">The Summary Trap</h4>
+                                <p style="font-size:18px; color:var(--black-56); line-height:1.4;">Project managers were spending 16+ hours a week exporting data to PowerPoint just to explain the dashboard's contents.</p>
+                            </div>
+                        </div>
+                        <!-- Symptom 03 -->
+                        <div style="display:flex; gap:24px; align-items:flex-start;">
+                            <div style="width:32px; height:32px; background:var(--black-40); border-radius:4px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; flex-shrink:0;">X</div>
+                            <div>
+                                <h4 style="font-size:22px; margin-bottom:8px;">Executive Trust Gap</h4>
+                                <p style="font-size:18px; color:var(--black-56); line-height:1.4;">Dashboards were used for verification, not discovery. Leaders stopped trusting the system to tell the story.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ BEHAVIORAL PATTERNS -->
+    <section class="story-block white" id="behavior">
+        <div class="container">
+            <div class="mega-text">
+                <span class="section-tag">Cognitive Friction</span>
+                <h3>The Hidden Cost: Cognitive Debt.</h3>
+                <p class="narrative-copy">Cognitive debt occurs when software transfers analytical effort to the user. Instead of supporting thinking, the system demanded thinking.</p>
+                
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:40px; margin-top:100px;">
+                    <!-- Card 01 -->
+                    <div style="background:#fff; border:1px solid var(--border); padding:60px 48px; border-radius:12px; position:relative; transition:var(--transition);" class="friction-card">
+                        <div style="font-size:42px; margin-bottom:32px; filter:grayscale(1);">🧠</div>
+                        <h4 style="font-size:28px; margin-bottom:16px;">Mental Synthesis</h4>
+                        <p class="narrative-copy" style="font-size:20px; color:var(--black-56); line-height:1.4;">Users were mentally cross-referencing 6+ modules just to infer a single risk priority. The system transferred the <strong>analytical burden</strong> to the human.</p>
+                        <div style="display:flex; gap:12px; margin-top:32px;">
+                            <span style="padding:6px 16px; border:1px solid rgba(230,57,70,0.3); color:#E63946; border-radius:40px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">High Strain</span>
+                            <span style="padding:6px 16px; border:1px solid var(--border); color:var(--black-56); border-radius:40px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Executive Blindness</span>
+                        </div>
+                    </div>
+                    <!-- Card 02 -->
+                    <div style="background:#fff; border:1px solid var(--border); padding:60px 48px; border-radius:12px; position:relative; transition:var(--transition);" class="friction-card">
+                        <div style="font-size:42px; margin-bottom:32px; filter:grayscale(1);">⏱️</div>
+                        <h4 style="font-size:28px; margin-bottom:16px;">The Summary Gap</h4>
+                        <p class="narrative-copy" style="font-size:20px; color:var(--black-56); line-height:1.4;">Project managers spent 16+ hours a week exporting "Visibility" into PowerPoints for "Clarity." The tool was a <strong>source of data</strong>, not a source of truth.</p>
+                        <div style="display:flex; gap:12px; margin-top:32px;">
+                            <span style="padding:6px 16px; border:1px solid rgba(230,57,70,0.3); color:#E63946; border-radius:40px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Time Loss</span>
+                            <span style="padding:6px 16px; border:1px solid var(--border); color:var(--black-56); border-radius:40px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Manual Sync</span>
+                        </div>
+                    </div>
+                    <!-- Card 03 -->
+                    <div style="background:#fff; border:1px solid var(--border); padding:60px 48px; border-radius:12px; position:relative; transition:var(--transition);" class="friction-card">
+                        <div style="font-size:42px; margin-bottom:32px; filter:grayscale(1);">📉</div>
+                        <h4 style="font-size:28px; margin-bottom:16px;">Decision Inertia</h4>
+                        <p class="narrative-copy" style="font-size:20px; color:var(--black-56); line-height:1.4;">Opaque metrics led to skepticism. "Verification culture" replaced "Action culture," stalling projects in discovery cycles.</p>
+                        <div style="display:flex; gap:12px; margin-top:32px;">
+                            <span style="padding:6px 16px; border:1px solid rgba(230,57,70,0.3); color:#E63946; border-radius:40px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Trust Erosion</span>
+                            <span style="padding:6px 16px; border:1px solid var(--border); color:var(--black-56); border-radius:40px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;">Ops Latency</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sticky-note blue" style="top: -40px; right: -40px; transform: rotate(4deg); width:320px;">
+                    <strong>Design Conclusion</strong>
+                    "The interface wasn't inefficient. It was intellectually exhausting. Exhaustion reduces trust."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRATEGY INTERSTITIAL -->
+    <div class="container">
+        <div class="strategy-banner">
+            <span class="banner-tag">Strategy Pillar #01</span>
+            <h3>Data alone does not create understanding.<br>Humans require Narrative Structure.</h3>
+            <p>We re-engineered the product to provide Context, Change, Consequence, and Action. Traditional dashboards stop at context; decision systems continue toward action.</p>
+        </div>
+    </div>
+
+    <!-- 5️⃣ DISCOVERY & RESEARCH -->
+    <section class="story-block" id="research">
+        <div class="container">
+            <div class="wrap-container">
+                <div class="block-visual">
+                    <div class="ui-fragment" style="top: 10%; right: -20px;">
+                        <div style="width:32px; height:32px; background:var(--primary); border-radius:50%;"></div>
+                        <span>Protocol: Cognition Audit</span>
+                    </div>
+                    <div style="background:var(--bg-base); padding:100px; border-radius:12px; text-align:center; position: relative;">
+                        <h4 style="font-size:32px;">Beyond User Clicks</h4>
+                        <p style="margin-top:20px; font-family:var(--font-serif); font-size: 20px;">Studying how leaders search for answers to implicit questions.</p>
+                        <img src="images/WSP/PolishedPortfolioOverview.png-4.png" style="margin-top:40px; border-radius:4px; box-shadow: var(--shadow);" alt="Cognitive Audit of executive workflows.">
+                    </div>
+                </div>
+                <div class="block-text">
+                    <span class="section-tag">Human Centricity</span>
+                    <h2>Studying Cognition, <br>Not Just Clicks.</h2>
+                    <div class="narrative-copy">
+                        Leaders never explored dashboards sequentially. They arrived with specific mental queries: Are we safe? What changed? Where is risk emerging?
+                    </div>
+                    <div class="sticky-note blue" style="bottom: -100px; left: -140px;" role="note">
+                        <strong>The Real Search</strong>
+                        "What happens next?" was the most frequent implicit question unaddressed by data cards.
+                    </div>
+                    <ul class="list-narrative">
+                        <li><strong>Context vs Signal:</strong> Separating background noise from critical changes</li>
+                        <li><strong>Consequence Mapping:</strong> Inferring the 'So what?' from raw numbers</li>
+                        <li><strong>Action Orientation:</strong> Moving from monitoring to intervention</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH HUB: THE DISCOVERY VAULT -->
+    <section class="story-block white" id="research-vault">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:100px;">
+                <span class="section-tag" style="background: rgba(0,0,0,0.05); color: var(--black-72);">Decision Design</span>
+                <h2 style="font-size:clamp(48px, 8vw, 84px); line-height:0.9; margin-bottom:40px;">Designing Clarity.</h2>
+                <p class="narrative-copy" style="margin:0 auto;">Clarity is not the absence of complexity. It is the successful communication of it. We design software that helps organisations understand themselves.</p>
+            </div>
+            
+            <!-- Evidence Board Component -->
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:32px; margin-top:100px;">
+                <!-- Artifact 01 -->
+                <div style="padding:60px 40px; border:1px solid var(--border); border-radius:12px; background:var(--surface); position:relative; overflow:hidden; transition:var(--transition); box-shadow:var(--shadow-subtle);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:32px;">
+                        <span style="font-size:11px; color:var(--primary); font-weight:800; text-transform:uppercase; letter-spacing:0.15em; border:1px solid var(--primary); padding:4px 12px; border-radius:4px;">Audit Log</span>
+                    </div>
+                    <h4 style="font-size:26px; margin-bottom:12px;">Ethnographic Audit</h4>
+                    <p style="font-size:18px; color:var(--black-72); line-height:1.5;">42 hours of shadowing revealed the exact moments where "Information Complexity" turned into "Decision Latency."</p>
+                </div>
+                <!-- Artifact 02 -->
+                <div style="padding:60px 40px; border:1px solid var(--border); border-radius:12px; background:var(--surface); position:relative; overflow:hidden; transition:var(--transition); box-shadow:var(--shadow-subtle);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:32px;">
+                        <span style="font-size:11px; color:var(--primary); font-weight:800; text-transform:uppercase; letter-spacing:0.15em; border:1px solid var(--primary); padding:4px 12px; border-radius:4px;">Gap Analysis</span>
+                    </div>
+                    <h4 style="font-size:26px; margin-bottom:12px;">The 12-Day Lag</h4>
+                    <p style="font-size:18px; color:var(--black-72); line-height:1.5;">We mapped the reporting lag against decision cycles, identifying a "Critical Blindness Window" that cost millions in inertia.</p>
+                </div>
+                <!-- Artifact 03 -->
+                <div style="padding:60px 40px; border:1px solid var(--border); border-radius:12px; background:var(--surface); position:relative; overflow:hidden; transition:var(--transition); box-shadow:var(--shadow-subtle);">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:32px;">
+                        <span style="font-size:11px; color:var(--primary); font-weight:800; text-transform:uppercase; letter-spacing:0.15em; border:1px solid var(--primary); padding:4px 12px; border-radius:4px;">Friction Hub</span>
+                    </div>
+                    <h4 style="font-size:26px; margin-bottom:12px;">Manual Interpretation</h4>
+                    <p style="font-size:18px; color:var(--black-72); line-height:1.5;">Shadowing revealed users were leaving the $X Million dashboard to build manual spreadsheets just to find "The Truth."</p>
+                </div>
+            </div>
+
+            <!-- SEARCH FRAGMENT: REFINED -->
+            <div style="margin-top:80px; background:#fff; padding:12px; border-radius:12px; border:1px solid var(--border); display:flex; align-items:center; gap:24px; max-width:800px; margin-left:auto; margin-right:auto; box-shadow: var(--shadow-medium);">
+                <div style="width:48px; height:48px; background:var(--surface); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:20px;">🔍</div>
+                <div style="flex:1;">
+                    <div style="font-size:11px; text-transform:uppercase; color:var(--black-40); font-weight:800; letter-spacing:0.1em; margin-bottom:4px;">Search Global Research Bank</div>
+                    <div style="font-size:22px; color:var(--black-92); font-family:var(--font-heading); font-weight:500;">"Monday Board Prep Latency"</div>
+                </div>
+                <div style="padding:16px 40px; background:var(--primary); color:#fff; border-radius:6px; font-size:15px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; cursor:pointer;">Reach Evidence</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-block white" id="personas" style="padding-bottom: 0;">
+        <div class="container">
+            <span class="section-tag">Human Centricity</span>
+            <h2>The Ecosystem of Decisions.</h2>
+            <p class="narrative-copy" style="max-width:850px;">
+                Instead of studying clicks, I studied cognition. Through shadowing executive workflows, I noticed leaders never explore dashboards sequentially. They arrive with implicit questions: <em>Are we safe? What changed? Where is risk emerging?</em>
+            </p>
+            
+            <div class="persona-grid" style="margin-top: 100px; display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+                <div style="background:#fff; border:1px solid var(--border); border-radius:16px; overflow:hidden; position:relative; padding:60px;">
+                    <div style="display:flex; gap:40px; align-items:flex-start;">
+                        <div style="width:160px; height:160px; border-radius:12px; overflow:hidden; flex-shrink:0; border:4px solid var(--bg-base);">
+                            <img src="david_sterling_portrait_1772196213445.png" alt="David Sterling" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                        <div style="flex:1;">
+                            <span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:0.15em;">The Executive Skeptic</span>
+                            <h4 style="font-size:32px; margin:12px 0 20px 0;">David Sterling</h4>
+                            <p style="font-size:18px; color:var(--black-56); line-height:1.5;">"I have 2 minutes to understand if our $40M portfolio is healthy. If the interface makes me think about <em>how</em> to find data, I've already lost focus."</p>
+                        </div>
+                    </div>
+                    <div style="margin-top:40px; padding:32px; background:var(--bg-base); border-radius:8px; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+                         <div>
+                            <div style="font-size:10px; font-weight:800; text-transform:uppercase; color:var(--black-40); margin-bottom:8px;">Mental Query</div>
+                            <div style="font-weight:700; font-size:18px;">"Are we protected?"</div>
+                         </div>
+                         <div>
+                            <div style="font-size:10px; font-weight:800; text-transform:uppercase; color:var(--black-40); margin-bottom:8px;">Success Metric</div>
+                            <div style="font-weight:700; font-size:18px;">Zero Depth Search</div>
+                         </div>
+                    </div>
+                </div>
+                
+                <div style="background:#fff; border:1px solid var(--border); border-radius:16px; overflow:hidden; position:relative; padding:60px;">
+                    <div style="display:flex; gap:40px; align-items:flex-start;">
+                        <div style="width:160px; height:160px; border-radius:12px; overflow:hidden; flex-shrink:0; border:4px solid var(--bg-base);">
+                            <img src="elena_rodriguez_portrait_1772196226352.png" alt="Elena Rodriguez" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                        <div style="flex:1;">
+                            <span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:0.15em;">The Systems Thinker</span>
+                            <h4 style="font-size:32px; margin:12px 0 20px 0;">Elena Rodriguez</h4>
+                            <p style="font-size:18px; color:var(--black-56); line-height:1.5;">"Risk isn't just a red status; it's a trend. I need the system to project the consequence of today's resource gaps into next month's delivery."</p>
+                        </div>
+                    </div>
+                    <div style="margin-top:40px; padding:32px; background:var(--bg-base); border-radius:8px; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+                         <div>
+                            <div style="font-size:10px; font-weight:800; text-transform:uppercase; color:var(--black-40); margin-bottom:8px;">Mental Query</div>
+                            <div style="font-weight:700; font-size:18px;">"What is the ripple?"</div>
+                         </div>
+                         <div>
+                            <div style="font-size:10px; font-weight:800; text-transform:uppercase; color:var(--black-40); margin-bottom:8px;">Success Metric</div>
+                            <div style="font-weight:700; font-size:18px;">Predictive Insights</div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="director-sidebar" style="margin-top: 100px;">
+                <h5>Cognition over Clicks</h5>
+                <p>The mental model of the user and the architecture of the product were misaligned. Redesigning meant alignment with <strong>how leaders actually think.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-block" id="ia">
+        <div class="container">
+            <div class="mega-text">
+                <span class="section-tag">Cognitive Architecture</span>
+                <h3>Mapping the Decision Journey.</h3>
+                <p class="narrative-copy">The original navigation reflected product engineering structure. The redesign reflects human reasoning.</p>
+            </div>
+
+            <!-- IA Strategic Blueprint Component -->
+            <div style="margin-top:120px; padding:100px; background:#050505; border-radius:24px; color:#fff; position:relative; overflow:hidden;">
+                <h4 style="color:var(--primary); font-size:42px; margin-bottom:60px; text-align:center;">Strategic Re-Architecture</h4>
+                
+                <div style="display:grid; grid-template-columns: 1fr 60px 1fr; gap:40px; align-items:center;">
+                    <!-- Legacy Logic -->
+                    <div style="padding:48px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.02); border-radius:12px;">
+                        <span style="font-size:12px; font-weight:800; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.2em;">Legacy Structure</span>
+                        <h5 style="font-size:24px; margin:16px 0 32px 0;">Engineering Domains</h5>
+                        <div style="display:flex; flex-direction:column; gap:12px; opacity:0.6;">
+                            <div style="padding:16px 24px; background:rgba(255,255,255,0.05); border-radius:8px; font-size:16px; border-left:2px solid rgba(255,255,255,0.2);">Portfolio Management</div>
+                            <div style="padding:16px 24px; background:rgba(255,255,255,0.05); border-radius:8px; font-size:16px; border-left:2px solid rgba(255,255,255,0.2);">Risk Registers</div>
+                            <div style="padding:16px 24px; background:rgba(255,255,255,0.05); border-radius:8px; font-size:16px; border-left:2px solid rgba(255,255,255,0.2);">Resource Planning</div>
+                            <div style="padding:16px 24px; background:rgba(255,255,255,0.05); border-radius:8px; font-size:16px; border-left:2px solid rgba(255,255,255,0.2);">Financial Reports</div>
+                        </div>
+                    </div>
+
+                    <!-- Flow Direction: Replaced raw text arrow with clear CSS geometry -->
+                    <div style="text-align:center; position:relative;">
+                        <div style="width:40px; height:2px; background:var(--primary); margin:0 auto;"></div>
+                        <div style="width:12px; height:12px; border-top:2px solid var(--primary); border-right:2px solid var(--primary); transform:rotate(45deg); position:absolute; right:10px; top:-5px;"></div>
+                    </div>
+
+                    <!-- Strategic Logic -->
+                    <div style="padding:48px; background:rgba(255,117,24,0.08); border:1px solid rgba(255,117,24,0.4); border-radius:12px;">
+                        <span style="font-size:12px; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:0.2em;">Decision Structure</span>
+                        <h5 style="font-size:24px; margin:16px 0 32px 0;">Cognitive Flow</h5>
+                        <div style="display:flex; flex-direction:column; gap:12px;">
+                            <div style="padding:16px 24px; background:#fff; color:#000; border-radius:8px; font-size:16px; font-weight:600; border-left:4px solid var(--primary);">Awareness: Is the organization safe?</div>
+                            <div style="padding:16px 24px; background:#fff; color:#000; border-radius:8px; font-size:16px; font-weight:600; border-left:4px solid var(--primary);">Interpretation: Why is X happening?</div>
+                            <div style="padding:16px 24px; background:#fff; color:#000; border-radius:8px; font-size:16px; font-weight:600; border-left:4px solid var(--primary);">Projection: What happens next week?</div>
+                            <div style="padding:16px 24px; background:var(--primary); color:#fff; border-radius:8px; font-size:16px; font-weight:700;">Action: Intervention Plan</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Background Accent -->
+                <div style="position:absolute; bottom:-50px; left:-50px; width:300px; height:300px; background:var(--primary); border-radius:50%; opacity:0.05; filter:blur(60px);"></div>
+            </div>
+            
+            <div class="insight-card" style="margin-top:120px; display: flex; gap: 60px; align-items: center; position: relative; padding: 100px 80px; background:#fff; border:1px solid var(--border);">
+                <div class="sticky-note yellow" style="top: -120px; left: 50%; transform: translateX(-50%) rotate(1deg); width: 450px; min-height: auto;">
+                    <strong>Architecture Shift</strong>
+                    User stopped feeling like they were moving between tools. They felt like they were progressing through understanding.
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-family:var(--font-heading); font-size:14px; text-transform:uppercase; letter-spacing:0.2em; color:var(--primary); margin-bottom:16px; font-weight:800;">Strategy Bridge</div>
+                    <h3>Designing software that helps organizations understand themselves.</h3>
+                    <p class="narrative-copy" style="margin-top:24px;">This shift reduced context switching and preserved mental continuity. We move from interface improvement into organizational systems thinking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-block white" id="dashboard">
+        <div class="container">
+            <div class="wrap-container" style="gap:120px;">
+                <div class="block-text">
+                    <span class="section-tag">High-Stakes HUD</span>
+                    <h2>The Five-Second Briefing.</h2>
+                    <p class="narrative-copy">Executives decide dashboard usefulness within seconds. We moved from data density to <strong>Signal Clarity.</strong></p>
+                    
+                    <div style="display:flex; flex-direction:column; gap:24px; margin-top:60px;">
+                        <div style="padding:40px; background:var(--bg-base); border-radius:12px; border-left:4px solid var(--primary); transition:var(--transition); cursor:default;">
+                            <h4 style="margin-bottom:12px;">Interpretation First</h4>
+                            <p style="font-size:18px; color:var(--black-72); line-height:1.4;">The system narrates: "Context, Change, Consequence, Action." Data alone does not create understanding; narrative structure does.</p>
+                        </div>
+                        <div style="padding:40px; background:var(--bg-base); border-radius:12px; border-left:4px solid var(--black-92); transition:var(--transition); cursor:default;">
+                            <h4 style="margin-bottom:12px;">Signal Semantic HUD</h4>
+                            <p style="font-size:18px; color:var(--black-72); line-height:1.4;">Visual hierarchy aligns with eye-scanning behavior, surfacing critical executive anomalies above general analytics.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-visual">
+                    <div style="position:relative; width:100%; height:auto;">
+                        <img src="images/WSP/PolishedPortfolioOverview.png-5.png" alt="Five-Second Executive Dashboard" style="box-shadow: var(--shadow-medium); border-radius:8px;">
+                        <!-- UI Annotation Overlays -->
+                        <div class="ui-fragment" style="top: 10%; right: -20px;">
+                            <div style="width:12px; height:12px; background:var(--primary); border-radius:50%;"></div>
+                            <span>Logic Bridge Active: Resource Skill Gap</span>
+                        </div>
+                        <div class="sticky-note pink" style="bottom: -60px; left: -20px; transform: rotate(-4deg); width:280px;">
+                            <strong>Execution Fact</strong>
+                            "Briefing" mode reduced time-to-decision by 42% compared to the legacy "Explorer" view.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="showcase-grid" style="margin-top: 140px;">
+                <div style="background:#fff; border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:var(--transition); transform:translateY(0);" class="showcase-item">
+                    <div style="padding:32px; border-bottom:1px solid var(--border);">
+                        <span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase;">Module 01</span>
+                        <h4 style="margin-top:8px;">Global Portfolio Clarity</h4>
+                    </div>
+                    <img src="images/WSP/PolishedPortfolioOverview.png-6.png" alt="Global Portfolio Health" style="width:100%;">
+                </div>
+                <div style="background:#fff; border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:var(--transition); transform:translateY(0);" class="showcase-item">
+                    <div style="padding:32px; border-bottom:1px solid var(--border);">
+                        <span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase;">Module 02</span>
+                        <h4 style="margin-top:8px;">Resource Awareness</h4>
+                    </div>
+                    <img src="images/WSP/PolishedPortfolioOverview.png-7.png" alt="Resource Allocation" style="width:100%;">
+                </div>
+                <div style="background:#fff; border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:var(--transition); transform:translateY(0);" class="showcase-item">
+                    <div style="padding:32px; border-bottom:1px solid var(--border);">
+                        <span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase;">Module 03</span>
+                        <h4 style="margin-top:8px;">Risk Prioritization</h4>
+                    </div>
+                    <img src="images/WSP/PolishedPortfolioOverview.png-8.png" alt="Risk Prioritization" style="width:100%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9️⃣ THE AI AGENT (SARAH) -->
+    <section class="story-block" id="ai">
+        <div class="container">
+            <div class="mega-text">
+                <span class="section-tag">The AI Partner</span>
+                <h3>AI as an Interpreter, Not an Automation Tool.</h3>
+                <p class="narrative-copy">Introducing AI created a new challenge: <strong>Trust.</strong> Rather than positioning AI as automation, I positioned it as <strong>Translation.</strong></p>
+            </div>
+            
+            <!-- AI Reasoning Terminal Component -->
+            <div style="background:#050505; border-radius:16px; margin:100px 0; overflow:hidden; border:1px solid rgba(255,117,24,0.3); box-shadow:0 40px 100px rgba(0,0,0,0.5);">
+                <!-- Terminal Header -->
+                <div style="padding:20px 32px; background:rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
+                    <div style="display:flex; gap:8px;">
+                        <div style="width:10px; height:10px; border-radius:50%; background:#FF5F56;"></div>
+                        <div style="width:10px; height:10px; border-radius:50%; background:#FFBD2E;"></div>
+                        <div style="width:10px; height:10px; border-radius:50%; background:#27C93F;"></div>
+                    </div>
+                    <div style="color:rgba(255,255,255,0.4); font-family:monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase;">Agentic_Reasoning_Engine_v4.2</div>
+                </div>
+                <!-- Terminal Content -->
+                <div style="padding:80px 10%; position:relative;">
+                    <div style="color:var(--primary); font-family:monospace; font-size:14px; margin-bottom:40px;">// INITIALIZING_DIAGNOSTIC_QUERY...</div>
+                    <h3 style="color:#fff; font-size:clamp(32px, 4vw, 56px); line-height:1.1; margin-bottom:40px; font-family:var(--font-serif);">"The Infrastructure portfolio is at risk due to <strong>Skill Concentration.</strong>"</h3>
+                    
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:80px; text-align:left;">
+                        <div style="background:rgba(255,255,255,0.03); padding:32px; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+                            <div style="color:var(--primary); font-weight:800; font-size:12px; text-transform:uppercase; margin-bottom:16px;">Reasoning Visibility</div>
+                            <p style="color:#ccc; font-size:18px; line-height:1.5;">Direct link to 240+ global resource nodes showing a 70% probability of delay if Riyadh resources are not re-allocated.</p>
+                        </div>
+                        <div style="background:rgba(255,117,24,0.1); padding:32px; border-radius:8px; border:1px solid var(--primary);">
+                            <div style="color:var(--primary); font-weight:800; font-size:12px; text-transform:uppercase; margin-bottom:16px;">Actionable Recommendation</div>
+                            <p style="color:#fff; font-size:18px; line-height:1.5; font-weight:600;">Re-allocate 2 specialized senior engineers from Project 'Alpha' to cover the 3-week Riyadh gap by Friday.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mega-text">
+                <div class="director-sidebar" style="background:var(--surface); border:1px solid var(--border); padding:60px; border-radius:12px;">
+                    <h5>Interpretive Governance</h5>
+                    <p class="narrative-copy" style="font-size:22px;">Design decisions included conversational querying instead of filters, seasoning visibility, and contextual data references. AI became a <strong>thinking partner</strong>, not a replacement for human judgment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔟 DESIGN SYSTEM -->
+    <section class="story-block white" id="system">
+        <div class="container">
+            <div class="mega-text">
+                <span class="section-tag">Governance & Trust</span>
+                <h2>Designing Trust Through Consistency.</h2>
+                <p class="narrative-copy">Enterprise success depends on predictability. We implemented systemic consistency—unified color semantics, shared interaction patterns, and persistent contextual breadcrumbs. Consistency reduced interpretation effort and increased organizational confidence.</p>
+            </div>
+
+            <!-- Systemic Logic Component -->
+            <div style="margin:80px 0; background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden;">
+                <div style="padding:40px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:11px; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:0.2em;">Operational Design Tokens</span>
+                    <div style="font-size:12px; font-weight:700; color:var(--black-40);">v4.2 _ Production_Ready</div>
+                </div>
+                <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:1px; background:var(--border);">
+                    <div style="padding:60px 40px; background:#fff;">
+                        <div style="width:100%; height:120px; background:var(--primary); border-radius:4px; margin-bottom:24px;"></div>
+                        <h4 style="font-size:18px; margin-bottom:8px;">Primary Action</h4>
+                        <div style="font-family:monospace; font-size:14px; color:var(--black-40);">#FF7518</div>
+                        <p style="font-size:14px; margin-top:16px; color:var(--black-56);">Strategic emphasis & core interactive nodes.</p>
+                    </div>
+                    <div style="padding:60px 40px; background:#fff;">
+                        <div style="width:100%; height:120px; background:#E63946; border-radius:4px; margin-bottom:24px;"></div>
+                        <h4 style="font-size:18px; margin-bottom:8px;">Conflict / Risk</h4>
+                        <div style="font-family:monospace; font-size:14px; color:var(--black-40);">#E63946</div>
+                        <p style="font-size:14px; margin-top:16px; color:var(--black-56);">High-gravity anomalies requiring immediate alignment.</p>
+                    </div>
+                    <div style="padding:60px 40px; background:#fff;">
+                        <div style="width:100%; height:120px; background:#1D3557; border-radius:4px; margin-bottom:24px;"></div>
+                        <h4 style="font-size:18px; margin-bottom:8px;">Executive Surface</h4>
+                        <div style="font-family:monospace; font-size:14px; color:var(--black-40);">#1D3557</div>
+                        <p style="font-size:14px; margin-top:16px; color:var(--black-56);">Depth and hierarchy for narrative-heavy layers.</p>
+                    </div>
+                    <div style="padding:60px 40px; background:#fff;">
+                        <div style="width:100%; height:120px; background:#4CAF50; border-radius:4px; margin-bottom:24px;"></div>
+                        <h4 style="font-size:18px; margin-bottom:8px;">Success Signals</h4>
+                        <div style="font-family:monospace; font-size:14px; color:var(--black-40);">#4CAF50</div>
+                        <p style="font-size:14px; margin-top:16px; color:var(--black-56);">Contextual confirmation of target achievement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:var(--column-gap); margin-top: 100px;">
+                <div class="block-visual" style="padding:48px; background:var(--surface); border-radius:12px; border: 1px solid var(--border); overflow:hidden; position:relative;">
+                     <div class="sticky-note blue" style="top:-30px; right:30px; width:280px;">
+                        <strong>Behavioral Rule</strong>
+                        Components literally expand their hit-area and visual weight as risk increases.
+                    </div>
+                    <h4 style="margin-bottom:24px;">Hierarchical Saliency</h4>
+                    <p class="narrative-copy" style="font-size:22px; margin-bottom:32px;">A healthy project occupies minimal vertical space. A project at 80% risk expands to occupy 2.5x the space, forcing attention through visual gravity. This is <strong>Rule-Based Design.</strong></p>
+                    
+                    <div style="display:flex; flex-direction:column; gap:20px; opacity:0.8;">
+                        <!-- Normal Project -->
+                        <div style="background:#fff; border:1px solid var(--border); border-radius:8px; padding:16px; display:flex; align-items:center; gap:20px;">
+                            <div style="width:12px; height:12px; border-radius:50%; background:#4CAF50;"></div>
+                            <div style="flex:1; height:8px; background:var(--bg-base); border-radius:4px; max-width:200px;"></div>
+                        </div>
+                        <!-- High Risk Project -->
+                        <div style="background:#fff; border:2px solid var(--primary); border-radius:12px; padding:32px; box-shadow: 0 20px 40px rgba(255,117,24,0.1); position:relative;">
+                            <div style="display:flex; align-items:center; gap:20px; margin-bottom:20px;">
+                                <div style="width:16px; height:16px; border-radius:50%; background:var(--primary); animation: pulseScale 1s infinite;"></div>
+                                <div style="flex:1; height:12px; background:var(--bg-base); border-radius:4px; max-width:260px;"></div>
+                            </div>
+                            <div style="height:8px; background:var(--bg-base); border-radius:4px; margin-bottom:12px; opacity:0.3;"></div>
+                            <div style="height:8px; background:var(--bg-base); border-radius:4px; opacity:0.3; width:60%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-visual" style="padding:48px; background:var(--surface); border-radius:12px; border: 1px solid var(--border);">
+                    <h4 style="margin-bottom:24px;">Predictable Semantics</h4>
+                    <p class="narrative-copy" style="font-size: 20px;">By implementing a unified cross-module visual language, we optimized for mental effort over layouts. Users no longer carry the 'Cognitive Debt' of figuring out how new modules function.</p>
+                    <div style="margin-top:40px; border:1px solid var(--border); border-radius:8px; background:#fff; overflow:hidden;">
+                        <div style="padding:16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--bg-base);">
+                             <span style="font-size:10px; font-weight:800; text-transform:uppercase; color:var(--black-40);">Semantic Palette</span>
+                             <div style="display:flex; gap:8px;">
+                                <div style="width:8px; height:8px; border-radius:50%; background:#4CAF50;"></div>
+                                <div style="width:8px; height:8px; border-radius:50%; background:#FFC107;"></div>
+                                <div style="width:8px; height:8px; border-radius:50%; background:#E63946;"></div>
+                             </div>
+                        </div>
+                        <div style="padding:32px; display:flex; flex-direction:column; gap:12px;">
+                            <div style="height:14px; width:40%; background:var(--primary); border-radius:2px;"></div>
+                            <div style="height:10px; width:90%; background:var(--bg-base); border-radius:2px;"></div>
+                            <div style="height:10px; width:70%; background:var(--bg-base); border-radius:2px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="insight-card" style="margin-top:100px; text-align:center; padding:100px 80px; background: #fff; border: 1px solid var(--border); position: relative;">
+                <div class="sticky-note yellow" style="bottom: -80px; left: 50%; transform: translateX(-50%) rotate(-1deg); width: 600px; min-height: auto;">
+                    <strong>Closing Thought</strong>
+                    Clarity is not the absence of complexity. It is the successful communication of it.
+                </div>
+                <h3 style="margin-bottom:24px; font-size:clamp(40px, 5vw, 64px);">Clarity is Organizational Currency.</h3>
+                <p class="narrative-copy" style="margin: 0 auto;">Great enterprise software helps organizations make better decisions together. The system evolved from information display to organizational intelligence.</p>
+            </div>
+        </div>
+    </section>
+            
+        </div>
+    </section>
+
+    <!-- 1️⃣1️⃣ IMPACT & OUTCOMES -->
+    <section class="story-block" id="outcomes">
+        <div class="container">
+            <div class="mega-text" style="text-align:center;">
+                <span class="section-tag">Organizational Impact</span>
+                <h2 style="font-size:clamp(64px, 10vw, 100px); line-height:0.9; margin-bottom:100px;">Outcome: Active Intelligence.</h2>
+            </div>
+            
+            <!-- Strategic Scorecard Component -->
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:60px; margin-top:100px;">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+                    <div style="padding:48px 40px; background:var(--surface); border:1px solid var(--border); border-radius:12px; position:relative;">
+                        <h4 style="color:var(--primary); font-size:64px; margin-bottom:16px; line-height:1;">42%</h4>
+                        <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; color:var(--black-40); margin-bottom:12px;">Decision Velocity</div>
+                        <p style="font-size:18px; color:var(--black-72); line-height:1.4;">Reduction in decision latency compared to legacy exports.</p>
+                    </div>
+                    <div style="padding:48px 40px; background:var(--surface); border:1px solid var(--border); border-radius:12px;">
+                        <h4 style="color:var(--primary); font-size:64px; margin-bottom:16px; line-height:1;">96%</h4>
+                        <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.15em; color:var(--black-40); margin-bottom:12px;">Executive Trust</div>
+                        <p style="font-size:18px; color:var(--black-72); line-height:1.4;">Confidence in AI-augmented root cause analysis.</p>
+                    </div>
+                </div>
+                <div style="padding:60px; background:var(--black-92); border-radius:12px; color:#fff; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:center;">
+                    <div style="position:relative; z-index:2;">
+                        <span style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.2em; color:rgba(255,255,255,0.4); margin-bottom:24px; display:block;">Organizational Verdict</span>
+                        <h3 style="color:var(--primary); font-size:48px; margin-bottom:32px; font-family:var(--font-serif); line-height:1.1;">"Briefing mode turned a monitoring tool into a decision engine."</h3>
+                        <p style="font-size:24px; opacity:0.8; font-family:var(--font-serif);">100% of shadowed users preferred the 'Situation Room' model over legacy navigation within 5 minutes of use.</p>
+                    </div>
+                    <div style="position:absolute; bottom:-50px; right:-50px; width:300px; height:300px; background:var(--primary); border-radius:50%; opacity:0.1; filter:blur(60px);"></div>
+                </div>
+            </div>
+
+            <div class="sticky-note pink" style="margin: 80px auto; width: 450px; transform: rotate(-2deg); position: relative;">
+                <strong>Validation Metric</strong>
+                100% of shadowed users preferred the 'Situation Room' model over legacy navigation within 5 minutes of use.
+            </div>
+
+            <div class="pull-quote" style="text-align:left; margin-top:100px;">
+                "This wasn't an aesthetic overhaul. It was a business transformation that reduced the gap between 'Problem Occurring' and 'Decision Made'." — VP of Global Ops
+            </div>
+        </div>
+    </section>
+
+    <!-- 1️⃣2️⃣ FINAL REFLECTION (DIRECTOR'S LOG) -->
+    <section class="story-block white" id="reflection">
+        <div class="container">
+            <div class="mega-text">
+                <span class="section-tag">Final Reflection</span>
+                <h3>Translating Complexity into Confidence.</h3>
+                <p class="narrative-copy">I learned that enterprise design is not about simplifying complexity away. It is about translating complexity into <strong>Confidence.</strong> I moved from designing interfaces to designing cognition; from improving usability to improving organizational awareness.</p>
+                
+                <p class="narrative-copy">The success of this project was not measured by visual modernization but by a subtle shift: Leaders stopped asking for summaries. They trusted the system to tell the story.</p>
+                
+                <p class="narrative-copy">Clarity is not the absence of complexity. It is the successful communication of it. This project was an exploration of how UX can become the language through which organizations understand themselves.</p>
+                
+                <div style="margin-top:120px; padding-top:80px; border-top:1px solid var(--border); display:flex; gap:60px; align-items:flex-start;">
+                    <div style="width:120px; height:120px; background:var(--primary); border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; color:#fff; font-family:var(--font-heading); font-size:48px;">HR</div>
+                    <div>
+                        <h4 style="font-size:32px; margin-bottom:8px;">Harsha Royal</h4>
+                        <p style="color:var(--primary); font-weight:700; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Senior Product Strategist & UX Director</p>
+                        <p class="narrative-copy" style="font-size:24px;">Solving the complexity problem through decision intelligence and organizational architecture.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding:140px 5%; background:#fff; text-align:center; border-top:1px solid var(--border);">
+        <h3 style="font-size:clamp(48px, 8vw, 84px); margin-bottom:40px; font-family:var(--font-heading); color:var(--black-92); font-weight:800;">Ready to solve for complexity?</h3>
+        <p style="font-size:28px; color:var(--black-56); max-width:900px; margin:0 auto 60px; font-family:var(--font-serif); line-height:1.4;">Let's discuss how decision intelligence and strategic UX can transform your product ecosystem.</p>
+        <a href="freelance.html" style="padding: 24px 80px; background:var(--black-92); color:#fff; text-decoration:none; border-radius:4px; font-weight:700; font-family:var(--font-heading); letter-spacing:0.2em; text-transform:uppercase; font-size:14px; display:inline-block; transition: var(--transition);">Apply for Strategy Session</a>
     </footer>
 
-    <!-- Interactive Canvas Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <script>
-        const canvasInner = document.getElementById('canvasInner');
-        const canvasContainer = document.getElementById('canvasContainer');
-        
-        let isDragging = false;
-        let startX, startY, scrollLeft, scrollTop;
-
-        canvasContainer.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.pageX - canvasContainer.offsetLeft;
-            startY = e.pageY - canvasContainer.offsetTop;
-            scrollLeft = canvasContainer.scrollLeft;
-            scrollTop = canvasContainer.scrollTop;
-            canvasContainer.style.cursor = 'grabbing';
-        });
-
-        canvasContainer.addEventListener('mouseleave', () => {
-            isDragging = false;
-            canvasContainer.style.cursor = 'grab';
-        });
-
-        canvasContainer.addEventListener('mouseup', () => {
-            isDragging = false;
-            canvasContainer.style.cursor = 'grab';
-        });
-
-        canvasContainer.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - canvasContainer.offsetLeft;
-            const y = e.pageY - canvasContainer.offsetTop;
-            const walkX = (x - startX) * 1.5;
-            const walkY = (y - startY) * 1.5;
-            canvasContainer.scrollLeft = scrollLeft - walkX;
-            canvasContainer.scrollTop = scrollTop - walkY;
-        });
-
-        // Initial scroll to center
-        setTimeout(() => {
-            canvasContainer.scrollLeft = 400;
-            canvasContainer.scrollTop = 200;
-        }, 500);
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
         // Progress Bar
-        window.onscroll = function() {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("progressBar").style.width = scrolled + "%";
-            
-            // Hide/Show Nav
-            const nav = document.getElementById('mainNav');
-            if(winScroll > 100) {
-                // optional: add shadow or change bg
+        gsap.to("#progressBar", {
+            width: "100%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true
             }
-        };
+        });
+
+        // Scroll Reveal for story sections
+        gsap.utils.toArray('.story-block').forEach(section => {
+            gsap.from(section.querySelectorAll('.mega-text > *, .block-text, .block-visual, .insight-card, .metric-card, .showcase-item, .persona-card, .director-sidebar, .strategy-banner'), {
+                opacity: 0,
+                y: 40,
+                duration: 1.2,
+                stagger: 0.15,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 85%",
+                }
+            });
+        });
+
+        // Sticky notes animation
+        gsap.utils.toArray('.sticky-note').forEach(note => {
+            gsap.from(note, {
+                scale: 0.8,
+                opacity: 0,
+                rotation: -10,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: note,
+                    start: "top 90%"
+                }
+            });
+        });
+
+        // Nav Spy Logic
+        const dots = document.querySelectorAll('.nav-dot');
+        const scrollSections = document.querySelectorAll('section, header');
+
+        window.addEventListener('scroll', () => {
+            let current = "";
+            scrollSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 400) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('href') === `#${current}`) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                gsap.to(window, {duration: 1.2, scrollTo: targetId, ease: "power3.inOut"});
+            });
+        });
     </script>
 </body>
 </html>
