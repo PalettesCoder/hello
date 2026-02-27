@@ -63,10 +63,18 @@ server {
     }
 
     # --- Cache Assets ---
-    location ~* \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|ico)$ {
-        expires 1M;
+    # Immutable static assets — fonts, images, media (1 year)
+    location ~* \.(woff2?|ttf|otf|eot|svg|jpe?g|png|gif|webp|avif|ico|mp4|cur)$ {
+        expires 1y;
         access_log off;
         add_header Cache-Control "public, immutable";
+    }
+
+    # CSS and JS — long cache with revalidation
+    location ~* \.(css|js)$ {
+        expires 1y;
+        access_log off;
+        add_header Cache-Control "public, stale-while-revalidate=86400";
     }
 
     # --- Allow sitemap/robots ---
@@ -84,5 +92,6 @@ server {
     gzip on;
     gzip_vary on;
     gzip_min_length 256;
-    gzip_types text/html text/css application/javascript application/json image/svg+xml;
+    gzip_comp_level 6;
+    gzip_types text/html text/css application/javascript application/json image/svg+xml application/xml text/xml font/woff2 font/woff application/font-woff2;
 }

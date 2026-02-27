@@ -166,14 +166,15 @@
     <!-- critical css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="css/figma-nav.css">
     
     <!-- non-critical css (deferred) -->
+    <link rel="stylesheet" type="text/css" href="css/figma-nav.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/swiper-bundle.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/animate.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" type="text/css" href="css/popup.css" media="print" onload="this.media='all'">
     
     <noscript>
+        <link rel="stylesheet" type="text/css" href="css/figma-nav.css">
         <link rel="stylesheet" href="css/swiper-bundle.min.css">
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" type="text/css" href="css/popup.css">
@@ -1880,16 +1881,15 @@
     </script>
 
     <!-- Javascript -->
-    <script src="js/figma-notify.js"></script>
+    <script src="js/figma-notify.js" defer></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/jquery-validate.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/contact.js"></script>
-    <!-- <script src="assets/js/odometer.min.js"></script> -->
-    <script src="js/carousel.js"></script>
-    <script src="js/infinityslide.js"></script>
+    <script src="js/carousel.js" defer></script>
+    <script src="js/infinityslide.js" defer></script>
     <script src="js/ScrollSmooth.js"></script>
     <script src="js/gsap.min.js"></script>
     <script src="js/SplitText.min.js"></script>
@@ -1897,8 +1897,8 @@
     <script src="js/ScrollToPlugin.min.js"></script>
     <script src="js/gsapAnimation.js"></script>
 
-    <script src="js/countto.js"></script>
-    <script src="js/animation-change-text.js"></script>
+    <script src="js/countto.js" defer></script>
+    <script src="js/animation-change-text.js" defer></script>
     <script src="js/main.js"></script>
 
     <!-- Development Popup -->
@@ -2063,13 +2063,13 @@
                     <!-- Slide 1 -->
                     <div class="swiper-slide">
                         <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
-                            <img loading="lazy" decoding="async" data-src="images/AT4K2YY0SDCR.jpg" src="" alt="Google UX Design Certificate" style="max-height: 90%; max-width: 90%;">
+                            <img loading="lazy" decoding="async" width="660" height="510" data-src="images/AT4K2YY0SDCR.jpg" src="" alt="Google UX Design Certificate" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                     <!-- Slide 2 -->
                     <div class="swiper-slide">
                         <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
-                            <img loading="lazy" decoding="async" data-src="images/LIOWEOIGC8HK.jpg" src="" alt="Foundations of UX Certificate" style="max-height: 90%; max-width: 90%;">
+                            <img loading="lazy" decoding="async" width="660" height="510" data-src="images/LIOWEOIGC8HK.jpg" src="" alt="Foundations of UX Certificate" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                 </div>
@@ -2361,8 +2361,8 @@
     </script>
 
 
-    <script src="js/snowflake_cursor.js"></script>
-    <script src="js/figma-app.js"></script>
+    <script src="js/snowflake_cursor.js" defer></script>
+    <script src="js/figma-app.js" defer></script>
 </body>
 
 </html>
