@@ -2138,7 +2138,7 @@
 
             const notes = Array.from(container.querySelectorAll('.sticky-note'));
             const isMobile = window.innerWidth < 768;
-            const noteSize = isMobile ? 110 : 130; 
+            const noteSize = isMobile ? 110 : 140; 
             const padding = 10;
             const placedNotes = [];
 
@@ -2180,7 +2180,7 @@
                 // Always show the note — even with slight overlap
                 document.body.appendChild(note); // Ensure it's in DOM for calc
                 note.style.display = 'flex';
-                note.style.width = isMobile ? '160px' : '220px';
+                note.style.width = isMobile ? '130px' : '170px';
                 note.style.left = `${x}px`;
                 note.style.top = `${y}px`;
                 note.style.transform = `rotate(0deg) translateY(0)`;
