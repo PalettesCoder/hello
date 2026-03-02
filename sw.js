@@ -7,7 +7,7 @@ const CORE_SHELL = [
   'freelance.html',
   'resume.html',
   'tech-stack.html',
-  'project-detail.html',
+  'projects/WSP-project',
   '404.html',
   'css/bootstrap.min.css',
   'css/styles.css',

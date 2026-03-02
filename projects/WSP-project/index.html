@@ -7,10 +7,10 @@
     <title>WSP PM | Engineering Clarity at Enterprise Scale — Senior UX Case Study</title>
 
     <!-- Restoring Site Consistency: Fonts -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/inter.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../../css/fonts.css">
+    <link rel="stylesheet" href="../../css/inter.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/styles.css" media="print" onload="this.media='all'">
 
     <style>
         :root {
@@ -1251,13 +1251,17 @@
             transform: translateY(-2px);
         }
     </style>
+    <script>
+        // Disable right-click across the entire page
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
 </head>
 
 <body>
 
     <!-- Creative Under Construction Modal -->
     <div class="construction-overlay" id="constructionOverlay">
-        <div class="sticky-note yellow" style="position: relative; transform: rotate(-2deg); width: 450px; padding: 40px; border-radius: 4px; border-bottom: 6px solid rgba(0,0,0,0.15);">
+        <div class="construction-note" style="position: relative; transform: rotate(-2deg); width: 450px; padding: 40px; border-radius: 4px; border-bottom: 6px solid rgba(0,0,0,0.15); background: #fefce8; border-left: 4px solid #eab308; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
             <div style="margin-bottom: 24px;">
                 <strong>⚠️ Project Under Construction</strong>
             </div>
@@ -1271,7 +1275,7 @@
         </div>
     </div>
     <header class="main-header">
-        <a href="index.html" class="header-logo">
+        <a href="/" class="header-logo">
             <span></span>
             Harsha Royal
         </a>
@@ -1282,7 +1286,7 @@
                     <div class="switch-thumb"></div>
                 </div>
             </div>
-            <a href="index.html" class="back-link">
+            <a href="/" class="back-link">
                 <span>←</span> Back to Home
             </a>
         </div>
@@ -1408,7 +1412,7 @@
                     </div>
                     <div
                         style="background:#fff; border:1px solid var(--border); padding:24px; border-radius:12px; box-shadow:var(--shadow-medium);">
-                        <img src="images/WSP/PolishedPortfolioOverview.png.png"
+                        <img src="../../images/WSP/PolishedPortfolioOverview.png.png"
                             alt="Operational Dashboard showing the 'Data Density Paradox'"
                             style="border-radius:4px; filter: grayscale(0.2);">
                         <div
@@ -1632,7 +1636,7 @@
             <div style="display:grid; grid-template-columns: 1fr; gap:80px; margin-bottom: 120px;">
                 <!-- Dashboard Overhaul -->
                 <div style="background:var(--wsp-color-gray-25); border-radius:24px; padding:60px; position:relative; overflow:hidden; border:1px solid var(--wsp-color-gray-100); transition: var(--transition);">
-                    <img src="images/WSP/PolishedPortfolioOverview.png.png" alt="Global Portfolio Health Dashboard" style="width:100%; border-radius:12px; box-shadow:var(--wsp-shadow-xl);">
+                    <img src="../../images/WSP/PolishedPortfolioOverview.png.png" alt="Global Portfolio Health Dashboard" style="width:100%; border-radius:12px; box-shadow:var(--wsp-shadow-xl);">
                     <!-- Anchor Dot -->
                     <div style="position:absolute; top:42%; left:28%; width:12px; height:12px; background:var(--primary); border:2px solid #fff; border-radius:50%; box-shadow: 0 0 10px var(--primary); z-index:5;"></div>
                     <div style="position:absolute; top:20%; left:5%; max-width:280px; background:#fff; padding:24px; border-radius:var(--wsp-radius-md); box-shadow:var(--wsp-shadow-lg);">
@@ -1643,7 +1647,7 @@
 
                 <!-- Tactical Detail View -->
                 <div style="background:var(--wsp-color-gray-25); border-radius:24px; padding:60px; position:relative; overflow:hidden; border:1px solid var(--wsp-color-gray-100); transition: var(--transition);">
-                    <img src="images/WSP/PolishedPortfolioOverview.png-1.png" alt="Project Detail View" style="width:100%; border-radius:12px; box-shadow:var(--wsp-shadow-xl);">
+                    <img src="../../images/WSP/PolishedPortfolioOverview.png-1.png" alt="Project Detail View" style="width:100%; border-radius:12px; box-shadow:var(--wsp-shadow-xl);">
                     <!-- Anchor Dot -->
                     <div style="position:absolute; top:35%; right:30%; width:12px; height:12px; background:var(--primary); border:2px solid #fff; border-radius:50%; box-shadow: 0 0 10px var(--primary); z-index:5;"></div>
                     <div style="position:absolute; bottom:20%; right:5%; max-width:280px; background:var(--wsp-color-gray-900); color:#fff; padding:24px; border-radius:var(--wsp-radius-md); box-shadow:var(--wsp-shadow-lg);">
@@ -1764,7 +1768,7 @@
             <h3 style="font-size:64px; font-weight:800; margin-bottom:40px;">Calm under pressure.</h3>
             <p class="narrative-copy" style="font-size:24px;">I learned that WSP PM isn’t just software—it’s the nervous system for global delivery. By building trust through transparency, we transformed how a global organization understands itself.</p>
             <div style="margin-top:60px;">
-                <a href="index.html" style="padding:20px 48px; background:var(--black-92); color:#fff; border-radius:100px; text-decoration:none; font-weight:900; text-transform:uppercase;">Return Home</a>
+                <a href="/" style="padding:20px 48px; background:var(--black-92); color:#fff; border-radius:100px; text-decoration:none; font-weight:900; text-transform:uppercase;">Return Home</a>
             </div>
         </div>
     </section>

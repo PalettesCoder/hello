@@ -127,7 +127,7 @@
                 </svg>
             </div>
             <div class="top-bar-tabs">
-                <a href="index.html" class="figma-tab">
+                <a href="/" class="figma-tab">
                     Home
                     <span class="tab-close">&times;</span>
                 </a>
@@ -139,7 +139,7 @@
                     Tech Stack
                     <span class="tab-close">&times;</span>
                 </a>
-                <a href="project-detail.html" class="figma-tab">
+                <a href="projects/WSP-project" class="figma-tab">
                     Project Detail
                     <span class="tab-close">&times;</span>
                 </a>
@@ -636,6 +636,9 @@
         });
 
         window.onload = () => {
+            if (window.innerWidth < 600) scale = 0.6;
+            else if (window.innerWidth < 900) scale = 0.8;
+
             // Initial center align horizontally, but align top vertically
             const rect = viewport.getBoundingClientRect();
             // -160 is the top offset of the frame in the pan-canvas
