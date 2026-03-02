@@ -1488,54 +1488,249 @@
     </section>
 
     <!-- 3️⃣ PERSONAS -->
-    <section class="story-block white" id="personas">
+    <section class="story-block white" id="personas" style="padding-top: 120px; padding-bottom: 120px;">
         <div class="container">
-            <div class="mega-text" style="max-width: 1000px; margin-bottom: 60px;">
+            <div class="mega-text" style="max-width: 1000px; margin-bottom: 80px;">
                 <span class="section-tag" style="background:rgba(0,0,0,0.05); color:var(--black-72); padding:6px 16px; border-radius:2px; font-size:11px; margin-bottom:24px; display:inline-block; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;">04 Personas</span>
                 <h2 style="font-size: clamp(48px, 6vw, 84px); font-weight: 800; margin-bottom: 32px; letter-spacing: -0.04em; color: var(--black-92);">Designing for Diverse Intent.</h2>
+                <p class="narrative-copy" style="font-size: 22px; color: var(--black-72);">Scaling an enterprise analytics platform requires bridging the gap between rigorous engineering and high-velocity data science.</p>
             </div>
-            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:20px;">
-                <div style="background:#fff; border:1px solid var(--border); border-radius:12px; padding:32px;">
-                    <span style="font-size:10px; font-weight:900; color:var(--primary); text-transform:uppercase;">Delivery Lead</span>
-                    <h4 style="font-size:20px; margin:8px 0;">Sarah Jenkins</h4>
+
+            <!-- Persona Grid -->
+            <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:32px;">
+                
+                <!-- Persona 1: Sarah Jenkins -->
+                <div style="background:var(--bg-base); border-radius:12px; padding:60px; border:1px solid var(--border); position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:24px; right:24px; font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--primary); opacity:0.6; font-weight:900;">// PERSONA_01_SCIENTIST</div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px;">
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:900; color:var(--primary); text-transform:uppercase; letter-spacing:0.2em;">Data Scientist</span>
+                            <h4 style="font-size:36px; font-weight:800; margin:16px 0 8px 0; color:var(--black-92); letter-spacing:-0.03em;">Sarah Jenkins</h4>
+                            <p style="font-size:18px; color:var(--black-40);">Principal AI Lab lead</p>
+                        </div>
+                        <div style="width: 80px; height: 80px; border-radius: 12px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">🧬</div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 40px;">
+                        <div style="padding-left: 24px; border-left: 3px solid var(--primary);">
+                            <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">// VERBATIM_INPUT</span>
+                            <p style="font-size: 20px; line-height: 1.4; color: var(--black-92); font-weight: 500; font-style: italic;">"I spend more time fixing Python environments and package conflicts than I do actually training models."</p>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 32px; border-top: 1px dashed var(--border);">
+                            <div>
+                                <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">Mental Model</span>
+                                <p style="font-size: 15px; color: var(--black-72); line-height: 1.5;">Infrastructure should be invisible. I want to code model architectures, not manage K8s clusters.</p>
+                            </div>
+                            <div>
+                                <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">Anxiety Vector</span>
+                                <p style="font-size: 15px; color: var(--black-72); line-height: 1.5;">Will my results be reproducible next month, or is this environment going to break globally?</p>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--black-92); padding: 32px; border-radius: 8px; color: #fff;">
+                            <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--primary); display: block; margin-bottom: 16px;">// DESIGN_INTERVENTION</span>
+                            <p style="font-size: 16px; color: #fff; font-weight: 500; margin: 0;">One-click JupyterHub provisioning with pre-baked, validated Docker images and unified telemetry.</p>
+                        </div>
+                    </div>
                 </div>
-                <div style="background:#fff; border:1px solid var(--border); border-radius:12px; padding:32px;">
-                    <span style="font-size:10px; font-weight:900; color:var(--black-92); text-transform:uppercase;">Project Owner</span>
-                    <h4 style="font-size:20px; margin:8px 0;">James Mitchell</h4>
+
+                <!-- Persona 2: Marcus Vane -->
+                <div style="background:var(--bg-base); border-radius:12px; padding:60px; border:1px solid var(--border); position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:24px; right:24px; font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); opacity:0.6; font-weight:900;">// PERSONA_02_ENG</div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px;">
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:900; color:var(--black-92); text-transform:uppercase; letter-spacing:0.2em;">Platform Engineer</span>
+                            <h4 style="font-size:36px; font-weight:800; margin:12px 0 8px 0; color:var(--black-92); letter-spacing:-0.03em;">Marcus Vane</h4>
+                            <p style="font-size:18px; color:var(--black-40);">Hybrid Compute Optimisation lead</p>
+                        </div>
+                        <div style="width: 80px; height: 80px; border-radius: 12px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">⚙️</div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 40px;">
+                        <div style="padding-left: 24px; border-left: 3px solid var(--black-72);">
+                            <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">// VERBATIM_INPUT</span>
+                            <p style="font-size: 20px; line-height: 1.4; color: var(--black-92); font-weight: 500; font-style: italic;">"Scaling clusters for a hundred separate teams is a manual nightmare of ticket requests."</p>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 32px; border-top: 1px dashed var(--border);">
+                            <div>
+                                <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">Mental Model</span>
+                                <p style="font-size: 15px; color: var(--black-72); line-height: 1.5;">Governance shouldn't mean slowing down dev speed, but cost control is critical for global spend.</p>
+                            </div>
+                            <div>
+                                <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">Anxiety Vector</span>
+                                <p style="font-size: 15px; color: var(--black-72); line-height: 1.5;">Is our cloud spend optimized, or are we just throwing capital at idle GPU instances?</p>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--black-92); padding: 32px; border-radius: 8px; color: #fff;">
+                            <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 16px;">// DESIGN_INTERVENTION</span>
+                            <p style="font-size: 16px; color: #fff; font-weight: 500; margin: 0;">Self-service Control Plane with automated budget ceiling and system policy enforcement.</p>
+                        </div>
+                    </div>
                 </div>
-                <div style="background:#fff; border:1px solid var(--border); border-radius:12px; padding:32px;">
-                    <span style="font-size:10px; font-weight:900; color:var(--black-40); text-transform:uppercase;">Exec Sponsor</span>
-                    <h4 style="font-size:20px; margin:8px 0;">Executive</h4>
+
+                <!-- Persona 3: Elena Roche -->
+                <div style="background:var(--bg-base); border-radius:12px; padding:60px; border:1px solid var(--border); position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:24px; right:24px; font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); opacity:0.6; font-weight:900;">// PERSONA_03_VP</div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px;">
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:900; color:var(--black-40); text-transform:uppercase; letter-spacing:0.2em;">VP Engineering</span>
+                            <h4 style="font-size:36px; font-weight:800; margin:12px 0 8px 0; color:var(--black-92); letter-spacing:-0.03em;">Elena Roche</h4>
+                            <p style="font-size:18px; color:var(--black-40);">Digital Transformation steward</p>
+                        </div>
+                        <div style="width: 80px; height: 80px; border-radius: 12px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">👑</div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 40px;">
+                        <div style="padding-left: 24px; border-left: 3px solid var(--black-40);">
+                            <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">// VERBATIM_INPUT</span>
+                            <p style="font-size: 20px; line-height: 1.4; color: var(--black-92); font-weight: 500; font-style: italic;">"I need to know which projects are actually driving value and where the bottlenecks are."</p>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 32px; border-top: 1px dashed var(--border);">
+                            <div>
+                                <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">Mental Model</span>
+                                <p style="font-size: 15px; color: var(--black-72); line-height: 1.5;">Productivity is invisible without telemetry. We need a 'Single View' of R&D speed.</p>
+                            </div>
+                            <div>
+                                <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">Anxiety Vector</span>
+                                <p style="font-size: 15px; color: var(--black-72); line-height: 1.5;">Are we technically ready for AI scale-up, or is our legacy debt going to crush us?</p>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--black-92); padding: 32px; border-radius: 8px; color: #fff;">
+                            <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 16px;">// DESIGN_INTERVENTION</span>
+                            <p style="font-size: 16px; color: #fff; font-weight: 500; margin: 0;">High-level ROI Dashboarding linking platform usage to business outcome metrics.</p>
+                        </div>
+                    </div>
                 </div>
-                <div style="background:#fff; border:1px solid var(--border); border-radius:12px; padding:32px;">
-                    <span style="font-size:10px; font-weight:900; color:var(--black-40); text-transform:uppercase;">Resourcing</span>
-                    <h4 style="font-size:20px; margin:8px 0;">Manager</h4>
+
+                <!-- Persona 4: Chen Wei -->
+                <div style="background:var(--bg-base); border-radius:12px; padding:60px; border:1px solid var(--border); position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:24px; right:24px; font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); opacity:0.6; font-weight:900;">// PERSONA_04_PM</div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px;">
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:900; color:var(--black-40); text-transform:uppercase; letter-spacing:0.2em;">Product Manager</span>
+                            <h4 style="font-size:36px; font-weight:800; margin:12px 0 8px 0; color:var(--black-92); letter-spacing:-0.03em;">Chen Wei</h4>
+                            <p style="font-size:18px; color:var(--black-40);">Optimising user-facing analytic tools</p>
+                        </div>
+                        <div style="width: 80px; height: 80px; border-radius: 12px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">📑</div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 40px;">
+                        <div style="padding-left: 24px; border-left: 3px solid var(--black-40);">
+                            <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">// VERBATIM_INPUT</span>
+                            <p style="font-size: 20px; line-height: 1.4; color: var(--black-92); font-weight: 500; font-style: italic;">"Feature delivery is delayed because every new requirement needs a custom data silo."</p>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-top: 32px; border-top: 1px dashed var(--border);">
+                            <div>
+                                <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">Mental Model</span>
+                                <p style="font-size: 15px; color: var(--black-72); line-height: 1.5;">Standardization is the only way to scale without adding linear technical overhead.</p>
+                            </div>
+                            <div>
+                                <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 12px;">Anxiety Vector</span>
+                                <p style="font-size: 15px; color: var(--black-72); line-height: 1.5;">Will this new platform actually stop the 'Shadow IT' culture in our data teams?</p>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--black-92); padding: 32px; border-radius: 8px; color: #fff;">
+                            <span style="font-family:'JetBrains Mono', monospace; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--black-40); display: block; margin-bottom: 16px;">// DESIGN_INTERVENTION</span>
+                            <p style="font-size: 16px; color: #fff; font-weight: 500; margin: 0;">Modular API architecture with a central 'Asset Library' for reusable data components.</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- 4️⃣ PRINCIPLES & IA -->
-    <section class="story-block" id="principles">
+    <section class="story-block" id="principles" style="background:#fff; padding-top: 140px; padding-bottom: 140px;">
         <div class="container">
-            <h2 style="font-size:48px; font-weight:800; margin-bottom:48px;">Principles & Structure.</h2>
-            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:20px;">
-                <div style="background:#fff; padding:32px; border-radius:12px; box-shadow: var(--shadow-small);">
-                    <h4 style="font-size:18px; margin-bottom:12px;">Glanceable Truth</h4>
-                    <p style="font-size:13px; color:var(--black-72); line-height:1.4;">Answer the most critical business question in ≤5 seconds.</p>
+            <div class="mega-text" style="max-width: 1000px; margin-bottom: 80px;">
+                <span class="section-tag" style="background:rgba(0,0,0,0.05); color:var(--black-72); padding:6px 16px; border-radius:2px; font-size:11px; margin-bottom:24px; display:inline-block; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;">05 Principles</span>
+                <h2 style="font-size: clamp(48px, 6vw, 84px); font-weight: 800; margin-bottom: 32px; letter-spacing: -0.04em; color: var(--black-92);">Principles & Logic.</h2>
+                <p class="narrative-copy" style="font-size: 24px; color: var(--black-72);">Scaling a global analytics platform requires bridiging the gap between high-fidelity engineering and real-time decision momentum.</p>
+            </div>
+
+            <!-- Architecture Logic Grid -->
+            <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:32px;">
+                
+                <!-- Principle 1 -->
+                <div style="background:var(--bg-base); border-radius:12px; padding:60px; border:1px solid var(--border); position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:24px; right:24px; font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--primary); opacity:0.6; font-weight:900;">// COMPUTE_ENGINE_01</div>
+                    <h4 style="font-size:12px; text-transform:uppercase; color:var(--primary); letter-spacing:0.2em; margin-bottom:24px; font-weight:900;">01 Compute Efficiency</h4>
+                    <p style="font-size:32px; font-weight:800; color:var(--black-92); line-height:1; letter-spacing:-0.03em; margin-bottom:24px;">Orchestration: 2.4PB.</p>
+                    <p style="font-size:18px; color:var(--black-72); margin-bottom:32px;">Automated resource allocation based on job priority and compute-cost tokens. We prioritize real-time telemetry over batch processing to ensure immediate business responsiveness.</p>
+                    <div style="padding-top:24px; border-top:1px dashed var(--border); display:flex; gap:32px;">
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); text-transform:uppercase;">Monthly Throughput</span>
+                            <span style="display:block; font-size:18px; font-weight:700; color:var(--black-92);">2.4PB Scalable</span>
+                        </div>
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); text-transform:uppercase;">Core Logic</span>
+                            <span style="display:block; font-size:18px; font-weight:700; color:var(--black-92);">Tokenized Scaling</span>
+                        </div>
+                    </div>
                 </div>
-                <div style="background:#fff; padding:32px; border-radius:12px; box-shadow: var(--shadow-small);">
-                    <h4 style="font-size:18px; margin-bottom:12px;">Decision Logic IA</h4>
-                    <p style="font-size:13px; color:var(--black-72); line-height:1.4;">Awareness (HUD) → Diagnosis (Detail) → Action (Tools).</p>
+
+                <!-- Principle 2 -->
+                <div style="background:var(--bg-base); border-radius:12px; padding:60px; border:1px solid var(--border); position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:24px; right:24px; font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); opacity:0.6; font-weight:900;">// DATA_LINEAGE_V4</div>
+                    <h4 style="font-size:12px; text-transform:uppercase; color:var(--black-92); letter-spacing:0.2em; margin-bottom:24px; font-weight:900;">02 Traceable Insights</h4>
+                    <p style="font-size:32px; font-weight:800; color:var(--black-92); line-height:1; letter-spacing:-0.03em; margin-bottom:24px;">Source Mapping: 1:1.</p>
+                    <p style="font-size:18px; color:var(--black-72); margin-bottom:32px;">Every executive insight must be back-traceable to its raw telemetry origin. Our 'Audit-First' IA ensures that data scientists can verify model outputs in seconds.</p>
+                    <div style="padding-top:24px; border-top:1px dashed var(--border); display:flex; gap:32px;">
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); text-transform:uppercase;">IA Protocol</span>
+                            <span style="display:block; font-size:18px; font-weight:700; color:var(--black-92);">Transparent ETL</span>
+                        </div>
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); text-transform:uppercase;">Trust Index</span>
+                            <span style="display:block; font-size:18px; font-weight:700; color:var(--black-92);">99.9% Provenance</span>
+                        </div>
+                    </div>
                 </div>
-                <div style="background:#fff; padding:32px; border-radius:12px; box-shadow: var(--shadow-small);">
-                    <h4 style="font-size:18px; margin-bottom:12px;">Action over Info</h4>
-                    <p style="font-size:13px; color:var(--black-72); line-height:1.4;">Every data point must recommend a tangible next step.</p>
+
+                <!-- Principle 3 -->
+                <div style="background:var(--bg-base); border-radius:12px; padding:60px; border:1px solid var(--border); position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:24px; right:24px; font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); opacity:0.6; font-weight:900;">// R&D_MOMENTUM</div>
+                    <h4 style="font-size:12px; text-transform:uppercase; color:var(--black-92); letter-spacing:0.2em; margin-bottom:24px; font-weight:900;">03 Actionable Velocity</h4>
+                    <p style="font-size:32px; font-weight:800; color:var(--black-92); line-height:1; letter-spacing:-0.03em; margin-bottom:24px;">Cycle Time: -34%.</p>
+                    <p style="font-size:18px; color:var(--black-72); margin-bottom:32px;">We optimize for the 'Moment of Insight'. By removing custom silo creation and automating data discovery, we accelerated model deployment cycles by over 30%.</p>
+                    <div style="padding-top:24px; border-top:1px dashed var(--border); display:flex; gap:32px;">
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); text-transform:uppercase;">R&D Latency</span>
+                            <span style="display:block; font-size:18px; font-weight:700; color:var(--black-92);">Sub-Day Deployment</span>
+                        </div>
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--black-40); text-transform:uppercase;">Team Velocity</span>
+                            <span style="display:block; font-size:18px; font-weight:700; color:var(--black-92);">+4.2x Projects/Mo</span>
+                        </div>
+                    </div>
                 </div>
-                <div style="background:#fff; padding:32px; border-radius:12px; box-shadow: var(--shadow-small);">
-                    <h4 style="font-size:18px; margin-bottom:12px;">Trust through Data</h4>
-                    <p style="font-size:13px; color:var(--black-72); line-height:1.4;">Show the reasoning engine behind every signal or flag.</p>
+
+                <!-- Principle 4 -->
+                <div style="background:var(--black-92); border-radius:12px; padding:60px; color:#fff; position:relative; overflow:hidden;">
+                    <div style="position:absolute; top:24px; right:24px; font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--primary); opacity:0.8; font-weight:900;">// GLOBAL_CORE</div>
+                    <h4 style="font-size:12px; text-transform:uppercase; color:var(--primary); letter-spacing:0.2em; margin-bottom:24px; font-weight:900;">04 Global Taxonomy</h4>
+                    <p style="font-size:32px; font-weight:800; color:#fff; line-height:1; letter-spacing:-0.03em; margin-bottom:24px;">Scale: 10+ Regions.</p>
+                    <p style="font-size:18px; color:rgba(255,255,255,0.7); margin-bottom:32px;">Standardized schema enforcement across 10+ global regions ensures that 'Shadow IT' is eradicated and data gravity remains within the governed platform.</p>
+                    <div style="padding-top:24px; border-top:1px solid rgba(255,255,255,0.1); display:flex; gap:32px;">
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase;">Unified Regions</span>
+                            <span style="display:block; font-size:18px; font-weight:700; color:#fff;">Global Mesh</span>
+                        </div>
+                        <div>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase;">Sync Latency</span>
+                            <span style="display:block; font-size:18px; font-weight:700; color:#fff;">&lt;500ms Global</span>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1880,6 +2075,7 @@
             });
         });
     </script>
+    <script src="../../js/snowflake_cursor.js" defer></script>
 </body>
 
 </html>
