@@ -56,14 +56,14 @@
 
   <!-- Cricket Section -->
   <url>
-    <loc>https://harsharoyal.in/cricket/index.html</loc>
+    <loc>https://cricket.harsharoyal.in/</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://harsharoyal.in/cricket/blogs.html</loc>
+    <loc>https://cricket.harsharoyal.in/blogs.html</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
