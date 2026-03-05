@@ -266,12 +266,21 @@
         </div>
     </div>
     <!-- /Body Background -->
-    <!-- Btn Open Color -->
-    <div class="tf-left-bar">
+    <!-- Btn Open Color & Cricket Switch -->
+    <div class="tf-left-bar" style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+        <a href="#" class="btn-cricket tf-btn-icon style-2" aria-label="Switch to Cricket Site" title="Cricket Site">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Cricket bat -->
+                <path d="M8.5 14.5L4 19l-2-2l4.5-4.5"></path>
+                <path d="M8.5 14.5L16 7c1.5-1.5 3-2 5-1c1 2 .5 3.5-1 5l-7.5 7.5c-1.5 1.5-4 1.5-5.5 0l-1.5-1.5c-1.5-1.5-1.5-4 0-5.5z"></path>
+                <!-- Ball -->
+                <circle cx="6" cy="6" r="2"></circle>
+            </svg>
+        </a>
         <a class="btn-setting-color tf-btn-icon style-2" data-bs-toggle="offcanvas" href="#settingColorMenu" aria-label="Open Theme Color Settings"><i
                 class="icon-gear"></i></a>
     </div>
-    <!-- /Btn Open Color -->
+    <!-- /Btn Open Color & Cricket Switch -->
     <!-- Setting Color -->
     <div class="offcanvas offcanvas-end" id="settingColorMenu" style="width: 380px; border: none; box-shadow: -10px 0 40px rgba(0,0,0,0.1);">
         <div class="offcanvas-content" style="background: #ffffff; height: 100%; display: flex; flex-direction: column;">
