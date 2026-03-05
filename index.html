@@ -266,23 +266,20 @@
         </div>
     </div>
     <!-- /Body Background -->
-    <!-- Cricket Switch -->
-    <div class="cricket-switch-bar" style="position: fixed; top: 48px; right: 16px; z-index: 97;">
-        <a href="https://cricket.harsharoyal.in" target="_blank" class="tf-btn-icon style-2" aria-label="Switch to Cricket Site" title="Cricket Site">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8.5 14.5L4 19l-2-2l4.5-4.5"></path>
-                <path d="M8.5 14.5L16 7c1.5-1.5 3-2 5-1c1 2 .5 3.5-1 5l-7.5 7.5c-1.5 1.5-4 1.5-5.5 0l-1.5-1.5c-1.5-1.5-1.5-4 0-5.5z"></path>
-                <circle cx="6" cy="6" r="2"></circle>
-            </svg>
+    <!-- Toggle & Settings -->
+    <div class="tf-left-bar" style="display: flex; flex-direction: column; gap: 16px; align-items: flex-end;">
+        <a href="https://cricket.harsharoyal.in" title="Switch to Cricket Site" style="display: flex; align-items: center; gap: 10px; background: #ffffff; padding: 8px 14px; border-radius: 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); text-decoration: none; border: 1px solid #f0f0f0; transition: all 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; color: #111;">Portfolio</span>
+            <div style="width: 36px; height: 20px; background: #e0e0e0; border-radius: 20px; position: relative; transition: background 0.3s;">
+                <div style="width: 16px; height: 16px; background: #fff; border-radius: 50%; position: absolute; left: 2px; top: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s;"></div>
+            </div>
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: #888;">Cricket</span>
+        </a>
+        <a class="btn-setting-color tf-btn-icon style-2" data-bs-toggle="offcanvas" href="#settingColorMenu" aria-label="Open Theme Color Settings">
+            <i class="icon-gear"></i>
         </a>
     </div>
-    <!-- /Cricket Switch -->
-    <!-- Btn Open Color -->
-    <div class="tf-left-bar">
-        <a class="btn-setting-color tf-btn-icon style-2" data-bs-toggle="offcanvas" href="#settingColorMenu" aria-label="Open Theme Color Settings"><i
-                class="icon-gear"></i></a>
-    </div>
-    <!-- /Btn Open Color -->
+    <!-- /Toggle & Settings -->
     <!-- Setting Color -->
     <div class="offcanvas offcanvas-end" id="settingColorMenu" style="width: 380px; border: none; box-shadow: -10px 0 40px rgba(0,0,0,0.1);">
         <div class="offcanvas-content" style="background: #ffffff; height: 100%; display: flex; flex-direction: column;">
