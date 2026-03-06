@@ -52,34 +52,31 @@ let projectSidebarStr = `
                         </div>
                         <div class="content" style="position: relative; z-index: 1; padding: 32px; display: flex; flex-direction: column; height: 100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
                             <div class="content-top" style="flex-shrink: 0;">
-                                <div class="w-logo" style="margin-bottom: 64px;">
-                                    <img loading="lazy" width="40" height="40" src="images/logo.svg" alt="Image">
-                                </div>
-                                <h4 class="w-title letter-space--2 text-white-72" style="margin-bottom: 16px;">
+                                <h4 class="w-title letter-space--2 text-white-100" style="margin-bottom: 16px;">
                                     WSP Global
                                 </h4>
-                                <p class="w-desc text-white-56 text-body-3" style="margin-bottom: 64px;">
+                                <p class="w-desc text-white-100 text-body-3" style="margin-bottom: 64px;">
                                     Designed responsive UI for Project Management tools supporting different type of internal projects
                                 </p>
                                 <div class="w-highlight" style="display: grid; gap: 40px; margin-bottom: 64px;">
                                     <div class="box-high" style="display: grid; gap: 8px;">
-                                        <p class="text-body-3 text-white-56">Year</p>
-                                        <p class="text-body-1 text-white-72">2025</p>
+                                        <p class="text-body-3 text-white-100">Year</p>
+                                        <p class="text-body-1 text-white-100">2025</p>
                                     </div>
                                     <div class="box-high" style="display: grid; gap: 8px;">
-                                        <p class="text-body-3 text-white-56">Role</p>
-                                        <p class="text-body-1 text-white-72">Lead Product Designer</p>
+                                        <p class="text-body-3 text-white-100">Role</p>
+                                        <p class="text-body-1 text-white-100">Lead Product Designer</p>
                                     </div>
                                 </div>
                                 <div class="w-tag-list" style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
                                     <div class="tag" style="padding: 5px 11px; background-color: var(--black-56); border: 1px solid var(--white-8); backdrop-filter: blur(6px); border-radius: 999px;">
-                                        <span class="text-body-3 fw-medium text-white-72">Brand</span>
+                                        <span class="text-body-3 fw-medium text-white-100">Brand</span>
                                     </div>
                                     <div class="tag" style="padding: 5px 11px; background-color: var(--black-56); border: 1px solid var(--white-8); backdrop-filter: blur(6px); border-radius: 999px;">
-                                        <span class="text-body-3 fw-medium text-white-72">Website</span>
+                                        <span class="text-body-3 fw-medium text-white-100">Website</span>
                                     </div>
                                     <div class="tag" style="padding: 5px 11px; background-color: var(--black-56); border: 1px solid var(--white-8); backdrop-filter: blur(6px); border-radius: 999px;">
-                                        <span class="text-body-3 fw-medium text-white-72">Webflow</span>
+                                        <span class="text-body-3 fw-medium text-white-100">Webflow</span>
                                     </div>
                                 </div>
                             </div>

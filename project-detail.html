@@ -46,10 +46,10 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
     <!-- Preload Critical Fonts -->
-    <link rel="preload" href="../fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="../fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="../fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="../fonts/ApfelGrotezk-Regular.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/ApfelGrotezk-Regular.otf" as="font" type="font/otf" crossorigin>
     
     <!-- JSON-LD Structured Data — World-Class SEO -->
     <script type="application/ld+json">
@@ -146,44 +146,94 @@
       ]
     }]
     </script>
-    
     <!-- fonts -->
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/inter.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <style>
-        /* Maintain the website design but fix layout for All Projects */
-        .main-content { padding-top: 100px !important; }
-        .tf-grid-layout { display: grid !important; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-        @media (max-width: 991px) { .tf-grid-layout { grid-template-columns: 1fr; } }
-        
-        /* Ensure scrolling and no home-page popups */
-        #devPopup, #successPopup, #certificatePopup { display: none !important; }
-        .dev-popup-overlay { display: none !important; }
-        body.counter-scroll { overflow-y: auto !important; height: auto !important; }
-        #wrapper { height: auto !important; overflow: visible !important; }
+    <link rel="stylesheet" href="css/fonts.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/inter.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+    
+    <noscript>
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/inter.css">
+        <link rel="stylesheet" href="css/style.css">
+    </noscript>
+    
+    <!-- critical css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    <!-- non-critical css (deferred) -->
+    <link rel="stylesheet" type="text/css" href="css/figma-nav.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/animate.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="css/popup.css" media="print" onload="this.media='all'">
+    
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="css/figma-nav.css">
+        <link rel="stylesheet" href="css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/popup.css">
+    </noscript>
 
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: rgba(255,117,24,0.1);
-            border: 1px solid #FF7518;
-            border-radius: 100px;
-            color: #fff !important;
-            font-weight: 500;
-            text-decoration: none;
-            margin-bottom: 20px;
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="images/image.jpg" as="image" fetchpriority="high">
+    
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="images/favicon.svg">
+    <link rel="apple-touch-icon-precomposed" href="images/favicon.svg">
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
         }
+        window.scrollTo(0,0);
+    </script>
+    <!-- Mobile Fixes & Global Constraints -->
+    <style>
+    @media (max-width: 991px) {
+        #home.section-intro {
+            text-align: center !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .intro-title {
+            text-align: center !important;
+            max-width: 100%;
+        }
+        .intro-author {
+            justify-content: center !important;
+            width: 100%;
+            margin-right: 0 !important;
+        }
+        .intro-item {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            justify-content: center !important;
+            text-align: center;
+        }
+        .wg-curve-text {
+            right: 50% !important;
+            transform: translateX(50%) !important;
+        }
+        .action-open-mobile {
+            top: 32px !important;
+            right: 30px !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        .tf-header-wrap {
+            align-items: flex-start !important;
+            padding-top: 32px !important;
+        }
+    }
     </style>
+    <script>
+        // Disable right-click across the entire page
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
 </head>
 <body class="counter-scroll">
-    <!-- <canvas class="cursor-trail d-none d-xl-block" id="trail"></canvas> -->
-
-    <!-- Preload -->
+<!-- Preload -->
     <div class="preload preload-container" id="preload">
         <div class="preload-logo">
             <div class="spinner"></div>
@@ -194,11 +244,11 @@
     <!-- Body Background -->
     <div class="body-background">
         <div class="bg-item">
-            <img loading="lazy" decoding="async" width="1440" height="900" src="../images/cloud-bg.png" alt="" role="presentation">
+            <img loading="lazy" decoding="async" width="1440" height="900" src="images/cloud-bg.png" alt="" role="presentation">
         </div>
         <div class="bg-video video-dark">
             <video class="video" muted="" autoplay="" loop="" playsinline="" preload="none" onerror="this.parentElement.style.display='none'">
-                <source src="../media/overlay-2.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none'">
+                <source src="media/overlay-2.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none'">
             </video>
             <div class="overlay-1"></div>
         </div>
@@ -314,51 +364,51 @@
         <div class="nav-mobile-list">
             <ul class="nav-mobile-item">
                 <li class="nav-item">
-                    <a href="../index.html#home" class="item-link scroll-link">
+                    <a href="#home" class="item-link scroll-link">
                         <i class="icon icon-home"></i>
                         <p class="tool-tip text-caption">Home</p>
                     </a>
                 </li>
                 <li class="br-line"></li>
                 <li class="nav-item">
-                    <a href="../index.html#about" class="item-link scroll-link">
+                    <a href="#about" class="item-link scroll-link">
                         <i class="icon icon-user-circle"></i>
                         <p class="tool-tip text-caption">About</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#education" class="item-link scroll-link">
+                    <a href="#education" class="item-link scroll-link">
                         <i class="icon icon-edu"></i>
                         <p class="tool-tip text-caption">Experience & Education</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#work" class="item-link scroll-link">
+                    <a href="#work" class="item-link scroll-link">
                         <i class="icon icon-high-light"></i>
                         <p class="tool-tip text-caption">Work</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#service" class="item-link scroll-link">
+                    <a href="#service" class="item-link scroll-link">
                         <i class="icon icon-service"></i>
                         <p class="tool-tip text-caption">Services</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#tech" class="item-link scroll-link">
+                    <a href="#tech" class="item-link scroll-link">
                         <i class="icon icon-tech-stack"></i>
                         <p class="tool-tip text-caption">Tech</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#testimonial" class="item-link scroll-link">
+                    <a href="#testimonial" class="item-link scroll-link">
                         <i class="icon icon-tes"></i>
                         <p class="tool-tip text-caption">Testimonials</p>
                     </a>
                 </li>
                 <li class="br-line"></li>
                 <li class="nav-item">
-                    <a href="../index.html#contact" class="item-link scroll-link">
+                    <a href="#contact" class="item-link scroll-link">
                         <i class="icon icon-send"></i>
                         <p class="tool-tip text-caption">Contact</p>
                     </a>
@@ -372,58 +422,58 @@
     <div class="sidebar-tools pst-v1">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="../index.html#home" class="item-link scroll-link" aria-label="Navigate to Home">
+                <a href="#home" class="item-link scroll-link" aria-label="Navigate to Home">
                     <i class="icon icon-home"></i>
                     <p class="tool-tip text-caption">Home</p>
                 </a>
             </li>
             <li class="br-line"></li>
             <li class="nav-item">
-                <a href="../index.html#about" class="item-link scroll-link" aria-label="Read more About Me">
+                <a href="#about" class="item-link scroll-link" aria-label="Read more About Me">
                     <i class="icon icon-user-circle"></i>
                     <p class="tool-tip text-caption">About</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#education" class="item-link scroll-link" aria-label="View Education and History">
+                <a href="#education" class="item-link scroll-link" aria-label="View Education and History">
                     <i class="icon icon-edu"></i>
                     <p class="tool-tip text-caption">Work & Education</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#work" class="item-link scroll-link" aria-label="View My Projects">
+                <a href="#work" class="item-link scroll-link" aria-label="View My Projects">
                     <i class="icon icon-high-light"></i>
                     <p class="tool-tip text-caption">Work</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#service" class="item-link scroll-link" aria-label="View My Services">
+                <a href="#service" class="item-link scroll-link" aria-label="View My Services">
                     <i class="icon icon-service"></i>
                     <p class="tool-tip text-caption">Services</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#tech" class="item-link scroll-link" aria-label="Explore My Tech Stack">
+                <a href="#tech" class="item-link scroll-link" aria-label="Explore My Tech Stack">
                     <i class="icon icon-tech-stack"></i>
                     <p class="tool-tip text-caption">Tech</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#testimonial" class="item-link scroll-link" aria-label="Read Client Testimonials">
+                <a href="#testimonial" class="item-link scroll-link" aria-label="Read Client Testimonials">
                     <i class="icon icon-tes"></i>
                     <p class="tool-tip text-caption">Testimonials</p>
                 </a>
             </li>
             <li class="br-line"></li>
             <li class="nav-item">
-                <a href="../index.html#contact" class="item-link scroll-link" aria-label="Contact Me">
+                <a href="#contact" class="item-link scroll-link" aria-label="Contact Me">
                     <i class="icon icon-send"></i>
                     <p class="tool-tip text-caption">Contact</p>
                 </a>
             </li>
         </ul>
         <div class="nav-bottom">
-            <a href="../index.html#home" class="tf-btn-icon go-top scroll-link" aria-label="Back to Top">
+            <a href="#home" class="tf-btn-icon go-top scroll-link" aria-label="Back to Top">
                 <i class="icon icon-arrow-top"></i>
             </a>
         </div>
@@ -433,11 +483,12 @@
     <div class="overlay-pop"></div>
     
 
-        <!-- Time Local -->
+        
+<!-- Time Local -->
         <div class="tf-header-wrap">
             <a href="/" class="logo-site d-lg-none" aria-label="Go to Home page">
                 <img loading="lazy" decoding="async" width="40" height="40"
-                    src="../images/logo.svg" alt="Portfolio Logo">
+                    src="images/logo.svg" alt="Portfolio Logo">
             </a>
             <div class="left">
                 <div class="time-local text-body-3">
@@ -449,194 +500,110 @@
             </div>
         </div>
         <!-- /Time Local -->
-    <main id="wrapper">
 
-
-
-
-        <!-- User Sidebar -->
-        <div class="sidebar-user">
-            <div class="wrap">
-                <div class="user-image">
-                    <div class="image">
-                        <img loading="eager" decoding="async" fetchpriority="high" width="468" height="856" src="../images/image.jpg" alt="Harsha Royal Profile Portrait" class="profile-image">
-                    </div>
-                    <div class="meta-left d-none d-sm-block">
-                        <div class="bg-item-svg">
-                            <img width="32" decoding="async"
-                                height="227" src="../images/vector-user.svg" alt="" role="presentation">
+        <main id="wrapper">
+        <!-- Project Sidebar -->
+        <div class="sidebar-user project-sidebar">
+            <div class="wrap no-padding" style="padding: 0; background: transparent;">
+                <div class="wg-work d-flex flex-column" style="height: calc(100vh - 48px); max-height: 860px; padding: 6px; background-color: var(--white); border-radius: 24px; box-shadow: var(--shadow-2); width: 100%;">
+                    <div class="work-content" style="position: relative; height: 100%; border-radius: 24px; overflow: hidden;">
+                        <div class="w-image" style="position: absolute; inset: 0; z-index: 0; border-radius: 18px;">
+                            <img loading="lazy" width="468" height="856" src="images/work-1.jpg" alt="Image" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"></div>
                         </div>
-                        <p class="avaiable-dot vertical text-body-3 text-black-72 fw-medium">
-                            <span class="text-vertical">Open to Network</span>
-                            <span class="dot"></span>
-                        </p>
-                    </div>
-                </div>
-                       <div class="nav-top">
-            <div class="tf-btn-icon toggle-switch-mode" aria-label="Toggle light/dark mode">
-                <i class="icon icon-light"></i>
-            </div>
-        </div>
-                <ul class="tf-social-icon-2 user-social d-grid">
-                    <li><a href="https://www.behance.net/palettescoder" aria-label="Visit my Behance Profile"><img loading="lazy" decoding="async" src="../images/Behance.png" alt="Behance logo" width="22" height="12"></a></li>
-                    <li><a href="https://www.linkedin.com/in/palettescoder/" aria-label="Visit my LinkedIn Profile"><i class="icon icon-linkin" aria-hidden="true"></i></a></li>
-                    <li><a href="https://medium.com/@palettescoder" aria-label="Visit my Medium Blog"><img loading="lazy" decoding="async" src="../images/medium.png" alt="Medium logo" width="22" height="21"></a></li>
-                </ul>
-                <div class="user-intro-top">
-                    <h1 class="greeting letter-space--2 text-white animationtext clip">
-                        Hey, I’m
-                        <span class="cd-words-wrapper">
-                            <span class="item-text is-visible">Harsha Royal</span>
-                            <span class="item-text is-hidden">UI Developer</span>
-                            <span class="item-text is-hidden">Product Designer</span>
-                        </span>
-                    </h1>
-                    <p class="introduce text-white letter-space--05 text-body-3">
-                        I turn complex ideas into clean, scalable digital experiences.
-                    </p>
-                </div>
-                <div class="user-info">
-                    <p class="avaiable-dot text-body-3 fw-medium d-sm-none">
-                        <span class="dot"></span>
-                        <span>Available for Work</span>
-                    </p>
-                    <div class="br-line"></div>
-                    <div class="action-group">
-                        <a href="freelance.html"
-                            class="tf-btn-action">
-                            <span class="ic-wrap">
-                                <i class="icon icon-arrow-right-top"></i>
-                            </span>
-                            <span class="text text-body-3 letter-space--05 fw-medium">
-                                Let’s talk
-                            </span>
-                            <span class="ic-wrap">
-                                <i class="icon icon-arrow-right-top"></i>
-                            </span>
-                        </a>
-
-                        <a href="resume.html"
-                            class="action-down">
-                            <i class="icon icon-user-circle"></i>
-                            <span class="text-body-3">
-                                View Resume
-                            </span>
-                        </a>
+                        <div class="content" style="position: relative; z-index: 1; padding: 32px; display: flex; flex-direction: column; height: 100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
+                            <div class="content-top" style="flex-shrink: 0;">
+                                <h4 class="w-title letter-space--2 text-white-100" style="margin-bottom: 16px;">
+                                    WSP Global
+                                </h4>
+                                <p class="w-desc text-white-100 text-body-3" style="margin-bottom: 64px;">
+                                    Designed responsive UI for Project Management tools supporting different type of internal projects
+                                </p>
+                                <div class="w-highlight" style="display: grid; gap: 40px; margin-bottom: 64px;">
+                                    <div class="box-high" style="display: grid; gap: 8px;">
+                                        <p class="text-body-3 text-white-100">Year</p>
+                                        <p class="text-body-1 text-white-100">2025</p>
+                                    </div>
+                                    <div class="box-high" style="display: grid; gap: 8px;">
+                                        <p class="text-body-3 text-white-100">Role</p>
+                                        <p class="text-body-1 text-white-100">Lead Product Designer</p>
+                                    </div>
+                                </div>
+                                <div class="w-tag-list" style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                                    <div class="tag" style="padding: 5px 11px; background-color: var(--black-56); border: 1px solid var(--white-8); backdrop-filter: blur(6px); border-radius: 999px;">
+                                        <span class="text-body-3 fw-medium text-white-100">Brand</span>
+                                    </div>
+                                    <div class="tag" style="padding: 5px 11px; background-color: var(--black-56); border: 1px solid var(--white-8); backdrop-filter: blur(6px); border-radius: 999px;">
+                                        <span class="text-body-3 fw-medium text-white-100">Website</span>
+                                    </div>
+                                    <div class="tag" style="padding: 5px 11px; background-color: var(--black-56); border: 1px solid var(--white-8); backdrop-filter: blur(6px); border-radius: 999px;">
+                                        <span class="text-body-3 fw-medium text-white-100">Webflow</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-bottom" style="flex-shrink: 0; margin-top: auto;">
+                                <div class="group-action" style="display: flex; align-items: center; justify-content: space-between;">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /User Sidebar -->
+        <!-- /Project Sidebar -->
 
-        
-<div class="main-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7 col-xl-8 ms-auto">
-                <div class="wrap-container">
-                    <div class="flat-spacing pb-5">
-                        
-                        <a href="../index.html" class="back-btn">
-                            <i class="icon icon-arrow-left"></i> Back to Home
-                        </a>
-
-                        <h1 class="text-white-72 font-2 mb-4" style="font-size: 64px;">Selected Projects</h1>
-
-                        <div class="tf-grid-layout">
+        <div class="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-xl-8 ms-auto">
+                        <div class="wrap-container">
+                            <div class="flat-spacing pb-5">
                             
-                            <!-- Project 1: WSP -->
-                            <div class="wg-work active">
-                                <div class="work-content" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden;">
-                                    <div class="w-image" style="height: 400px; position:relative;">
-                                        <img src="../images/work-1.jpg" style="width:100%; height:100%; object-fit:cover;">
-                                        <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
-                                    </div>
-                                    <div class="content" style="padding: 30px; background: #000;">
-                                        <div class="content-top">
-                                            <h4 class="w-title text-white-100" style="font-size: 28px;">WSP Global</h4>
-                                            <p class="w-desc text-white-72 text-body-3">Project Management SAAS Interface</p>
-                                        </div>
-                                        <div class="group-action mt-4">
-                                            <a href="WSP-project" class="tf-btn-action style-white">
-                                                <span class="ic-wrap"><i class="icon icon-arrow-right-top"></i></span>
-                                                <span class="text text-body-3 fw-medium">View Project</span>
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div style="display: flex; justify-content: flex-start; margin-bottom: 30px; margin-top: 20px;">
+                                    <a href="index.html#work" class="tf-btn-action style-white flex-shrink-0" style="padding: 12px 24px; border-radius: 999px; box-shadow: var(--shadow-2); background: var(--white); border: 1px solid var(--white-8); z-index: 10;">
+                                        <span class="ic-wrap"><i class="icon icon-arrow-left"></i></span>
+                                        <span class="text text-body-1 letter-space--05 fw-medium text-black">Back to Projects</span>
+                                    </a>
+                                </div>
+                                
+                                <h1 class="mb-4 mt-2 text-black text-64 font-2">Project Overview</h1>
+                                <p class="text-body-1 text-black-56 mb-5">This projects involved designing and building scalable components for enterprise project management. It addresses common pain points by optimizing navigation and contextual information density, making complex data manageable.</p>
+                                
+                                <img src="images/work-2.jpg" class="img-fluid rounded mb-5 shadow" style="width:100%; object-fit: cover; border-radius: 20px;" />
+                                <img src="images/work-3.jpg" class="img-fluid rounded mb-5 shadow" style="width:100%; object-fit: cover; border-radius: 20px;" />
+                            
+                                <div class="text-center mt-5 mb-5 pb-5 pt-5">
+                                  <h2>Enjoyed this case study?</h2>
+                                  <br/>
+                                  <a href="index.html#contact" class="tf-btn-action style-primary d-inline-flex"><span class="text text-body-3 fw-medium">Let's Work Together</span></a>
                                 </div>
                             </div>
-
-                            <!-- Project 2: Intel -->
-                            <div class="wg-work active">
-                                <div class="work-content" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden;">
-                                    <div class="w-image" style="height: 400px; position:relative;">
-                                        <img src="../images/work-1.jpg" style="width:100%; height:100%; object-fit:cover;">
-                                        <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
-                                    </div>
-                                    <div class="content" style="padding: 30px; background: #000;">
-                                        <div class="content-top">
-                                            <h4 class="w-title text-white-100" style="font-size: 28px;">Intel AI</h4>
-                                            <p class="w-desc text-white-72 text-body-3">Enterprise AI Integration</p>
-                                        </div>
-                                        <div class="group-action mt-4">
-                                            <a href="Intel-project" class="tf-btn-action style-white">
-                                                <span class="ic-wrap"><i class="icon icon-arrow-right-top"></i></span>
-                                                <span class="text text-body-3 fw-medium">View Project</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 3: Bajaj -->
-                            <div class="wg-work active">
-                                <div class="work-content" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden;">
-                                    <div class="w-image" style="height: 400px; position:relative;">
-                                        <img src="../images/work-1.jpg" style="width:100%; height:100%; object-fit:cover;">
-                                        <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
-                                    </div>
-                                    <div class="content" style="padding: 30px; background: #000;">
-                                        <div class="content-top">
-                                            <h4 class="w-title text-white-100" style="font-size: 28px;">Bajaj Pay</h4>
-                                            <p class="w-desc text-white-72 text-body-3">Fintech Mobile Application</p>
-                                        </div>
-                                        <div class="group-action mt-4">
-                                            <a href="Bajaj-project" class="tf-btn-action style-white">
-                                                <span class="ic-wrap"><i class="icon icon-arrow-right-top"></i></span>
-                                                <span class="text text-body-3 fw-medium">View Project</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+</main>
 <!-- Javascript -->
-    <script src="../js/figma-notify.js" defer></script>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.nice-select.min.js"></script>
-    <script src="../js/jquery-validate.js"></script>
-    <script src="../js/swiper-bundle.min.js"></script>
-    <script src="../js/contact.js"></script>
-    <script src="../js/carousel.js" defer></script>
-    <script src="../js/infinityslide.js" defer></script>
-    <script src="../js/ScrollSmooth.js"></script>
-    <script src="../js/gsap.min.js"></script>
-    <script src="../js/SplitText.min.js"></script>
-    <script src="../js/ScrollTrigger.min.js"></script>
-    <script src="../js/ScrollToPlugin.min.js"></script>
-    <script src="../js/gsapAnimation.js"></script>
+    <script src="js/figma-notify.js" defer></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-validate.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/carousel.js" defer></script>
+    <script src="js/infinityslide.js" defer></script>
+    <script src="js/ScrollSmooth.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/SplitText.min.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/ScrollToPlugin.min.js"></script>
+    <script src="js/gsapAnimation.js"></script>
 
-    <script src="../js/countto.js" defer></script>
-    <script src="../js/animation-change-text.js" defer></script>
-    <script src="../js/main.js"></script>
+    <script src="js/countto.js" defer></script>
+    <script src="js/animation-change-text.js" defer></script>
+    <script src="js/main.js"></script>
 
     <!-- Development Popup -->
     <div class="dev-popup-overlay" id="devPopup">
@@ -728,13 +695,13 @@
                     <!-- Slide 1 -->
                     <div class="swiper-slide">
                         <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
-                            <img loading="lazy" decoding="async" width="660" height="510" data-src="../images/AT4K2YY0SDCR.jpg" src="" alt="Google UX Design Certificate" style="max-height: 90%; max-width: 90%;">
+                            <img loading="lazy" decoding="async" width="660" height="510" data-src="images/AT4K2YY0SDCR.jpg" src="" alt="Google UX Design Certificate" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                     <!-- Slide 2 -->
                     <div class="swiper-slide">
                         <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
-                            <img loading="lazy" decoding="async" width="660" height="510" data-src="../images/LIOWEOIGC8HK.jpg" src="" alt="Foundations of UX Certificate" style="max-height: 90%; max-width: 90%;">
+                            <img loading="lazy" decoding="async" width="660" height="510" data-src="images/LIOWEOIGC8HK.jpg" src="" alt="Foundations of UX Certificate" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                 </div>
@@ -796,7 +763,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
-                // devPopup disabled
+                devPopup.classList.add('show');
                 document.body.style.overflow = 'hidden';
                 startPhaseStory();
             }, 2000);
@@ -937,9 +904,7 @@
     </script>
 
 
-    <script src="../js/snowflake_cursor.js" defer></script>
-    <script src="../js/figma-app.js" defer></script>
-</body>
+    <script src="js/snowflake_cursor.js" defer></script>
+    <script src="js/figma-app.js" defer></script>
 
-</html>
-
+</body></html>
