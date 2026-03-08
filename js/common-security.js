@@ -57,22 +57,63 @@ document.addEventListener('dragstart', (event) => {
     }
 });
 
-// 4. Prevent Print/Screenshot via focus loss (Common trick)
+// 4. Enhanced PC Screenshot Protection (Blur & Overlay)
+const style = document.createElement('style');
+style.innerHTML = `
+    .privacy-shield {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: 999999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        padding: 40px;
+    }
+    body.is-blurred .privacy-shield {
+        display: flex;
+    }
+    body.is-blurred > *:not(.privacy-shield) {
+        filter: blur(20px);
+        pointer-events: none;
+    }
+`;
+document.head.appendChild(style);
+
+const shield = document.createElement('div');
+shield.className = 'privacy-shield';
+shield.innerHTML = `
+    <div>
+        <h2 style="font-size: 24px; margin-bottom: 16px;">Privacy Protection Active</h2>
+        <p style="opacity: 0.7;">Content is hidden while window is inactive to prevent unauthorized captures.</p>
+    </div>
+`;
+document.body.appendChild(shield);
+
 window.addEventListener('blur', () => {
+    document.body.classList.add('is-blurred');
     document.title = "Screenshot Protected | Harsha Royal";
 });
 
 window.addEventListener('focus', () => {
+    document.body.classList.remove('is-blurred');
     document.title = "Harsha Royal | UI Developer & Product Designer";
 });
 
-// 5. Prevent Desktop Install (PWA Install Prompt)
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
-    e.preventDefault();
-    // Stash the event so it can be triggered later if needed (we won't)
-    return false;
+// 5. Additional Key Blocking for PC Screenshot Tools
+document.addEventListener('keyup', (e) => {
+    // Windows + Shift + S or PrintScreen check
+    if (e.key === 'PrintScreen' || e.keyCode === 44) {
+        navigator.clipboard.writeText(""); // Clear clipboard
+        alert('Screenshots are disabled on this portfolio.');
+    }
 });
 
-// 6. Block "Save As" context menu via a hidden layer if needed
-// (Handled by contextmenu block already)
+// 6. Prevent Desktop Install (PWA Install Prompt)
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    return false;
+});
