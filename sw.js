@@ -48,6 +48,7 @@ const CORE_SHELL = [
   'images/logo.svg',
   'images/logo-3.svg',
   'images/favicon.svg',
+  'images/pwa-icon.png',
   'images/avatar-boy.png',
   'manifest.json'
 ];
