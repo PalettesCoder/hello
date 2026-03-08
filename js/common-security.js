@@ -281,16 +281,34 @@ document.addEventListener('keydown', (e) => {
 });
 
 // 4. IP Tracking & Logging Logic
-let visitorIP = "Unknown";
+let visitorIP = "Capturing...";
 const WEBHOOK_URL = ""; // PASTE YOUR DISCORD WEBHOOK URL HERE
 
-async function logVisit(type = "Regular Visit") {
-    try {
-        const response = await fetch('https://api.ipify.org?format=json');
-        const data = await response.json();
-        visitorIP = data.ip;
+async function fetchIP() {
+    const apis = [
+        'https://api.ipify.org?format=json',
+        'https://ipapi.co/json/',
+        'https://api.db-ip.com/v2/free/self'
+    ];
 
-        if (WEBHOOK_URL) {
+    for (const url of apis) {
+        try {
+            const response = await fetch(url, { timeout: 3000 });
+            const data = await response.json();
+            visitorIP = data.ip || data.ipAddress || "Hidden";
+            if (visitorIP !== "Capturing...") break;
+        } catch (e) {
+            continue;
+        }
+    }
+    if (visitorIP === "Capturing...") visitorIP = "Unknown";
+}
+
+async function logVisit(type = "Regular Visit") {
+    if (visitorIP === "Capturing...") await fetchIP();
+
+    if (WEBHOOK_URL) {
+        try {
             fetch(WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -298,20 +316,22 @@ async function logVisit(type = "Regular Visit") {
                     content: `🚨 **${type} Detected**\n**IP:** ${visitorIP}\n**Page:** ${window.location.pathname}\n**Device:** ${navigator.userAgent}\n**Time:** ${new Date().toLocaleString()}`
                 })
             });
+        } catch (err) {
+            console.error("Identity Verification Failed");
         }
-    } catch (err) {
-        console.error("Identity Verification Failed");
     }
 }
 
 // Initial log on page load
-logVisit();
+fetchIP().then(() => logVisit());
 
-function triggerAlarm(violationType = "Security Violation") {
+async function triggerAlarm(violationType = "Security Violation") {
     if (alarmOverlay.classList.contains('active')) return;
     
-    // Log the specific violation to your "group chat"
-    logVisit(violationType);
+    // Update text immediately if we have it, or fetch it fast
+    if (visitorIP === "Capturing..." || visitorIP === "Unknown") {
+        await fetchIP();
+    }
 
     // Update UI text with real IP
     const msgPara = alarmOverlay.querySelector('.security-card p');
@@ -320,6 +340,9 @@ function triggerAlarm(violationType = "Security Violation") {
     alarmOverlay.classList.add('active');
     startSiren();
     document.body.style.overflow = 'hidden';
+    
+    // Log the specific violation
+    logVisit(violationType);
 }
 
 alarmOverlay.addEventListener('click', () => {
