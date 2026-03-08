@@ -162,7 +162,17 @@ body {
     background-color: var(--surface);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    font-feature-settings: "zero"
+    font-feature-settings: "zero";
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+@media print {
+    body {
+        display: none !important;
+    }
 }
 
 body::-webkit-scrollbar {
