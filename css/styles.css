@@ -169,6 +169,11 @@ body {
     -ms-user-select: none !important;
 }
 
+img {
+    pointer-events: none !important;
+    -webkit-user-drag: none !important;
+}
+
 @media print {
     body {
         display: none !important;
