@@ -165,21 +165,48 @@
         body.counter-scroll { overflow-y: auto !important; height: auto !important; }
         #wrapper { height: auto !important; overflow: visible !important; }
 
-        .back-btn {
+        .back-btn-premium {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: rgba(255,117,24,0.1);
-            border: 1px solid #FF7518;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.1);
             border-radius: 100px;
-            color: #fff !important;
+            color: #000 !important;
+            font-size: 13px;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             text-decoration: none;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        .back-btn-premium:hover {
+            background: #000;
+            color: #fff !important;
+        }
+
+        .header-title {
+            font-size: 42px !important;
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+        }
+
+        @media (max-width: 768px) {
+            .header-title { font-size: 32px !important; }
         }
     </style>
+    <style>
+        /* Override global styles for light theme */
+        .text-white-72 { color: rgba(0, 0, 0, 0.72) !important; }
+        .text-white-56 { color: rgba(0, 0, 0, 0.56) !important; }
+        .text-white-40 { color: rgba(0, 0, 0, 0.40) !important; }
+        .text-white-92 { color: rgba(0, 0, 0, 0.92) !important; }
+    </style>
 </head>
+
 <body class="counter-scroll">
     <!-- <canvas class="cursor-trail d-none d-xl-block" id="trail"></canvas> -->
 
@@ -529,94 +556,270 @@
         <!-- /User Sidebar -->
 
         
-<div class="main-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7 col-xl-8 ms-auto">
+        <div class="main-content" style="padding-left: 480px; padding-top: 80px; min-height: 100vh; position: relative; z-index: 1;">
+            
+            <div class="container-fluid px-5">
                 <div class="wrap-container">
-                    <div class="flat-spacing pb-5">
-                        
-                        <a href="../index.html" class="back-btn">
-                            <i class="icon icon-arrow-left"></i> Back to Home
-                        </a>
-
-                        <h1 class="text-white-72 font-2 mb-4" style="font-size: 64px;">Selected Projects</h1>
-
-                        <div class="tf-grid-layout">
-                            
-                            <!-- Project 1: WSP -->
-                            <div class="wg-work active">
-                                <div class="work-content" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden;">
-                                    <div class="w-image" style="height: 400px; position:relative;">
-                                        <img src="../images/work-1.jpg" style="width:100%; height:100%; object-fit:cover;">
-                                        <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
-                                    </div>
-                                    <div class="content" style="padding: 30px; background: #000;">
-                                        <div class="content-top">
-                                            <h4 class="w-title text-white-100" style="font-size: 28px;">WSP Global</h4>
-                                            <p class="w-desc text-white-72 text-body-3">Project Management SAAS Interface</p>
-                                        </div>
-                                        <div class="group-action mt-4">
-                                            <a href="WSP-project" class="tf-btn-action style-white">
-                                                <span class="ic-wrap"><i class="icon icon-arrow-right-top"></i></span>
-                                                <span class="text text-body-3 fw-medium">View Project</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 2: Intel -->
-                            <div class="wg-work active">
-                                <div class="work-content" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden;">
-                                    <div class="w-image" style="height: 400px; position:relative;">
-                                        <img src="../images/work-1.jpg" style="width:100%; height:100%; object-fit:cover;">
-                                        <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
-                                    </div>
-                                    <div class="content" style="padding: 30px; background: #000;">
-                                        <div class="content-top">
-                                            <h4 class="w-title text-white-100" style="font-size: 28px;">Intel AI</h4>
-                                            <p class="w-desc text-white-72 text-body-3">Enterprise AI Integration</p>
-                                        </div>
-                                        <div class="group-action mt-4">
-                                            <a href="Intel-project" class="tf-btn-action style-white">
-                                                <span class="ic-wrap"><i class="icon icon-arrow-right-top"></i></span>
-                                                <span class="text text-body-3 fw-medium">View Project</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 3: Bajaj -->
-                            <div class="wg-work active">
-                                <div class="work-content" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden;">
-                                    <div class="w-image" style="height: 400px; position:relative;">
-                                        <img src="../images/work-1.jpg" style="width:100%; height:100%; object-fit:cover;">
-                                        <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);"></div>
-                                    </div>
-                                    <div class="content" style="padding: 30px; background: #000;">
-                                        <div class="content-top">
-                                            <h4 class="w-title text-white-100" style="font-size: 28px;">Bajaj Pay</h4>
-                                            <p class="w-desc text-white-72 text-body-3">Fintech Mobile Application</p>
-                                        </div>
-                                        <div class="group-action mt-4">
-                                            <a href="Bajaj-project" class="tf-btn-action style-white">
-                                                <span class="ic-wrap"><i class="icon icon-arrow-right-top"></i></span>
-                                                <span class="text text-body-3 fw-medium">View Project</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                    
+                    <!-- Header -->
+                    <div class="d-flex align-items-end justify-content-between mb-4 effectFade fadeUp" style="border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 40px;">
+                        <div style="flex: 1;">
+                            <a href="../index.html" class="back-btn-premium mb-3">
+                                <i class="icon icon-home"></i> <span>Return to Portfolio</span>
+                            </a>
+                            <h1 class="header-title" style="margin-top: 15px;">
+                                <span style="color: #000000; opacity: 0.9;">Selected</span> <br>
+                                <span style="color: var(--primary);">Works</span>
+                            </h1>
                         </div>
+                        <div class="d-none d-xl-block text-end" style="max-width: 400px; padding-bottom: 15px;">
+                            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-bottom: 10px;">
+                                <span style="width: 40px; height: 1px; background: var(--primary);"></span>
+                                <p class="text-black-40" style="font-size: 10px; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 700;">Design Archive</p>
+                            </div>
+                            <p style="color: rgba(0,0,0,0.6); font-size: 15px; line-height: 1.6; font-weight: 400; max-width: 380px;">A calculated exploration of enterprise digital products, balancing human-centered design with systemic scalability.</p>
+                        </div>
+                    </div>
+
+                    <div class="tf-grid-layout" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 40px; padding-bottom: 100px;">
+                        
+                        <!-- Project 1: WSP -->
+                        <div class="project-card-v2" onclick="location.href='WSP-project'">
+                            <div class="card-image-outer">
+                                <img src="../images/work-3.jpg" alt="WSP Global">
+                                <div class="card-overlay"></div>
+                                <div class="card-tags">
+                                    <span class="tag-v2">Enterprise</span>
+                                    <span class="tag-v2">SaaS</span>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">WSP Global</h3>
+                                <p class="card-desc">Orchestrating complexity. Redefining the operational backbone for global engineering projects through high-fidelity design systems.</p>
+<div class="card-footer">
+                                    <span class="phase-label">PRODUCTION</span>
+                                    <span class="explore-link">Explore Case <i class="icon icon-arrow-right-top"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: Intel -->
+                        <div class="project-card-v2" onclick="location.href='Intel-project'">
+                            <div class="card-image-outer">
+                                <img src="../images/work-1.jpg" alt="Intel AI">
+                                <div class="card-overlay"></div>
+                                <div class="card-tags">
+                                    <span class="tag-v2" style="background: rgba(0,191,67,0.2); color: #00BF43;">AI UX</span>
+                                    <span class="tag-v2">Conversational</span>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">Intel Chat Bots</h3>
+                                <p class="card-desc">Conversational ecosystems. Designing the cognitive interface that turns raw enterprise data into proactive, human-grade interactions.</p>
+                                <div class="card-footer">
+                                    <span class="phase-label">COMPLETED</span>
+                                    <span class="explore-link">Explore Case <i class="icon icon-arrow-right-top"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: Bajaj -->
+                        <div class="project-card-v2" onclick="location.href='Bajaj-project'">
+                            <div class="card-image-outer">
+                                <img src="../images/work-2.jpg" alt="Bajaj Pay">
+                                <div class="card-overlay"></div>
+                                <div class="card-tags">
+                                    <span class="tag-v2" style="background: rgba(0,120,215,0.2); color: #0078D7;">Fintech</span>
+                                    <span class="tag-v2">Design System</span>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">Bajaj Pay</h3>
+                                <p class="card-desc">Fintech Economy at Scale. Architecting a unified payment ecosystem that balances massive transaction throughput with micro-moment delight.</p>
+                                <div class="card-footer">
+                                    <span class="phase-label">SCALING</span>
+                                    <span class="explore-link">Explore Case <i class="icon icon-arrow-right-top"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+        <style>
+            .header-title {
+                font-size: clamp(4rem, 12vw, 8rem);
+                line-height: 0.85;
+                letter-spacing: -6px;
+                font-weight: 800;
+                margin: 0;
+            }
+
+            .back-btn-premium {
+                display: inline-flex;
+                align-items: center;
+                gap: 15px;
+                padding: 14px 28px;
+                background: rgba(0,0,0,0.03);
+                border: 1px solid rgba(0,0,0,0.08);
+                border-radius: 100px;
+                color: #000000 !important;
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                text-decoration: none;
+            }
+
+            .back-btn-premium:hover {
+                background: #000000;
+                color: #ffffff !important;
+                transform: translateX(-10px);
+            }
+
+            .project-card-v2 {
+                position: relative;
+                border-radius: 48px;
+                background: #111111;
+                border: 1px solid rgba(255,255,255,0.05);
+                padding: 16px;
+                transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+                cursor: pointer;
+                overflow: hidden;
+            }
+
+            .project-card-v2:hover {
+                transform: translateY(-15px) scale(1.01);
+                border-color: rgba(255,117,24,0.4);
+                background: #161616;
+                box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+            }
+
+            .card-image-outer {
+                height: 480px;
+                border-radius: 36px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .card-image-outer img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 1.5s ease;
+            }
+
+            .project-card-v2:hover .card-image-outer img {
+                transform: scale(1.1);
+            }
+
+            .card-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 40%, transparent 100%);
+                opacity: 0.8;
+                transition: opacity 0.5s;
+            }
+
+            .project-card-v2:hover .card-overlay {
+                opacity: 1;
+            }
+
+            .card-tags {
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                display: flex;
+                gap: 10px;
+            }
+
+            .tag-v2 {
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                color: #ffffff;
+                padding: 6px 16px;
+                border-radius: 100px;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .card-info {
+                padding: 25px 15px 10px 15px;
+            }
+
+            .card-title {
+                font-size: 36px;
+                font-weight: 700;
+                color: #ffffff;
+                margin-bottom: 10px;
+                letter-spacing: -1px;
+            }
+
+            .card-desc {
+                color: rgba(255,255,255,0.5);
+                font-size: 17px;
+                line-height: 1.5;
+                margin-bottom: 20px;
+            }
+
+            .card-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-top: 1px solid rgba(255,255,255,0.05);
+                padding-top: 20px;
+            }
+
+            .phase-label {
+                font-size: 12px;
+                font-family: 'Space Mono', monospace;
+                color: rgba(255,255,255,0.3);
+                letter-spacing: 2px;
+            }
+
+            .explore-link {
+                color: var(--primary);
+                font-weight: 600;
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: 0.3s;
+            }
+
+            .project-card-v2:hover .explore-link {
+                transform: translateX(5px);
+                color: #ffffff;
+            }
+
+            @media (max-width: 1400px) {
+                .main-content { padding-left: 440px !important; }
+            }
+            @media (max-width: 991px) {
+                .main-content { padding-left: 0 !important; padding-top: 40px !important; }
+                .tf-grid-layout { grid-template-columns: 1fr !important; }
+                .header-title { font-size: 4rem !important; letter-spacing: -2px; }
+            }
+
+            /* Fix for Sidebar Typing Animation clipping */
+            .cd-words-wrapper {
+                width: auto !important;
+                min-width: 250px;
+                display: inline-block !important;
+                overflow: visible !important;
+            }
+            .cd-words-wrapper b {
+                white-space: nowrap;
+            }
+        </style>
+
+
+
 <!-- Javascript -->
     <script src="../js/figma-notify.js" defer></script>
     <script src="../js/jquery.min.js"></script>
@@ -918,11 +1121,9 @@
             });
         });
 
-        // Global Security
-        document.addEventListener('contextmenu', (e) => e.preventDefault());
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
-        };
+        // Common Security logic moved to ../js/common-security.js
+    </script>
+    <script src="../js/common-security.js" defer></script>
 
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
