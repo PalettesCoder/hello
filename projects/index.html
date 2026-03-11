@@ -160,7 +160,10 @@
         /* Maintain the website design but fix layout for All Projects */
         .main-content { padding-top: 100px !important; }
         .tf-grid-layout { display: grid !important; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-        @media (max-width: 991px) { .tf-grid-layout { grid-template-columns: 1fr; } }
+        @media (max-width: 991px) { 
+            .tf-grid-layout { grid-template-columns: 1fr; } 
+            .main-content { padding-left: 0 !important; padding-right: 0 !important; }
+        }
         
         /* Ensure scrolling and no home-page popups */
         #devPopup, #successPopup, #certificatePopup { display: none !important; }
@@ -1128,14 +1131,13 @@
     </script>
     <script src="../js/common-security.js" defer></script>
 
-        // Service Worker Registration
+    <script>
+        // Unregister Service Workers to prevent caching issues
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('SW registered: ', registration);
-                }).catch(registrationError => {
-                    console.log('SW registration failed: ', registrationError);
-                });
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister();
+                }
             });
         }
     </script>

@@ -1,24 +1,24 @@
 /**
- * PWA Install Button Logic
- * Creates a floating action button for installing the app locally.
+ * Floating Contact Button
+ * Replaces the old PWA Install button with a strategy session email link.
  */
 
 (function() {
-    const installStyles = document.createElement('style');
-    installStyles.innerHTML = `
-        .pwa-install-container {
+    const contactStyles = document.createElement('style');
+    contactStyles.innerHTML = `
+        .floating-contact-container {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 99999;
-            display: none;
+            /* Always visible */
             animation: slideUpIn 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
         @keyframes slideUpIn {
             from { transform: translateY(100px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-        .btn-pwa-install {
+        .btn-floating-contact {
             background: #FF7518;
             color: #fff;
             border: 1px solid rgba(255,255,255,0.1);
@@ -33,16 +33,18 @@
             gap: 10px;
             box-shadow: 0 10px 30px rgba(255,117,24,0.3);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
         }
-        .btn-pwa-install:hover {
+        .btn-floating-contact:hover {
             transform: translateY(-5px) scale(1.05);
             background: #ff8a3d;
             box-shadow: 0 15px 40px rgba(255,117,24,0.4);
+            color: #fff;
         }
-        .btn-pwa-install:active {
+        .btn-floating-contact:active {
             transform: scale(0.95);
         }
-        .pwa-icon {
+        .contact-icon {
             width: 18px;
             height: 18px;
             fill: #fff;
@@ -50,60 +52,27 @@
         
         /* Mobile adjustments */
         @media (max-width: 768px) {
-            .pwa-install-container {
+            .floating-contact-container {
                 bottom: 20px;
                 right: 20px;
             }
-            .btn-pwa-install {
+            .btn-floating-contact {
                 padding: 10px 18px;
                 font-size: 13px;
             }
         }
     `;
-    document.head.appendChild(installStyles);
+    document.head.appendChild(contactStyles);
 
     const container = document.createElement('div');
-    container.className = 'pwa-install-container';
+    container.className = 'floating-contact-container';
     container.innerHTML = `
-        <button class="btn-pwa-install" id="pwaInstallBtn">
-            <svg class="pwa-icon" viewBox="0 0 24 24">
-                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+        <a class="btn-floating-contact" href="mailto:palettescoder@gmail.com?subject=Strategy%20Session%20Request%20%E2%80%93%20from%20Portfolio&body=Hi%20Harsha%2C%0A%0AI'd%20like%20to%20book%20a%20strategy%20session%20with%20you.%20Let%20me%20know%20when%20you%20are%20available!%0A%0ABest%2C">
+            <svg class="contact-icon" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
-            Install App
-        </button>
+            Book Strategy Session
+        </a>
     `;
     document.body.appendChild(container);
-
-    const installBtn = document.getElementById('pwaInstallBtn');
-
-    window.addEventListener('pwaInstallAvailable', () => {
-        container.style.display = 'block';
-    });
-
-    // Also check if already available (if script loads later)
-    if (window.deferredPrompt) {
-        container.style.display = 'block';
-    }
-
-    installBtn.addEventListener('click', async () => {
-        if (!window.deferredPrompt) return;
-        
-        // Hide the button
-        container.style.display = 'none';
-        
-        // Show the install prompt
-        window.deferredPrompt.prompt();
-        
-        // Wait for the user to respond to the prompt
-        const { outcome } = await window.deferredPrompt.userChoice;
-        console.log(`User response to the install prompt: ${outcome}`);
-        
-        // We've used the prompt, and can't use it again, throw it away
-        window.deferredPrompt = null;
-    });
-
-    window.addEventListener('appinstalled', (evt) => {
-        console.log('App successfully installed!');
-        container.style.display = 'none';
-    });
 })();

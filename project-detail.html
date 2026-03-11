@@ -216,14 +216,15 @@
             transform: translateX(50%) !important;
         }
         .action-open-mobile {
-            top: 32px !important;
-            right: 30px !important;
+            top: 20px !important;
+            right: 20px !important;
             display: flex !important;
             align-items: center !important;
+            z-index: 1001 !important;
         }
         .tf-header-wrap {
-            align-items: flex-start !important;
-            padding-top: 32px !important;
+            align-items: center !important;
+            padding-top: 0 !important;
         }
     }
     </style>
@@ -889,14 +890,13 @@
     </script>
     <script src="js/common-security.js" defer></script>
 
-        // Service Worker Registration
+    <script>
+        // Unregister Service Workers to prevent caching issues
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('SW registered: ', registration);
-                }).catch(registrationError => {
-                    console.log('SW registration failed: ', registrationError);
-                });
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister();
+                }
             });
         }
     </script>
