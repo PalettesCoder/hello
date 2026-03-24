@@ -355,7 +355,7 @@ alarmOverlay.addEventListener('click', () => {
 window.addEventListener('blur', () => {
     if (!alarmOverlay.classList.contains('active')) {
         document.body.style.filter = 'blur(60px) brightness(0.1)';
-        document.title = "⚠️ CONTENT PROTECTED";
+        document.title = "CONTENT PROTECTED";
     }
 });
 window.addEventListener('focus', () => {
