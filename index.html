@@ -606,6 +606,19 @@
                     </p>
                     <div class="br-line"></div>
                     <div class="action-group">
+                        <a href="freelance.html"
+                            class="tf-btn-action">
+                            <span class="ic-wrap">
+                                <i class="icon icon-arrow-right-top"></i>
+                            </span>
+                            <span class="text text-body-3 letter-space--05 fw-medium">
+                                Let’s talk
+                            </span>
+                            <span class="ic-wrap">
+                                <i class="icon icon-arrow-right-top"></i>
+                            </span>
+                        </a>
+
                         <a href="resume.html"
                             class="action-down">
                             <i class="icon icon-user-circle"></i>
@@ -1134,6 +1147,7 @@
                                         </div>
                                     </div>
                                     END PROJECT 2 -->
+                                    <!-- INTEL PROJECT COMMENTED OUT FOR NOW 
                                     <div class="sticky-item">
                                         <div class="wg-work">
                                             <div class="work-image">
@@ -1207,6 +1221,89 @@
                                                                 </a>
                                                                 <p class="text-white">
                                                                     <span class="text-white">02</span> / 03
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    -->
+
+                                    <!-- PROJECT 3: NEXI APP (NEW) -->
+                                    <div class="sticky-item">
+                                        <div class="wg-work">
+                                            <div class="work-image" style="height: 427px; overflow: hidden;">
+                                                <img loading="lazy" width="700" height="427" src="images/work-3.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                                                    alt="Nexi App Case Study">
+                                            </div>
+                                            <div class="wrap">
+                                                <div class="work-content">
+                                                    <div class="w-image" style="height: 856px; overflow: hidden;">
+                                                        <img loading="lazy" width="468" height="856" style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                                                            src="images/work-3.jpg" alt="Nexi App project screenshot">
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="content-top">
+                                                            <h4 class="w-title letter-space--2 text-white">
+                                                                Nexi App
+                                                            </h4>
+                                                             <p class="w-desc text-white text-body-3">
+                                                                 Redefining digital interaction. Crafting a sophisticated, WCAG-compliant design system for a next-gen payments ecosystem.
+                                                              </p>
+                                                            <div class="w-highlight">
+                                                                <div class="box-high">
+                                                                    <p class="text-body-3 text-white">
+                                                                        Year
+                                                                    </p>
+                                                                    <p class="text-body-1 text-white">
+                                                                        2026
+                                                                    </p>
+                                                                </div>
+                                                                <div class="box-high">
+                                                                    <p class="text-body-3 text-white">
+                                                                        Role
+                                                                    </p>
+                                                                    <p class="text-body-1 text-white">
+                                                                        UX Designer
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-tag-list">
+                                                                <div class="tag">
+                                                                    <span class="text-body-3 fw-medium text-white">
+                                                                        UX/UI
+                                                                    </span>
+                                                                </div>
+                                                                <div class="tag">
+                                                                    <span class="text-body-3 fw-medium text-white">
+                                                                        App Design
+                                                                    </span>
+                                                                </div>
+                                                                <div class="tag">
+                                                                    <span class="text-body-3 fw-medium text-white">
+                                                                        Fintech
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="content-bottom">
+                                                            <div class="br-line"></div>
+                                                            <div class="group-action">
+                                                                <a href="projects/Nexi-project/index.html" class="tf-btn-action style-white" aria-label="View Nexi App Project Details">
+                                                                    <span class="ic-wrap">
+                                                                        <i class="icon icon-arrow-right-top"></i>
+                                                                    </span>
+                                                                    <span class="text text-body-3 letter-space--05 fw-medium">
+                                                                        View Project
+                                                                    </span>
+                                                                    <span class="ic-wrap">
+                                                                        <i class="icon icon-arrow-right-top"></i>
+                                                                    </span>
+                                                                </a>
+                                                                <p class="text-white">
+                                                                    <span class="text-white">03</span> / 03
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -2276,8 +2373,192 @@
 
 
     <script src="js/snowflake_cursor.js" defer></script>
-    <script src="js/pwa-install.js" defer></script>
     <script src="js/figma-app.js" defer></script>
+
+    <!-- Paint Burst Feature -->
+    <style>
+        .paint-burst-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF7518, #FFA03A, #FF4500);
+            background-size: 200% 200%;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 10px 25px rgba(255, 117, 24, 0.4);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: gradientMove 5s ease infinite;
+        }
+        .paint-burst-btn:hover {
+            transform: scale(1.15) rotate(15deg);
+        }
+        .paint-burst-btn:active {
+            transform: scale(0.9);
+        }
+        .paint-burst-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        #paintCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9998;
+            pointer-events: none;
+        }
+    </style>
+
+    <canvas id="paintCanvas"></canvas>
+    <button class="paint-burst-btn" aria-label="Trigger Paint Burst" title="Change Theme!">
+        <svg viewBox="0 0 24 24">
+            <!-- Paint Palette Icon -->
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.53-.21-1.04-.58-1.41L13.19 17c-.16-.16-.24-.37-.24-.59 0-.46.37-.83.83-.83H15c3.86 0 7-3.14 7-7s-3.14-7-10-7zm-4.5 9c-.83 0-1.5-.67-1.5-1.5S6.67 8 7.5 8s1.5.67 1.5 1.5S8.33 11 7.5 11zm3.5-3.5c-.83 0-1.5-.67-1.5-1.5S10.17 4.5 11 4.5s1.5.67 1.5 1.5S11.83 7.5 11 7.5zm4 0c-.83 0-1.5-.67-1.5-1.5S12.67 4.5 13.5 4.5 15 5.17 15 6 14.33 7.5 13.5 7.5zm3.5 3.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+        </svg>
+    </button>
+
+    <script>
+        (function() {
+            const btn = document.querySelector('.paint-burst-btn');
+            const canvas = document.getElementById('paintCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            window.addEventListener('resize', () => {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            });
+            
+            const colors = ['#FF7518', '#FF2B2B', '#9B30FF', '#38BDF8', '#FFD700', '#00FF7F', '#FF1493', '#10B981', '#F43F5E'];
+            let splatters = [];
+            let isAnimating = false;
+            
+            class Splatter {
+                constructor(x, y) {
+                    this.particles = [];
+                    for(let i=0; i<80; i++) { // More particles for bigger burst
+                        const angle = Math.random() * Math.PI * 2;
+                        // Bias towards top-left to shoot across screen from bottom-right
+                        const speed = Math.random() * 45 + 10;
+                        this.particles.push({
+                            x: x,
+                            y: y,
+                            vx: Math.cos(angle) * speed - (Math.random() * 30),
+                            vy: Math.sin(angle) * speed - (Math.random() * 30),
+                            radius: Math.random() * 35 + 5,
+                            color: colors[Math.floor(Math.random() * colors.length)],
+                            life: 1,
+                            decay: Math.random() * 0.015 + 0.005,
+                            gravity: Math.random() * 0.5 + 0.2
+                        });
+                    }
+                }
+                
+                updateAndDraw() {
+                    let alive = false;
+                    this.particles.forEach(p => {
+                        if(p.life > 0) {
+                            alive = true;
+                            // Friction & Gravity
+                            p.vx *= 0.94;
+                            p.vy *= 0.94;
+                            p.vy += p.gravity;
+                            
+                            p.x += p.vx;
+                            p.y += p.vy;
+                            
+                            p.radius *= 0.97;
+                            p.life -= p.decay;
+                            
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                            ctx.fillStyle = p.color;
+                            ctx.globalAlpha = Math.max(0, p.life);
+                            ctx.fill();
+                        }
+                    });
+                    ctx.globalAlpha = 1; // reset
+                    return alive;
+                }
+            }
+            
+            function animate() {
+                // Fading effect for trail
+                ctx.clearRect(0, 0, width, height);
+                // Use a slight global alpha clear for trails if wanted, but clearRect is cleaner for performance
+                
+                let hasActive = false;
+                splatters.forEach(s => {
+                    if(s.updateAndDraw()) hasActive = true;
+                });
+                
+                // Cleanup dead splatters
+                splatters = splatters.filter(s => s.particles.some(p => p.life > 0));
+                
+                if(hasActive) {
+                    requestAnimationFrame(animate);
+                } else {
+                    isAnimating = false;
+                    ctx.clearRect(0, 0, width, height);
+                }
+            }
+            
+            btn.addEventListener('click', () => {
+                const rect = btn.getBoundingClientRect();
+                const btnX = rect.left + rect.width / 2;
+                const btnY = rect.top + rect.height / 2;
+                
+                // 1. Particle Explosion!
+                splatters.push(new Splatter(btnX, btnY));
+                
+                // Start animation loop if not running
+                if(!isAnimating) {
+                    isAnimating = true;
+                    requestAnimationFrame(animate);
+                }
+                
+                // 2. Change Website Theme
+                // Find all theme buttons in the settings panel
+                const themes = document.querySelectorAll('.settings-color .choose-item');
+                if (themes.length > 0) {
+                    // Pick a random theme different from the currently active one
+                    let activeIndex = -1;
+                    themes.forEach((t, index) => {
+                        if (t.classList.contains('active')) activeIndex = index;
+                    });
+                    
+                    let nextIndex = activeIndex;
+                    while (nextIndex === activeIndex || nextIndex === -1) {
+                        nextIndex = Math.floor(Math.random() * themes.length);
+                    }
+                    
+                    // Simulate a click on the theme item to let main.js do the heavy lifting
+                    themes[nextIndex].click();
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>

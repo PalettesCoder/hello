@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexi Pay | Comprehensive Accessible UX Case Study</title>
+    <meta name="description" content="An exhaustive, WCAG-compliant UX case study detailing the redesign of the Nexi Pay mobile financial application.">
+    
+    <link rel="stylesheet" href="../../css/fonts.css">
+    <link rel="stylesheet" href="../../css/inter.css">
+    
+    <style>
+        /* WCAG AAA COMPLIANT COLOR PALETTE */
+        :root {
+            --color-bg: #FFFFFF;
+            --color-text-main: #000000;
+            --color-text-sub: #333333;
+            --color-accent: #0044CC;
+            --color-accent-dark: #002B80;
+            --color-focus: #FF8800;
+            
+            --color-surface-dark: #121212;
+            --color-text-on-dark: #FFFFFF;
+            
+            --border-thick: 3px solid #000000;
+            --border-light: 1px solid #767676;
+            
+            --font-heading: "Inter", -apple-system, sans-serif;
+            --font-body: "Inter", -apple-system, sans-serif;
+        }
+
+        /* Essential Resets */
+        html { box-sizing: border-box; font-size: 100%; scroll-behavior: smooth; }
+        *, *:before, *:after { box-sizing: inherit; }
+        body { background-color: var(--color-bg); color: var(--color-text-main); font-family: var(--font-body); line-height: 1.7; margin: 0; padding: 0; }
+
+        /* Focus States (WCAG 2.4.7) */
+        *:focus-visible { outline: 4px solid var(--color-focus) !important; outline-offset: 4px !important; }
+        
+        /* Links (WCAG 1.4.1) */
+        a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 4px; font-weight: 700; transition: color 0.2s; }
+        a:hover, a:focus { color: var(--color-accent-dark); text-decoration-thickness: 3px; }
+
+        /* Layout */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; width: 100%; }
+
+        /* Typography */
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--color-text-main); margin-top: 0; line-height: 1.25; font-weight: 800; }
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 32px; letter-spacing: -0.02em; }
+        h2 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 32px; padding-bottom: 16px; border-bottom: var(--border-thick); margin-top: 80px; }
+        h3 { font-size: 1.75rem; margin-bottom: 16px; margin-top: 48px; }
+        h4 { font-size: 1.25rem; margin-bottom: 12px; margin-top: 24px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-sub); }
+        
+        p, li { font-size: 1.125rem; color: var(--color-text-main); margin-bottom: 1.5rem; max-width: 900px; }
+        p.lead { font-size: 1.5rem; font-weight: 600; color: var(--color-text-sub); line-height: 1.6; }
+
+        ul, ol { padding-left: 1.5rem; margin-bottom: 2rem; }
+        li { margin-bottom: 1rem; }
+
+        /* Structural Elements */
+        .case-study-header { padding: 50px 0 100px 0; background-color: var(--color-surface-dark); color: var(--color-text-on-dark); border-bottom: 8px solid var(--color-accent); }
+        .case-study-header h1, .case-study-header p, .case-study-header li, .case-study-header span { color: var(--color-text-on-dark); }
+
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-top: 64px; padding-top: 40px; border-top: 1px solid #444; }
+        .meta-col strong { display: block; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: #BBBBBB; margin-bottom: 8px; }
+        .meta-col span { font-size: 1.25rem; font-weight: 700; }
+
+        /* SCROLLABLE IMAGES (Fixing the towering size issue) */
+        .image-scroll-container {
+            width: 100%;
+            height: clamp(400px, 60vh, 600px); /* Strictly binds the vertical height */
+            overflow-y: auto; /* Allows smooth scrolling of the full image */
+            overflow-x: hidden;
+            margin: 64px 0;
+            background: #F8F8F8;
+            border: var(--border-thick);
+            border-radius: 12px;
+            box-shadow: 12px 12px 0px 0px var(--color-text-main); /* Brutalist shadow */
+            position: relative;
+        }
+
+        .scroll-hint {
+            position: absolute; top: 16px; right: 24px;
+            background: var(--color-surface-dark); color: #fff;
+            padding: 8px 16px; border-radius: 100px; font-size: 0.875rem;
+            font-weight: 700; letter-spacing: 1px; z-index: 10;
+            pointer-events: none; opacity: 0.9;
+        }
+
+        .image-scroll-container img { width: 100%; height: auto; display: block; }
+        
+        .image-caption { display: block; text-align: center; font-size: 1rem; color: var(--color-text-sub); margin-top: 24px; font-weight: 600; }
+
+        /* High Contrast Data Cards */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin: 48px 0; }
+        .hc-card { background-color: #FFFFFF; border: var(--border-thick); padding: 40px; border-radius: 12px; box-shadow: 8px 8px 0px 0px var(--color-text-main); }
+        .hc-card.dark { background-color: var(--color-surface-dark); color: var(--color-text-on-dark); }
+        .hc-card.dark h3, .hc-card.dark p, .hc-card.dark li { color: var(--color-text-on-dark); }
+        .hc-card h3 { margin-top: 0; color: var(--color-accent-dark); font-size: 1.75rem; }
+        .hc-card.dark h3 { color: #88AAFF; }
+
+        /* Blockquote */
+        blockquote { border-left: 8px solid var(--color-accent); margin: 48px 0; padding: 24px 40px; background: #F0F4FF; border-radius: 0 12px 12px 0; }
+        blockquote p { font-size: 1.5rem; font-family: var(--font-serif); font-style: italic; font-weight: 600; color: var(--color-accent-dark); margin: 0; line-height: 1.5; }
+        blockquote footer { margin-top: 16px; font-weight: 800; font-size: 1.125rem; color: var(--color-text-sub); }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 48px 0; border: var(--border-thick); }
+        th, td { padding: 20px; text-align: left; border: var(--border-thick); font-size: 1.125rem; }
+        th { background-color: var(--color-surface-dark); color: var(--color-text-on-dark); font-size: 1.25rem; font-weight: 800; }
+        tr:nth-child(even) { background-color: #F8F8F8; }
+
+        /* Navigation */
+        .nav-skip { position: absolute; top: -100px; left: 0; background: var(--color-accent); color: white; padding: 16px 24px; z-index: 10000; transition: top 0.2s; font-weight: 800; }
+        .nav-skip:focus { top: 0; outline: none; }
+
+        .top-bar { background-color: var(--color-surface-dark); padding: 16px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--color-accent); position: sticky; top: 0; z-index: 9999; }
+        .top-bar a { color: #FFFFFF; text-decoration: none; padding: 12px 24px; border: 2px solid transparent; border-radius: 8px; font-weight: 700; transition: 0.2s; }
+        .top-bar a:hover, .top-bar a:focus { border-color: #FFFFFF; background-color: rgba(255,255,255,0.1); }
+
+        /* Mini Nav Spy */
+        .mini-nav {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 1000;
+            background: #ffffff;
+            padding: 24px 12px;
+            border-radius: 40px;
+            border: var(--border-thick);
+            box-shadow: 4px 4px 0px 0px var(--color-text-main);
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            background: #BFBFBF;
+            border-radius: 50%;
+            transition: all 0.3s;
+            display: block;
+            text-decoration: none;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .nav-dot:hover, .nav-dot:focus-visible {
+            background: var(--color-accent);
+            outline: none;
+        }
+
+        .nav-dot.active {
+            background: var(--color-accent);
+            transform: scale(1.5);
+            border-color: var(--color-text-main);
+        }
+
+        .nav-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 32px;
+            top: 50%;
+            transform: translateY(-50%) translateX(10px);
+            background: var(--color-surface-dark);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+
+        .nav-dot:hover::after, .nav-dot.active::after {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        @media (max-width: 1240px) {
+            .mini-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mini Nav Spy -->
+    <nav class="mini-nav" aria-label="Section Navigation">
+        <a href="#heading-overview" class="nav-dot active" data-label="Overview"></a>
+        <a href="#heading-goals" class="nav-dot" data-label="Goals"></a>
+        <a href="#heading-research" class="nav-dot" data-label="Research"></a>
+        <a href="#heading-personas" class="nav-dot" data-label="Personas"></a>
+        <a href="#heading-journey" class="nav-dot" data-label="Journey"></a>
+        <a href="#heading-architecture" class="nav-dot" data-label="Architecture"></a>
+        <a href="#heading-wireframes" class="nav-dot" data-label="Wireframes"></a>
+        <a href="#heading-design" class="nav-dot" data-label="Design UI"></a>
+        <a href="#heading-testing" class="nav-dot" data-label="Testing"></a>
+        <a href="#heading-impact" class="nav-dot" data-label="Impact"></a>
+    </nav>
+
+    <!-- WCAG 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="nav-skip">Skip to main content</a>
+
+    <header role="banner" class="top-bar">
+        <a href="../index.html" aria-label="Return to Portfolio Homepage">← Back to Portfolio</a>
+        <a href="#impact" aria-label="Skip to Final Outcome">Jump to Outcome</a>
+    </header>
+
+    <main id="main-content" role="main">
+        
+        <!-- HEADER -->
+        <header class="case-study-header">
+            <div class="container">
+                <span style="font-size: 1.25rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-accent);">Comprehensive UX Study</span>
+                <h1>Redesigning Nexi Pay:<br>Architecting Financial Trust.</h1>
+                <p class="lead" style="max-width: 900px;">An exhaustive, WCAG-compliant redesign of the Nexi Pay mobile platform. This case study details the systemic overhaul of a complex fintech architecture, replacing cognitive friction with instantaneous, accessible financial clarity.</p>
+                
+                <div class="meta-grid">
+                    <div class="meta-col"><strong>Role</strong><span>Lead UX/UI Designer</span></div>
+                    <div class="meta-col"><strong>Deliverables</strong><span>Journey Mapping, IA, Prototyping</span></div>
+                    <div class="meta-col"><strong>Platform</strong><span>iOS & Android Native</span></div>
+                    <div class="meta-col"><strong>Timeline</strong><span>12 Weeks (4 Agile Sprints)</span></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container" style="padding-bottom: 120px;">
+            
+            <!-- SECTION 1 -->
+            <section aria-labelledby="heading-overview">
+                <h2 id="heading-overview">1. Project Overview & 2. The Problem Statement</h2>
+                <p><strong>Nexi Pay</strong> is a cornerstone digital wallet application serving millions of daily active users. The platform handles a vast array of financial services: peer-to-peer (P2P) transfers, virtual card management, high-yield savings pots ("Moneyboxes"), and micro-lending capabilities. In the heavily saturated global fintech market, users do not tolerate friction. They expect banking apps to operate with the fluid immediacy of social media, coupled with the impregnable security of a vault.</p>
+                
+                <p><strong>The Core Business Problem:</strong> Despite robust backend engineering, Nexi Pay began experiencing a massive 22% churn rate within the first 30 days of user acquisition. Our quantitative analytics flagged severe drop-offs occurring during the KYC (Know Your Customer) onboarding funnel and the final confirmation step of P2P transfers. The business directive was clear: redesign the entire mobile ecosystem to halt churn and increase total transaction volume.</p>
+
+                <p><strong>The UX Problem Statement:</strong> The legacy architecture of Nexi Pay was fundamentally exclusionary. It favored deep, nested menus filled with technical banking jargon (e.g., "Amortization", "ACH Routing") that paralyzed casual tech users. Users experienced acute cognitive overload when attempting basic tasks. The <em>"Send Money"</em> flow absurdly required 7 distinct screen traverses. Furthermore, the dashboard aggressively obfuscated the user's Total Available Balance behind promotional loan carousels, fostering deep-seated resentment and anxiety.</p>
+                
+                <div class="image-scroll-container">
+                    <div class="scroll-hint">↓ SCROLL TO VIEW FULL MOCKUP</div>
+                    <img src="../../images/Nexi/f35ad5221343037.67d298f68e160.webp" alt="High-fidelity mockups showing the overarching architecture of the Nexi Pay financial application, including the main dashboard, onboarding, and tracking interfaces.">
+                </div>
+                <span class="image-caption">Figure 1: Comprehensive overview of the redesigned High-Fidelity App Architecture (Scroll to view all screens).</span>
+            </section>
+
+            <!-- SECTION 2 -->
+            <section aria-labelledby="heading-goals">
+                <h2 id="heading-goals">3. Deep Objectives & Strategic Goals</h2>
+                <p>To ensure alignment between user needs and stakeholder ROI expectations, I facilitated a 2-day OKR (Objectives and Key Results) alignment workshop with the VP of Product and Lead Engineering. We established a bifurcated goal structure.</p>
+
+                <div class="card-grid">
+                    <div class="hc-card dark">
+                        <h3>Business Strategic Goals</h3>
+                        <ul>
+                            <li><strong>Increase Transaction Success Rate:</strong> Target a 15% increase globally by eradicating the multi-step checkout friction.</li>
+                            <li><strong>Mitigate Cart/Transfer Abandonment:</strong> Specifically target the 2FA (Two-Factor Authentication) drop-off spike by providing clearer visual progress indicators.</li>
+                            <li><strong>Improve 30-Day Retention:</strong> Lift DAU (Daily Active Users) by 20% by introducing "Moneyboxes"—a gamified, emotionally resonant saving feature that encourages daily check-ins.</li>
+                            <li><strong>Reduce Support Tickets:</strong> Cut inbound customer service tickets related to "Where is my money?" by 30% through instantaneous UI feedback loops.</li>
+                        </ul>
+                    </div>
+                    <div class="hc-card">
+                        <h3>User-Centric Sensory Goals</h3>
+                        <ul>
+                            <li><strong>Blistering Speed:</strong> The primary task—sending $10 to a saved contact—must be achievable in precisely under 10 seconds.</li>
+                            <li><strong>Immediate Clarity:</strong> The Total Available Balance must be instantly legible in under 1 second of opening the app, utilizing massive, high-contrast typography.</li>
+                            <li><strong>Tactile Reassurance:</strong> High-anxiety actions (hitting "Send") must be met with overwhelming, multi-sensory confirmation (audible chime, haptic vibration, high-contrast visual checkmark).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <section aria-labelledby="heading-research">
+                <h2 id="heading-research">4. Exhaustive User Research</h2>
+                <p>Before moving a single pixel, I initiated a deep-dive, mixed-methods research protocol. Assumptions are the enemy of fintech UX. We needed statistical proof of where the anxiety lived.</p>
+                
+                <h4>A. Target Demographics</h4>
+                <ul>
+                    <li><strong>Ages 18-35:</strong> Digital natives who treat P2P transfers like text messaging. High tech familiarity, low patience.</li>
+                    <li><strong>Ages 35-65:</strong> Users managing larger household economies, focused heavily on security, fraud prevention, and deposit yields. Moderate to low tech familiarity.</li>
+                </ul>
+
+                <h4>B. Research Methodologies Deployed</h4>
+                <ul>
+                    <li><strong>Contextual Inquiry (N=15):</strong> Moderated sessions watching users attempt tasks in real-time within the legacy app. We recorded hesitations, mis-taps, and verbalized frustrations.</li>
+                    <li><strong>System Usability Scale (SUS) Survey (N=400):</strong> Deployed to active users. The legacy app scored an abysmal 48/100, placing it well below the industry standard of 68.</li>
+                    <li><strong>Diary Studies (N=10):</strong> Users recorded their emotional states during daily financial interactions for a week.</li>
+                </ul>
+
+                <blockquote>
+                    <p>"I dread opening the app to pay my roommate for utilities. I'm terrified I'll accidentally tap the wrong 'John' because the font is so small and grey. I verify the phone number five times before hitting send."</p>
+                    <footer>— Participant 12, Retail Manager (Age 31)</footer>
+                </blockquote>
+
+                <h4>C. Empathy & Key Insight Clusters</h4>
+                <p>Through Affinity Mapping, three massive insight clusters emerged:</p>
+                <ul>
+                    <li><strong>The "Fear of the Void":</strong> 78% of users expressed severe anxiety immediately after pressing "Transfer." The legacy app displayed a spinning grey circle for up to 8 seconds while the API resolved, leading users to panic-close the app or tap the button multiple times, occasionally double-charging themselves.</li>
+                    <li><strong>The "Information Hide-and-Seek":</strong> Users fundamentally prioritize knowing exactly how much liquidity they possess at that exact second. Hiding this behind a "View Accounts" click caused universal frustration.</li>
+                    <li><strong>The "Jargon Barrier":</strong> Terms like "ACH Routing Transfer" alienated novices, who simply wanted to "Send to Bank."</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 4 -->
+            <section aria-labelledby="heading-personas">
+                <h2 id="heading-personas">5. Defining Comprehensive Personas</h2>
+                <p>Based on our qualitative clusters, I developed two primary archetypes that represent the opposing extreme spectrums of our user base. Designing to satisfy both extremes guarantees the middle majority sequence is flawless.</p>
+
+                <div class="card-grid">
+                    <div class="hc-card">
+                        <h3 style="font-size:2rem; margin-bottom: 8px;">Arjun, The Velocity Transactor</h3>
+                        <p style="font-size: 1.125rem; color: var(--color-text-sub); margin-bottom: 24px;">Age 26 • Software Engineer • Very High Tech Fluency</p>
+                        <p><strong>Behavioral Sequence:</strong> Arjun opens the app up to 8 times a day. He splits Ubers, buys artisan coffee, and repays friends for dinner. He treats his digital wallet like cash. He doesn't look at graphs.</p>
+                        <p><strong>Primary Goals:</strong> Wants absolute velocity. He expects a 2-tap payment initiation from the moment he taps the app icon.</p>
+                        <p><strong>Deep Frustrations:</strong> Splash screens that take 4 seconds to load. Elaborate biometric authentication failures that block his commute. Cluttered interfaces that try to cross-sell him personal loans when he just wants to buy an espresso.</p>
+                    </div>
+                    <div class="hc-card">
+                        <h3 style="font-size:2rem; margin-bottom: 8px;">Sarah, The Guardian Planner</h3>
+                        <p style="font-size: 1.125rem; color: var(--color-text-sub); margin-bottom: 24px;">Age 54 • Healthcare Administrator • Moderate Tech Fluency</p>
+                        <p><strong>Behavioral Sequence:</strong> Sarah logs in religiously every Friday (payday) and the 1st of the month. She reviews statement ledgers meticulously, routing funds into specific "Rainy Day" savings accounts.</p>
+                        <p><strong>Primary Goals:</strong> Requires total ecosystem visibility. She wants highly legible, categorized summaries of where her money evacuated to over the past 30 days.</p>
+                        <p><strong>Deep Frustrations:</strong> Illegible, low-contrast grey typography (`#999999` text on `#FFFFFF`). Unclear categorization of expenses, and terrifying "Hidden Banking Fees" that appear without warning.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5 -->
+            <section aria-labelledby="heading-journey">
+                <h2 id="heading-journey">6. Exhaustive User Journey Mapping</h2>
+                <p>To pinpoint the precise coordinates of churn, we mapped out Sarah's journey attempting to complete a routine task: <strong>Sending a $500 emergency fund transfer to her daughter, a new contact.</strong></p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 20%;">Phase</th>
+                            <th scope="col" style="width: 40%;">User Action & Thought Process</th>
+                            <th scope="col" style="width: 40%;">Emotional State & UX Pain Point</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Initiation</strong></td>
+                            <td>Opens app. Authenticates via FaceID. Looks for "Send Money" CTA.</td>
+                            <td>Neutral. Pain: CTA is buried under a carousel ad for a Nexi Credit Card.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Recipient Selection</strong></td>
+                            <td>Navigates to Contacts. Attempts to add a new beneficiary using a manual Routing Number.</td>
+                            <td><strong>Frustration peaks.</strong> The input fields lack data masking; the numbers blur together. No inline validation tells her if the routing number is correct until she hits submit.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Input & Review</strong></td>
+                            <td>Enters "$500.00". Reaches the review modal. Reviews the transaction intimately.</td>
+                            <td>High Anxiety. The text is dense and lacks visual hierarchy. The "Send" button is a weak, low-contrast grey.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Execution</strong></td>
+                            <td>Taps "Transfer Now".</td>
+                            <td><strong>Severe Panic.</strong> The app displays a tiny gray spinning wheel. 6 seconds pass. She wonders if she should tap it again. Did the money leave her account?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Resolution</strong></td>
+                            <td>A text-only toast notification reads "Success".</td>
+                            <td>Relief, but residual distrust. Leaves the app immediately to check her actual bank statement elsewhere.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="margin-top: 64px;">7. Competitive Teardown</h3>
+                <p>I executed a granular UX audit of direct global competitors representing the gold standard of fintech.</p>
+                <ul>
+                    <li><strong>PhonePe / Paytm (The Asian Super-App Model):</strong> Extremely dense, high utility. <em>Strength:</em> QR code scanner is a persistent floating button at all times, making retail payments instantaneous. <em>Weakness:</em> Brutally cluttered UI causing high cognitive load.</li>
+                    <li><strong>Revolut / Monzo (The Neobank Model):</strong> <em>Strength:</em> Impeccable onboarding and beautiful, high-contrast typography. Outstanding micro-interactions. <em>Weakness:</em> Complex features feature-creep into the core navigation over time.</li>
+                    <li><strong>Google Pay:</strong> <em>Strength:</em> The chat-based transaction interface. It treats money transfers exactly like iMessage threads, completely neutralizing the anxiety of routing numbers.</li>
+                </ul>
+                <p><strong>The Insight:</strong> Nexi Pay needed the utility speed of PhonePe, paired with the pristine, brutalist clarity of a Neobank. We had to ditch the legacy banking mental model entirely.</p>
+            </section>
+
+            <!-- SECTION 6 -->
+            <section aria-labelledby="heading-architecture">
+                <h2 id="heading-architecture">8. Problem Definition (HMW) & Ideation</h2>
+                <p>Armed with comprehensive data, I led a cross-functional ideation sprint. We framed our solutions using rigorous <em>How Might We</em> (HMW) prompts to prevent jumping to UI conclusions too early.</p>
+                
+                <div class="hc-card dark" style="margin: 40px 0;">
+                    <ul>
+                        <li><strong>HMW</strong> aggressively reduce P2P transaction time to precisely under 10 seconds without compromising security checks?</li>
+                        <li><strong>HMW</strong> restructure the dashboard so account balances and primary actions are unequivocally the center of focus?</li>
+                        <li><strong>HMW</strong> guarantee that Sarah, despite her visual constraints, feels completely secure and informed during high-stakes transfers?</li>
+                        <li><strong>HMW</strong> transform passive saving into an active, delightful daily habit using "Moneyboxes"?</li>
+                    </ul>
+                </div>
+
+                <h3>9. Overhauling the Information Architecture (IA)</h3>
+                <p>To solve the navigation labyrinth, I conducted a closed Card Sorting exercise with 20 users via Optimal Workshop. The results were stark: users overwhelmingly grouped features into four distinct buckets. Consequently, the legacy Hamburger Menu was assassinated.</p>
+                
+                <p>In its place, I architected a persistent, highly-legible <strong>Bottom Navigation Bar</strong>. This solves reachability issues on massive modern smartphones (Thumb Zone mapping). The taxonomy was finalized as:</p>
+                <ol>
+                    <li><strong>Dashboard (Home):</strong> Total overview, Recent Tx, Quick Pay CTA.</li>
+                    <li><strong>Deposits (Moneyboxes):</strong> Goal tracking, yield generation, and savings pods.</li>
+                    <li><strong>Loans & Credit:</strong> Transparent amortizations and credit limits.</li>
+                    <li><strong>Notifications / Security:</strong> Account settings grouped with urgent alerts.</li>
+                </ol>
+
+                <div class="image-scroll-container">
+                    <div class="scroll-hint">↓ SCROLL TO VIEW DIAGRAMS</div>
+                    <img src="../../images/Nexi/f7aeb4221343037.Y3JvcCwxNDQwLDExMjYsMCw4MQ.png" alt="Detailed layouts depicting the restructured architectural flow, particularly highlighting the seamless sign-up authentication flows and new dashboard component hierarchy.">
+                </div>
+                <span class="image-caption">Figure 2: Architectural layouts highlighting the rigorous Bottom Navigation system and simplified KYC forms.</span>
+            </section>
+
+            <!-- SECTION 7 -->
+            <section aria-labelledby="heading-wireframes">
+                <h2 id="heading-wireframes">10. Low-Fidelity Wireframing & Structural Logic</h2>
+                <p>Before touching Figma's color palette, I iterated wildly via analog pen and paper, and subsequently low-fidelity grayscale wireframes. This strips away aesthetic bias and forces the team to judge purely on component hierarchy and F-Pattern layout logic.</p>
+                
+                <p><strong>Key Structural Decisions Made in Low-Fi:</strong></p>
+                <ul>
+                    <li><strong>The Mega Balance:</strong> The top 30% of the screen is entirely dedicated to the user's Total Available Balance. Set in a massive 48pt font, it requires literally zero friction to read.</li>
+                    <li><strong>The Floating Action Pods:</strong> Directly beneath the balance, three massive, highly-tappable buttons ('Top-Up', 'Transfer', 'Scan') command the space. This satisfies Arjun's need for instant velocity.</li>
+                    <li><strong>Progressive Disclosure in KYC:</strong> Instead of presenting a horrifying 30-field form during sign-up, the flow was chunked into singular, focused task-screens (e.g., "What is your phone number?" → Next → "Enter OTP"). This psychological trick drastically reduces perceived workload.</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 8 -->
+            <section aria-labelledby="heading-design" id="design">
+                <h2 id="heading-design">11. High-Fidelity UI Design & The System</h2>
+                <p>The High-Fidelity translation is where the brand identity aggressively aligns with UX psychology. We engineered a bespoke, rigorous Design System utilizing Figma Variables to assure absolute consistency at scale.</p>
+                
+                <h4>The Accessible Aesthetic</h4>
+                <p>The visual language eschews the trendy, low-contrast "glassmorphism" that plagues Dribbble. Instead, we leaned into <strong>Accessible Brutalism</strong>. We utilized a stark <strong>Deep Navy (<code>#1C204B</code>)</strong> as the structural foundation, implying deep institutional vault-like security. The primary action color operates on a vibrant, eye-catching <strong>Royal Blue (<code>#4A55FF</code>)</strong>.</p>
+                
+                <p><strong>Typography Framework:</strong> We selected <em>Inter</em>. Its tall x-height and exceptional tabular numeric figures make it the world-class standard for reading massive financial digits accurately at a glance.</p>
+                <p><strong>Geometry:</strong> To counterbalance the brutalist contrast, we implemented a universal <code>24px</code> border-radius philosophy on all cards and containers. This "softness" visually cushions the user, subtly neutralizing the inherent stress of banking logic.</p>
+
+                <div class="image-scroll-container">
+                    <div class="scroll-hint">↓ SCROLL TO EXPLORE UI COMPONENTS</div>
+                    <img src="../../images/Nexi/91ed74221343037.67d298f68b759.png" alt="Exhaustive high-fidelity screen catalog displaying the dark blue app headers, massive tabular typography, vividly distinct card boundaries, and the clean progress indicators within the specific deposits section.">
+                </div>
+                <span class="image-caption">Figure 3: Comprehensive catalog of the Final High-Fidelity Design System in action. Note the strict typographical hierarchy.</span>
+
+                <h3 style="margin-top: 80px;">12. Interaction Design & Micro-Moments</h3>
+                <p>Interaction design is the soul of UX. Motion dictates emotion. I authored highly specific easing curves (<code>cubic-bezier(0.16, 1, 0.3, 1)</code>) to ensure transitions felt utterly crisp and authoritative.</p>
+                
+                <ul>
+                    <li><strong>Eradicating the Void:</strong> Skeleton loading screens completely replaced spinning wheels. As the API fetches data, the skeleton gently pulses. Context is never lost; the user knows exactly what shape the incoming data will take.</li>
+                    <li><strong>The Dopamine Checkmark:</strong> To cure Sarah's "Fear of the Void" during execution, a bespoke Lottie animation was deployed. Upon success, a vibrant green aura explodes outwards, followed by a snappy, massive checkmark. Paired with OS-level haptic feedback, it provides undeniable, deeply satisfying closure.</li>
+                    <li><strong>Moneybox Celebration:</strong> When a user transfers money into a saving goal (e.g., "Christmas Presents"), the UI drops confetti. Gamifying positive financial behavior creates a powerful psychological feedback loop promoting retention.</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 9 -->
+            <section aria-labelledby="heading-testing">
+                <h2 id="heading-testing">13. Prototyping & 14. Usability Testing Validation</h2>
+                <p>The Figma prototype was wired together comprehensively, linking over 85 screens to simulate a living application. We deployed this prototype via Maze.co to 20 unmoderated participants, tracking heatmaps, mis-click rates, and time-on-page.</p>
+                
+                <div class="card-grid">
+                    <div class="hc-card dark">
+                        <h3>Testing Successes</h3>
+                        <ul>
+                            <li><strong>Velocity Target Demolished:</strong> 92% of users successfully initiated a P2P payment flow (Dashboard → Select Contact → Enter Amount → Send) in an average of <strong>6.8 seconds</strong>, smashing our <10s goal.</li>
+                            <li><strong>Navigation Efficacy:</strong> The persistent Bottom Nav achieved a 100% find-ability rating for the "Review Loans" task.</li>
+                        </ul>
+                    </div>
+                    <div class="hc-card">
+                        <h3>15. Pivotal Iterations (Failures)</h3>
+                        <ul>
+                            <li><strong>The Forex Flaw:</strong> Users trying to execute international transfers struggled to find live Exchange Rates. Our hypothesis was that they belonged in 'More'. Testers proved us wrong.</li>
+                            <li><strong>The Fix:</strong> I iterated immediately, surfacing a dedicated, horizontally-scrollable <em>Live Exchange Rate Module</em> directly onto the secondary tier of the home dashboard.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 10 -->
+            <section aria-labelledby="heading-impact" id="impact">
+                <h2 id="heading-impact">16. The Final Outcome & Immense Impact</h2>
+                <p>The redesigned Nexi Pay architecture was rolled out in a phased beta to 50,000 active legacy users before a global launch. The quantitative metrics logged over the subsequent 90-day period represented a monumental shift in platform viability.</p>
+
+                <div class="card-grid">
+                    <div class="hc-card" style="border-width:6px; background:#F8FAFF; border-color:#0044CC;">
+                        <h3 style="font-size:5rem; margin-bottom:0px; line-height:1; color:#0044CC;">⬇ 32%</h3>
+                        <p style="font-weight:800; font-size:1.5rem; text-transform:uppercase; margin-top:8px;">Churn Reduction</p>
+                        <p>Streamlined, progressive KYC flows slashed the onboarding abandonment rate by nearly a third.</p>
+                    </div>
+                    <div class="hc-card" style="border-width:6px; background:#F8FAFF; border-color:#0044CC;">
+                        <h3 style="font-size:5rem; margin-bottom:0px; line-height:1; color:#0044CC;">⬆ 45%</h3>
+                        <p style="font-weight:800; font-size:1.5rem; text-transform:uppercase; margin-top:8px;">Savings Action</p>
+                        <p>Interactions with "Moneyboxes" surged, proving the gamified UI successfully converted passive users into active savers.</p>
+                    </div>
+                    <div class="hc-card" style="border-width:6px; background:#F8FAFF; border-color:#0044CC;">
+                        <h3 style="font-size:5rem; margin-bottom:0px; line-height:1; color:#0044CC;">4.9</h3>
+                        <p style="font-weight:800; font-size:1.5rem; text-transform:uppercase; margin-top:8px;">App Store Score</p>
+                        <p>The SUS (System Usability Score) rocketed from 48 to 86, catapulting mobile store reviews.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 80px;">17. Key Retrospective & Learnings</h3>
+                <p>The most profound lesson garnered from Nexi Pay was that <strong>accessibility is never an aesthetic compromise; it is the ultimate usability accelerant.</strong> By aggressively designing for the visual constraints of a 60-year-old user in glaring sunlight (high contrast, huge typography), the interface inherently became blisteringly fast and intuitive for a 20-something power user sprinting to catch a train.</p>
+                <p>Additionally, prioritizing <em>Emotional Journey Mapping</em> over raw user flows proved pivotal. Treating the API waiting period as a psychological vulnerability—and designing animations to soothe that specific moment—is what ultimately bred deep user trust.</p>
+
+                <h3 style="margin-top: 64px;">18. The Strategic Future Scope</h3>
+                <p>To maintain market dominance, the roadmap for V2 of Nexi Pay includes several advanced UX initiatives:</p>
+                <ul>
+                    <li><strong>Predictive LLM Chatbots:</strong> Replacing static FAQ menus with conversational AI that can understand and execute deep-link commands (e.g., "Show me how much I spent on Uber last month").</li>
+                    <li><strong>Proactive Spending Warnings:</strong> Utilizing algorithmic forecasting to deploy non-intrusive alert banners warning a user 48 hours <em>before</em> a scheduled utility bill might overdraft their low balance.</li>
+                    <li><strong>Voice Authenticated Payments:</strong> Securing the transaction pipeline strictly via vocal biometrics to entirely bypass physical screen interaction for users with profound motor-control accessibility needs.</li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer role="contentinfo" style="background-color: var(--color-surface-dark); color: var(--color-text-on-dark); padding: 100px 5%; text-align: center; border-top: 12px solid var(--color-accent);">
+        <h2 style="color:var(--color-text-on-dark); border:none; padding:0; margin-bottom:40px; font-size: 3rem;">Making complexity invisible.</h2>
+        <a href="../index.html" style="display:inline-block; background-color:#FFFFFF; color:var(--color-surface-dark); padding:20px 48px; font-size:1.25rem; font-weight:800; text-transform:uppercase; text-decoration:none; border:4px solid transparent; border-radius: 8px; transition: 0.3s;">Return to UX Portfolio</a>
+    </footer>
+
+    <!-- Nav Spy JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dots = document.querySelectorAll('.nav-dot');
+            const sections = Array.from(dots).map(dot => {
+                const target = document.querySelector(dot.getAttribute('href'));
+                return target ? target.closest('section') : null;
+            });
+
+            window.addEventListener('scroll', () => {
+                let current = "";
+                const threshold = window.innerHeight * 0.4;
+                
+                sections.forEach((section, index) => {
+                    if (!section) return;
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= sectionTop - threshold) {
+                        current = dots[index].getAttribute('href');
+                    }
+                });
+
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                    if (dot.getAttribute('href') === current) {
+                        dot.classList.add('active');
+                    }
+                });
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        window.scrollTo({
+                            top: targetEl.closest('section').offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

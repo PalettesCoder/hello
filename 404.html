@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
     <title>404 — Lost in the Layers | Harsha Royal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="This page got lost in my infinite component hierarchy. Let's get you back to safety.">
+    <meta name="description"
+        content="This page got lost in my infinite component hierarchy. Let's get you back to safety.">
     <meta name="robots" content="noindex, follow">
     <link rel="shortcut icon" href="images/favicon.svg">
     <link rel="canonical" href="https://harsharoyal.in/">
@@ -23,14 +26,18 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/figma-nav.css">
     <style>
-        html { zoom: 1; }
+        html {
+            zoom: 1;
+        }
+
         body {
             background: #ffffff;
             min-height: 100vh;
             overflow: hidden;
             position: relative;
             font-family: "Inter", sans-serif;
-            margin: 0; padding: 0;
+            margin: 0;
+            padding: 0;
         }
 
         /* Relying on figma-nav.css for core app layout */
@@ -50,8 +57,8 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse at 30% 20%, rgba(255,117,24,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 80%, rgba(162,89,255,0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 20%, rgba(255, 117, 24, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(162, 89, 255, 0.04) 0%, transparent 60%),
                 #e5e5e5;
             z-index: 0;
         }
@@ -60,8 +67,8 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
             background-size: 24px 24px;
             z-index: 0;
         }
@@ -104,7 +111,7 @@
             flex-direction: column;
             align-items: center;
             gap: 12px;
-            transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0.15;
         }
 
@@ -118,17 +125,24 @@
             height: 90px;
             object-fit: contain;
             animation: avatar-float 3s ease-in-out infinite;
-            filter: drop-shadow(0 8px 24px rgba(255,117,24,0.3));
+            filter: drop-shadow(0 8px 24px rgba(255, 117, 24, 0.3));
         }
 
         @keyframes avatar-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         .avatar-help-text {
             font-size: 11px;
-            color: rgba(0,0,0,0.5);
+            color: rgba(0, 0, 0, 0.5);
             letter-spacing: 0.1em;
             text-transform: uppercase;
             font-weight: 600;
@@ -139,17 +153,48 @@
             position: absolute;
             width: 480px;
             background: #ffffff;
-            box-shadow: 0 2px 14px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03);
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
             user-select: none;
             cursor: default;
+            transition: all 0.3s ease;
         }
 
         /* Position layers across the panoramic canvas in a single row */
-        .layer-1 { top: -100px; left: -1100px; } /* 404 block */
-        .layer-2 { top: -100px; left: -560px; width: 340px; } /* Auto Layout */
-        .layer-3 { top: -100px; left: -160px; width: 440px; } /* Missing Deps */
-        .layer-4 { top: -100px; left: 340px; width: 260px; } /* Detached */
-        .layer-5 { top: -100px; left: 660px; width: 500px; } /* The Safe point */
+        .layer-1 {
+            top: -100px;
+            left: -1100px;
+        }
+
+        /* 404 block */
+        .layer-2 {
+            top: -100px;
+            left: -560px;
+            width: 340px;
+        }
+
+        /* Auto Layout */
+        .layer-3 {
+            top: -100px;
+            left: -160px;
+            width: 440px;
+        }
+
+        /* Missing Deps */
+        .layer-4 {
+            top: -100px;
+            left: 340px;
+            width: 260px;
+        }
+
+        /* Detached */
+        .layer-5 {
+            top: -100px;
+            left: 660px;
+            width: 500px;
+        }
+
+        /* The Safe point */
 
         .layer-title {
             position: absolute;
@@ -157,14 +202,18 @@
             left: 0;
             font-size: 11px;
             font-weight: 600;
-            color: rgba(0,0,0,0.5);
+            color: rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             gap: 6px;
             white-space: nowrap;
         }
 
-        .layer-title span { opacity: 0.6; font-size: 10px; font-weight: 400; }
+        .layer-title span {
+            opacity: 0.6;
+            font-size: 10px;
+            font-weight: 400;
+        }
 
         /* ===== FRAME BODY CONTENT ===== */
         .layer-body {
@@ -172,27 +221,82 @@
             pointer-events: none;
         }
 
-        .mock-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; }
-        .mock-bar { height: 8px; border-radius: 4px; background: rgba(0,0,0,0.05); }
-        .mock-bar.w30 { width: 30%; } .mock-bar.w40 { width: 40%; } .mock-bar.w50 { width: 50%; }
-        .mock-bar.w60 { width: 60%; } .mock-bar.w70 { width: 70%; } .mock-bar.w80 { width: 80%; }
-        .mock-bar.w90 { width: 90%; } .mock-bar.thick { height: 12px; }
-        .mock-bar.accent { background: rgba(255,117,24,0.15); }
-        .mock-bar.purple { background: rgba(162,89,255,0.12); }
-        .mock-bar.blue { background: rgba(91,127,255,0.12); }
-        .mock-bar.green { background: rgba(10,207,131,0.12); }
+        .mock-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            align-items: center;
+        }
 
-        .mock-cards { display: flex; gap: 8px; }
+        .mock-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .mock-bar.w30 {
+            width: 30%;
+        }
+
+        .mock-bar.w40 {
+            width: 40%;
+        }
+
+        .mock-bar.w50 {
+            width: 50%;
+        }
+
+        .mock-bar.w60 {
+            width: 60%;
+        }
+
+        .mock-bar.w70 {
+            width: 70%;
+        }
+
+        .mock-bar.w80 {
+            width: 80%;
+        }
+
+        .mock-bar.w90 {
+            width: 90%;
+        }
+
+        .mock-bar.thick {
+            height: 12px;
+        }
+
+        .mock-bar.accent {
+            background: rgba(255, 117, 24, 0.15);
+        }
+
+        .mock-bar.purple {
+            background: rgba(162, 89, 255, 0.12);
+        }
+
+        .mock-bar.blue {
+            background: rgba(91, 127, 255, 0.12);
+        }
+
+        .mock-bar.green {
+            background: rgba(10, 207, 131, 0.12);
+        }
+
+        .mock-cards {
+            display: flex;
+            gap: 8px;
+        }
+
         .mock-card {
             flex: 1;
             height: 44px;
             border-radius: 8px;
-            border: 1px dashed rgba(0,0,0,0.1);
+            border: 1px dashed rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            background: rgba(0,0,0,0.02);
+            background: rgba(0, 0, 0, 0.02);
         }
 
         .mock-al-grid {
@@ -215,7 +319,7 @@
         .layer-comment {
             margin-top: 8px;
             font-size: 10px;
-            color: rgba(0,0,0,0.4);
+            color: rgba(0, 0, 0, 0.4);
             font-style: italic;
             text-align: center;
         }
@@ -252,7 +356,7 @@
         .reveal-desc {
             font-size: 14px;
             line-height: 22px;
-            color: rgba(0,0,0,0.5);
+            color: rgba(0, 0, 0, 0.5);
             max-width: 440px;
             margin: 0 auto 28px;
         }
@@ -269,19 +373,19 @@
         .search-bar-container {
             display: flex;
             align-items: center;
-            background: rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.08);
+            background: rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 999px;
             padding: 4px 4px 4px 20px;
             min-width: 280px;
             height: 48px;
             transition: all 0.3s;
         }
-        
+
         .search-bar-container:focus-within {
             border-color: #FF7518;
-            box-shadow: 0 0 0 2px rgba(255,117,24,0.15);
-            background: rgba(0,0,0,0.06);
+            box-shadow: 0 0 0 2px rgba(255, 117, 24, 0.15);
+            background: rgba(0, 0, 0, 0.06);
         }
 
         .search-input {
@@ -295,11 +399,11 @@
         }
 
         .search-input::placeholder {
-            color: rgba(0,0,0,0.4);
+            color: rgba(0, 0, 0, 0.4);
         }
 
         .search-btn {
-            background: rgba(0,0,0,0.08);
+            background: rgba(0, 0, 0, 0.08);
             border: none;
             width: 38px;
             height: 38px;
@@ -318,7 +422,10 @@
             color: #fff;
         }
 
-        .search-btn svg { width: 14px; height: 14px; }
+        .search-btn svg {
+            width: 14px;
+            height: 14px;
+        }
 
         .btn-back {
             display: inline-flex;
@@ -336,45 +443,39 @@
             text-decoration: none;
             border: none;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 0 4px 20px rgba(255,117,24,0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(255, 117, 24, 0.3);
             letter-spacing: -0.01em;
         }
 
         .btn-back:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(255,117,24,0.45);
+            box-shadow: 0 8px 32px rgba(255, 117, 24, 0.45);
             background: #ff8a3d;
         }
 
-        .btn-back svg { width: 16px; height: 16px; }
+        .btn-back svg {
+            width: 16px;
+            height: 16px;
+        }
 
         .redirect-note {
             margin-top: 28px;
             font-size: 11px;
-            color: rgba(0,0,0,0.4);
+            color: rgba(0, 0, 0, 0.4);
         }
 
-        .redirect-note a { color: #FF7518; text-decoration: none; }
+        .redirect-note a {
+            color: #FF7518;
+            text-decoration: none;
+        }
+        .figma-toolbar-pill {
+            display: none !important;
+        }
 
         /* ===== HUD ===== */
         .hud-progress {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            padding: 8px 16px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid rgba(0,0,0,0.1);
-            backdrop-filter: blur(12px);
-            font-size: 12px;
-            font-weight: 500;
-            color: rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            pointer-events: none;
+            display: none !important;
         }
 
         .hud-progress .hud-count {
@@ -385,87 +486,142 @@
 
         /* Microcopy header */
         .micro-header {
-            display: none; /* hidden since HUD implies panning */
+            display: none;
+            /* hidden since HUD implies panning */
         }
 
-        .micro-header strong { color: #FF7518; font-weight: 600; }
+        .micro-header strong {
+            color: #FF7518;
+            font-weight: 600;
+        }
 
-        .micro-header.hidden { opacity: 0; }
+        .micro-header.hidden {
+            opacity: 0;
+        }
 
         /* Hint bar */
         .hint-bar {
-            position: absolute;
-            bottom: 28px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            padding: 10px 22px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid rgba(0,0,0,0.1);
-            backdrop-filter: blur(12px);
-            font-size: 12px;
-            font-weight: 500;
-            color: rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: hintPulse 2.5s ease-in-out infinite;
-            transition: all 0.4s;
-            pointer-events: none;
+            display: none !important;
         }
 
-        .hint-bar strong { color: #FF7518; }
-        .hint-bar.hidden { opacity: 0; }
+        .hint-bar strong {
+            color: #FF7518;
+        }
+
+        .hint-bar.hidden {
+            opacity: 0;
+        }
 
         .wiggle-icon {
             font-size: 16px;
         }
+
         @keyframes hintPulse {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-5px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-5px);
+            }
         }
 
         @keyframes wiggle {
-            0%, 100% { transform: rotate(0); }
-            20% { transform: rotate(-14deg); }
-            40% { transform: rotate(14deg); }
-            60% { transform: rotate(-8deg); }
-            80% { transform: rotate(8deg); }
+
+            0%,
+            100% {
+                transform: rotate(0);
+            }
+
+            20% {
+                transform: rotate(-14deg);
+            }
+
+            40% {
+                transform: rotate(14deg);
+            }
+
+            60% {
+                transform: rotate(-8deg);
+            }
+
+            80% {
+                transform: rotate(8deg);
+            }
         }
 
         /* ===== CONFETTI ===== */
-        .confetti-layer { position: absolute; inset: 0; pointer-events: none; z-index: 9999; }
+        .confetti-layer {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
         .conf {
             position: absolute;
             top: -12px;
             animation: confDrop linear forwards;
         }
+
         @keyframes confDrop {
-            0% { transform: translateY(0) rotate(0); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(600deg); opacity: 0; }
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(600deg);
+                opacity: 0;
+            }
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 560px) {
-            .figma-layer { width: 320px; }
-            .avatar-zone { height: 350px; }
-            .micro-header { font-size: 10px; padding: 6px 14px; }
-            .reveal-actions { flex-direction: column; align-items: center; }
+            .figma-layer {
+                width: 320px;
+            }
+
+            .avatar-zone {
+                height: 350px;
+            }
+
+            .micro-header {
+                font-size: 10px;
+                padding: 6px 14px;
+            }
+
+            .reveal-actions {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="figma-container">
         <!-- TOP BAR -->
         <header class="figma-top-bar">
             <div class="top-bar-icons">
                 <svg width="24" height="24" viewBox="0 0 38 57" fill="none">
-                    <path d="M19 28.5C19 25.8478 20.0536 23.3043 21.9289 21.4289C23.8043 19.5536 26.3478 18.5 29 18.5C31.6522 18.5 34.1957 19.5536 36.0711 21.4289C37.9464 23.3043 39 25.8478 39 28.5C39 31.1522 37.9464 33.6957 36.0711 35.5711C34.1957 37.4464 31.6522 38.5 29 38.5C26.3478 38.5 23.8043 37.4464 21.9289 35.5711C20.0536 33.6957 19 31.1522 19 28.5Z" fill="#1ABCFE"/>
-                    <path d="M0 47.5C0 44.8478 1.05357 42.3043 2.92893 40.4289C4.8043 38.5536 7.34784 37.5 10 37.5C12.6522 37.5 15.1957 38.5536 17.0711 40.4289C18.9464 42.3043 20 44.8478 20 47.5C20 50.1522 18.9464 52.6957 17.0711 54.5711C15.1957 56.4464 12.6522 57.5 10 57.5C7.34784 57.5 4.8043 56.4464 2.92893 54.5711C1.05357 52.6957 0 50.1522 0 47.5Z" fill="#0ACF83"/>
-                    <path d="M0 28.5C0 25.8478 1.05357 23.3043 2.92893 21.4289C4.8043 19.5536 7.34784 18.5 10 18.5L19 18.5L19 38.5L10 38.5C7.34784 38.5 4.8043 37.4464 2.92893 35.5711C1.05357 33.6957 0 31.1522 0 28.5Z" fill="#A259FF"/>
-                    <path d="M0 9.5C0 6.84784 1.05357 4.3043 2.92893 2.42893C4.8043 0.553571 7.34784 0 10 0L19 0L19 19L10 19C7.34784 19 4.8043 17.9464 2.92893 16.0711C1.05357 14.1957 0 11.6522 0 9.5Z" fill="#F24E1E"/>
-                    <path d="M19 0L28.5 0C31.1522 0 33.6957 1.05357 35.5711 2.92893C37.4464 4.8043 38.5 7.34784 38.5 9.5C38.5 11.6522 37.4464 14.1957 35.5711 16.0711C33.6957 17.9464 31.1522 19 28.5 19L19 19L19 0Z" fill="#FF7262"/>
+                    <path
+                        d="M19 28.5C19 25.8478 20.0536 23.3043 21.9289 21.4289C23.8043 19.5536 26.3478 18.5 29 18.5C31.6522 18.5 34.1957 19.5536 36.0711 21.4289C37.9464 23.3043 39 25.8478 39 28.5C39 31.1522 37.9464 33.6957 36.0711 35.5711C34.1957 37.4464 31.6522 38.5 29 38.5C26.3478 38.5 23.8043 37.4464 21.9289 35.5711C20.0536 33.6957 19 31.1522 19 28.5Z"
+                        fill="#1ABCFE" />
+                    <path
+                        d="M0 47.5C0 44.8478 1.05357 42.3043 2.92893 40.4289C4.8043 38.5536 7.34784 37.5 10 37.5C12.6522 37.5 15.1957 38.5536 17.0711 40.4289C18.9464 42.3043 20 44.8478 20 47.5C20 50.1522 18.9464 52.6957 17.0711 54.5711C15.1957 56.4464 12.6522 57.5 10 57.5C7.34784 57.5 4.8043 56.4464 2.92893 54.5711C1.05357 52.6957 0 50.1522 0 47.5Z"
+                        fill="#0ACF83" />
+                    <path
+                        d="M0 28.5C0 25.8478 1.05357 23.3043 2.92893 21.4289C4.8043 19.5536 7.34784 18.5 10 18.5L19 18.5L19 38.5L10 38.5C7.34784 38.5 4.8043 37.4464 2.92893 35.5711C1.05357 33.6957 0 31.1522 0 28.5Z"
+                        fill="#A259FF" />
+                    <path
+                        d="M0 9.5C0 6.84784 1.05357 4.3043 2.92893 2.42893C4.8043 0.553571 7.34784 0 10 0L19 0L19 19L10 19C7.34784 19 4.8043 17.9464 2.92893 16.0711C1.05357 14.1957 0 11.6522 0 9.5Z"
+                        fill="#F24E1E" />
+                    <path
+                        d="M19 0L28.5 0C31.1522 0 33.6957 1.05357 35.5711 2.92893C37.4464 4.8043 38.5 7.34784 38.5 9.5C38.5 11.6522 37.4464 14.1957 35.5711 16.0711C33.6957 17.9464 31.1522 19 28.5 19L19 19L19 0Z"
+                        fill="#FF7262" />
                 </svg>
             </div>
             <div class="top-bar-tabs">
@@ -481,545 +637,700 @@
         </header>
 
         <div class="figma-app">
-        <!-- LEFT SIDEBAR (RAIL + PANEL) -->
-        <aside class="figma-sidebar-left">
-            <div class="sidebar-rail">
-                <div class="rail-icon active" title="Layers">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1L1 5L9 9L17 5L9 1Z" stroke="currentColor" stroke-width="1.2"/><path d="M1 9L9 13L17 9" stroke="currentColor" stroke-width="1.2"/><path d="M1 13L9 17L17 13" stroke="currentColor" stroke-width="1.2"/></svg>
-                </div>
-                <div class="rail-icon" title="Assets">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="10" y="2" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="10" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><circle cx="13" cy="13" r="3" stroke="currentColor" stroke-width="1.2"/></svg>
-                </div>
-                <div class="rail-icon" title="Resources">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M9 6V12M6 9H12" stroke="currentColor" stroke-width="1.2"/></svg>
-                </div>
-            </div>
-
-            <div class="sidebar-panel">
-                <div class="sidebar-panel-header">
-                    <div class="panel-title-row">
-                        404 Page <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+            <!-- LEFT SIDEBAR (RAIL + PANEL) -->
+            <aside class="figma-sidebar-left">
+                <div class="sidebar-rail">
+                    <div class="rail-icon active" title="Layers">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M9 1L1 5L9 9L17 5L9 1Z" stroke="currentColor" stroke-width="1.2" />
+                            <path d="M1 9L9 13L17 9" stroke="currentColor" stroke-width="1.2" />
+                            <path d="M1 13L9 17L17 13" stroke="currentColor" stroke-width="1.2" />
+                        </svg>
                     </div>
-                    <div class="panel-status-row">
-                        <span class="status-badge">Team project</span>
-                        <span class="status-badge blue">Free</span>
+                    <div class="rail-icon" title="Assets">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <rect x="2" y="2" width="6" height="6" stroke="currentColor" stroke-width="1.2" />
+                            <rect x="10" y="2" width="6" height="6" stroke="currentColor" stroke-width="1.2" />
+                            <rect x="2" y="10" width="6" height="6" stroke="currentColor" stroke-width="1.2" />
+                            <circle cx="13" cy="13" r="3" stroke="currentColor" stroke-width="1.2" />
+                        </svg>
                     </div>
-                </div>
-
-                <div class="sidebar-section">
-                    <div class="section-label">
-                        Pages <span class="label-action">+</span>
+                    <div class="rail-icon" title="Resources">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.2" />
+                            <path d="M9 6V12M6 9H12" stroke="currentColor" stroke-width="1.2" />
+                        </svg>
                     </div>
-                    <ul class="sidebar-list">
-                        <li class="list-item"><span>#</span> Error_Log</li>
-                        <li class="list-item active"><span>#</span> Visual_Chaos</li>
-                        <li class="list-item"><span>#</span> Assets</li>
-                    </ul>
                 </div>
 
-                <div class="sidebar-section">
-                    <div class="section-label">Layers</div>
-                    <div class="sidebar-list">
-                        <div class="list-item active" id="nav-layer-1">
-                            <span>#</span> Error_Overlay_FINAL
+                <div class="sidebar-panel">
+                    <div class="sidebar-panel-header">
+                        <div class="panel-title-row">
+                            404 Page <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                <path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2" />
+                            </svg>
                         </div>
-                        <div class="list-item" id="nav-layer-2">
-                            <span>#</span> AutoLayout_Gone_Wrong
-                        </div>
-                        <div class="list-item">
-                            <span>V</span> Designer_Avatar
+                        <div class="panel-status-row">
+                            <span class="status-badge">Team project</span>
+                            <span class="status-badge blue">Free</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </aside>
 
-        <!-- MAIN CANVAS CONTAINER -->
-        <main class="figma-canvas-container">
-            <!-- RULERS -->
-            <div class="ruler-h">
-                <div class="ruler-tick" style="left: 0;">0</div>
-                <div class="ruler-tick" style="left: 100px;">1000</div>
-                <div class="ruler-tick" style="left: 200px;">2000</div>
-            </div>
-            <div class="ruler-v">
-                <div class="ruler-tick" style="top: 0;">0</div>
-                <div class="ruler-tick" style="top: 100px;">1000</div>
-                <div class="ruler-tick" style="top: 200px;">2000</div>
-            </div>
-
-            <div class="figma-canvas" id="viewport">
-                <!-- ORIGINAL CONTENT -->
-                <div class="dark-canvas"></div>
-                <div class="grid-overlay"></div>
-                
-                <!-- FLOATING TOOLBAR PILL -->
-                <div class="figma-toolbar-pill">
-                    <div class="toolbar-group">
-                        <div class="toolbar-tool active" id="tool-cursor" title="Move (V)">
-                            <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3.5 2l7.5 4.5-5 .5-2 4.5V2z" fill="currentColor"/></svg>
+                    <div class="sidebar-section">
+                        <div class="section-label">
+                            Pages <span class="label-action">+</span>
                         </div>
-                        <div class="toolbar-tool" title="Frame (F)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 1v12M10 1v12M1 4h12M1 10h12" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                        <div class="toolbar-tool" title="Hand (H)" id="tool-hand">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 4.5V3a1.5 1.5 0 013 0v1.5m0 0V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                        </div>
-                        <div class="toolbar-tool" title="Comment (C)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 10.5V2a1 1 0 011-1h10a1 1 0 011 1v7" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
+                        <ul class="sidebar-list">
+                            <li class="list-item"><span>#</span> Error_Log</li>
+                            <li class="list-item active"><span>#</span> Visual_Chaos</li>
+                            <li class="list-item"><span>#</span> Assets</li>
+                        </ul>
                     </div>
-                </div>
 
-    <!-- Microcopy Header -->
-    <div class="micro-header" id="microHeader">
-        Looks like this page got lost in my <strong>infinite component hierarchy</strong>…
-    </div>
-
-    <!-- Progress HUD -->
-    <div class="hud-progress">
-        🖱️ Tip: <span class="hud-count">Hold Space to Pan • Scroll to Zoom</span>
-    </div>
-
-    <!-- Panning Canvas -->
-    <div class="pan-canvas" id="panCanvas">
-        
-        <!-- Buried Avatar -->
-        <div class="buried-avatar" style="top: 250px; left: -40px; opacity: 1;">
-            <img src="images/avatar-boy.png" alt="Buried Designer" loading="lazy" decoding="async" width="90" height="90" class="avatar-img">
-            <div class="avatar-help-text" style="color: rgba(0,0,0,0.4)">Where did everything go?</div>
-        </div>
-
-        <!-- Layer 1: Error -->
-        <div class="figma-layer layer-1">
-            <div class="layer-title"># Error_Overlay_FINAL_v3_REAL</div>
-            <div class="layer-body">
-                <div style="text-align: center; padding: 40px 0;">
-                    <div style="font-size: 48px; margin-bottom: 24px;">⛔</div>
-                    <div style="font-size: 24px; font-weight: 600; color: #F24E1E; margin-bottom: 12px;">404 — Page Not Found</div>
-                    <div style="font-size: 14px; color: rgba(0,0,0,0.5); line-height: 1.6;">The component you're looking for<br>has been lost in the infinite canvas.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Layer 2: AutoLayout -->
-        <div class="figma-layer layer-2">
-            <div class="layer-title"># AutoLayout_Gone_Wrong</div>
-            <div class="layer-body">
-                <div class="mock-al-grid">
-                    <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.7);">H=HUG</div>
-                    <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.7);">W=FILL</div>
-                    <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.7);">GAP=∞</div>
-                    <div class="mock-al-cell" style="border-color: rgba(162,89,255,0.15); color: rgba(162,89,255,0.5);">PAD 0</div>
-                </div>
-                <div class="layer-comment">Auto-layout left the chat after that resize…</div>
-            </div>
-        </div>
-
-        <!-- Layer 3: Dependncies -->
-        <div class="figma-layer layer-3">
-            <div class="layer-title">#Missing_Dependencies</div>
-            <div class="layer-body">
-                <div class="mock-row"><div class="mock-bar blue w70 thick"></div></div>
-                <div class="mock-row"><div class="mock-bar blue w40"></div><div class="mock-bar blue w30"></div></div>
-                <div class="mock-cards" style="margin-top: 20px;">
-                    <div class="mock-card">⚡</div>
-                    <div class="mock-card">🔌</div>
-                    <div class="mock-card">💤</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Layer 4: Detached -->
-        <div class="figma-layer layer-4">
-            <div class="layer-title">#Detached_Instance_v47</div>
-            <div class="layer-body">
-                <div class="mock-cards">
-                    <div class="mock-card">🔓</div>
-                    <div class="mock-card">⚙️</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Layer 5: Safe Point -->
-        <div class="figma-layer layer-5" style="box-shadow: 0 12px 32px rgba(255,117,24,0.15); border-color: rgba(255,117,24,0.3);">
-            <div class="layer-title" style="color: #FF7518;"># ✨ Safe_Zone <span>(You found it!)</span></div>
-            <div class="reveal-content" id="revealContent">
-                <h1 class="reveal-title" style="font-size: 28px;">Back to Safety</h1>
-                <p class="reveal-desc">
-                    Looks like this page got lost in my infinite component hierarchy… let's get you back.
-                </p>
-                <div class="reveal-actions">
-                    <div class="search-bar-container">
-                        <input type="text" class="search-input" placeholder="Search for what you need...">
-                        <button class="search-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </button>
-                    </div>
-                    <a href="/#work" class="btn-back">
-                        Back to my work
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End pan-canvas -->
-    
-    <!-- Hint Bar -->
-    <div class="hint-bar" id="hintBar">
-        <span class="wiggle-icon">👋</span>
-        <span><strong>Pan around the canvas</strong> to explore!</span>
-    </div>
-
-    </div> <!-- End figma-canvas -->
-    </main> <!-- End figma-canvas-container -->
-
-    <!-- RIGHT SIDEBAR -->
-    <aside class="figma-sidebar-right">
-        <div class="sidebar-right-header">
-            <div class="user-avatar">H</div>
-            <div class="header-user-actions">
-                <div class="rail-icon" title="Present">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                </div>
-                <button class="btn-share">Share</button>
-                <div class="zoom-dropdown" style="margin-left: 12px; font-size: 11px; display: flex; align-items: center; gap: 4px; color: rgba(0,0,0,0.7);">
-                    <span id="zoom-level">33%</span> <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                </div>
-            </div>
-        </div>
-
-        <div class="property-tabs">
-            <div style="display: flex; gap: 4px;">
-                <div class="prop-tab active">Design</div>
-                <div class="prop-tab">Prototype</div>
-            </div>
-        </div>
-
-        <div class="sidebar-panel-content">
-            <!-- ALIGNMENT TOOLS -->
-            <div style="padding: 12px 16px; border-bottom: 1px solid var(--figma-border); display: flex; justify-content: space-between; align-items: center;">
-                <div class="align-group">
-                    <div class="align-item" title="Align left">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 10H3M21 6H3M13 14H3M19 18H3"/></svg>
-                    </div>
-                    <div class="align-item" title="Align horizontal centers">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10H6M21 6H3M14 14H10M16 18H8"/></svg>
-                    </div>
-                    <div class="align-item" title="Align right">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10H7M21 6H3M21 14H11M21 18H5"/></svg>
-                    </div>
-                </div>
-                <div class="align-group">
-                    <div class="align-item" title="Align top">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(90deg);"><path d="M17 10H3M21 6H3M13 14H3M19 18H3"/></svg>
-                    </div>
-                    <div class="align-item" title="Align vertical centers">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="10" y="3" width="4" height="18" rx="1"/><path d="M3 12h7M14 12h7"/></svg>
-                    </div>
-                    <div class="align-item" title="Align bottom">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(-90deg);"><path d="M21 10H7M21 6H3M21 14H11M21 18H5"/></svg>
-                    </div>
-                </div>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.5;"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
-            </div>
-
-                <!-- LAYOUT SECTION -->
-                <div class="sidebar-section">
-                    <div class="section-label">Layout</div>
-                    <div style="padding: 0 16px 8px 16px;">
-                        <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 8px;">Resizing</div>
-                        <div class="resizing-group">
-                            <div class="resizing-item active">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M15 8l4 4-4 4"/></svg>
+                    <div class="sidebar-section">
+                        <div class="section-label">Layers</div>
+                        <div class="sidebar-list">
+                            <div class="list-item active" id="nav-layer-1">
+                                <span>#</span> Error_Overlay_FINAL
                             </div>
-                            <div class="resizing-item">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                            <div class="list-item" id="nav-layer-2">
+                                <span>#</span> AutoLayout_Gone_Wrong
                             </div>
-                            <div class="resizing-item">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+                            <div class="list-item">
+                                <span>V</span> Designer_Avatar
                             </div>
                         </div>
                     </div>
-                    <div class="prop-row-custom">
-                        <div class="input-with-icon">
-                            <span style="color: rgba(0,0,0,0.4); width: 12px;">W</span>
-                            <span>1440</span>
-                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" style="margin-left: auto;"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+                </div>
+            </aside>
+
+            <!-- MAIN CANVAS CONTAINER -->
+            <main class="figma-canvas-container">
+                <!-- RULERS -->
+                <div class="ruler-h">
+                    <div class="ruler-tick" style="left: 0;">0</div>
+                    <div class="ruler-tick" style="left: 100px;">1000</div>
+                    <div class="ruler-tick" style="left: 200px;">2000</div>
+                </div>
+                <div class="ruler-v">
+                    <div class="ruler-tick" style="top: 0;">0</div>
+                    <div class="ruler-tick" style="top: 100px;">1000</div>
+                    <div class="ruler-tick" style="top: 200px;">2000</div>
+                </div>
+
+                <div class="figma-canvas" id="viewport">
+                    <!-- ORIGINAL CONTENT -->
+                    <div class="dark-canvas"></div>
+                    <div class="grid-overlay"></div>
+
+                    <!-- FLOATING TOOLBAR PILL -->
+                    <div class="figma-toolbar-pill">
+                        <div class="toolbar-group">
+                            <div class="toolbar-tool active" id="tool-cursor" title="Move (V)">
+                                <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                                    <path d="M3.5 2l7.5 4.5-5 .5-2 4.5V2z" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <div class="toolbar-tool" title="Frame (F)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M4 1v12M10 1v12M1 4h12M1 10h12" stroke="currentColor" stroke-width="1.2" />
+                                </svg>
+                            </div>
+                            <div class="toolbar-tool" title="Hand (H)" id="tool-hand">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M4 4.5V3a1.5 1.5 0 013 0v1.5m0 0V3a1.5 1.5 0 013 0v1.5"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="toolbar-tool" title="Comment (C)">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M1 10.5V2a1 1 0 011-1h10a1 1 0 011 1v7" stroke="currentColor"
+                                        stroke-width="1.2" />
+                                </svg>
+                            </div>
                         </div>
-                        <div class="input-with-icon">
-                            <span style="color: rgba(0,0,0,0.4); width: 12px;">H</span>
-                            <span>900</span>
-                            <span style="margin-left: auto; font-size: 10px; color: rgba(0,0,0,0.4);">Hug</span>
+                    </div>
+
+                    <!-- Microcopy Header -->
+                    <div class="micro-header" id="microHeader">
+                        Looks like this page got lost in my <strong>infinite component hierarchy</strong>…
+                    </div>
+
+                    <!-- Progress HUD -->
+                    <div class="hud-progress">
+                        🖱️ Tip: <span class="hud-count">Hold Space to Pan • Scroll to Zoom</span>
+                    </div>
+
+                    <!-- Panning Canvas -->
+                    <div class="pan-canvas" id="panCanvas">
+
+                        <!-- Buried Avatar -->
+                        <div class="buried-avatar" style="top: 250px; left: -40px; opacity: 1;">
+                            <img src="images/avatar-boy.png" alt="Buried Designer" loading="lazy" decoding="async"
+                                width="90" height="90" class="avatar-img">
+                            <div class="avatar-help-text" style="color: rgba(0,0,0,0.4)">Where did everything go?</div>
                         </div>
-                        <div class="resizing-item" style="background: rgba(0,0,0,0.03); width: 28px; height: 28px;">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8v8H8z"/></svg>
+
+                        <!-- Layer 1: Error -->
+                        <div class="figma-layer layer-1">
+                            <div class="layer-title"># Error_Overlay_FINAL_v3_REAL</div>
+                            <div class="layer-body">
+                                <div style="text-align: center; padding: 40px 0;">
+                                    <div style="font-size: 48px; margin-bottom: 24px;">⛔</div>
+                                    <div
+                                        style="font-size: 24px; font-weight: 600; color: #F24E1E; margin-bottom: 12px;">
+                                        404 — Page Not Found</div>
+                                    <div style="font-size: 14px; color: rgba(0,0,0,0.5); line-height: 1.6;">The
+                                        component you're looking for<br>has been lost in the infinite canvas.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Layer 2: AutoLayout -->
+                        <div class="figma-layer layer-2">
+                            <div class="layer-title"># AutoLayout_Gone_Wrong</div>
+                            <div class="layer-body">
+                                <div class="mock-al-grid">
+                                    <div class="mock-al-cell"
+                                        style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.7);">H=HUG
+                                    </div>
+                                    <div class="mock-al-cell"
+                                        style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.7);">W=FILL
+                                    </div>
+                                    <div class="mock-al-cell"
+                                        style="border-color: rgba(162,89,255,0.3); color: rgba(162,89,255,0.7);">GAP=∞
+                                    </div>
+                                    <div class="mock-al-cell"
+                                        style="border-color: rgba(162,89,255,0.15); color: rgba(162,89,255,0.5);">PAD 0
+                                    </div>
+                                </div>
+                                <div class="layer-comment">Auto-layout left the chat after that resize…</div>
+                            </div>
+                        </div>
+
+                        <!-- Layer 3: Dependncies -->
+                        <div class="figma-layer layer-3">
+                            <div class="layer-title">#Missing_Dependencies</div>
+                            <div class="layer-body">
+                                <div class="mock-row">
+                                    <div class="mock-bar blue w70 thick"></div>
+                                </div>
+                                <div class="mock-row">
+                                    <div class="mock-bar blue w40"></div>
+                                    <div class="mock-bar blue w30"></div>
+                                </div>
+                                <div class="mock-cards" style="margin-top: 20px;">
+                                    <div class="mock-card">⚡</div>
+                                    <div class="mock-card">🔌</div>
+                                    <div class="mock-card">💤</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Layer 4: Detached -->
+                        <div class="figma-layer layer-4">
+                            <div class="layer-title">#Detached_Instance_v47</div>
+                            <div class="layer-body">
+                                <div class="mock-cards">
+                                    <div class="mock-card">🔓</div>
+                                    <div class="mock-card">⚙️</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Layer 5: Safe Point -->
+                        <div class="figma-layer layer-5"
+                            style="box-shadow: 0 12px 32px rgba(255,117,24,0.15); border-color: rgba(255,117,24,0.3);">
+                            <div class="layer-title" style="color: #FF7518;"># ✨ Safe_Zone <span>(You found it!)</span>
+                            </div>
+                            <div class="reveal-content" id="revealContent">
+                                <h1 class="reveal-title" style="font-size: 28px;">Back to Safety</h1>
+                                <p class="reveal-desc">
+                                    Looks like this page got lost in my infinite component hierarchy… let's get you
+                                    back.
+                                </p>
+                                <div class="reveal-actions">
+                                    <div class="search-bar-container">
+                                        <input type="text" class="search-input"
+                                            placeholder="Search for what you need...">
+                                        <button class="search-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="11" cy="11" r="8"></circle>
+                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <a href="/#work" class="btn-back">
+                                        Back to my work
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End pan-canvas -->
+
+                    <!-- Hint Bar -->
+                    <div class="hint-bar" id="hintBar">
+                        <span class="wiggle-icon">👋</span>
+                        <span><strong>Pan around the canvas</strong> to explore!</span>
+                    </div>
+
+                </div> <!-- End figma-canvas -->
+            </main> <!-- End figma-canvas-container -->
+
+            <!-- RIGHT SIDEBAR -->
+            <aside class="figma-sidebar-right">
+                <div class="sidebar-right-header">
+                    <div class="user-avatar">H</div>
+                    <div class="header-user-actions">
+                        <div class="rail-icon" title="Present">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                        <button class="btn-share">Share</button>
+                        <div class="zoom-dropdown"
+                            style="margin-left: 12px; font-size: 11px; display: flex; align-items: center; gap: 4px; color: rgba(0,0,0,0.7);">
+                            <span id="zoom-level">33%</span> <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                <path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2" />
+                            </svg>
                         </div>
                     </div>
                 </div>
 
-                <!-- APPEARANCE SECTION -->
-                <div class="sidebar-section">
-                    <div class="section-label">
-                        Appearance
-                        <div class="section-actions">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-                        </div>
+                <div class="property-tabs">
+                    <div style="display: flex; gap: 4px;">
+                        <div class="prop-tab active">Design</div>
+                        <div class="prop-tab">Prototype</div>
                     </div>
-                    <div class="prop-row-custom">
-                        <div style="flex: 1;">
-                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Opacity</div>
+                </div>
+
+                <div class="sidebar-panel-content">
+                    <!-- ALIGNMENT TOOLS -->
+                    <div
+                        style="padding: 12px 16px; border-bottom: 1px solid var(--figma-border); display: flex; justify-content: space-between; align-items: center;">
+                        <div class="align-group">
+                            <div class="align-item" title="Align left">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M17 10H3M21 6H3M13 14H3M19 18H3" />
+                                </svg>
+                            </div>
+                            <div class="align-item" title="Align horizontal centers">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 10H6M21 6H3M14 14H10M16 18H8" />
+                                </svg>
+                            </div>
+                            <div class="align-item" title="Align right">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 10H7M21 6H3M21 14H11M21 18H5" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="align-group">
+                            <div class="align-item" title="Align top">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" style="transform: rotate(90deg);">
+                                    <path d="M17 10H3M21 6H3M13 14H3M19 18H3" />
+                                </svg>
+                            </div>
+                            <div class="align-item" title="Align vertical centers">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="10" y="3" width="4" height="18" rx="1" />
+                                    <path d="M3 12h7M14 12h7" />
+                                </svg>
+                            </div>
+                            <div class="align-item" title="Align bottom">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" style="transform: rotate(-90deg);">
+                                    <path d="M21 10H7M21 6H3M21 14H11M21 18H5" />
+                                </svg>
+                            </div>
+                        </div>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" style="opacity: 0.5;">
+                            <circle cx="12" cy="12" r="1" />
+                            <circle cx="12" cy="5" r="1" />
+                            <circle cx="12" cy="19" r="1" />
+                        </svg>
+                    </div>
+
+                    <!-- LAYOUT SECTION -->
+                    <div class="sidebar-section">
+                        <div class="section-label">Layout</div>
+                        <div style="padding: 0 16px 8px 16px;">
+                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 8px;">Resizing</div>
+                            <div class="resizing-group">
+                                <div class="resizing-item active">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M5 12h14M15 8l4 4-4 4" />
+                                    </svg>
+                                </div>
+                                <div class="resizing-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M4 6h16M4 12h16M4 18h16" />
+                                    </svg>
+                                </div>
+                                <div class="resizing-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prop-row-custom">
                             <div class="input-with-icon">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="2 2"/></svg>
-                                <span>100%</span>
+                                <span style="color: rgba(0,0,0,0.4); width: 12px;">W</span>
+                                <span>1440</span>
+                                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" style="margin-left: auto;">
+                                    <path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2" />
+                                </svg>
                             </div>
-                        </div>
-                        <div style="flex: 1;">
-                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Corner radius</div>
                             <div class="input-with-icon">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11c0-4.418-3.582-8-8-8M3 13c0 4.418 3.582 8 8 8"/></svg>
-                                <span style="color: rgba(0,0,0,0.3);">0</span>
+                                <span style="color: rgba(0,0,0,0.4); width: 12px;">H</span>
+                                <span>900</span>
+                                <span style="margin-left: auto; font-size: 10px; color: rgba(0,0,0,0.4);">Hug</span>
+                            </div>
+                            <div class="resizing-item" style="background: rgba(0,0,0,0.03); width: 28px; height: 28px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <path d="M8 8h8v8H8z" />
+                                </svg>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- TYPOGRAPHY SECTION -->
-                <div class="sidebar-section">
-                    <div class="section-label">
-                        Typography
-                        <div class="section-actions">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                    <!-- APPEARANCE SECTION -->
+                    <div class="sidebar-section">
+                        <div class="section-label">
+                            Appearance
+                            <div class="section-actions">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                    <div class="prop-row-custom">
-                        <div class="prop-block-custom select" style="justify-content: space-between;">
-                            <span>Segoe UI</span>
-                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                    </div>
-                    <div class="prop-row-custom">
-                        <div class="prop-block-custom select" style="flex: 1.5;">
-                            <span>Regular</span>
-                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                        <div class="prop-block-custom select" style="flex: 1;">
-                            <span>14</span>
-                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
-                        </div>
-                    </div>
-                    <div style="padding: 4px 16px 12px 16px;">
-                        <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 8px;">Alignment</div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div class="align-group">
-                                <div class="align-item active">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 10H3M21 6H3M13 14H3M19 18H3"/></svg>
-                                </div>
-                                <div class="align-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10H6M21 6H3M14 14H10M16 18H8"/></svg>
-                                </div>
-                                <div class="align-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10H7M21 6H3M21 14H11M21 18H5"/></svg>
+                        <div class="prop-row-custom">
+                            <div style="flex: 1;">
+                                <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Opacity</div>
+                                <div class="input-with-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="2 2" />
+                                    </svg>
+                                    <span>100%</span>
                                 </div>
                             </div>
-                            <div class="align-group">
-                                <div class="align-item active">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+                            <div style="flex: 1;">
+                                <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Corner radius
                                 </div>
-                                <div class="align-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="18" height="4" rx="1"/><path d="M12 3v7M12 14v7"/></svg>
-                                </div>
-                                <div class="align-item">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+                                <div class="input-with-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 11c0-4.418-3.582-8-8-8M3 13c0 4.418 3.582 8 8 8" />
+                                    </svg>
+                                    <span style="color: rgba(0,0,0,0.3);">0</span>
                                 </div>
                             </div>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.5;"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- TYPOGRAPHY SECTION -->
+                    <div class="sidebar-section">
+                        <div class="section-label">
+                            Typography
+                            <div class="section-actions">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7" />
+                                    <rect x="14" y="3" width="7" height="7" />
+                                    <rect x="3" y="14" width="7" height="7" />
+                                    <rect x="14" y="14" width="7" height="7" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="prop-row-custom">
+                            <div class="prop-block-custom select" style="justify-content: space-between;">
+                                <span>Segoe UI</span>
+                                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                    <path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="prop-row-custom">
+                            <div class="prop-block-custom select" style="flex: 1.5;">
+                                <span>Regular</span>
+                                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                    <path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2" />
+                                </svg>
+                            </div>
+                            <div class="prop-block-custom select" style="flex: 1;">
+                                <span>14</span>
+                                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                    <path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div style="padding: 4px 16px 12px 16px;">
+                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 8px;">Alignment</div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div class="align-group">
+                                    <div class="align-item active">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M17 10H3M21 6H3M13 14H3M19 18H3" />
+                                        </svg>
+                                    </div>
+                                    <div class="align-item">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M18 10H6M21 6H3M14 14H10M16 18H8" />
+                                        </svg>
+                                    </div>
+                                    <div class="align-item">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M21 10H7M21 6H3M21 14H11M21 18H5" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="align-group">
+                                    <div class="align-item active">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M12 3v18M3 12h18" />
+                                        </svg>
+                                    </div>
+                                    <div class="align-item">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="10" width="18" height="4" rx="1" />
+                                            <path d="M12 3v7M12 14v7" />
+                                        </svg>
+                                    </div>
+                                    <div class="align-item">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M12 3v18M3 12h18" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" style="opacity: 0.5;">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FILL SECTION -->
+                    <div class="sidebar-section" style="border-bottom: none;">
+                        <div class="section-label">
+                            Fill
+                            <div class="section-actions">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7" />
+                                    <rect x="14" y="3" width="7" height="7" />
+                                    <rect x="3" y="14" width="7" height="7" />
+                                    <rect x="14" y="14" width="7" height="7" />
+                                </svg>
+                                <span style="font-size: 18px; line-height: 1;">+</span>
+                            </div>
+                        </div>
+                        <div class="prop-row-custom fill-row">
+                            <div class="color-swatch" style="background: #1E1E1E;"></div>
+                            <div class="hex-input">1E1E1E</div>
+                            <div class="opacity-input">100%</div>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" style="opacity: 0.5;">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <span style="opacity: 0.5; font-size: 16px;">−</span>
                         </div>
                     </div>
                 </div>
+            </aside>
+        </div>
 
-                <!-- FILL SECTION -->
-                <div class="sidebar-section" style="border-bottom: none;">
-                    <div class="section-label">
-                        Fill
-                        <div class="section-actions">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                            <span style="font-size: 18px; line-height: 1;">+</span>
-                        </div>
-                    </div>
-                    <div class="prop-row-custom fill-row">
-                        <div class="color-swatch" style="background: #1E1E1E;"></div>
-                        <div class="hex-input">1E1E1E</div>
-                        <div class="opacity-input">100%</div>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.5;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                        <span style="opacity: 0.5; font-size: 16px;">−</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
-    </div>
+        <!-- Confetti -->
+        <div class="confetti-layer" id="confLayer"></div>
 
-    <!-- Confetti -->
-    <div class="confetti-layer" id="confLayer"></div>
+        <script>
+            const viewport = document.getElementById('viewport');
+            const panCanvas = document.getElementById('panCanvas');
+            const gridOverlay = document.querySelector('.grid-overlay');
+            const zoomLevelDisplay = document.getElementById('zoom-level');
+            const toolCursor = document.getElementById('tool-cursor');
+            const toolHand = document.getElementById('tool-hand');
+            const hintBar = document.getElementById('hintBar');
 
-    <script>
-        const viewport = document.getElementById('viewport');
-        const panCanvas = document.getElementById('panCanvas');
-        const gridOverlay = document.querySelector('.grid-overlay');
-        const zoomLevelDisplay = document.getElementById('zoom-level');
-        const toolCursor = document.getElementById('tool-cursor');
-        const toolHand = document.getElementById('tool-hand');
-        const hintBar = document.getElementById('hintBar');
+            let isDragging = false;
+            let startX, startY;
 
-        let isDragging = false;
-        let startX, startY;
-        
-        // Initial state centered on first layer
-        let translateX = window.innerWidth > 900 ? 860 : 860; 
-        let translateY = 0;
-        let scale = Math.min(window.innerWidth / 520, 1);
-        
-        let isSpacePressed = false;
-        let isCtrlPressed = false;
+            // Initial state centered on first layer
+            let translateX = window.innerWidth > 900 ? 860 : 860;
+            let translateY = 0;
+            let scale = Math.min(window.innerWidth / 520, 1);
 
-        function updateTransform() {
-            panCanvas.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
-            gridOverlay.style.backgroundPosition = `${translateX}px ${translateY}px`;
-            gridOverlay.style.backgroundSize = `${24 * scale}px ${24 * scale}px`;
-            zoomLevelDisplay.innerText = `${Math.round(scale * 100)}%`;
-        }
+            let isSpacePressed = false;
+            let isCtrlPressed = false;
 
-        function updateTools() {
-            if (isSpacePressed || isCtrlPressed || isDragging) {
-                viewport.classList.add('hand-tool');
-                if (isSpacePressed) {
-                    toolHand.classList.add('active');
-                    toolCursor.classList.remove('active');
+            function updateTransform() {
+                panCanvas.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+                gridOverlay.style.backgroundPosition = `${translateX}px ${translateY}px`;
+                gridOverlay.style.backgroundSize = `${24 * scale}px ${24 * scale}px`;
+                zoomLevelDisplay.innerText = `${Math.round(scale * 100)}%`;
+            }
+
+            function updateTools() {
+                if (isSpacePressed || isCtrlPressed || isDragging) {
+                    viewport.classList.add('hand-tool');
+                    if (isSpacePressed) {
+                        toolHand.classList.add('active');
+                        toolCursor.classList.remove('active');
+                    }
+                } else {
+                    viewport.classList.remove('hand-tool');
+                    toolHand.classList.remove('active');
+                    toolCursor.classList.add('active');
                 }
-            } else {
-                viewport.classList.remove('hand-tool');
-                toolHand.classList.remove('active');
-                toolCursor.classList.add('active');
             }
-        }
 
-        viewport.addEventListener('mousedown', (e) => {
-            if (e.target.closest('.reveal-actions') && !isSpacePressed) return;
-            if (e.button === 1 || isSpacePressed || e.target === viewport || e.target === gridOverlay || e.target.classList.contains('dark-canvas')) {
-                isDragging = true;
-                startX = e.clientX - translateX;
-                startY = e.clientY - translateY;
-                viewport.classList.add('grabbing');
-                if(hintBar) hintBar.classList.add('hidden');
-                updateTools();
-                e.preventDefault();
-            }
-        });
+            viewport.addEventListener('mousedown', (e) => {
+                if (e.target.closest('.reveal-actions') && !isSpacePressed) return;
+                if (e.button === 1 || isSpacePressed || e.target === viewport || e.target === gridOverlay || e.target.classList.contains('dark-canvas')) {
+                    isDragging = true;
+                    startX = e.clientX - translateX;
+                    startY = e.clientY - translateY;
+                    viewport.classList.add('grabbing');
+                    if (hintBar) hintBar.classList.add('hidden');
+                    updateTools();
+                    e.preventDefault();
+                }
+            });
 
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            translateX = e.clientX - startX;
-            translateY = e.clientY - startY;
-            updateTransform();
-        });
-
-        window.addEventListener('mouseup', () => {
-            isDragging = false;
-            viewport.classList.remove('grabbing');
-            updateTools();
-        });
-
-        window.addEventListener('wheel', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                e.preventDefault();
-                const zoomSpeed = 0.001;
-                const delta = -e.deltaY;
-                const newScale = Math.min(Math.max(0.1, scale + delta * zoomSpeed * scale), 5);
-                
-                const rect = viewport.getBoundingClientRect();
-                const mouseX = e.clientX - rect.left - rect.width/2;
-                const mouseY = e.clientY - rect.top - rect.height/2;
-                
-                translateX -= (mouseX - translateX) * (newScale / scale - 1);
-                translateY -= (mouseY - translateY) * (newScale / scale - 1);
-                
-                scale = newScale;
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
                 updateTransform();
-            } else {
-                e.preventDefault();
-                translateY -= e.deltaY;
-                translateX -= e.deltaX;
-                updateTransform();
-            }
-        }, { passive: false });
+            });
 
-        window.addEventListener('keydown', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                isCtrlPressed = true;
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+                viewport.classList.remove('grabbing');
                 updateTools();
-            }
-            if (e.code === 'Space') {
-                if (!isSpacePressed) {
+            });
+
+            window.addEventListener('wheel', (e) => {
+                if (e.ctrlKey || e.metaKey) {
+                    e.preventDefault();
+                    const zoomSpeed = 0.001;
+                    const delta = -e.deltaY;
+                    const newScale = Math.min(Math.max(0.1, scale + delta * zoomSpeed * scale), 5);
+
+                    const rect = viewport.getBoundingClientRect();
+                    const mouseX = e.clientX - rect.left - rect.width / 2;
+                    const mouseY = e.clientY - rect.top - rect.height / 2;
+
+                    translateX -= (mouseX - translateX) * (newScale / scale - 1);
+                    translateY -= (mouseY - translateY) * (newScale / scale - 1);
+
+                    scale = newScale;
+                    updateTransform();
+                } else {
+                    e.preventDefault();
+                    translateY -= e.deltaY;
+                    translateX -= e.deltaX;
+                    updateTransform();
+                }
+            }, { passive: false });
+
+            window.addEventListener('keydown', (e) => {
+                if (e.ctrlKey || e.metaKey) {
+                    isCtrlPressed = true;
+                    updateTools();
+                }
+                if (e.code === 'Space') {
+                    if (!isSpacePressed) {
+                        isSpacePressed = true;
+                        updateTools();
+                    }
+                }
+                if (e.key.toLowerCase() === 'h') {
                     isSpacePressed = true;
                     updateTools();
                 }
-            }
-            if (e.key.toLowerCase() === 'h') {
-                isSpacePressed = true;
-                updateTools();
-            }
-            if (e.key.toLowerCase() === 'v') {
-                isSpacePressed = false;
-                updateTools();
-            }
-            if (e.ctrlKey && e.code === 'Digit0') {
-                e.preventDefault();
-                scale = 1;
-                translateX = 0;
-                translateY = 0;
-                updateTransform();
-            }
-        });
-
-        window.addEventListener('keyup', (e) => {
-            if (!e.ctrlKey && !e.metaKey) {
-                isCtrlPressed = false;
-            }
-            if (e.code === 'Space') {
-                isSpacePressed = false;
-            }
-            updateTools();
-        });
-
-        window.onload = () => {
-            updateTransform();
-            updateTools();
-        };
-
-        viewport.addEventListener('mousedown', (e) => {
-            if (e.button === 1) e.preventDefault();
-        });
-    </script>
-    <script type="text/javascript">
-        // Global Security
-        document.addEventListener('contextmenu', (e) => e.preventDefault());
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
-        };
-    </script>
-    <script>
-        // Unregister Service Workers to prevent caching issues
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
-                    registration.unregister();
+                if (e.key.toLowerCase() === 'v') {
+                    isSpacePressed = false;
+                    updateTools();
+                }
+                if (e.ctrlKey && e.code === 'Digit0') {
+                    e.preventDefault();
+                    scale = 1;
+                    translateX = 0;
+                    translateY = 0;
+                    updateTransform();
                 }
             });
-        }
-    </script>
-    <script src="js/snowflake_cursor.js"></script>
-    <script src="js/figma-app.js"></script>
-    <script src="js/common-security.js" defer></script>
-</body>
-</html>
 
+            window.addEventListener('keyup', (e) => {
+                if (!e.ctrlKey && !e.metaKey) {
+                    isCtrlPressed = false;
+                }
+                if (e.code === 'Space') {
+                    isSpacePressed = false;
+                }
+                updateTools();
+            });
+
+            window.onload = () => {
+                updateTransform();
+                updateTools();
+            };
+
+            viewport.addEventListener('mousedown', (e) => {
+                if (e.button === 1) e.preventDefault();
+            });
+        </script>
+        <script type="text/javascript">
+            // Global Security
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+            document.onkeydown = function (e) {
+                if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) return false;
+            };
+        </script>
+        <script>
+            // Unregister Service Workers to prevent caching issues
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                    for (let registration of registrations) {
+                        registration.unregister();
+                    }
+                });
+            }
+        </script>
+        <script src="js/snowflake_cursor.js"></script>
+        <script src="js/figma-app.js"></script>
+        <script src="js/common-security.js" defer></script>
+</body>
+
+</html>

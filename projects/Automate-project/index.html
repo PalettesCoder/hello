@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <!-- Security Headers (GitHub Pages doesn't support HTTP headers) -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
-    <title>Harsha Royal | UI Developer & Product Designer Portfolio</title>
+    <title>Automate | Visual Workflow Builder — Senior UX Case Study</title>
     <meta name="author" content="Harsha Royal">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <meta name="description" content="Harsha Royal is a professional UI Developer and Product Designer specializing in building clean, scalable digital experiences and high-fidelity interfaces. Explore my latest work and case studies.">
@@ -34,11 +34,7 @@
     <meta property="twitter:creator" content="@palettescoder">
 
     <link rel="canonical" href="https://harsharoyal.in/">
-    <link rel="shortcut icon" href="../images/favicon.svg">
-    <!-- PWA -->
-    <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="#FF7518">
-    <link rel="apple-touch-icon" href="../images/logo.svg">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -49,10 +45,10 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
     <!-- Preload Critical Fonts -->
-    <link rel="preload" href="../fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="../fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="../fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="../fonts/ApfelGrotezk-Regular.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Inter-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/ApfelGrotezk-Regular.otf" as="font" type="font/otf" crossorigin>
     
     <!-- JSON-LD Structured Data — World-Class SEO -->
     <script type="application/ld+json">
@@ -149,74 +145,95 @@
       ]
     }]
     </script>
-    
     <!-- fonts -->
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/inter.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <style>
-        /* Maintain the website design but fix layout for All Projects */
-        .main-content { padding-top: 100px !important; }
-        .tf-grid-layout { display: grid !important; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-        @media (max-width: 991px) { 
-            .tf-grid-layout { grid-template-columns: 1fr; } 
-            .main-content { padding-left: 0 !important; padding-right: 0 !important; }
-        }
-        
-        /* Ensure scrolling and no home-page popups */
-        #devPopup, #successPopup, #certificatePopup { display: none !important; }
-        .dev-popup-overlay { display: none !important; }
-        body.counter-scroll { overflow-y: auto !important; height: auto !important; }
-        #wrapper { height: auto !important; overflow: visible !important; }
+    <link rel="stylesheet" href="../../css/fonts.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../../css/inter.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../../css/style.css" media="print" onload="this.media='all'">
+    
+    <noscript>
+        <link rel="stylesheet" href="../../css/fonts.css">
+        <link rel="stylesheet" href="../../css/inter.css">
+        <link rel="stylesheet" href="../../css/style.css">
+    </noscript>
+    
+    <!-- critical css -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+    
+    <!-- non-critical css (deferred) -->
+    <link rel="stylesheet" type="text/css" href="../../css/figma-nav.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../../css/swiper-bundle.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../../css/animate.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="../../css/popup.css" media="print" onload="this.media='all'">
+    
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="../../css/figma-nav.css">
+        <link rel="stylesheet" href="../../css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="../../css/animate.css">
+        <link rel="stylesheet" type="text/css" href="../../css/popup.css">
+    </noscript>
 
-        .back-btn-premium {
-            display: inline-flex;
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="../../images/image.jpg" as="image" fetchpriority="high">
+    
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="../../images/favicon.svg">
+    <link rel="apple-touch-icon-precomposed" href="../../images/favicon.svg">
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0,0);
+    </script>
+    <!-- Mobile Fixes & Global Constraints -->
+    <style>
+    @media (max-width: 991px) {
+        #home.section-intro {
+            text-align: center !important;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 100px;
-            color: #000 !important;
-            font-size: 13px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            margin-bottom: 24px;
-            transition: all 0.3s ease;
+            justify-content: center;
         }
-        .back-btn-premium:hover {
-            background: #000;
-            color: #fff !important;
+        .intro-title {
+            text-align: center !important;
+            max-width: 100%;
         }
-
-        .header-title {
-            font-size: 42px !important;
-            line-height: 1.05;
-            font-weight: 700;
-            letter-spacing: -1.5px;
+        .intro-author {
+            justify-content: center !important;
+            width: 100%;
+            margin-right: 0 !important;
         }
-
-        @media (max-width: 768px) {
-            .header-title { font-size: 32px !important; }
+        .intro-item {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            justify-content: center !important;
+            text-align: center;
         }
+        .wg-curve-text {
+            right: 50% !important;
+            transform: translateX(50%) !important;
+        }
+        .action-open-mobile {
+            top: 20px !important;
+            right: 20px !important;
+            display: flex !important;
+            align-items: center !important;
+            z-index: 1001 !important;
+        }
+        .tf-header-wrap {
+            align-items: center !important;
+            padding-top: 0 !important;
+        }
+    }
     </style>
-    <style>
-        /* Override global styles for light theme */
-        .text-white-72 { color: rgba(0, 0, 0, 0.72) !important; }
-        .text-white-56 { color: rgba(0, 0, 0, 0.56) !important; }
-        .text-white-40 { color: rgba(0, 0, 0, 0.40) !important; }
-        .text-white-92 { color: rgba(0, 0, 0, 0.92) !important; }
-    </style>
+    <script>
+        // Disable right-click across the entire page
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
 </head>
-
 <body class="counter-scroll">
-    <!-- <canvas class="cursor-trail d-none d-xl-block" id="trail"></canvas> -->
-
-    <!-- Preload -->
+<!-- Preload -->
     <div class="preload preload-container" id="preload">
         <div class="preload-logo">
             <div class="spinner"></div>
@@ -227,11 +244,11 @@
     <!-- Body Background -->
     <div class="body-background">
         <div class="bg-item">
-            <img loading="lazy" decoding="async" width="1440" height="900" src="../images/cloud-bg.png" alt="" role="presentation">
+            <img loading="lazy" decoding="async" width="1440" height="900" src="../../images/cloud-bg.png" alt="" role="presentation">
         </div>
         <div class="bg-video video-dark">
             <video class="video" muted="" autoplay="" loop="" playsinline="" preload="none" onerror="this.parentElement.style.display='none'">
-                <source src="../media/overlay-2.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none'">
+                <source src="../../media/overlay-2.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none'">
             </video>
             <div class="overlay-1"></div>
         </div>
@@ -347,51 +364,51 @@
         <div class="nav-mobile-list">
             <ul class="nav-mobile-item">
                 <li class="nav-item">
-                    <a href="../index.html#home" class="item-link scroll-link">
+                    <a href="#home" class="item-link scroll-link">
                         <i class="icon icon-home"></i>
                         <p class="tool-tip text-caption">Home</p>
                     </a>
                 </li>
                 <li class="br-line"></li>
                 <li class="nav-item">
-                    <a href="../index.html#about" class="item-link scroll-link">
+                    <a href="#about" class="item-link scroll-link">
                         <i class="icon icon-user-circle"></i>
                         <p class="tool-tip text-caption">About</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#education" class="item-link scroll-link">
+                    <a href="#education" class="item-link scroll-link">
                         <i class="icon icon-edu"></i>
                         <p class="tool-tip text-caption">Experience & Education</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#work" class="item-link scroll-link">
+                    <a href="#work" class="item-link scroll-link">
                         <i class="icon icon-high-light"></i>
                         <p class="tool-tip text-caption">Work</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#service" class="item-link scroll-link">
+                    <a href="#service" class="item-link scroll-link">
                         <i class="icon icon-service"></i>
                         <p class="tool-tip text-caption">Services</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#tech" class="item-link scroll-link">
+                    <a href="#tech" class="item-link scroll-link">
                         <i class="icon icon-tech-stack"></i>
                         <p class="tool-tip text-caption">Tech</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#testimonial" class="item-link scroll-link">
+                    <a href="#testimonial" class="item-link scroll-link">
                         <i class="icon icon-tes"></i>
                         <p class="tool-tip text-caption">Testimonials</p>
                     </a>
                 </li>
                 <li class="br-line"></li>
                 <li class="nav-item">
-                    <a href="../index.html#contact" class="item-link scroll-link">
+                    <a href="#contact" class="item-link scroll-link">
                         <i class="icon icon-send"></i>
                         <p class="tool-tip text-caption">Contact</p>
                     </a>
@@ -405,58 +422,58 @@
     <div class="sidebar-tools pst-v1">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="../index.html#home" class="item-link scroll-link" aria-label="Navigate to Home">
+                <a href="#home" class="item-link scroll-link" aria-label="Navigate to Home">
                     <i class="icon icon-home"></i>
                     <p class="tool-tip text-caption">Home</p>
                 </a>
             </li>
             <li class="br-line"></li>
             <li class="nav-item">
-                <a href="../index.html#about" class="item-link scroll-link" aria-label="Read more About Me">
+                <a href="#about" class="item-link scroll-link" aria-label="Read more About Me">
                     <i class="icon icon-user-circle"></i>
                     <p class="tool-tip text-caption">About</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#education" class="item-link scroll-link" aria-label="View Education and History">
+                <a href="#education" class="item-link scroll-link" aria-label="View Education and History">
                     <i class="icon icon-edu"></i>
                     <p class="tool-tip text-caption">Work & Education</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#work" class="item-link scroll-link" aria-label="View My Projects">
+                <a href="#work" class="item-link scroll-link" aria-label="View My Projects">
                     <i class="icon icon-high-light"></i>
                     <p class="tool-tip text-caption">Work</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#service" class="item-link scroll-link" aria-label="View My Services">
+                <a href="#service" class="item-link scroll-link" aria-label="View My Services">
                     <i class="icon icon-service"></i>
                     <p class="tool-tip text-caption">Services</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#tech" class="item-link scroll-link" aria-label="Explore My Tech Stack">
+                <a href="#tech" class="item-link scroll-link" aria-label="Explore My Tech Stack">
                     <i class="icon icon-tech-stack"></i>
                     <p class="tool-tip text-caption">Tech</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#testimonial" class="item-link scroll-link" aria-label="Read Client Testimonials">
+                <a href="#testimonial" class="item-link scroll-link" aria-label="Read Client Testimonials">
                     <i class="icon icon-tes"></i>
                     <p class="tool-tip text-caption">Testimonials</p>
                 </a>
             </li>
             <li class="br-line"></li>
             <li class="nav-item">
-                <a href="../index.html#contact" class="item-link scroll-link" aria-label="Contact Me">
+                <a href="#contact" class="item-link scroll-link" aria-label="Contact Me">
                     <i class="icon icon-send"></i>
                     <p class="tool-tip text-caption">Contact</p>
                 </a>
             </li>
         </ul>
         <div class="nav-bottom">
-            <a href="../index.html#home" class="tf-btn-icon go-top scroll-link" aria-label="Back to Top">
+            <a href="#home" class="tf-btn-icon go-top scroll-link" aria-label="Back to Top">
                 <i class="icon icon-arrow-top"></i>
             </a>
         </div>
@@ -466,11 +483,12 @@
     <div class="overlay-pop"></div>
     
 
-        <!-- Time Local -->
+        
+<!-- Time Local -->
         <div class="tf-header-wrap">
             <a href="/" class="logo-site d-lg-none" aria-label="Go to Home page">
                 <img loading="lazy" decoding="async" width="40" height="40"
-                    src="../images/logo.svg" alt="Portfolio Logo">
+                    src="../../images/logo.svg" alt="Portfolio Logo">
             </a>
             <div class="left">
                 <div class="time-local text-body-3">
@@ -482,422 +500,110 @@
             </div>
         </div>
         <!-- /Time Local -->
-    <main id="wrapper">
 
-
-
-
-        <!-- User Sidebar -->
-        <div class="sidebar-user">
-            <div class="wrap">
-                <div class="user-image">
-                    <div class="image">
-                        <img loading="eager" decoding="async" fetchpriority="high" width="468" height="856" src="../images/image.jpg" alt="Harsha Royal Profile Portrait" class="profile-image">
-                    </div>
-                    <div class="meta-left d-none d-sm-block">
-                        <div class="bg-item-svg">
-                            <img width="32" decoding="async"
-                                height="227" src="../images/vector-user.svg" alt="" role="presentation">
+        <main id="wrapper">
+        <!-- Project Sidebar -->
+        <div class="sidebar-user project-sidebar">
+            <div class="wrap no-padding" style="padding: 0; background: transparent;">
+                <div class="wg-work d-flex flex-column" style="height: calc(100vh - 48px); max-height: 860px; padding: 6px; background-color: var(--white); border-radius: 24px; box-shadow: var(--shadow-2); width: 100%;">
+                    <div class="work-content" style="position: relative; height: 100%; border-radius: 24px; overflow: hidden;">
+                        <div class="w-image" style="position: absolute; inset: 0; z-index: 0; border-radius: 18px;">
+                            <img loading="lazy" width="468" height="856" src="../../images/work-1.jpg" alt="Image" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"></div>
                         </div>
-                        <p class="avaiable-dot vertical text-body-3 text-black-72 fw-medium">
-                            <span class="text-vertical">Open to Network</span>
-                            <span class="dot"></span>
-                        </p>
-                    </div>
-                </div>
-                       <div class="nav-top">
-            <div class="tf-btn-icon toggle-switch-mode" aria-label="Toggle light/dark mode">
-                <i class="icon icon-light"></i>
-            </div>
-        </div>
-                <ul class="tf-social-icon-2 user-social d-grid">
-                    <li><a href="https://www.behance.net/palettescoder" aria-label="Visit my Behance Profile"><img loading="lazy" decoding="async" src="../images/Behance.png" alt="Behance logo" width="22" height="12"></a></li>
-                    <li><a href="https://www.linkedin.com/in/palettescoder/" aria-label="Visit my LinkedIn Profile"><i class="icon icon-linkin" aria-hidden="true"></i></a></li>
-                    <li><a href="https://medium.com/@palettescoder" aria-label="Visit my Medium Blog"><img loading="lazy" decoding="async" src="../images/medium.png" alt="Medium logo" width="22" height="21"></a></li>
-                </ul>
-                <div class="user-intro-top">
-                    <h1 class="greeting letter-space--2 text-white animationtext clip">
-                        Hey, I’m
-                        <span class="cd-words-wrapper">
-                            <span class="item-text is-visible">Harsha Royal</span>
-                            <span class="item-text is-hidden">UI Developer</span>
-                            <span class="item-text is-hidden">Product Designer</span>
-                        </span>
-                    </h1>
-                    <p class="introduce text-white letter-space--05 text-body-3">
-                        I turn complex ideas into clean, scalable digital experiences.
-                    </p>
-                </div>
-                <div class="user-info">
-                    <p class="avaiable-dot text-body-3 fw-medium d-sm-none">
-                        <span class="dot"></span>
-                        <span>Available for Work</span>
-                    </p>
-                    <div class="br-line"></div>
-                    <div class="action-group">
-                        <a href="freelance.html"
-                            class="tf-btn-action">
-                            <span class="ic-wrap">
-                                <i class="icon icon-arrow-right-top"></i>
-                            </span>
-                            <span class="text text-body-3 letter-space--05 fw-medium">
-                                Let’s talk
-                            </span>
-                            <span class="ic-wrap">
-                                <i class="icon icon-arrow-right-top"></i>
-                            </span>
-                        </a>
-
-                        <a href="resume.html"
-                            class="action-down">
-                            <i class="icon icon-user-circle"></i>
-                            <span class="text-body-3">
-                                View Resume
-                            </span>
-                        </a>
+                        <div class="content" style="position: relative; z-index: 1; padding: 32px; display: flex; flex-direction: column; height: 100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
+                            <div class="content-top" style="flex-shrink: 0;">
+                                <h4 class="w-title letter-space--2 text-white-100" style="margin-bottom: 16px;">
+                                    WSP Global
+                                </h4>
+                                <p class="w-desc text-white-100 text-body-3" style="margin-bottom: 64px;">
+                                    Designed responsive UI for Project Management tools supporting different type of internal projects
+                                </p>
+                                <div class="w-highlight" style="display: grid; gap: 40px; margin-bottom: 64px;">
+                                    <div class="box-high" style="display: grid; gap: 8px;">
+                                        <p class="text-body-3 text-white-100">Year</p>
+                                        <p class="text-body-1 text-white-100">2025</p>
+                                    </div>
+                                    <div class="box-high" style="display: grid; gap: 8px;">
+                                        <p class="text-body-3 text-white-100">Role</p>
+                                        <p class="text-body-1 text-white-100">Lead Product Designer</p>
+                                    </div>
+                                </div>
+                                <div class="w-tag-list" style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                                    <div class="tag" style="padding: 5px 11px; background-color: var(--black-56); border: 1px solid var(--white-8); backdrop-filter: blur(6px); border-radius: 999px;">
+                                        <span class="text-body-3 fw-medium text-white-100">Brand</span>
+                                    </div>
+                                    <div class="tag" style="padding: 5px 11px; background-color: var(--black-56); border: 1px solid var(--white-8); backdrop-filter: blur(6px); border-radius: 999px;">
+                                        <span class="text-body-3 fw-medium text-white-100">Website</span>
+                                    </div>
+                                    <div class="tag" style="padding: 5px 11px; background-color: var(--black-56); border: 1px solid var(--white-8); backdrop-filter: blur(6px); border-radius: 999px;">
+                                        <span class="text-body-3 fw-medium text-white-100">Webflow</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-bottom" style="flex-shrink: 0; margin-top: auto;">
+                                <div class="group-action" style="display: flex; align-items: center; justify-content: space-between;">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /User Sidebar -->
+        <!-- /Project Sidebar -->
 
-        
-        <div class="main-content" style="padding-left: 480px; padding-top: 80px; min-height: 100vh; position: relative; z-index: 1;">
-            
-            <div class="container-fluid px-5">
-                <div class="wrap-container">
-                    
-                    <!-- Header -->
-                    <div class="d-flex align-items-end justify-content-between mb-4 effectFade fadeUp" style="border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 40px;">
-                        <div style="flex: 1;">
-                            <a href="../index.html" class="back-btn-premium mb-3">
-                                <i class="icon icon-home"></i> <span>Return to Portfolio</span>
-                            </a>
-                            <h1 class="header-title" style="margin-top: 15px;">
-                                <span style="color: #000000; opacity: 0.9;">Selected</span> <br>
-                                <span style="color: var(--primary);">Works</span>
-                            </h1>
-                        </div>
-                        <div class="d-none d-xl-block text-end" style="max-width: 400px; padding-bottom: 15px;">
-                            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-bottom: 10px;">
-                                <span style="width: 40px; height: 1px; background: var(--primary);"></span>
-                                <p class="text-black-40" style="font-size: 10px; text-transform: uppercase; letter-spacing: 3px; margin: 0; font-weight: 700;">Design Archive</p>
-                            </div>
-                            <p style="color: rgba(0,0,0,0.6); font-size: 15px; line-height: 1.6; font-weight: 400; max-width: 380px;">A calculated exploration of enterprise digital products, balancing human-centered design with systemic scalability.</p>
-                        </div>
-                    </div>
-
-                    <div class="tf-grid-layout" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 40px; padding-bottom: 100px;">
-                        
-                        <!-- Project 1: WSP -->
-                        <div class="project-card-v2" onclick="location.href='WSP-project/index.html'">
-                            <div class="card-image-outer">
-                                <img src="../images/work-3.jpg" alt="WSP Global">
-                                <div class="card-overlay"></div>
-                                <div class="card-tags">
-                                    <span class="tag-v2">Enterprise</span>
-                                    <span class="tag-v2">SaaS</span>
+        <div class="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-xl-8 ms-auto">
+                        <div class="wrap-container">
+                            <div class="flat-spacing pb-5">
+                            
+                                <div style="display: flex; justify-content: flex-start; margin-bottom: 30px; margin-top: 20px;">
+                                    <a href="/"#work" class="tf-btn-action style-white flex-shrink-0" style="padding: 12px 24px; border-radius: 999px; box-shadow: var(--shadow-2); background: var(--white); border: 1px solid var(--white-8); z-index: 10;">
+                                        <span class="ic-wrap"><i class="icon icon-arrow-left"></i></span>
+                                        <span class="text text-body-1 letter-space--05 fw-medium text-black">Back to Projects</span>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="card-info">
-                                <h3 class="card-title">WSP Global</h3>
-                                <p class="card-desc">Orchestrating complexity. Redefining the operational backbone for global engineering projects through high-fidelity design systems.</p>
-<div class="card-footer">
-                                    <span class="phase-label">PRODUCTION</span>
-                                    <span class="explore-link">Explore Case <i class="icon icon-arrow-right-top"></i></span>
+                                
+                                <h1 class="mb-4 mt-2 text-black text-64 font-2">Visual automation.<br><span style="color:var(--primary); opacity:0.9;">for enterprise teams.</span></h1>
+                                <p class="text-body-1 text-black-56 mb-5">This projects involved designing and building scalable components for enterprise project management. It addresses common pain points by optimizing navigation and contextual information density, making complex data manageable.</p>
+                                
+                                <img src="../../images/work-2.jpg" class="img-fluid rounded mb-5 shadow" style="width:100%; object-fit: cover; border-radius: 20px;" />
+                                <img src="../../images/work-3.jpg" class="img-fluid rounded mb-5 shadow" style="width:100%; object-fit: cover; border-radius: 20px;" />
+                            
+                                <div class="text-center mt-5 mb-5 pb-5 pt-5">
+                                  <h2>Enjoyed this case study?</h2>
+                                  <br/>
+                                  <a href="/"#contact" class="tf-btn-action style-primary d-inline-flex"><span class="text text-body-3 fw-medium">Let's Work Together</span></a>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Project 2: Intel (COMMENTED OUT FOR NOW)
-                        <div class="project-card-v2" onclick="location.href='Intel-project/index.html'">
-                            <div class="card-image-outer">
-                                <img src="../images/work-1.jpg" alt="Intel AI">
-                                <div class="card-overlay"></div>
-                                <div class="card-tags">
-                                    <span class="tag-v2" style="background: rgba(0,191,67,0.2); color: #00BF43;">AI UX</span>
-                                    <span class="tag-v2">Conversational</span>
-                                </div>
-                            </div>
-                            <div class="card-info">
-                                <h3 class="card-title">Intel Chat Bots</h3>
-                                <p class="card-desc">Conversational ecosystems. Designing the cognitive interface that turns raw enterprise data into proactive, human-grade interactions.</p>
-                                <div class="card-footer">
-                                    <span class="phase-label">COMPLETED</span>
-                                    <span class="explore-link">Explore Case <i class="icon icon-arrow-right-top"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        -->
-
-                        <!-- Project 3: Bajaj -->
-                        <div class="project-card-v2" onclick="location.href='Bajaj-project/index.html'">
-                            <div class="card-image-outer">
-                                <img src="../images/work-2.jpg" alt="Bajaj Pay">
-                                <div class="card-overlay"></div>
-                                <div class="card-tags">
-                                    <span class="tag-v2" style="background: rgba(0,120,215,0.2); color: #0078D7;">Fintech</span>
-                                    <span class="tag-v2">Design System</span>
-                                </div>
-                            </div>
-                            <div class="card-info">
-                                <h3 class="card-title">Bajaj Pay</h3>
-                                <p class="card-desc">Fintech Economy at Scale. Architecting a unified payment ecosystem that balances massive transaction throughput with micro-moment delight.</p>
-                                <div class="card-footer">
-                                    <span class="phase-label">SCALING</span>
-                                    <span class="explore-link">Explore Case <i class="icon icon-arrow-right-top"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 4: Nexi -->
-                        <div class="project-card-v2" onclick="location.href='Nexi-project/index.html'">
-                            <div class="card-image-outer">
-                                <img src="../images/work-3.jpg" alt="Nexi App Thumbnail">
-                                <div class="card-overlay"></div>
-                                <div class="card-tags">
-                                    <span class="tag-v2" style="background: rgba(255,117,24,0.2); color: #FF7518;">UX/UI</span>
-                                    <span class="tag-v2">App Design</span>
-                                </div>
-                            </div>
-                            <div class="card-info">
-                                <h3 class="card-title">Nexi App</h3>
-                                <p class="card-desc">Redefining the digital interaction. Crafting a sophisticated yet accessible interface for a next-generation ecosystem.</p>
-                                <div class="card-footer">
-                                    <span class="phase-label">CASE STUDY</span>
-                                    <span class="explore-link">Explore Case <i class="icon icon-arrow-right-top"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
-        <style>
-            .header-title {
-                font-size: clamp(4rem, 12vw, 8rem);
-                line-height: 0.85;
-                letter-spacing: -6px;
-                font-weight: 800;
-                margin: 0;
-            }
-
-            .back-btn-premium {
-                display: inline-flex;
-                align-items: center;
-                gap: 15px;
-                padding: 14px 28px;
-                background: rgba(0,0,0,0.03);
-                border: 1px solid rgba(0,0,0,0.08);
-                border-radius: 100px;
-                color: #000000 !important;
-                font-size: 14px;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-                text-decoration: none;
-            }
-
-            .back-btn-premium:hover {
-                background: #000000;
-                color: #ffffff !important;
-                transform: translateX(-10px);
-            }
-
-            .project-card-v2 {
-                position: relative;
-                border-radius: 36px;
-                background: #ffffff;
-                border: 1px solid rgba(255, 117, 24, 0.15);
-                box-shadow: 0 12px 32px rgba(0,0,0,0.04), inset 0 0 0 1px rgba(255,117,24,0.05);
-                padding: 16px;
-                transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-                cursor: pointer;
-                overflow: hidden;
-                z-index: 1;
-            }
-
-            /* Massive Premium Glow Hover */
-            .project-card-v2::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                background: radial-gradient(circle at 50% 120%, rgba(255, 117, 24, 0.2) 0%, transparent 70%);
-                opacity: 0;
-                transition: opacity 0.7s ease;
-                z-index: -1;
-                pointer-events: none;
-            }
-
-            .project-card-v2:hover {
-                transform: translateY(-16px) scale(1.02);
-                border-color: rgba(255, 117, 24, 0.8);
-                box-shadow: 0 40px 80px rgba(255, 117, 24, 0.15), 0 20px 40px rgba(0,0,0,0.06);
-            }
-
-            .project-card-v2:hover::before {
-                opacity: 1;
-            }
-
-            .card-image-outer {
-                height: 480px;
-                border-radius: 24px;
-                overflow: hidden;
-                position: relative;
-            }
-
-            .card-image-outer img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 1.5s ease;
-            }
-
-            .project-card-v2:hover .card-image-outer img {
-                transform: scale(1.1);
-            }
-
-            .card-overlay {
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 40%, transparent 100%);
-                opacity: 0.8;
-                transition: opacity 0.5s;
-            }
-
-            .project-card-v2:hover .card-overlay {
-                opacity: 1;
-            }
-
-            .card-tags {
-                position: absolute;
-                top: 25px;
-                left: 25px;
-                display: flex;
-                gap: 10px;
-            }
-
-            .tag-v2 {
-                background: rgba(255,255,255,0.1);
-                backdrop-filter: blur(10px);
-                color: #ffffff;
-                padding: 6px 16px;
-                border-radius: 100px;
-                font-size: 11px;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-            }
-
-            .card-info {
-                padding: 32px 20px 16px 20px;
-            }
-
-            .card-title {
-                font-family: 'Apfel Grotezk', sans-serif;
-                font-size: 40px;
-                font-weight: 800;
-                color: #050505;
-                margin-bottom: 12px;
-                letter-spacing: -1.5px;
-                line-height: 1;
-            }
-
-            .card-desc {
-                color: #555555;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 1.5;
-                margin-bottom: 32px;
-            }
-
-            .card-footer {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-top: 1px solid rgba(0,0,0,0.06);
-                padding-top: 24px;
-            }
-
-            .phase-label {
-                font-size: 11px;
-                font-weight: 800;
-                font-family: 'Inter', sans-serif;
-                color: #888888;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-            }
-
-            .explore-link {
-                color: #000;
-                font-weight: 800;
-                font-size: 14px;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                transition: all 0.4s ease;
-                padding: 12px 24px;
-                background: transparent;
-                border-radius: 100px;
-                border: 1px solid rgba(0,0,0,0.1);
-            }
-
-            .project-card-v2:hover .explore-link {
-                background: #FF7518;
-                color: #ffffff;
-                border-color: #FF7518;
-                transform: translateX(0);
-                box-shadow: 0 10px 20px rgba(255, 117, 24, 0.3);
-            }
-
-            @media (max-width: 1400px) {
-                .main-content { padding-left: 440px !important; }
-            }
-            @media (max-width: 991px) {
-                .main-content { padding-left: 0 !important; padding-top: 40px !important; }
-                .tf-grid-layout { grid-template-columns: 1fr !important; }
-                .header-title { font-size: 4rem !important; letter-spacing: -2px; }
-            }
-
-            /* Fix for Sidebar Typing Animation clipping */
-            .cd-words-wrapper {
-                width: auto !important;
-                min-width: 250px;
-                display: inline-block !important;
-                overflow: visible !important;
-            }
-            .cd-words-wrapper b {
-                white-space: nowrap;
-            }
-        </style>
-
-
-
+</main>
 <!-- Javascript -->
-    <script src="../js/figma-notify.js" defer></script>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.nice-select.min.js"></script>
-    <script src="../js/jquery-validate.js"></script>
-    <script src="../js/swiper-bundle.min.js"></script>
-    <script src="../js/contact.js"></script>
-    <script src="../js/carousel.js" defer></script>
-    <script src="../js/infinityslide.js" defer></script>
+    <script src="../../js/figma-notify.js" defer></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery.nice-select.min.js"></script>
+    <script src="../../js/jquery-validate.js"></script>
+    <script src="../../js/swiper-bundle.min.js"></script>
+    <script src="../../js/contact.js"></script>
+    <script src="../../js/carousel.js" defer></script>
+    <script src="../../js/infinityslide.js" defer></script>
 
-    <script src="../js/gsap.min.js"></script>
-    <script src="../js/SplitText.min.js"></script>
-    <script src="../js/ScrollTrigger.min.js"></script>
-    <script src="../js/ScrollToPlugin.min.js"></script>
-    <script src="../js/gsapAnimation.js"></script>
+    <script src="../../js/gsap.min.js"></script>
+    <script src="../../js/SplitText.min.js"></script>
+    <script src="../../js/ScrollTrigger.min.js"></script>
+    <script src="../../js/ScrollToPlugin.min.js"></script>
+    <script src="../../js/gsapAnimation.js"></script>
 
-    <script src="../js/countto.js" defer></script>
-    <script src="../js/animation-change-text.js" defer></script>
-    <script src="../js/main.js"></script>
+    <script src="../../js/countto.js" defer></script>
+    <script src="../../js/animation-change-text.js" defer></script>
+    <script src="../../js/main.js"></script>
 
     <!-- Development Popup -->
     <div class="dev-popup-overlay" id="devPopup">
@@ -989,13 +695,13 @@
                     <!-- Slide 1 -->
                     <div class="swiper-slide">
                         <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
-                            <img loading="lazy" decoding="async" width="660" height="510" data-src="../images/AT4K2YY0SDCR.jpg" src="" alt="Google UX Design Certificate" style="max-height: 90%; max-width: 90%;">
+                            <img loading="lazy" decoding="async" width="660" height="510" data-src="../../images/AT4K2YY0SDCR.jpg" src="" alt="Google UX Design Certificate" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                     <!-- Slide 2 -->
                     <div class="swiper-slide">
                         <div class="cert-image-side" style="width: 100%; height: 100%; flex: 1;">
-                            <img loading="lazy" decoding="async" width="660" height="510" data-src="../images/LIOWEOIGC8HK.jpg" src="" alt="Foundations of UX Certificate" style="max-height: 90%; max-width: 90%;">
+                            <img loading="lazy" decoding="async" width="660" height="510" data-src="../../images/LIOWEOIGC8HK.jpg" src="" alt="Foundations of UX Certificate" style="max-height: 90%; max-width: 90%;">
                         </div>
                     </div>
                 </div>
@@ -1057,7 +763,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
-                // devPopup disabled
+                devPopup.classList.add('show');
                 document.body.style.overflow = 'hidden';
                 startPhaseStory();
             }, 2000);
@@ -1179,9 +885,9 @@
             });
         });
 
-        // Common Security logic moved to ../js/common-security.js
+        // Common Security logic moved to js/common-security.js
     </script>
-    <script src="../js/common-security.js" defer></script>
+    <script src="../../js/common-security.js" defer></script>
 
     <script>
         // Unregister Service Workers to prevent caching issues
@@ -1195,10 +901,7 @@
     </script>
 
 
-    <script src="../js/snowflake_cursor.js" defer></script>
+    <script src="../../js/snowflake_cursor.js" defer></script>
+    <script src="../../js/figma-app.js" defer></script>
 
-    <script src="../js/figma-app.js" defer></script>
-</body>
-
-</html>
-
+</body></html>

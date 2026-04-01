@@ -1,0 +1,2438 @@
+﻿diff --git a/projects/Intel-project/index.html b/projects/Intel-project/index.html
+deleted file mode 100644
+index dfa001d..0000000
+--- a/projects/Intel-project/index.html
++++ /dev/null
+@@ -1,2431 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-<meta charset="UTF-8">
+-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+-<title>Intel Luminary | Proactive AI Companion ΓÇö Senior UX Case Study</title>
+-<link rel="shortcut icon" href="../../images/favicon.svg">
+-<link rel="stylesheet" href="../../css/fonts.css">
+-<link rel="stylesheet" href="../../css/inter.css">
+-<link rel="stylesheet" href="../../css/style.css">
+-<link rel="preconnect" href="https://fonts.googleapis.com">
+-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+-<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+-<style>
+-
+-        :root {
+-            --primary: #F37022;
+-            --primary-dark: #D45B1A;
+-            --secondary: #007096;
+-            --surface: #FFFFFF;
+-            --bg-base: #F8FAFC;
+-            --black-92: #222222;
+-            --black-72: #4F4F4F;
+-            --black-56: #64748B;
+-            --black-40: #94A3B8;
+-            --border: rgba(0, 0, 0, 0.08);
+-            --font-heading: "Arimo", sans-serif;
+-            --font-body: "Roboto", sans-serif;
+-            --shadow-subtle: 0px 4px 12px rgba(0, 0, 0, 0.03);
+-            --shadow-medium: 0px 16px 48px -8px rgba(0, 0, 0, 0.08);
+-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+-            --max-width-container: 1400px;
+-            --section-padding: clamp(80px, 15vw, 120px);
+-            --gutter: 5%;
+-            --radius: 10px;
+-            --glass-bg: rgba(255, 255, 255, 0.7);
+-            --glass-border: rgba(255, 255, 255, 0.5);
+-            --glass-blur: blur(12px);
+-        }
+-
+-        :root {
+-            /* WSP DESIGN SYSTEM TOKENS */
+-            /* Success states ΓÇô used for on-track, completed, mitigated risks */
+-            --wsp-color-success-50: #f0fdf4;
+-            --wsp-color-success-100: #dcfce7;
+-            --wsp-color-success-200: #bbf7d0;
+-            --wsp-color-success-300: #86efac;
+-            --wsp-color-success-400: #4ade80;
+-            --wsp-color-success-500: #22c55e;
+-            --wsp-color-success-600: #16a34a;
+-            --wsp-color-success-700: #15803d;
+-            --wsp-color-success-800: #166534;
+-            --wsp-color-success-900: #14532d;
+-            --wsp-color-success-950: #052e16;
+-
+-            /* Warning / At Risk */
+-            --wsp-color-warning-50: #fffbeb;
+-            --wsp-color-warning-100: #fef3c7;
+-            --wsp-color-warning-200: #fde68a;
+-            --wsp-color-warning-300: #fcd34d;
+-            --wsp-color-warning-400: #fbbf24;
+-            --wsp-color-warning-500: #f59e0b;
+-            --wsp-color-warning-600: #d97706;
+-            --wsp-color-warning-700: #b45309;
+-            --wsp-color-warning-800: #92400e;
+-            --wsp-color-warning-900: #78350f;
+-            --wsp-color-warning-950: #451a03;
+-
+-            /* Critical / Overdue / High Impact */
+-            --wsp-color-critical-50: #fef2f2;
+-            --wsp-color-critical-100: #fee2e2;
+-            --wsp-color-critical-200: #fecaca;
+-            --wsp-color-critical-300: #fca5a5;
+-            --wsp-color-critical-400: #f87171;
+-            --wsp-color-critical-500: #ef4444;
+-            --wsp-color-critical-600: #dc2626;
+-            --wsp-color-critical-700: #b91c1c;
+-            --wsp-color-critical-800: #991b1b;
+-            --wsp-color-critical-900: #7f1d1d;
+-            --wsp-color-critical-950: #450a0a;
+-
+-            /* Info / Actionable / AI Agent */
+-            --wsp-color-info-50: #eff6ff;
+-            --wsp-color-info-100: #dbeafe;
+-            --wsp-color-info-200: #bfdbfe;
+-            --wsp-color-info-300: #93c5fd;
+-            --wsp-color-info-400: #60a5fa;
+-            --wsp-color-info-500: #3b82f6;
+-            --wsp-color-info-600: #2563eb;
+-            --wsp-color-info-700: #1d4ed8;
+-            --wsp-color-info-800: #1e40af;
+-            --wsp-color-info-900: #1e3a8a;
+-            --wsp-color-info-950: #172554;
+-
+-            /* Neutral grayscale ΓÇô 22 steps for extreme density control */
+-            --wsp-color-gray-25: #f8fafc;
+-            --wsp-color-gray-50: #f1f5f9;
+-            --wsp-color-gray-100: #e2e8f0;
+-            --wsp-color-gray-150: #d1d9e0;
+-            --wsp-color-gray-200: #cbd5e1;
+-            --wsp-color-gray-250: #b8c4d2;
+-            --wsp-color-gray-300: #94a3b8;
+-            --wsp-color-gray-350: #7c8ca1;
+-            --wsp-color-gray-400: #64748b;
+-            --wsp-color-gray-450: #556373;
+-            --wsp-color-gray-500: #475569;
+-            --wsp-color-gray-550: #3b4a5e;
+-            --wsp-color-gray-600: #334155;
+-            --wsp-color-gray-650: #2c3b51;
+-            --wsp-color-gray-700: #1e293b;
+-            --wsp-color-gray-750: #18212f;
+-            --wsp-color-gray-800: #111827;
+-            --wsp-color-gray-850: #0f172a;
+-            --wsp-color-gray-900: #0c1421;
+-            --wsp-color-gray-950: #020617;
+-            --wsp-color-gray-975: #010307;
+-            --wsp-color-gray-999: #000102;
+-
+-            --wsp-font-sans: "Inter var", system-ui, sans-serif;
+-            --wsp-font-mono: "JetBrains Mono", ui-monospace, monospace;
+-
+-            /* Typography Weights */
+-            --wsp-font-weight-thin: 100;
+-            --wsp-font-weight-extralight: 200;
+-            --wsp-font-weight-light: 300;
+-            --wsp-font-weight-normal: 400;
+-            --wsp-font-weight-medium: 500;
+-            --wsp-font-weight-semibold: 600;
+-            --wsp-font-weight-bold: 700;
+-            --wsp-font-weight-extrabold: 800;
+-
+-            /* Radius ΓÇô expressive containment philosophy */
+-            --wsp-radius-none: 0;
+-            --wsp-radius-xs: 0.25rem;
+-            --wsp-radius-sm: 0.375rem;
+-            --wsp-radius-md: 0.5rem;
+-            --wsp-radius-lg: 0.75rem;
+-            --wsp-radius-xl: 1rem;
+-            --wsp-radius-2xl: 1.5rem;
+-            --wsp-radius-full: 9999px;
+-
+-            /* Shadows ΓÇô layered */
+-            --wsp-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+-            --wsp-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+-            --wsp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+-            --wsp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+-            --wsp-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+-            --wsp-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+-
+-            /* Glass morphism backdrop */
+-            --wsp-backdrop-blur-sm: blur(8px);
+-            --wsp-backdrop-blur-md: blur(12px);
+-            --wsp-backdrop-blur-lg: blur(20px);
+-        }
+-
+-        * {
+-            box-sizing: border-box;
+-            -webkit-font-smoothing: antialiased;
+-            -moz-osx-font-smoothing: grayscale;
+-        }
+-
+-        body {
+-            background-color: var(--surface);
+-            color: var(--black-92);
+-            font-family: var(--font-body);
+-            font-size: 18px;
+-            line-height: 1.6;
+-            -webkit-font-smoothing: antialiased;
+-            overflow-x: hidden;
+-            margin: 0;
+-            cursor: auto;
+-        }
+-
+-        .container {
+-            max-width: var(--max-width-container);
+-            margin: 0 auto;
+-            padding: 0 max(var(--gutter), 80px); /* Increased padding to clear mini-nav */
+-            width: 100%;
+-        }
+-
+-        .wrap-container {
+-            display: grid;
+-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+-            gap: var(--column-gap);
+-            align-items: flex-start;
+-        }
+-
+-        /* Reading Measure: The core of the alignment feel */
+-        .mega-text {
+-            text-align: left;
+-        }
+-
+-        .narrative-copy {
+-            font-size: 20px;
+-            line-height: 1.7;
+-            color: var(--black-72);
+-            font-family: var(--font-body);
+-            margin-bottom: 24px;
+-            padding: 12px 0;
+-        }
+-
+-        body::before {
+-            content: "";
+-            position: fixed;
+-            inset: 0;
+-            background-image: url("https://www.transparenttextures.com/patterns/black-paper.png");
+-            opacity: 0.025;
+-            pointer-events: none;
+-            z-index: 50;
+-            /* BELOW the header and navigation */
+-        }
+-
+-        h1 {
+-            font-family: var(--font-heading);
+-            
+-            line-height: 1.1;
+-            font-weight: 700;
+-            letter-spacing: -0.02em;
+-            margin-bottom: 32px;
+-            color: var(--black-92);
+-        }
+-
+-        h2 {
+-            font-family: var(--font-heading);
+-            
+-            line-height: 1.0;
+-            font-weight: 700;
+-            letter-spacing: -0.03em;
+-            color: var(--black-92);
+-            margin: 0 0 40px 0;
+-        }
+-
+-        h3 {
+-            font-family: var(--font-heading);
+-            
+-            line-height: 1.1;
+-            font-weight: 700;
+-            color: var(--black-92);
+-            margin-bottom: 32px;
+-        }
+-
+-        h4 {
+-            font-family: var(--font-heading);
+-            font-size: 28px;
+-            line-height: 1.25;
+-            font-weight: 700;
+-            color: var(--black-92);
+-            margin-bottom: 16px;
+-        }
+-
+-        /* Nav Spy: Premium Sidebar */
+-        .mini-nav {
+-            position: fixed;
+-            right: 24px; /* Slightly closer to edge to clear container */
+-            top: 50%;
+-            transform: translateY(-50%);
+-            display: flex;
+-            flex-direction: column;
+-            gap: 16px; /* Tighter gap */
+-            z-index: 1000;
+-            background: rgba(255, 255, 255, 0.05);
+-            backdrop-filter: blur(12px);
+-            padding: 20px 8px;
+-            border-radius: 30px;
+-            border: 1px solid rgba(255, 255, 255, 0.1);
+-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+-        }
+-
+-        .nav-dot {
+-            width: 10px;
+-            height: 10px;
+-            background: rgba(0, 0, 0, 0.15);
+-            border-radius: 50%;
+-            transition: all 0.4s var(--transition);
+-            position: relative;
+-            display: block;
+-        }
+-
+-        .nav-dot.active {
+-            background: var(--primary);
+-            transform: scale(1.6);
+-            box-shadow: 0 0 15px var(--primary);
+-        }
+-
+-        .nav-dot::after {
+-            content: attr(data-label);
+-            position: absolute;
+-            right: 30px;
+-            top: 50%;
+-            transform: translateY(-50%) translateX(20px);
+-            background: var(--black-92);
+-            color: #fff;
+-            padding: 6px 16px;
+-            border-radius: 4px;
+-            font-size: 11px;
+-            font-weight: 800;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-            white-space: nowrap;
+-            opacity: 0;
+-            pointer-events: none;
+-            transition: var(--transition);
+-        }
+-
+-        .nav-dot:hover::after {
+-            opacity: 1;
+-            transform: translateY(-50%) translateX(0);
+-        }
+-
+-        /* Strategic Insight Cards (Replacing Sticky Notes) */
+-        .sticky-note {
+-            position: relative;
+-            margin: 24px 0;
+-            width: 100%;
+-            padding: 24px;
+-            background: #fff;
+-            box-shadow: var(--shadow-subtle);
+-            font-family: var(--font-body);
+-            font-size: 15px;
+-            font-weight: 700;
+-            color: #000;
+-            line-height: 1.4;
+-            transform: rotate(-2deg);
+-            z-index: 10;
+-            transition: var(--transition);
+-            border-radius: 4px;
+-            cursor: pointer;
+-        }
+-
+-        .sticky-note::before {
+-            content: "";
+-            position: absolute;
+-            top: -15px;
+-            left: 50%;
+-            transform: translateX(-50%);
+-            width: 24px;
+-            height: 24px;
+-            background: #e63946;
+-            border-radius: 50%;
+-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(0, 0, 0, 0.2);
+-            z-index: 11;
+-        }
+-
+-        .sticky-note::after {
+-            content: "";
+-            position: absolute;
+-            top: -5px;
+-            left: 50%;
+-            transform: translateX(-50%);
+-            width: 4px;
+-            height: 15px;
+-            background: #999;
+-            z-index: 12;
+-        }
+-
+-        .sticky-note strong {
+-            display: block;
+-            margin-bottom: 12px;
+-            font-size: 14px;
+-            color: #000;
+-            font-weight: 800;
+-        }
+-
+-        .sticky-note:hover {
+-            transform: translateY(-4px);
+-            box-shadow: var(--shadow-medium);
+-            border-color: var(--primary);
+-        }
+-
+-
+-
+-        .sticky-note:hover {
+-            transform: translateX(10px) rotate(3deg) scale(0.98);
+-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+-            z-index: 100;
+-        }
+-
+-        body.clean-mode .sticky-note,
+-        body.clean-mode .ui-fragment,
+-        body.clean-mode .director-sidebar {
+-            display: none !important;
+-        }
+-
+-        /* Premium Case Study Mode Switch */
+-        .reading-mode-toggle {
+-            display: flex;
+-            align-items: center;
+-            gap: 12px;
+-            cursor: pointer;
+-            padding: 8px 16px;
+-            background: rgba(0, 0, 0, 0.03);
+-            border: 1px solid var(--border);
+-            border-radius: 40px;
+-            transition: var(--transition);
+-        }
+-
+-        .reading-mode-toggle span {
+-            font-size: 11px;
+-            font-weight: 900;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-            color: var(--black-72);
+-        }
+-
+-        .switch-track {
+-            width: 44px;
+-            height: 24px;
+-            background: #e5e7eb;
+-            border-radius: 20px;
+-            position: relative;
+-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+-            border: 1px solid rgba(0,0,0,0.05);
+-        }
+-
+-        .switch-thumb {
+-            width: 18px;
+-            height: 18px;
+-            background: #fff;
+-            border-radius: 50%;
+-            position: absolute;
+-            top: 2px;
+-            left: 2px;
+-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+-        }
+-
+-        /* Active Switch States */
+-        body.clean-mode .switch-track {
+-            background: var(--primary);
+-        }
+-
+-        body.clean-mode .switch-thumb {
+-            left: 22px;
+-        }
+-
+-        body.clean-mode .reading-mode-toggle {
+-            border-color: rgba(255,117,24,0.2);
+-            background: rgba(255,117,24,0.08);
+-        }
+-
+-        .reading-mode-toggle:hover {
+-            background: rgba(0, 0, 0, 0.06);
+-            border-color: var(--black-40);
+-        }
+-
+-        .sticky-note.blue {
+-            border-left-color: #0ea5e9;
+-            background: #f0f9ff;
+-        }
+-
+-        .sticky-note.pink {
+-            border-left-color: #db2777;
+-            background: #fdf2f8;
+-        }
+-
+-        .sticky-note.orange {
+-            border-left-color: var(--primary);
+-            background: #fffaf5;
+-        }
+-
+-        .sticky-note.yellow {
+-            border-left-color: #eab308;
+-            background: #fefce8;
+-        }
+-
+-        /* Floating UI Elements */
+-        .ui-fragment {
+-            position: relative;
+-            margin: 20px 0;
+-            background: #fff;
+-            padding: 12px 16px;
+-            border-radius: 8px;
+-            box-shadow: var(--shadow);
+-            border: 1px solid var(--border);
+-            display: flex;
+-            align-items: center;
+-            gap: 12px;
+-            z-index: 2;
+-            pointer-events: none;
+-            font-size: 12px;
+-            font-weight: 600;
+-        }
+-
+-        .status-badge {
+-            padding: 4px 12px;
+-            border-radius: 20px;
+-            background: rgba(46, 125, 50, 0.1);
+-            color: #1B5E20;
+-            /* Darker for accessibility */
+-            font-size: 10px;
+-            font-weight: 800;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-        }
+-
+-        /* Block Assets & Utilities */
+-        .block-visual {
+-            background: var(--bg-base);
+-            padding: 48px;
+-            border-radius: 40px;
+-            border: 1px solid var(--border);
+-            position: relative;
+-            overflow: hidden;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+-        }
+-
+-        .block-visual img {
+-            width: 100%;
+-            height: auto;
+-            border-radius: 20px;
+-            box-shadow: var(--shadow-lg);
+-        }
+-
+-        /* ΓöÇΓöÇ HEADER ΓöÇΓöÇ */
+-        .main-header {
+-            position: absolute;
+-            top: 0;
+-            left: 0;
+-            width: 100%;
+-            max-width: 100%;
+-            background: transparent;
+-            padding: 24px max(var(--gutter), 40px);
+-            display: flex;
+-            justify-content: space-between;
+-            align-items: center;
+-            z-index: 9999;
+-            box-sizing: border-box;
+-            border: none;
+-            box-shadow: none;
+-            border-radius: 0;
+-            backdrop-filter: none;
+-            -webkit-backdrop-filter: none;
+-        }
+-
+-        .header-logo {
+-            display: flex;
+-            align-items: center;
+-            gap: 8px;
+-            font-family: var(--font-body);
+-            font-weight: 400;
+-            font-size: 24px;
+-            color: #222222;
+-            text-decoration: none;
+-            letter-spacing: -0.5px;
+-        }
+-
+-        .nav-links {
+-            display: flex;
+-            gap: 32px;
+-            align-items: center;
+-        }
+-
+-        .nav-link {
+-            font-family: var(--font-body);
+-            font-size: 16px;
+-            color: #222222;
+-            text-decoration: none;
+-            display: flex;
+-            align-items: center;
+-            gap: 4px;
+-            font-weight: 400;
+-        }
+-
+-        .nav-link svg {
+-            opacity: 0.6;
+-            margin-top: 2px;
+-        }
+-
+-        .header-logo svg {
+-            width: 38px;
+-            height: 38px;
+-        }
+-
+-        .back-link {
+-            background: #f37022;
+-            color: #fff;
+-            padding: 12px 16px;
+-            border-radius: 10px;
+-            font-size: 16px;
+-            font-family: var(--font-body);
+-            font-weight: 500;
+-            line-height: 1;
+-            text-decoration: none;
+-            transition: var(--transition);
+-        }
+-
+-        .back-link:hover {
+-            background: var(--primary-dark);
+-            transform: translateY(-2px);
+-        }
+-
+-        /* ΓöÇΓöÇ HERO ΓöÇΓöÇ */
+-        .hero-narrative {
+-            padding-top: 140px; 
+-            padding-bottom: 240px; 
+-            min-height: 800px;
+-            background-color: #fafbfc;
+-            background-image: 
+-                radial-gradient(circle at 10% 20%, rgba(243, 112, 34, 0.08) 0%, transparent 40%),
+-                radial-gradient(circle at 90% 80%, rgba(34, 112, 243, 0.05) 0%, transparent 40%),
+-                url("https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/Background-pattern.png");
+-            background-size: cover, cover, 800px;
+-            background-repeat: no-repeat, no-repeat, repeat;
+-            background-position: center, center, center;
+-            display: grid;
+-            grid-template-columns: 1.15fr 0.85fr;
+-            align-items: center;
+-            gap: 40px;
+-            max-width: 1300px; /* narrowed slightly to match layout */
+-            margin: 0 auto;
+-            padding-left: max(var(--gutter), 40px);
+-            padding-right: max(var(--gutter), 40px);
+-            border-radius: 0 0 40px 40px; 
+-        }
+-
+-        .hero-tagline-bubble {
+-            display: inline-flex;
+-            align-items: center;
+-            gap: 8px;
+-            background: rgba(255, 255, 255, 0.8);
+-            border: 0.67px solid #eeeeee;
+-            color: #222222;
+-            padding: 6px 16px;
+-            border-radius: 100px;
+-            font-size: 13px;
+-            font-weight: 500;
+-            text-transform: uppercase;
+-            letter-spacing: 0.05em;
+-            margin-bottom: 24px;
+-            font-family: var(--font-body);
+-        }
+-
+-        .hero-content h1 {
+-            font-size: 80px;
+-            line-height: 1.05;
+-            font-family: var(--font-heading);
+-            font-weight: 400;
+-            color: #717171;
+-            margin-bottom: 24px;
+-            letter-spacing: -0.04em;
+-            max-width: 700px;
+-        }
+-
+-        .hero-content h1 b {
+-            font-weight: 400;
+-            color: #222222;
+-        }
+-
+-        .hero-content p {
+-            font-size: 16px;
+-            font-family: var(--font-body);
+-            color: #4f4f4f;
+-            max-width: 640px;
+-            margin-bottom: 40px;
+-            line-height: 24px;
+-            font-weight: 400;
+-        }
+-
+-        .hero-cta-group {
+-            display: flex;
+-            align-items: center;
+-            gap: 16px;
+-            margin-bottom: 60px;
+-        }
+-
+-        .btn-primary {
+-            background: #f37022;
+-            color: #fff;
+-            padding: 14px 28px;
+-            border-radius: 10px;
+-            border: 0.67px solid #fac19f;
+-            font-weight: 500;
+-            font-size: 16px;
+-            font-family: var(--font-body);
+-            text-decoration: none;
+-            transition: var(--transition);
+-            box-shadow: 0px 2px 8px rgba(196, 196, 196, 0.15);
+-        }
+-        
+-        .btn-primary:hover {
+-            transform: translateY(-2px);
+-            box-shadow: 0px 4px 12px rgba(243, 112, 34, 0.3);
+-        }
+-
+-        .btn-secondary {
+-            background: #ffffff;
+-            color: #000000;
+-            padding: 14px 28px;
+-            border-radius: 10px;
+-            border: 0.67px solid #eeeeee;
+-            font-weight: 500;
+-            font-size: 16px;
+-            font-family: var(--font-body);
+-            text-decoration: none;
+-            display: flex;
+-            align-items: center;
+-            gap: 8px;
+-            transition: var(--transition);
+-            box-shadow: 0px 2px 8px rgba(173, 173, 173, 0.15);
+-        }
+-
+-        .btn-secondary i {
+-            transition: transform 0.3s ease;
+-        }
+-
+-        .btn-secondary:hover {
+-            transform: translateY(-2px);
+-        }
+-
+-        .btn-secondary:hover i {
+-            transform: translateX(4px);
+-        }
+-
+-        .hero-testimonial {
+-            background: #ffffff;
+-            border: 1px solid rgba(0,0,0,0.03);
+-            padding: 32px;
+-            border-radius: 20px;
+-            box-shadow: 0 20px 80px rgba(0,0,0,0.08);
+-            position: relative;
+-            max-width: 380px;
+-            margin-left: auto;
+-            margin-top: 40px;
+-        }
+-
+-        .hero-testimonial p {
+-            font-size: 15px;
+-            color: #4f4f4f;
+-            line-height: 24px;
+-            margin-bottom: 24px;
+-            font-family: var(--font-body);
+-            font-weight: 500;
+-        }
+-
+-        .hero-testimonial-footer {
+-            display: flex;
+-            justify-content: space-between;
+-            align-items: center;
+-            border-top: 1px solid rgba(0,0,0,0.05);
+-            padding-top: 24px;
+-            margin-top: 8px;
+-        }
+-
+-        .rating {
+-            background: #ffffff;
+-            border: 0.67px solid #eeeeee;
+-            padding: 6px 12px;
+-            border-radius: 100px;
+-            display: flex;
+-            align-items: center;
+-            gap: 6px;
+-            font-size: 12px;
+-            font-weight: 500;
+-            color: #222222;
+-            font-family: var(--font-body);
+-        }
+-
+-        .rating span { color: #F37022; }
+-
+-        .hero-visual {
+-            position: relative;
+-            z-index: 1;
+-        }
+-
+-        .glass-card {
+-            background: var(--glass-bg);
+-            backdrop-filter: var(--glass-blur);
+-            -webkit-backdrop-filter: var(--glass-blur);
+-            border: 1px solid var(--glass-border);
+-            padding: 48px;
+-            border-radius: 24px;
+-            box-shadow: var(--shadow-lg);
+-            position: relative;
+-        }
+-
+-        .glass-card h3 {
+-            font-size: 64px;
+-            color: var(--primary);
+-            margin-bottom: 8px;
+-            font-weight: 700;
+-        }
+-
+-        .glass-card p {
+-            font-size: 18px;
+-            color: var(--black-72);
+-            margin: 0;
+-            font-weight: 500;
+-        }
+-
+-        .project-meta-grid {
+-            display: grid;
+-            grid-template-columns: repeat(2, 1fr);
+-            gap: 32px;
+-            margin-top: 40px;
+-            border-top: 1px solid var(--border);
+-            padding-top: 40px;
+-        }
+-
+-        .meta-item-new {
+-            display: flex;
+-            flex-direction: column;
+-            gap: 4px;
+-        }
+-
+-        .meta-label-new {
+-            font-size: 12px;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-            color: var(--black-40);
+-            font-weight: 700;
+-        }
+-
+-        .meta-value-new {
+-            font-size: 16px;
+-            color: var(--black-92);
+-            font-weight: 600;
+-        }
+-
+-        .story-block {
+-            padding: var(--section-padding) 0;
+-            overflow: hidden;
+-        }
+-
+-        .story-block.white {
+-            background: #fff;
+-        }
+-
+-        .block-text {
+-            /* Removed sticky to prevent overlap with dense grid content */
+-            position: relative;
+-        }
+-
+-        .block-text h2 {
+-            
+-            line-height: 1.0;
+-            margin-bottom: 32px;
+-        }
+-
+-        .block-text .body-copy {
+-            font-size: 24px;
+-            color: var(--black-72);
+-            margin-bottom: 32px;
+-            font-family: var(--font-serif);
+-            max-width: var(--max-text-width);
+-            line-height: 1.6;
+-        }
+-
+-        .pull-quote {
+-            font-family: var(--font-heading);
+-            
+-            line-height: 1.1;
+-            color: var(--text-main);
+-            margin: 60px 0;
+-            position: relative;
+-            padding-left: 20px;
+-        }
+-
+-        .pull-quote::before {
+-            content: "ΓÇ£";
+-            position: absolute;
+-            left: -30px;
+-            top: -20px;
+-            font-size: 120px;
+-            color: var(--primary);
+-            opacity: 0.2;
+-        }
+-
+-        .insight-card {
+-            background: #fff;
+-            padding: 48px;
+-            border-radius: 4px;
+-            margin-top: 40px;
+-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+-            position: relative;
+-        }
+-
+-        .insight-card strong {
+-            display: block;
+-            font-family: var(--font-heading);
+-            font-size: 13px;
+-            text-transform: uppercase;
+-            color: var(--primary);
+-            margin-bottom: 16px;
+-            letter-spacing: 0.1em;
+-        }
+-
+-        .block-visual {
+-            background: var(--bg-base);
+-            padding: 48px;
+-            border-radius: 24px;
+-            border: 1px solid var(--border);
+-            position: relative;
+-            overflow: hidden;
+-        }
+-
+-        .block-visual img {
+-            width: 100%;
+-            height: auto;
+-            border-radius: 12px;
+-            box-shadow: var(--shadow-lg);
+-        }
+-
+-        .strategy-grid {
+-            display: grid;
+-            grid-template-columns: repeat(2, 1fr);
+-            gap: 32px;
+-            margin-top: 40px;
+-        }
+-
+-        .strategy-item h4 {
+-            font-size: 20px;
+-            margin-bottom: 12px;
+-            color: var(--text-main);
+-        }
+-
+-        .strategy-item p {
+-            font-size: 15px;
+-            color: var(--text-muted);
+-            font-family: var(--font-serif);
+-        }
+-
+-        /* Floating Nav */
+-        .mini-nav {
+-            position: fixed;
+-            right: 40px;
+-            top: 50%;
+-            transform: translateY(-50%);
+-            display: flex;
+-            flex-direction: column;
+-            gap: 12px;
+-            z-index: 1000;
+-        }
+-
+-        .nav-dot {
+-            width: 10px;
+-            height: 10px;
+-            background: rgba(0, 0, 0, 0.15);
+-            border-radius: 50%;
+-            transition: all 0.4s var(--transition);
+-            text-decoration: none;
+-            position: relative;
+-        }
+-
+-        .nav-dot::after {
+-            content: attr(data-label);
+-            position: absolute;
+-            right: 25px;
+-            top: 50%;
+-            transform: translateY(-50%);
+-            font-family: var(--font-heading);
+-            font-size: 10px;
+-            font-weight: 600;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-            opacity: 0;
+-            white-space: nowrap;
+-            transition: opacity 0.3s;
+-            pointer-events: none;
+-        }
+-
+-        .nav-dot:hover::after,
+-        .nav-dot.active::after {
+-            opacity: 1;
+-        }
+-
+-        .nav-dot.active {
+-            background: var(--primary);
+-            transform: scale(1.6);
+-        }
+-
+-        .progress-bar-top {
+-            position: fixed;
+-            top: 0;
+-            left: 0;
+-            height: 6px;
+-            background: var(--primary);
+-            width: 0%;
+-            z-index: 10001;
+-        }
+-
+-        /* Metrics */
+-        .metric-wrap {
+-            display: grid;
+-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+-            gap: 24px;
+-            margin-top: 40px;
+-        }
+-
+-        .metric-card {
+-            background: #ffffff;
+-            padding: 40px;
+-            border-radius: 20px;
+-            border: 1px solid var(--border);
+-            text-align: center;
+-            transition: var(--transition);
+-        }
+-
+-        .metric-card:hover {
+-            border-color: var(--primary);
+-            transform: translateY(-5px);
+-            box-shadow: var(--shadow-medium);
+-        }
+-
+-        .metric-val {
+-            font-size: 56px;
+-            font-weight: 700;
+-            color: var(--primary);
+-            line-height: 1;
+-            margin-bottom: 12px;
+-        }
+-
+-        .metric-label {
+-            font-size: 14px;
+-            font-weight: 700;
+-            color: var(--black-56);
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-        }
+-
+-        .showcase-grid {
+-            display: grid;
+-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+-            gap: 24px;
+-            margin-top: 40px;
+-        }
+-
+-        /* Showcase Items */
+-        .showcase-grid {
+-            display: grid;
+-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+-            gap: 32px;
+-            margin-top: 60px;
+-        }
+-
+-        .showcase-item {
+-            background: #fff;
+-            padding: 32px;
+-            border-radius: 20px;
+-            border: 1px solid var(--border);
+-            transition: var(--transition);
+-        }
+-
+-        .showcase-item:hover {
+-            border-color: var(--primary);
+-            transform: translateY(-8px);
+-            box-shadow: var(--shadow-medium);
+-        }
+-
+-        .showcase-img {
+-            aspect-ratio: 16 / 9;
+-            background: var(--bg-base);
+-            border-radius: 12px;
+-            margin-bottom: 24px;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            font-size: 12px;
+-            color: var(--black-40);
+-            font-weight: 700;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-            text-align: center;
+-            padding: 20px;
+-        }
+-
+-        .showcase-item p {
+-            font-size: 20px;
+-            font-weight: 700;
+-            color: var(--black-92);
+-            margin-bottom: 8px;
+-        }
+-
+-        .showcase-caption {
+-            font-size: 15px;
+-            color: var(--black-72);
+-            line-height: 1.5;
+-        }
+-
+-        /* Persona Cards */
+-        .persona-grid {
+-            display: grid;
+-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+-            gap: 32px;
+-            margin-top: 60px;
+-        }
+-
+-        .persona-card {
+-            background: #fff;
+-            padding: 40px;
+-            border: 1px solid var(--border);
+-            border-radius: 20px;
+-            transition: var(--transition);
+-        }
+-
+-        .persona-card:hover {
+-            border-color: var(--primary);
+-            box-shadow: var(--shadow-medium);
+-        }
+-
+-        .persona-header {
+-            display: flex;
+-            align-items: center;
+-            gap: 16px;
+-            margin-bottom: 24px;
+-        }
+-
+-        .persona-avatar {
+-            width: 48px;
+-            height: 48px;
+-            background: var(--bg-base);
+-            border-radius: 50%;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            font-weight: 700;
+-            color: var(--primary);
+-            font-size: 20px;
+-        }
+-
+-        .persona-info h4 {
+-            font-size: 20px;
+-            margin: 0;
+-            color: var(--black-92);
+-        }
+-
+-        .persona-info p {
+-            font-size: 14px;
+-            color: var(--primary);
+-            font-weight: 700;
+-            margin: 0;
+-        }
+-
+-        .persona-quote {
+-            font-size: 16px;
+-            color: var(--black-72);
+-            line-height: 1.6;
+-            margin-bottom: 24px;
+-            font-style: italic;
+-        }
+-
+-        .persona-stats {
+-            border-top: 1px solid var(--border);
+-            padding-top: 24px;
+-            display: grid;
+-            gap: 16px;
+-        }
+-
+-        .stat-item span {
+-            font-size: 11px;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-            color: var(--black-40);
+-            font-weight: 700;
+-            display: block;
+-        }
+-
+-        .stat-item strong {
+-            font-size: 14px;
+-            color: var(--black-92);
+-        }
+-
+-        /* Director Sidebar: Executive Dark Theme */
+-        /* ROI Callouts (Replacing Director Sidebar) */
+-        .roi-callout {
+-            background: var(--black-92);
+-            color: #fff;
+-            padding: 60px;
+-            border-radius: 24px;
+-            text-align: center;
+-            margin: 60px 0;
+-            position: relative;
+-            overflow: hidden;
+-        }
+-
+-        .roi-callout h5 {
+-            color: var(--primary);
+-            font-size: 14px;
+-            letter-spacing: 0.2em;
+-            text-transform: uppercase;
+-            margin-bottom: 24px;
+-        }
+-
+-        .roi-callout p {
+-            font-size: clamp(24px, 4vw, 42px);
+-            line-height: 1.2;
+-            color: #fff !important;
+-            font-weight: 500;
+-            max-width: 900px;
+-            margin: 0 auto;
+-        }
+-
+-        /* Strategy Banner - Full Width */
+-        .strategy-banner {
+-            background: var(--black-92);
+-            color: #fff;
+-            padding: 32px 8%;
+-            border-radius: 12px;
+-            margin: 40px auto;
+-            text-align: center;
+-            position: relative;
+-        }
+-
+-        .strategy-banner .banner-tag {
+-            color: #FF8B3D;
+-            /* Lighter Orange for Dark BG Visibility */
+-            text-transform: uppercase;
+-            font-size: 14px;
+-            letter-spacing: 0.3em;
+-            font-weight: 800;
+-            display: block;
+-            margin-bottom: 24px;
+-        }
+-
+-        .strategy-banner h3 {
+-            color: #ffffff !important;
+-            font-size: 56px;
+-            line-height: 1.1;
+-            margin-bottom: 24px;
+-        }
+-
+-        .strategy-banner p {
+-            color: #E0E0E0 !important;
+-            font-size: 26px;
+-            font-family: var(--font-serif);
+-            max-width: 900px;
+-            margin: 0 auto;
+-            line-height: 1.4;
+-            opacity: 1 !important;
+-        }
+-
+-        /* Design System Specs */
+-        .spec-grid {
+-            display: grid;
+-            grid-template-columns: repeat(3, 1fr);
+-            gap: 20px;
+-            margin-top: 32px;
+-        }
+-
+-        .spec-item {
+-            padding: 32px;
+-            background: #fff;
+-            border: 1px solid var(--border);
+-        }
+-
+-        .spec-label {
+-            font-size: 14px;
+-            text-transform: uppercase;
+-            opacity: 0.8;
+-            margin-bottom: 12px;
+-            display: block;
+-            font-weight: 800;
+-            color: var(--black-56);
+-            letter-spacing: 0.1em;
+-        }
+-
+-        .spec-value {
+-            font-family: var(--font-heading);
+-            font-size: 22px;
+-            color: var(--black-92);
+-        }
+-
+-        /* Focus states for accessibility */
+-        a:focus,
+-        button:focus {
+-            outline: 2px solid var(--primary);
+-            outline-offset: 4px;
+-        }
+-
+-        .section-tag {
+-            background: rgba(255, 117, 24, 0.08);
+-            color: var(--primary-dark);
+-            padding: 10px 24px;
+-            border-radius: 40px;
+-            font-size: 12px;
+-            font-weight: 800;
+-            text-transform: uppercase;
+-            letter-spacing: 0.2em;
+-            display: inline-block;
+-            margin-bottom: 40px;
+-        }
+-
+-        .mega-text {
+-            padding: 0 var(--container-gutter);
+-            /* Standardize side padding */
+-        }
+-
+-        .mega-text h3 {
+-            margin-bottom: 32px;
+-            
+-            font-weight: 800;
+-            letter-spacing: -0.03em;
+-        }
+-
+-        .mega-text p {
+-            font-size: 26px;
+-            color: var(--black-92);
+-            font-family: var(--font-serif);
+-            margin-bottom: 32px;
+-            line-height: 1.6;
+-        }
+-
+-        .list-narrative {
+-            list-style: none;
+-            padding: 0;
+-            margin: 40px 0;
+-        }
+-
+-        .list-narrative li {
+-            margin-bottom: 24px;
+-            padding-left: 48px;
+-            position: relative;
+-            font-size: 22px;
+-            color: var(--black-72);
+-            line-height: 1.5;
+-            font-weight: 500;
+-        }
+-
+-        .list-narrative li::before {
+-            content: "";
+-            position: absolute;
+-            left: 0;
+-            top: 12px;
+-            width: 12px;
+-            height: 12px;
+-            border-radius: 50%;
+-            background: var(--primary);
+-        }
+-
+-        /* Component: Design Token Card */
+-        .token-card {
+-            background: #fff;
+-            border: 1px solid var(--border);
+-            padding: 24px;
+-            border-radius: 12px;
+-            display: flex;
+-            flex-direction: column;
+-            gap: 16px;
+-        }
+-
+-        .token-swatch {
+-            width: 100%;
+-            height: 80px;
+-            border-radius: 8px;
+-        }
+-
+-        .token-meta {
+-            font-size: 14px;
+-            font-weight: 800;
+-            text-transform: uppercase;
+-            color: var(--black-56);
+-            letter-spacing: 0.1em;
+-        }
+-
+-        .token-value {
+-            font-family: "IBM Plex Mono", monospace;
+-            font-size: 16px;
+-            color: var(--black-72);
+-            font-weight: 700;
+-        }
+-
+-        /* Component: Logic Bridge */
+-        .logic-bridge {
+-            display: flex;
+-            align-items: center;
+-            gap: 12px;
+-            padding: 12px;
+-            background: rgba(255, 117, 24, 0.05);
+-            border-radius: 8px;
+-            font-size: 12px;
+-            color: var(--primary);
+-            font-weight: 600;
+-        }
+-
+-        @media (max-width: 1024px) {
+-            .container {
+-                padding: 0 32px;
+-            }
+-
+-            .wrap-container {
+-                grid-template-columns: 1fr;
+-                gap: 24px;
+-            }
+-
+-            .metric-wrap {
+-                grid-template-columns: repeat(2, 1fr);
+-            }
+-
+-            .showcase-grid {
+-                grid-template-columns: 1fr;
+-            }
+-
+-            .persona-grid {
+-                grid-template-columns: 1fr;
+-            }
+-
+-            /* Hick's Law / Cognitive Load: Simplify complex overlapping elements on smaller screens */
+-            .sticky-note,
+-            .ui-fragment {
+-                display: none !important;
+-            }
+-        }
+-
+-        @keyframes pulseScale {
+-            0% {
+-                transform: scale(1);
+-                opacity: 1;
+-            }
+-
+-            50% {
+-                transform: scale(1.1);
+-                opacity: 0.8;
+-            }
+-
+-            100% {
+-                transform: scale(1);
+-                opacity: 1;
+-            }
+-        }
+-
+-        /* Under Construction Overlay */
+-        .construction-overlay {
+-            position: fixed;
+-            inset: 0;
+-            background: rgba(249, 249, 249, 0.75);
+-            backdrop-filter: blur(12px);
+-            -webkit-backdrop-filter: blur(12px);
+-            z-index: 10000;
+-            display: flex;
+-            justify-content: center;
+-            align-items: center;
+-            opacity: 1;
+-            visibility: visible;
+-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+-        }
+-
+-        .construction-overlay.hidden {
+-            opacity: 0;
+-            visibility: hidden;
+-            pointer-events: none;
+-        }
+-
+-        .construction-note {
+-            position: relative !important;
+-            transform: rotate(-3deg) scale(1) !important;
+-            max-width: 440px !important;
+-            width: 90% !important;
+-            margin: 0 !important;
+-            animation: floatNote 4s ease-in-out infinite alternate;
+-            z-index: 10001;
+-            cursor: default !important;
+-        }
+-
+-        .construction-note:hover {
+-            transform: rotate(-3deg) scale(1) !important;
+-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+-        }
+-
+-        @keyframes floatNote {
+-            0% {
+-                transform: translateY(0px) rotate(-3deg);
+-            }
+-
+-            100% {
+-                transform: translateY(-10px) rotate(-1deg);
+-            }
+-        }
+-
+-        .btn-dismiss {
+-            margin-top: 32px;
+-            background: var(--black-92);
+-            color: #fff;
+-            border: none;
+-            padding: 16px 24px;
+-            border-radius: 4px;
+-            font-family: var(--font-heading);
+-            font-weight: 800;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-            font-size: 13px;
+-            cursor: pointer;
+-            transition: var(--transition);
+-            width: 100%;
+-            display: block;
+-        }
+-
+-        .btn-dismiss:hover {
+-            background: var(--primary);
+-            transform: translateY(-2px);
+-        }
+-    
+-
+-        /* ΓöÇΓöÇ EDITOR / HACK THEME CHAT WINDOW ΓöÇΓöÇ */
+-        .chat-window {
+-            background: #1e1e1e;
+-            border-radius: 12px;
+-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px #333;
+-            overflow: hidden;
+-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+-            margin: 60px 0;
+-            border: 1px solid #444;
+-        }
+-
+-        .chat-bar {
+-            background: #2d2d2d;
+-            padding: 12px 16px;
+-            display: flex;
+-            align-items: center;
+-            border-bottom: 1px solid #111;
+-        }
+-
+-        .chat-dot {
+-            width: 12px;
+-            height: 12px;
+-            border-radius: 50%;
+-            margin-right: 8px;
+-            display: inline-block;
+-        }
+-        
+-        .chat-dot:nth-child(1) { background: #ff5f56; }
+-        .chat-dot:nth-child(2) { background: #ffbd2e; }
+-        .chat-dot:nth-child(3) { background: #27c93f; }
+-
+-        .chat-bar span {
+-            margin: 0 auto;
+-            color: #858585;
+-            font-size: 13px;
+-            letter-spacing: 0.1em;
+-            font-weight: 500;
+-            padding-right: 48px; /* Offset the 3 dots for absolute center */
+-        }
+-
+-        .chat-body {
+-            padding: 40px;
+-            display: flex;
+-            flex-direction: column;
+-            gap: 24px;
+-            background: #1e1e1e;
+-        }
+-
+-        .msg {
+-            max-width: 80%;
+-            font-size: 14px;
+-            line-height: 1.6;
+-            display: flex;
+-            flex-direction: column;
+-        }
+-
+-        .msg-user {
+-            align-self: flex-end;
+-            color: #d4d4d4;
+-        }
+-
+-        .msg-user .msg-who {
+-            text-align: right;
+-            color: #9cdcfe;
+-            font-size: 12px;
+-            margin-bottom: 6px;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-        }
+-
+-        .msg-user .msg-txt {
+-            background: rgba(38, 79, 120, 0.4);
+-            padding: 20px;
+-            border-radius: 12px 0 12px 12px;
+-            border: 1px solid #3a3d41;
+-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+-        }
+-
+-        .msg-bot {
+-            align-self: flex-start;
+-            color: #d4d4d4;
+-        }
+-
+-        .msg-bot .msg-who {
+-            color: #c586c0;
+-            font-size: 12px;
+-            margin-bottom: 6px;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-        }
+-
+-        .msg-bot .msg-txt {
+-            background: #252526;
+-            padding: 20px;
+-            border-radius: 0 12px 12px 12px;
+-            border: 1px solid #333;
+-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+-        }
+-
+-        .msg-txt strong {
+-            color: #4ec9b0;
+-            font-weight: normal;
+-        }
+-        
+-        /* Specific tweaks to the Creative Alchemy section */
+-        #design.story-block {
+-            background: #050505;
+-        }
+-        
+-        #design .section-tag {
+-            background: rgba(255, 255, 255, 0.1);
+-            color: #fff;
+-            border-color: rgba(255, 255, 255, 0.2);
+-        }
+-        
+-        #design .mega-text h3 {
+-            color: #fff;
+-        }
+-        
+-        #design .mega-text p {
+-            color: rgba(255, 255, 255, 0.7);
+-        }
+-        
+-        #design .showcase-item {
+-            background: #111;
+-            color: #fff;
+-            border: 1px solid #222;
+-        }
+-        
+-        #design .showcase-item p {
+-            color: #fff;
+-            padding: 20px 20px 4px 20px;
+-        }
+-        
+-        #design .showcase-caption {
+-            display: block;
+-            padding: 0 20px 20px 20px;
+-            color: rgba(255, 255, 255, 0.6);
+-            font-size: 14px;
+-        }
+-
+-
+-        /* ΓöÇΓöÇ BETTER BOXES FOR SIX PRINCIPLES (.strategy-item) ΓöÇΓöÇ */
+-        .strategy-grid {
+-            display: grid;
+-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+-            gap: 32px;
+-            margin-top: 48px;
+-            counter-reset: strategy-counter;
+-        }
+-
+-        .strategy-item {
+-            background: #ffffff;
+-            padding: 40px;
+-            border-radius: 20px;
+-            border: 1px solid rgba(0,0,0,0.06);
+-            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+-            position: relative;
+-            overflow: hidden;
+-            display: flex;
+-            flex-direction: column;
+-            justify-content: flex-start;
+-        }
+-
+-        .strategy-item::after {
+-            content: "";
+-            position: absolute;
+-            top: 0;
+-            left: 0;
+-            width: 100%;
+-            height: 4px;
+-            background: var(--primary);
+-            transform: scaleX(0);
+-            transform-origin: left;
+-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+-        }
+-
+-        .strategy-item:hover {
+-            transform: translateY(-8px);
+-            box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+-            border-color: rgba(0,0,0,0.1);
+-        }
+-
+-        .strategy-item:hover::after {
+-            transform: scaleX(1);
+-        }
+-
+-        .strategy-item h4 {
+-            font-size: 24px;
+-            font-weight: 800;
+-            color: var(--black-92);
+-            margin-bottom: 20px;
+-            display: flex;
+-            align-items: center;
+-            gap: 16px;
+-        }
+-
+-        /* ΓöÇΓöÇ FEATURE CARDS (Bento Grid Style from Automate) ΓöÇΓöÇ */
+-        .feature-card {
+-            background: #ffffff;
+-            border: 1px solid #eeeeee;
+-            border-radius: 20px;
+-            padding: 32px;
+-            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+-            transition: all 0.3s ease;
+-            position: relative;
+-            overflow: hidden;
+-            display: flex;
+-            flex-direction: column;
+-        }
+-
+-        .feature-card:hover {
+-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+-            transform: translateY(-4px);
+-            border-color: #fac19f;
+-        }
+-
+-        .feature-card .feature-icon {
+-            width: 48px;
+-            height: 48px;
+-            background: #f8fafc;
+-            border: 1px solid #eeeeee;
+-            border-radius: 12px;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            margin-bottom: 24px;
+-            color: #f37022;
+-        }
+-
+-        .feature-card strong {
+-            font-family: var(--font-heading);
+-            font-size: 22px;
+-            font-weight: 500;
+-            color: #222222;
+-            margin-bottom: 12px;
+-            display: block;
+-        }
+-
+-        .feature-card p {
+-            font-family: var(--font-body);
+-            font-size: 16px;
+-            color: #4f4f4f;
+-            line-height: 24px;
+-            margin: 0;
+-            font-weight: 400;
+-        }
+-
+-        /* ΓöÇΓöÇ POWER PRO STYLE CARDS ΓöÇΓöÇ */
+-        .power-pro-grid {
+-            display: grid;
+-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+-            gap: 32px;
+-            margin-top: 60px;
+-        }
+-
+-        .power-pro-card {
+-            border-radius: 24px;
+-            padding: 40px;
+-            position: relative;
+-            display: flex;
+-            flex-direction: column;
+-            overflow: hidden;
+-            transition: all 0.3s ease;
+-        }
+-
+-        .power-pro-card.orange {
+-            background: linear-gradient(135deg, #f37022 0%, #ff8c42 100%);
+-            color: #ffffff;
+-            border: none;
+-        }
+-
+-        .power-pro-card.white {
+-            background: #ffffff;
+-            color: #222222;
+-            border: 1px solid #eeeeee;
+-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+-        }
+-
+-        .power-pro-card-icon {
+-            width: 56px;
+-            height: 56px;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            margin-bottom: 24px;
+-            border-radius: 12px;
+-        }
+-
+-        .power-pro-card.orange .power-pro-card-icon {
+-            border: 1px solid rgba(255,255,255,0.3);
+-            color: #ffffff;
+-            background: rgba(255,255,255,0.1);
+-        }
+-
+-        .power-pro-card.white .power-pro-card-icon {
+-            border: 1px solid #eeeeee;
+-            color: #f37022;
+-            background: #f8fafc;
+-        }
+-
+-        .power-pro-card h4 {
+-            font-family: var(--font-heading);
+-            font-size: 28px;
+-            font-weight: 400;
+-            margin-bottom: 16px;
+-            letter-spacing: -0.02em;
+-        }
+-
+-        .power-pro-card p {
+-            font-family: var(--font-body);
+-            font-size: 16px;
+-            line-height: 24px;
+-            margin-bottom: 40px;
+-        }
+-
+-        .power-pro-card.white p {
+-            color: #4f4f4f;
+-        }
+-        
+-        .power-pro-card.orange p {
+-            color: rgba(255, 255, 255, 0.9);
+-        }
+-
+-        /* ΓöÇΓöÇ MILLION SOLUTIONS TABS ΓöÇΓöÇ */
+-        .solutions-grid {
+-            display: grid;
+-            grid-template-columns: 0.35fr 0.65fr;
+-            gap: 60px;
+-            align-items: center;
+-        }
+-
+-        .solutions-tabs {
+-            display: flex;
+-            flex-direction: column;
+-            gap: 16px;
+-        }
+-
+-        .solution-tab {
+-            padding: 24px 32px;
+-            border-radius: 4px;
+-            font-family: var(--font-heading);
+-            font-size: 20px;
+-            color: #4f4f4f;
+-            cursor: pointer;
+-            transition: all 0.3s ease;
+-            text-align: left;
+-            border: 1px solid transparent;
+-        }
+-
+-        .solution-tab.active {
+-            background: #ffffff;
+-            border: 1px solid #eeeeee;
+-            color: #222222;
+-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+-        }
+-
+-        .strategy-item h4::before {
+-            counter-increment: strategy-counter;
+-            content: "0" counter(strategy-counter);
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            width: 40px;
+-            height: 40px;
+-            background: rgba(255, 117, 24, 0.1);
+-            color: var(--primary);
+-            font-size: 14px;
+-            font-weight: 900;
+-            font-family: var(--font-heading);
+-            border-radius: 50%;
+-            flex-shrink: 0;
+-            letter-spacing: 0;
+-        }
+-
+-        .strategy-item p {
+-            font-size: 18px;
+-            line-height: 1.6;
+-            color: var(--black-72);
+-            font-family: var(--font-body);
+-            margin: 0;
+-        }
+-
+-        /* Automate Style Cards (Replacing Sticky Notes) */
+-        .feature-card {
+-            background: #fff;
+-            padding: 40px;
+-            border-radius: 4px;
+-            border: 1px solid var(--border);
+-            transition: var(--transition);
+-            height: 100%;
+-            display: flex;
+-            flex-direction: column;
+-            gap: 20px;
+-        }
+-
+-        .feature-card:hover {
+-            transform: translateY(-10px);
+-            box-shadow: var(--shadow-medium);
+-            border-color: var(--primary);
+-        }
+-
+-        .feature-card strong {
+-            font-size: 14px;
+-            text-transform: uppercase;
+-            letter-spacing: 0.1em;
+-            color: var(--primary);
+-            font-weight: 700;
+-        }
+-
+-        .feature-card p {
+-            font-size: 18px;
+-            line-height: 1.6;
+-            color: var(--black-72);
+-            margin: 0;
+-        }
+-
+-        .feature-icon {
+-            width: 48px;
+-            height: 48px;
+-            background: rgba(243, 112, 34, 0.1);
+-            border-radius: 4px;
+-            display: flex;
+-            align-items: center;
+-            justify-content: center;
+-            color: var(--primary);
+-            margin-bottom: 8px;
+-        }
+-
+-        .section-tag {
+-            background: rgba(243, 112, 34, 0.08);
+-            color: var(--primary);
+-            padding: 8px 20px;
+-            border-radius: 4px;
+-            font-size: 12px;
+-            font-weight: 700;
+-            text-transform: uppercase;
+-            letter-spacing: 0.15em;
+-            display: inline-block;
+-            margin-bottom: 32px;
+-            border: 1px solid rgba(243, 112, 34, 0.2);
+-        }
+-
+-        .mega-text h3 {
+-            font-size: clamp(32px, 4vw, 56px);
+-            line-height: 1.1;
+-            margin-bottom: 24px;
+-            color: var(--black-92);
+-        }
+-
+-        .mega-text p {
+-            font-size: 20px;
+-            color: var(--black-72);
+-            line-height: 1.6;
+-            max-width: 800px;
+-        }
+-
+-
+-        
+-        /* ΓöÇΓöÇ TRANSFORMATIVE POTENTIAL (IMPACT) ENHANCEMENTS ΓöÇΓöÇ */
+-        #impact .wrap-container > div {
+-            background: #ffffff;
+-            padding: 56px;
+-            border-radius: 4px;
+-            border: 1px solid rgba(0,0,0,0.05);
+-            box-shadow: var(--shadow-subtle);
+-            transition: var(--transition);
+-        }
+-
+-        #impact .wrap-container > div:hover {
+-            box-shadow: var(--shadow-medium);
+-        }
+-
+-        #impact h4 {
+-            font-size: 32px;
+-            color: var(--black-92);
+-            margin-bottom: 40px;
+-            padding-bottom: 24px;
+-            border-bottom: 2px solid rgba(0,0,0,0.04);
+-            letter-spacing: -0.02em;
+-        }
+-
+-        #impact .list-narrative li {
+-            padding-left: 40px;
+-            margin-bottom: 32px;
+-            font-size: 18px;
+-            color: var(--black-72);
+-            line-height: 1.6;
+-        }
+-
+-        #impact .list-narrative li::before {
+-            width: 10px;
+-            height: 10px;
+-            top: 12px;
+-            background: var(--primary);
+-            box-shadow: 0 0 16px var(--primary);
+-        }
+-
+-        #impact .list-narrative li strong {
+-            color: var(--black-92);
+-            font-size: 22px;
+-            display: block;
+-            margin-bottom: 8px;
+-            letter-spacing: -0.01em;
+-            font-family: var(--font-heading);
+-        }
+-    
+-
+-</style>
+-</head>
+-<body>
+-
+-<!-- Progress Bar -->
+-<div class="progress-bar-top" id="pb"></div>
+-
+-<header class="main-header">
+-    <a href="/" class="header-logo" style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 24px; color: #222222; letter-spacing: -0.02em; text-decoration: none; font-family: var(--font-heading);">
+-        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+-            <rect width="40" height="40" rx="10" fill="#f37022"/>
+-            <path d="M14 26V14H18L22 20L26 14H30V26H26V18L22 24L18 18V26H14Z" fill="white"/>
+-        </svg>
+-        Intel Project
+-    </a>
+-
+-    <div class="nav-links" style="display: flex; gap: 32px; align-items: center;">
+-        <a href="#planning" class="nav-link" style="color: #222222; font-weight: 400; font-size: 16px; text-decoration: none; display: flex; align-items: center; gap: 4px;">Strategy <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6; margin-top:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+-        <a href="#research" class="nav-link" style="color: #222222; font-weight: 400; font-size: 16px; text-decoration: none; display: flex; align-items: center; gap: 4px;">Research <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6; margin-top:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+-        <a href="#design" class="nav-link" style="color: #222222; font-weight: 400; font-size: 16px; text-decoration: none; display: flex; align-items: center; gap: 4px;">Design <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6; margin-top:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+-        <a href="#impact" class="nav-link" style="color: #222222; font-weight: 400; font-size: 16px; text-decoration: none; display: flex; align-items: center; gap: 4px;">Impact <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.6; margin-top:2px;"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+-    </div>
+-
+-    <a href="#hero" class="btn-primary" style="padding: 12px 24px; font-size: 16px; border-radius: 4px; border:none; background:#f37022; color:white; font-weight:500; font-family: var(--font-body);">View Case Study <i>ΓåÆ</i></a>
+-</header>
+-
+-<!-- Mini Nav -->
+-<nav class="mini-nav" id="miniNav">
+-    <a href="#hero" class="nav-dot active" data-label="Hero"></a>
+-    <a href="#planning" class="nav-dot" data-label="Strategy"></a>
+-    <a href="#research" class="nav-dot" data-label="Research"></a>
+-    <a href="#north-star" class="nav-dot" data-label="North Star"></a>
+-    <a href="#design" class="nav-dot" data-label="Design"></a>
+-    <a href="#impact" class="nav-dot" data-label="Impact"></a>
+-</nav>
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ<header class="hero-narrative" id="hero">
+-    <div class="hero-content">
+-        <div class="hero-tagline-bubble" style="color:var(--black-92); font-size:12px; font-weight:700; height:32px; padding: 0 16px; border:1px solid #eee; display:flex; align-items:center; border-radius:4px; width:max-content; margin-bottom: 24px;">
+-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+-            EFFORTLESS AUTOMATION
+-        </div>
+-        <h1>From Labyrinth<br><b>to Luminary.</b></h1>
+-        <p style="font-size:18px; margin-bottom:56px;">Architecting Intel's Proactive AI Companion. <br>Transforming complex silicon support into effortless, luminous flows.</p>
+-        
+-        <div class="hero-cta-group">
+-            <a href="#planning" class="btn-primary" style="background: #f37022; border:none; border-radius:4px;">Explore Case Study</a>
+-            <a href="#impact" class="btn-secondary" style="background: transparent; border: 1px solid #eeeeee; box-shadow:none; font-weight:400; font-size:15px; border-radius:4px;">View Outcomes <i>ΓåÆ</i></a>
+-        </div>
+-        
+-        <div class="project-meta-grid" style="border: none; padding: 0; display: flex; gap: 48px; border-top: 1px solid var(--border); padding-top: 40px;">
+-            <div class="meta-item-new">
+-                <span class="meta-label-new">Role</span>
+-                <span class="meta-value-new" style="font-weight: 700; color: var(--black-92);">Lead UX Designer</span>
+-            </div>
+-            <div class="meta-item-new">
+-                <span class="meta-label-new">Duration</span>
+-                <span class="meta-value-new" style="font-weight: 700; color: var(--black-92);">6-Week Sprint</span>
+-            </div>
+-        </div>
+-    </div>
+-
+-    <div class="hero-visual">
+-         <div class="hero-testimonial">
+-              <p>ΓÇ£Luminary saved our team over 15 hours a week in troubleshooting alone, making our production cycle faster.ΓÇ¥</p>
+-              <div class="hero-testimonial-footer">
+-                   <div class="rating"><span>Γÿà</span> 5.0 on TrustSaaS</div>
+-                   <div style="font-weight: 800; font-size: 20px; color: var(--black-92); letter-spacing: -0.04em; font-family:var(--font-heading);">Intel Cloud</div>
+-              </div>
+-         </div>
+-    </div>
+-</header> 5.0 on TrustSaaS</div>
+-                   <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/truenorth.png" alt="TrueNorth" style="height: 24px; opacity: 0.9;">
+-              </div>
+-         </div>
+-    </div>
+-</header>
+-
+-
+-<div class="dashboard-hero-image" style="max-width: 1200px; margin: -180px auto 100px; position: relative; z-index: 10; padding: 0 max(var(--gutter), 80px); text-align: center;">
+-    <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/Automate-Dashboard-Hero.png" alt="Dashboard Interface" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 40px 100px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); filter: contrast(1.02) saturate(1.05);" onerror="this.src='https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/App-Automate-Mockup.png'">
+-</div>
+-
+-<section class="trusted-by-section" style="text-align: center; padding: 40px var(--gutter) 100px; background: #fff;">
+-    <p style="font-family: var(--font-body); font-size: 16px; font-weight: 500; color: #717171; margin-bottom: 40px;">Trusted by 10k+ companies worldwide</p>
+-    <div style="display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; opacity: 0.6; filter: grayscale(100%); transition: var(--transition);">
+-        <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/logo-5.svg" alt="Company 1" style="height: 32px;">
+-        <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/logo-4.svg" alt="Company 2" style="height: 32px;">
+-        <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/logo-3.svg" alt="Company 3" style="height: 32px;">
+-        <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/logo-2.svg" alt="Company 4" style="height: 32px;">
+-        <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/logo-1.svg" alt="Company 5" style="height: 32px;">
+-        <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/logo-6.svg" alt="Company 6" style="height: 32px;">
+-    </div>
+-</section>
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<!-- MILLION SOLUTIONS TABS -->
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<section style="background: #f8fafc; padding: 120px 0;">
+-    <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 max(var(--gutter), 40px);">
+-        <div class="hero-tagline-bubble" style="margin-bottom: 24px; background: white;">WHAT WE DO</div>
+-        <h3 style="font-size: 56px; line-height: 1.1; font-weight: 400; color: #222222; margin-bottom: 60px; letter-spacing: -0.04em;">One Software, <span style="font-weight: 400; color: #717171;">Million Solutions</span></h3>
+-        
+-        <div class="solutions-grid">
+-            <div class="solutions-tabs">
+-                <div class="solution-tab active">Technical Support</div>
+-                <div class="solution-tab">System Diagnostics</div>
+-                <div class="solution-tab">Product Discovery</div>
+-                <div class="solution-tab">Community Forums</div>
+-            </div>
+-            <div class="solutions-content-card" style="background: white; border: 1px solid #eeeeee; border-radius: 4px; padding: 60px; display: flex; align-items: center; gap: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.03);">
+-                <div style="flex: 1;">
+-                    <h4 style="font-size: 32px; font-weight: 400; margin-bottom: 24px; color: #222222;">Technical Support</h4>
+-                    <p style="font-family: var(--font-body); font-size: 16px; color: #4f4f4f; line-height: 24px; margin-bottom: 32px;">Intel Luminary automates the troubleshooting process, drastically reducing resolution time. Through contextual understanding and logic-aware guidance, users can fix intricate architecture issues without reading 50-page manuals.</p>
+-                    <div style="display: flex; gap: 40px;">
+-                        <div>
+-                            <div style="font-size: 32px; font-weight: 400; color: #f37022; margin-bottom: 4px;">70%</div>
+-                            <div style="font-size: 14px; font-family: var(--font-body); color: #717171;">Faster Resolution</div>
+-                        </div>
+-                        <div>
+-                            <div style="font-size: 32px; font-weight: 400; color: #f37022; margin-bottom: 4px;">4.8</div>
+-                            <div style="font-size: 14px; font-family: var(--font-body); color: #717171;">Avg User Satisfaction</div>
+-                        </div>
+-                    </div>
+-                </div>
+-                <div style="flex: 1;">
+-                    <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/App-Automate-Mockup.png" style="width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.08);" alt="Solution preview">
+-                </div>
+-            </div>
+-        </div>
+-    </div>
+-</section>
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<!-- POWER PRO (The Personas) -->
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<section style="padding: 120px 0; background: #ffffff;">
+-    <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 max(var(--gutter), 40px);">
+-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px;">
+-            <div style="max-width: 600px;">
+-                <div class="hero-tagline-bubble" style="margin-bottom: 24px; border: 1px solid #eeeeee;">WHO WE SERVE</div>
+-                <h3 style="font-size: 56px; line-height: 1.1; font-weight: 400; color: #222222; letter-spacing: -0.04em;">The Power Pro of <br>Intel Ecosystem</h3>
+-            </div>
+-            <p style="max-width: 400px; font-family: var(--font-body); font-size: 16px; color: #4f4f4f; line-height: 24px; margin-bottom: 12px;">Discover how Intel Luminary goes beyond basic AI chat functions by adapting strictly to the user's specific hardware workflow.</p>
+-        </div>
+-
+-        <div class="power-pro-grid">
+-            <div class="power-pro-card orange">
+-                <div class="power-pro-card-icon">
+-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+-                </div>
+-                <h4>Enterprise IT Admins</h4>
+-                <p>Dealing with massive Xeon deployments and intricate thermal configurations. Luminary provides instantaneous insights saving hours of downtime.</p>
+-                <div style="flex-grow: 1;"></div>
+-            </div>
+-            <div class="power-pro-card white">
+-                <div class="power-pro-card-icon">
+-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+-                </div>
+-                <h4>Tech-Savvy Gamers</h4>
+-                <p>Pushing their Core processors and Arc GPUs to the limit. They need deep-level tweaking instructions, over-clocking safety, and driver patch notes on demand.</p>
+-                <div style="flex-grow: 1;"></div>
+-            </div>
+-            <div class="power-pro-card white">
+-                <div class="power-pro-card-icon">
+-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+-                </div>
+-                <h4>Novice Home Users</h4>
+-                <p>Looking for simple explanations to PC building, basic troubleshooting, or understanding logic board connections without tech jargon holding them back.</p>
+-                <div style="flex-grow: 1;"></div>
+-            </div>
+-        </div>
+-    </div>
+-</section>
+-
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<!-- PLANNING (Bento Grid) -->
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<section class="story-block" id="planning" style="background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); padding: 120px 0;">
+-    <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 max(var(--gutter), 40px); text-align: center;">
+-        <div class="hero-tagline-bubble" style="margin-bottom: 24px;">HOW WE BUILD IT</div>
+-        <div class="mega-text" style="max-width: 800px; margin: 0 auto 60px; text-align: center;">
+-            <h3 style="font-size: 56px; line-height: 1.1; font-weight: 400; color: #222222; margin-bottom: 24px; letter-spacing: -0.04em;">Unleash The Power of <br><span style="font-weight: 400; color: #717171;">Agentic AI Tools</span></h3>
+-        </div>
+-
+-        <div class="wrap-container" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); text-align: left;">
+-            <div class="feature-card">
+-                <div class="feature-icon">
+-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+-                </div>
+-                <strong>Core Problem</strong>
+-                <p>Intel has NO dedicated AI chatbot. Users search 3ΓÇô5 pages manually for answers. Average resolution time: 14 minutes. 73% abandon without finding a solution.</p>
+-            </div>
+-            <div class="feature-card">
+-                <div class="feature-icon">
+-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+-                </div>
+-                <strong>Research Focus</strong>
+-                <p>Deep forum analysis (community.intel.com, Reddit r/intel), competitor teardowns (Apple, Microsoft, Dell). Audit of existing 'Ask Intel' flows.</p>
+-            </div>
+-            <div class="feature-card">
+-                <div class="feature-icon">
+-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+-                </div>
+-                <strong>Key Personas</strong>
+-                <p>Tech-Savvy Gamers ΓÇó Enterprise IT Admins ΓÇó Novice Home Users. Three distinct realities, one luminous solution.</p>
+-            </div>
+-            <div class="feature-card">
+-                <div class="feature-icon">
+-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+-                </div>
+-                <strong>Design Hypothesis</strong>
+-                <p>If we embed a proactive, hardware-aware AI companion, we can reduce resolution time by 70%+ and boost CSAT to 4.8/5.</p>
+-            </div>
+-            <div class="feature-card">
+-                <div class="feature-icon">
+-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+-                </div>
+-                <strong>Sprint Phases</strong>
+-                <p>Week 1ΓÇô2: Research & personas. Week 3ΓÇô4: Conversational wireframes. Week 5ΓÇô6: Hi-fi prototypes & usability testing.</p>
+-            </div>
+-            <div class="feature-card">
+-                <div class="feature-icon">
+-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+-                </div>
+-                <strong>Key Innovation</strong>
+-                <p>Auto hardware detection, empathetic tone engine, and escalation with full context memory ΓÇö zero user repetition.</p>
+-            </div>
+-        </div>
+-    </div>
+-</section>
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<!-- II. RESEARCH -->
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<section class="story-block" id="research">
+-    <div class="container">
+-        <span class="section-tag" style="padding: 8px 16px; background:#f0f4f8; color:#717171; border-radius: 6px; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; border:1px solid #e2e8f0; margin-bottom:24px; display:inline-block;">02 ΓÇö Research & Human Truths</span>
+-        <div class="mega-text">
+-            <h3 style="font-size: 56px; line-height: 1.1; font-weight: 400; color: #222222; margin-bottom: 24px; letter-spacing: -0.04em;">Evidence-Based Discovery</h3>
+-            <p style="max-width: 800px; font-family: var(--font-body); font-size: 18px; color: #4f4f4f; line-height: 28px; margin-bottom: 48px;">500+ forum threads analyzed across community.intel.com and r/intel. Deep competitor teardowns. 2025ΓÇô2026 agentic AI trend synthesis. Every insight grounded in real user pain.</p>
+-        </div>
+-
+-        <div class="metric-wrap">
+-            <div class="metric-card"><div class="metric-val">73%</div><div class="metric-label">Abandon Without Resolution</div></div>
+-            <div class="metric-card"><div class="metric-val">3ΓÇô5</div><div class="metric-label">Pages Per Support Journey</div></div>
+-            <div class="metric-card"><div class="metric-val">14m</div><div class="metric-label">Avg. Resolution Quest</div></div>
+-            <div class="metric-card"><div class="metric-val">40%+</div><div class="metric-label">Ticket Deflection Potential</div></div>
+-        </div>
+-
+-        <!-- Personas -->
+-        <div class="persona-grid">
+-            <div class="persona-card">
+-                <div class="persona-header">
+-                    <div class="persona-avatar">A</div>
+-                    <div class="persona-info"><h4>Alex, 24</h4><p style="color:#717171; font-weight:500;">Overclocking Maverick</p></div>
+-                </div>
+-                <div class="persona-quote">"My Arc A770 crashes mid-tournament. I've tried 4 driver versions from 3 pages. If Intel makes AI chips, why can't it diagnose its own GPU?"</div>
+-                <div class="persona-stats">
+-                    <div class="stat-item"><span style="color:#f37022; text-transform:uppercase; font-size:12px; font-weight:700;">Core Need</span><strong style="font-weight:600; font-size:16px;">Instant driver compatibility oracle</strong></div>
+-                    <div class="stat-item"><span style="color:#dc2626; text-transform:uppercase; font-size:12px; font-weight:700;">Pain Point</span><strong style="font-weight:600; font-size:16px;">Crash log decryption & performance tuning</strong></div>
+-                </div>
+-            </div>
+-            <div class="persona-card">
+-                <div class="persona-header">
+-                    <div class="persona-avatar" style="background:#0f172a; color:#fff;">M</div>
+-                    <div class="persona-info"><h4>Maria, 38</h4><p style="color:#717171; font-weight:500;">Enterprise Sentinel</p></div>
+-                </div>
+-                <div class="persona-quote">"I manage 4,000 Xeon nodes. I need bulk diagnostics ΓÇö not a bot that asks me to restart my computer."</div>
+-                <div class="persona-stats">
+-                    <div class="stat-item"><span style="color:#f37022; text-transform:uppercase; font-size:12px; font-weight:700;">Core Need</span><strong style="font-weight:600; font-size:16px;">Fleet-level diagnostics & bulk warranty</strong></div>
+-                    <div class="stat-item"><span style="color:#dc2626; text-transform:uppercase; font-size:12px; font-weight:700;">Pain Point</span><strong style="font-weight:600; font-size:16px;">Contextual escalation with memory</strong></div>
+-                </div>
+-            </div>
+-            <div class="persona-card">
+-                <div class="persona-header">
+-                    <div class="persona-avatar" style="background:#22c55e; color:#fff;">S</div>
+-                    <div class="persona-info"><h4>Sam, 55</h4><p style="color:#717171; font-weight:500;">Novice Voyager</p></div>
+-                </div>
+-                <div class="persona-quote">"I don't know what a 'chipset driver' is. My computer is slow and I'm terrified of breaking something."</div>
+-                <div class="persona-stats">
+-                    <div class="stat-item"><span style="color:#f37022; text-transform:uppercase; font-size:12px; font-weight:700;">Core Need</span><strong style="font-weight:600; font-size:16px;">Jargon-free, warm explanations</strong></div>
+-                    <div class="stat-item"><span style="color:#dc2626; text-transform:uppercase; font-size:12px; font-weight:700;">Pain Point</span><strong style="font-weight:600; font-size:16px;">One-tap human handoff when overwhelmed</strong></div>
+-                </div>
+-            </div>
+-        </div>
+-    </div>
+-</section>
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<!-- III. NORTH STAR -->
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<section class="story-block white" id="north-star" style="background: #fafbfc; border-top: 1px solid #eeeeee;">
+-    <div class="container">
+-        <span class="section-tag" style="padding: 8px 16px; background:#f0f4f8; color:#717171; border-radius: 6px; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; border:1px solid #e2e8f0; margin-bottom:24px; display:inline-block;">03 ΓÇö Design North Star</span>
+-        <div class="mega-text">
+-            <h3 style="font-size: 56px; line-height: 1.1; font-weight: 400; color: #222222; margin-bottom: 24px; letter-spacing: -0.04em;">Six Principles for Luminous Support</h3>
+-            <p style="max-width: 800px; font-family: var(--font-body); font-size: 18px; color: #4f4f4f; line-height: 28px; margin-bottom: 48px;">Not arbitrary heuristics ΓÇö philosophical commitments. Each addressed a specific failure pattern in Intel's existing ecosystem.</p>
+-        </div>
+-
+-        <div class="strategy-grid">
+-            <div class="strategy-item"><h4>Proactive Prescience</h4><p>Auto-detect hardware. Anticipate failures for that specific SKU. Surface solutions before the user articulates the problem. Support before the search.</p></div>
+-            <div class="strategy-item"><h4>Empathetic Authority</h4><p>Warm yet technically precise. Acknowledge frustration before solutions. "I understand thermal throttling is alarming ΓÇö let's decode what's happening together."</p></div>
+-            <div class="strategy-item"><h4>Seamless Symbiosis</h4><p>Text + screenshot upload + log analysis + quick-action constellations. The interface adapts to how each user naturally communicates. Human-machine harmony.</p></div>
+-            <div class="strategy-item"><h4>Trustworthy Transparency</h4><p>Show confidence levels. Admit limitations with grace. One-tap human escalation preserving full conversational memory. AI that earns trust through humility.</p></div>
+-            <div class="strategy-item"><h4>Delightful Momentum</h4><p>Micro-animations, progress auras, victory confetti on resolution. Support shouldn't feel clinical ΓÇö every fix should feel like a small triumph.</p></div>
+-            <div class="strategy-item"><h4>Inclusive Precision</h4><p>WCAG 2.1 AA native. Jargon-free mode for novices. Screen-reader optimized. Voice-ready architecture for Intel AI PC NPU integration.</p></div>
+-        </div>
+-    </div>
+-</section>
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<!-- IV. DESIGN SOLUTION -->
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<section class="story-block" id="design">
+-    <div class="container">
+-        <span class="section-tag" style="padding: 8px 16px; background:#f0f4f8; color:#717171; border-radius: 6px; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; border:1px solid #e2e8f0; margin-bottom:24px; display:inline-block;">04 ΓÇö Design Solution</span>
+-        <div class="mega-text">
+-            <h3 style="font-size: 56px; line-height: 1.1; font-weight: 400; color: #222222; margin-bottom: 24px; letter-spacing: -0.04em;">Creative Alchemy</h3>
+-            <p style="max-width: 800px; font-family: var(--font-body); font-size: 18px; color: #4f4f4f; line-height: 28px; margin-bottom: 48px;">Through conversational prototyping and personality workshops, the Luminary emerged ΓÇö authoritative but never cold, warm but never casual, witty but never flippant.</p>
+-        </div>
+-
+-        <div class="chat-window">
+-            <div class="chat-bar"><div class="chat-dot"></div><div class="chat-dot"></div><div class="chat-dot"></div><span>Intel Luminary ΓÇö Live Session</span></div>
+-            <div class="chat-body">
+-                <div class="msg msg-bot"><div class="msg-who">Luminary</div><div class="msg-txt">Detected your <strong>Intel┬« CoreΓäó i9-14900K</strong> + <strong>Arc A770 LE</strong>. Your system is a thoroughbred ΓÇö let's keep it running like one. What brings you here?</div></div>
+-                <div class="msg msg-user"><div class="msg-who">User</div><div class="msg-txt">My GPU crashes mid-game. Reinstalled drivers twice. Losing my mind.</div></div>
+-                <div class="msg msg-bot"><div class="msg-who">Luminary</div><div class="msg-txt">GPU crashes mid-game are the worst interruption. Let me investigate.<br><br>You're on driver v31.0.101.4255 ΓÇö known DX12 stability regression. Hotfix resolves this for 94% of affected systems.<br><br>ΓÇó <strong>[Install Hotfix ΓÇö One Click]</strong><br>ΓÇó <strong>[Run Deep Diagnostics]</strong> ΓÇö thermals, power, VRAM<br>ΓÇó <strong>[Talk to a Human]</strong> ΓÇö full context shared</div></div>
+-                <div class="msg msg-user"><div class="msg-who">User</div><div class="msg-txt">Run diagnostics</div></div>
+-                <div class="msg msg-bot"><div class="msg-who">Luminary</div><div class="msg-txt">Found a thermal rebellion. GPU hitting 94┬░C ΓÇö triggering protective crashes. I can guide safe <strong>undervolting</strong> (10ΓÇô15┬░C drop, zero performance loss).<br><br>Done! Stable at 81┬░C. <strong>Your rig is optimized for greatness. Fly high, pilot.</strong></div></div>
+-            </div>
+-        </div>
+-
+-        <div class="showcase-grid" style="margin-top:48px">
+-            <div class="showcase-item" style="padding:0; overflow:hidden;"><div class="showcase-img" style="border-radius:0; border-bottom:1px solid #eee; background:linear-gradient(135deg,#f8fafc,#e2e8f0); color:#475569;">Hardware Recognition</div><div style="padding:24px;"><p style="font-size:18px;">Silent Hardware Whisper</p><span class="showcase-caption">Auto-detects Intel hardware via browser APIs + Intel DSA integration</span></div></div>
+-            <div class="showcase-item" style="padding:0; overflow:hidden;"><div class="showcase-img" style="border-radius:0; border-bottom:1px solid #eee; background:linear-gradient(135deg,#f0fdf4,#dcfce7); color:#166534;">Diagnosis Flow</div><div style="padding:24px;"><p style="font-size:18px;">Compassionate Troubleshooting</p><span class="showcase-caption">Acknowledges frustration before surfacing technical solutions</span></div></div>
+-            <div class="showcase-item" style="padding:0; overflow:hidden;"><div class="showcase-img" style="border-radius:0; border-bottom:1px solid #eee; background:linear-gradient(135deg,#fef3c7,#fde68a); color:#92400e;">Upload & Analysis</div><div style="padding:24px;"><p style="font-size:18px;">Screenshot ΓåÆ Instant Insight</p><span class="showcase-caption">AI highlights error regions and annotates step-by-step fixes</span></div></div>
+-            <div class="showcase-item" style="padding:0; overflow:hidden;"><div class="showcase-img" style="border-radius:0; border-bottom:1px solid #eee; background:linear-gradient(135deg,#eff6ff,#dbeafe); color:#1e40af;">Full Memory</div><div style="padding:24px;"><p style="font-size:18px;">Context-Preserved Handoff</p><span class="showcase-caption">Full conversation + diagnostics travel to human agent</span></div></div>
+-        </div>
+-    </div>
+-</section>
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<!-- V. TESTING -->
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<section class="story-block white" id="testing" style="background: #fafbfc; border-top: 1px solid #eeeeee;">
+-    <div class="container">
+-        <span class="section-tag" style="padding: 8px 16px; background:#f0f4f8; color:#717171; border-radius: 6px; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; border:1px solid #e2e8f0; margin-bottom:24px; display:inline-block;">05 ΓÇö Validation</span>
+-        <div class="mega-text">
+-            <h3 style="font-size: 56px; line-height: 1.1; font-weight: 400; color: #222222; margin-bottom: 24px; letter-spacing: -0.04em;">The Refinement Forge</h3>
+-            <p style="max-width: 800px; font-family: var(--font-body); font-size: 18px; color: #4f4f4f; line-height: 28px; margin-bottom: 48px;">20+ moderated remote usability sessions across 4 technical skill levels. A/B tested tone variants. WCAG accessibility audits. Edge-case stress testing.</p>
+-        </div>
+-
+-        <div class="metric-wrap">
+-            <div class="metric-card"><div class="metric-val">92%</div><div class="metric-label">Task Completion Rate</div></div>
+-            <div class="metric-card"><div class="metric-val">82</div><div class="metric-label">SUS Score ΓÇö Excellent</div></div>
+-            <div class="metric-card"><div class="metric-val">87%</div><div class="metric-label">Preferred Over Page Search</div></div>
+-        </div>
+-
+-        <div class="insight-card" style="margin-top:48px; border:1px solid #eee; box-shadow:0 10px 40px rgba(0,0,0,0.03); border-radius:20px;">
+-            <strong style="color:#f37022; font-size:14px; letter-spacing:0.1em; display:block; margin-bottom:12px;">A/B Testing Insight</strong>
+-            <p style="font-size: 20px; line-height: 1.6; color: #4f4f4f; font-family: var(--font-body);">The "companionable expert" tone outperformed corporate formality by 34% in engagement and 28% in trust ratings. Users described it as "talking to a really smart friend who actually works at Intel."</p>
+-        </div>
+-    </div>
+-</section>
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<!-- VI. IMPACT -->
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<section class="story-block" id="impact">
+-    <div class="container">
+-        <span class="section-tag" style="padding: 8px 16px; background:#f0f4f8; color:#717171; border-radius: 6px; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:0.1em; border:1px solid #e2e8f0; margin-bottom:24px; display:inline-block;">06 ΓÇö Impact & Vision</span>
+-        <div class="mega-text">
+-            <h3 style="font-size: 56px; line-height: 1.1; font-weight: 400; color: #222222; margin-bottom: 24px; letter-spacing: -0.04em;">Transformative Potential</h3>
+-        </div>
+-
+-        <div class="wrap-container" style="margin-top:60px; display:grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap:40px;">
+-            <div style="background:#fff; padding:40px; border-radius:24px; border:1px solid #eee; box-shadow:0 10px 40px rgba(0,0,0,0.03);">
+-                <h4 style="font-size:32px; margin-bottom:24px; font-weight:400; color:#222;">Key Learnings</h4>
+-                <ul class="list-narrative">
+-                    <li><strong style="font-weight:600; color:#222;">AI earns trust through humility.</strong> Showing confidence levels ("I'm 92% sure this is the right driver") built more trust than absolute certainties.</li>
+-                    <li><strong style="font-weight:600; color:#222;">Context preservation is the killer feature.</strong> Escalation memory ΓÇö carrying full conversation to human agents ΓÇö was the most praised capability.</li>
+-                    <li><strong style="font-weight:600; color:#222;">Personality is product, not polish.</strong> The warm, witty voice was the primary driver of trust, engagement, and NPS uplift.</li>
+-                </ul>
+-            </div>
+-            <div style="background:#fff; padding:40px; border-radius:24px; border:1px solid #eee; box-shadow:0 10px 40px rgba(0,0,0,0.03);">
+-                <h4 style="font-size:32px; margin-bottom:24px; font-weight:400; color:#222;">The Bigger Vision</h4>
+-                <ul class="list-narrative">
+-                    <li><strong style="font-weight:600; color:#222;">Voice on AI PCs</strong> ΓÇö NPU-powered, privacy-first voice companion running locally on Intel Core Ultra</li>
+-                    <li><strong style="font-weight:600; color:#222;">Intel DSA Fusion</strong> ΓÇö Native integration with Intel Driver & Support Assistant for auto-fix workflows</li>
+-                    <li><strong style="font-weight:600; color:#222;">Agentic Autonomy</strong> ΓÇö Schedules repairs, orders parts, and follows up ΓÇö without human prompting</li>
+-                    <li><strong style="font-weight:600; color:#222;">AI Everywhere Emblem</strong> ΓÇö From silicon manufacturer to humanity's silicon ally</li>
+-                </ul>
+-            </div>
+-        </div>
+-
+-        </div>
+-</section>
+-
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<!-- FINAL CTA -->
+-<!-- ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ -->
+-<section style="padding: 140px 0; background: radial-gradient(circle at center, rgba(34, 112, 243, 0.05) 0%, transparent 40%), #fafbfc; border-top: 1px solid #eeeeee; text-align: center;">
+-    <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 max(var(--gutter), 40px);">
+-        <h3 style="font-size: 64px; line-height: 1.05; font-family: var(--font-heading); font-weight: 400; color: #222222; margin-bottom: 24px; letter-spacing: -0.04em;">Ready to scale your <span style="color: #717171;">business?</span></h3>
+-        <p style="font-family: var(--font-body); font-size: 18px; color: #4f4f4f; margin-bottom: 48px; line-height: 28px;">Intel Luminary transforms complex support operations with seamless AI integration, turning troubleshooting into effortless flows.</p>
+-        <div style="display: flex; justify-content: center; gap: 16px;">
+-            <a href="#hero" class="btn-primary" style="background: #f37022; border:none; border-radius:8px; padding: 16px 32px; box-shadow: 0 4px 12px rgba(243, 112, 34, 0.3);">Start Free Trial</a>
+-        </div>
+-    </div>
+-</section>
+-
+-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+-<script>
+-gsap.registerPlugin(ScrollTrigger);
+-gsap.to("#pb",{width:"100%",ease:"none",scrollTrigger:{trigger:"body",start:"top top",end:"bottom bottom",scrub:!0}});
+-const dots=document.querySelectorAll('.nav-dot');
+-const secs=document.querySelectorAll('.story-block, .hero-narrative');
+-secs.forEach((s,i)=>{ScrollTrigger.create({trigger:s,start:"top center",end:"bottom center",onEnter:()=>{dots.forEach(d=>d.classList.remove('active'));if(dots[i])dots[i].classList.add('active')},onEnterBack:()=>{dots.forEach(d=>d.classList.remove('active'));if(dots[i])dots[i].classList.add('active')}})});
+-dots.forEach(d=>{d.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(d.getAttribute('href'));t&&window.scrollTo({top:t.offsetTop-40,behavior:'smooth'})})});
+-</script>
+-<script src="../../js/common-security.js" defer></script>
+-</body>
+-</html>
+\ No newline at end of file
