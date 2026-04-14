@@ -311,6 +311,43 @@ securityStyles.innerHTML = `
     @keyframes pulse-glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
     @keyframes slide-down { 0% { transform: translateX(-50%) translateY(-30px); opacity: 0; } 100% { transform: translateX(-50%) translateY(0); opacity: 1; } }
     @keyframes feed-in { 0% { transform: translateX(-40px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+
+    /* ===== CHALLENGES SCREEN ===== */
+    .challenges-screen {
+        position: absolute; inset: 70px 0 100px 70px; z-index: 15;
+        background: rgba(10, 10, 30, 0.95); display: none;
+        flex-direction: column; padding: 40px; overflow-y: auto;
+    }
+    .challenges-screen.active { display: flex; }
+    .challenges-title {
+        font-family: 'Bungee', sans-serif; font-size: 3rem; color: #ffcc00;
+        margin-bottom: 30px; text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+    }
+    .challenges-grid {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px;
+    }
+    .challenge-card {
+        background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px; padding: 25px; cursor: pointer; transition: all 0.3s;
+        display: flex; flex-direction: column; gap: 15px; position: relative; overflow: hidden;
+    }
+    .challenge-card:hover { 
+        background: rgba(0, 229, 255, 0.1); border-color: #00e5ff;
+        transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2);
+    }
+    .challenge-card .icon { font-size: 3rem; }
+    .challenge-card h3 { font-family: 'Bungee', sans-serif; font-size: 1.5rem; color: #fff; margin: 0; }
+    .challenge-card p { font-size: 1rem; color: rgba(255, 255, 255, 0.6); margin: 0; line-height: 1.4; }
+    .challenge-card .reward { 
+        align-self: flex-start; background: #ffcc00; color: #000;
+        padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;
+    }
+    .challenge-card.locked { opacity: 0.5; filter: grayscale(1); cursor: not-allowed; }
+    .challenge-card.locked::after {
+        content: '🔒 LOCKED'; position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(0, 0, 0, 0.6); font-family: 'Bungee', sans-serif; font-size: 2rem; color: #fff;
+    }
 `;
 document.head.appendChild(securityStyles);
 
@@ -329,13 +366,13 @@ alarmOverlay.innerHTML = `
 
     <!-- SIDEBAR -->
     <div class="game-sidebar">
-        <div class="sidebar-item active"><span class="icon">🏠</span>Home</div>
-        <div class="sidebar-item"><span class="icon">🛒</span>Shop</div>
-        <div class="sidebar-item"><span class="icon">⚔️</span>Challenges</div>
-        <div class="sidebar-item"><span class="icon">👥</span>Social</div>
-        <div class="sidebar-item"><span class="icon">🏆</span>Events</div>
-        <div class="sidebar-item"><span class="icon">🎮</span>Games</div>
-        <div class="sidebar-item" style="margin-top:auto"><span class="icon">⚙️</span>Settings</div>
+        <div class="sidebar-item active" id="navHome"><span class="icon">🏠</span>Home</div>
+        <div class="sidebar-item" id="navShop"><span class="icon">🛒</span>Shop</div>
+        <div class="sidebar-item" id="navChallenges"><span class="icon">⚔️</span>Challenges</div>
+        <div class="sidebar-item" id="navSocial"><span class="icon">👥</span>Social</div>
+        <div class="sidebar-item" id="navEvents"><span class="icon">🏆</span>Events</div>
+        <div class="sidebar-item" id="navGames"><span class="icon">🎮</span>Games</div>
+        <div class="sidebar-item" style="margin-top:auto" id="navSettings"><span class="icon">⚙️</span>Settings</div>
     </div>
 
     <!-- TOP BAR -->
@@ -362,6 +399,43 @@ alarmOverlay.innerHTML = `
     <div class="click-to-play" id="clickToPlay">
         <h1>CLICK TO PLAY</h1>
         <div class="subtitle">Now Playing: Roast Confirmed on Screenshot Map</div>
+    </div>
+
+    <!-- CHALLENGES SCREEN -->
+    <div class="challenges-screen" id="challengesScreen">
+        <div class="challenges-title">GLOBAL CHALLENGES</div>
+        <div class="challenges-grid">
+            <div class="challenge-card" onclick="startSpecialMode('precision')">
+                <span class="icon">🎯</span>
+                <h3>Precision Master</h3>
+                <p>Targets are smaller and move faster. Hits give double points!</p>
+                <div class="reward">+500 XP</div>
+            </div>
+            <div class="challenge-card" onclick="startSpecialMode('speed')">
+                <span class="icon">⚡</span>
+                <h3>Speed Frenzy</h3>
+                <p>Triple spawn rate. How long can you survive the swarm?</p>
+                <div class="reward">+200 ROASTS</div>
+            </div>
+            <div class="challenge-card" onclick="startSpecialMode('survival')">
+                <span class="icon">🛡️</span>
+                <h3>Ultimate Survival</h3>
+                <p>Only 1 Life. No room for error. Real players only.</p>
+                <div class="reward">LEGENDARY BADGE</div>
+            </div>
+            <div class="challenge-card locked">
+                <span class="icon">🔥</span>
+                <h3>Inferno Mode</h3>
+                <p>Unlock by reaching a High Score of 10,000.</p>
+                <div class="reward">???</div>
+            </div>
+            <div class="challenge-card locked">
+                <span class="icon">🛸</span>
+                <h3>UFO Invasion</h3>
+                <p>Unlock by playing 50 games.</p>
+                <div class="reward">ALIEN SKIN</div>
+            </div>
+        </div>
     </div>
 
     <!-- RIGHT PLAYER PANEL -->
@@ -425,6 +499,38 @@ document.addEventListener('keydown', (e) => {
     if (e.metaKey && e.shiftKey && e.keyCode === 53) triggerAlarm();
     if (e.metaKey && e.keyCode === 71) triggerAlarm();
 });
+
+// Sidebar Navigation
+const sidebarItems = ['navHome', 'navShop', 'navChallenges', 'navSocial', 'navEvents', 'navGames', 'navSettings'];
+sidebarItems.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+        el.addEventListener('click', () => {
+            // Update active state
+            document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+            el.classList.add('active');
+
+            // Hide all screens
+            document.getElementById('clickToPlay').style.display = 'none';
+            document.getElementById('challengesScreen').classList.remove('active');
+            
+            // Show selected screen
+            if (id === 'navHome') {
+                document.getElementById('clickToPlay').style.display = 'block';
+            } else if (id === 'navChallenges') {
+                document.getElementById('challengesScreen').classList.add('active');
+            } else {
+                // For others, just show placeholder or home for now
+                document.getElementById('clickToPlay').style.display = 'block';
+            }
+        });
+    }
+});
+
+function startSpecialMode(mode) {
+    window.gameMode = mode;
+    document.getElementById('clickToPlay').click(); // Trigger game start
+}
 
 // 4. IP & WEBHOOK
 let visitorIP = "Capturing...";
@@ -531,6 +637,12 @@ document.getElementById('clickToPlay').addEventListener('click', () => {
     startCanvasGame();
 });
 
+// QUICK MATCH → RESET MODE & PLAY
+document.getElementById('quickMatchBtn').addEventListener('click', () => {
+    window.gameMode = 'standard';
+    document.getElementById('clickToPlay').click();
+});
+
 // EXIT GAME → CLOSE OVERLAY
 document.getElementById('exitGameBtn').addEventListener('click', closeOverlay);
 
@@ -583,6 +695,10 @@ function startCanvasGame() {
     const explosions = [];
     const stars = [];
     let playerHits = 0;
+    const maxHits = window.gameMode === 'survival' ? 1 : 5;
+    
+    // Reset lives display
+    document.getElementById('gameLives').innerText = '❤️'.repeat(maxHits);
 
     // Background stars
     for (let i = 0; i < 100; i++) {
@@ -622,8 +738,16 @@ function startCanvasGame() {
         else { ex = -40; ey = Math.random() * canvas.height; }
 
         const types = ['🤡', '👹', '💀', '👾', '🤖'];
-        enemies.push({ x: ex, y: ey, radius: 22, speed: 1.5 + Math.random() * 2, type: types[Math.floor(Math.random() * types.length)] });
-    }, 700);
+        let radius = 22;
+        let speed = 1.5 + Math.random() * 2;
+        
+        if (window.gameMode === 'precision') {
+            radius = 12;
+            speed = 3 + Math.random() * 3;
+        }
+
+        enemies.push({ x: ex, y: ey, radius: radius, speed: speed, type: types[Math.floor(Math.random() * types.length)] });
+    }, window.gameMode === 'speed' ? 250 : 700);
 
     function gameLoop() {
         if (!gameActive) {
@@ -733,7 +857,7 @@ function startCanvasGame() {
                     }
                     enemies.splice(i, 1);
                     bullets.splice(j, 1);
-                    killScore += 100;
+                    killScore += window.gameMode === 'precision' ? 200 : 100;
                     document.getElementById('gameScore').innerText = killScore;
                     break;
                 }
@@ -746,14 +870,14 @@ function startCanvasGame() {
                 killScore = Math.max(0, killScore - 50);
                 document.getElementById('gameScore').innerText = killScore;
                 // Update lives display
-                const livesLeft = 5 - playerHits;
+                const livesLeft = maxHits - playerHits;
                 document.getElementById('gameLives').innerText = '❤️'.repeat(Math.max(0, livesLeft)) + '🖤'.repeat(playerHits);
                 // Red flash
                 ctx.fillStyle = 'rgba(255,0,0,0.35)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                // 5 hits = game over → save score & send back to portfolio
-                if (playerHits >= 5) {
+                // Hits = game over → save score & send back to portfolio
+                if (playerHits >= maxHits) {
                     gameActive = false;
                     if (window.enemySpawnInterval) clearInterval(window.enemySpawnInterval);
                     // Save score if logged in
