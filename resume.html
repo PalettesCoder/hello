@@ -25,6 +25,8 @@
     </noscript>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/figma-nav.css">
+    <link rel="stylesheet" href="css/figma-perfect.css">
+    <link rel="stylesheet" href="css/figma-interactive.css">
     <style>
         html { zoom: 1; }
         body {
@@ -187,10 +189,10 @@
                     <div class="panel-title-row">
                         Resume Page <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
                     </div>
-                    <div class="panel-status-row">
+                    <!-- <div class="panel-status-row">
                         <span class="status-badge">Team project</span>
                         <span class="status-badge blue">Free</span>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="sidebar-section">
@@ -241,33 +243,43 @@
                 
                 <!-- FLOATING TOOLBAR PILL -->
                 <div class="figma-toolbar-pill">
-                    <div class="toolbar-group">
-                        <div class="toolbar-tool active" id="tool-cursor" title="Move (V)">
-                            <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M3.5 2l7.5 4.5-5 .5-2 4.5V2z" fill="currentColor"/></svg>
+                    <div class="toolbar-group toolbar-group-primary">
+                        <div class="toolbar-tool toolbar-tool--split active" id="tool-cursor" title="Move (V)">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4L17 10.5L11.4 11.4L8.8 19L6 4Z" fill="currentColor" stroke="currentColor" stroke-linejoin="round"/></svg>
+                            <span class="toolbar-chevron" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M6 8L10 12L14 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                         </div>
-                        <div class="toolbar-tool" title="Frame (F)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 1v12M10 1v12M1 4h12M1 10h12" stroke="currentColor" stroke-width="1.2"/></svg>
+                        <div class="toolbar-tool toolbar-tool--split" title="Frame (F)">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3V21M16 3V21M3 8H21M3 16H21" stroke="currentColor" stroke-linecap="round"/></svg>
+                            <span class="toolbar-chevron" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M6 8L10 12L14 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                         </div>
-                        <div class="toolbar-tool" title="Shape (R)">
-                            <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" stroke="currentColor" stroke-width="1.2" rx="0.5"/></svg>
+                        <div class="toolbar-tool toolbar-tool--split" title="Shape (R)">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4.5" y="4.5" width="15" height="15" rx="2.5" stroke="currentColor"/></svg>
+                            <span class="toolbar-chevron" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M6 8L10 12L14 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                         </div>
-                        <div class="toolbar-tool" title="Pen (P)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11 2L3 10L1 13L4 11L12 3L11 2Z" stroke="currentColor" stroke-width="1.2"/></svg>
+                        <div class="toolbar-tool toolbar-tool--split" title="Pen (P)">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 4.5L19.5 9.5L11 18L5 19L6 13L14.5 4.5Z" stroke="currentColor" stroke-linejoin="round"/><path d="M13 6L18 11" stroke="currentColor" stroke-linecap="round"/></svg>
+                            <span class="toolbar-chevron" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M6 8L10 12L14 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                         </div>
                         <div class="toolbar-tool" title="Text (T)">
-                            <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M1.5 3h9M6 3v7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 6H19M12 6V19" stroke="currentColor" stroke-linecap="round"/></svg>
                         </div>
-                        <div class="toolbar-tool" id="tool-hand" title="Hand (H)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 4.5V3a1.5 1.5 0 013 0v1.5m0 0V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <div class="toolbar-tool" title="Ellipse">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4.5C16.7 4.5 19.5 7.4 19.5 12C19.5 16.6 16.7 19.5 12 19.5C7.3 19.5 4.5 16.6 4.5 12C4.5 7.4 7.3 4.5 12 4.5Z" stroke="currentColor"/></svg>
                         </div>
-                        <div class="toolbar-tool" title="Comment (C)">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 10.5V2a1 1 0 011-1h10a1 1 0 011 1v7" stroke="currentColor" stroke-width="1.2"/></svg>
+                        <div class="toolbar-tool" title="Assets">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4.5" y="4.5" width="5" height="5" rx="1.2" stroke="currentColor"/><rect x="14.5" y="4.5" width="5" height="5" rx="1.2" stroke="currentColor"/><rect x="4.5" y="14.5" width="5" height="5" rx="1.2" stroke="currentColor"/><rect x="14.5" y="14.5" width="5" height="5" rx="1.2" stroke="currentColor"/></svg>
                         </div>
                     </div>
                     <div class="toolbar-divider"></div>
-                    <div class="toolbar-group">
-                        <div class="toolbar-tool" title="Section">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="4" y="4" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><path d="M4 1V4M10 1V4M1 4H4M1 10H4M10 10H13M10 4H13M4 10V13M10 10V13" stroke="currentColor" stroke-width="1.2"/></svg>
+                    <div class="toolbar-group toolbar-group-utility">
+                        <div class="toolbar-tool toolbar-tool--ghost" id="tool-hand" title="Draw">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 15C7 10 9 18 11 12C12.4 8.5 14 9 15 12C16 15 17 13 19 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="toolbar-tool toolbar-tool--outlined" title="Prototype">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4.5" y="3.5" width="15" height="17" rx="2.5" stroke="currentColor"/><path d="M9 8L14.5 11.5L12 12L10 16L9 8Z" fill="currentColor" stroke="currentColor" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="toolbar-tool" title="Code">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 8L5 12L9 16M15 8L19 12L15 16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
                     </div>
                 </div>
@@ -327,12 +339,12 @@
                     <div class="prop-row-custom">
                         <div class="input-with-icon">
                             <span style="color: rgba(0,0,0,0.4); width: 12px;">W</span>
-                            <span>800</span>
+                            <input type="text" value="800" data-figma-field="width" aria-label="Frame width">
                             <svg width="8" height="8" viewBox="0 0 8 8" fill="none" style="margin-left: auto;"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
                         </div>
                         <div class="input-with-icon">
                             <span style="color: rgba(0,0,0,0.4); width: 12px;">H</span>
-                            <span>1132</span>
+                            <input type="text" value="1132" data-figma-field="height" aria-label="Frame height">
                             <span style="margin-left: auto; font-size: 10px; color: rgba(0,0,0,0.4);">Hug</span>
                         </div>
                         <div class="resizing-item" style="background: rgba(0,0,0,0.03); width: 28px; height: 28px;">
@@ -355,16 +367,77 @@
                             <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Opacity</div>
                             <div class="input-with-icon">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="2 2"/></svg>
-                                <span>100%</span>
+                                <input type="text" value="100%" data-figma-field="opacity" aria-label="Frame opacity">
                             </div>
                         </div>
                         <div style="flex: 1;">
                             <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Corner radius</div>
                             <div class="input-with-icon">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11c0-4.418-3.582-8-8-8M3 13c0 4.418 3.582 8 8 8"/></svg>
-                                <span style="color: rgba(0,0,0,0.3);">0</span>
+                                <input type="text" value="0" data-figma-field="radius" aria-label="Corner radius">
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- TYPOGRAPHY SECTION -->
+                <div class="sidebar-section">
+                    <div class="section-label">
+                        Typography
+                        <div class="section-actions">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16"/><path d="M8 20V4h8v16"/></svg>
+                            <span style="font-size: 18px; line-height: 1;">+</span>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom">
+                        <div class="prop-block-custom select" style="flex: 1.5;">
+                            <input type="text" value="Inter" data-figma-field="font-family" aria-label="Font family">
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom">
+                        <div class="prop-block-custom select" style="flex: 1.5;">
+                            <input type="text" value="600" data-figma-field="font-weight" aria-label="Font weight">
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+                        </div>
+                        <div class="prop-block-custom select" style="flex: 1;">
+                            <input type="text" value="11" data-figma-field="font-size" aria-label="Font size">
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.2"/></svg>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom">
+                        <div style="flex: 1;">
+                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Line height</div>
+                            <div class="input-with-icon">
+                                <span style="font-size: 14px; margin-top: -2px;">A</span>
+                                <input type="text" value="Auto" data-figma-field="line-height" aria-label="Line height">
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-size: 10px; color: rgba(0,0,0,0.4); margin-bottom: 4px;">Letter spacing</div>
+                            <div class="input-with-icon">
+                                <span style="font-size: 14px; margin-top: -2px;">|A|</span>
+                                <input type="text" value="0%" data-figma-field="letter-spacing" aria-label="Letter spacing">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FILL SECTION -->
+                <div class="sidebar-section">
+                    <div class="section-label">
+                        Fill
+                        <div class="section-actions">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                            <span style="font-size: 18px; line-height: 1;">+</span>
+                        </div>
+                    </div>
+                    <div class="prop-row-custom fill-row">
+                        <div class="color-swatch" style="background: #FFFFFF;"></div>
+                        <input type="text" class="hex-input" value="FFFFFF" data-figma-field="fill-hex" aria-label="Fill color hex">
+                        <input type="text" class="opacity-input" value="100%" data-figma-field="fill-opacity" aria-label="Fill opacity">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity: 0.5;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <span style="opacity: 0.5; font-size: 16px;">−</span>
                     </div>
                 </div>
 
@@ -404,6 +477,8 @@
         
         let isSpacePressed = false;
         let isCtrlPressed = false;
+        const interactiveTargetSelector = 'input, textarea, select, button, a, label, [contenteditable="true"], .frame-controls';
+        const nativeScrollTargetSelector = '.figma-sidebar-left, .figma-sidebar-right, .sidebar-panel-content, .offcanvas, .nav-mobile-list';
 
         function updateTransform() {
             panCanvas.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
@@ -411,6 +486,22 @@
             gridOverlay.style.backgroundSize = `${24 * scale}px ${24 * scale}px`;
             zoomLevelDisplay.innerText = `${Math.round(scale * 100)}%`;
         }
+
+        function focusLayerInViewport(layer) {
+            const left = parseFloat(layer.style.left || getComputedStyle(layer).left || 0);
+            const top = parseFloat(layer.style.top || getComputedStyle(layer).top || 0);
+            const centerX = left + layer.offsetWidth / 2;
+            const centerY = top + layer.offsetHeight / 2;
+            translateX = window.innerWidth / 2 - centerX * scale;
+            translateY = window.innerHeight / 2 - centerY * scale;
+            updateTransform();
+        }
+
+        window.figmaViewportApi = {
+            getScale: () => scale,
+            focusLayer: focusLayerInViewport,
+            refresh: updateTransform
+        };
 
         function updateTools() {
             // If dragging, panning, or zooming
@@ -431,6 +522,7 @@
         
         // Handle Mouse and Panning
         viewport.addEventListener('mousedown', (e) => {
+            if (e.target.closest(interactiveTargetSelector) && !isSpacePressed) return;
             if (e.button === 1 || isSpacePressed || e.target === viewport || e.target === gridOverlay || e.target === shield || e.target.closest('.figma-layer')) {
                 isDragging = true;
                 startX = e.clientX - translateX;
@@ -456,6 +548,9 @@
 
         // Zooming & Panning logic
         window.addEventListener('wheel', (e) => {
+            if (e.target.closest(nativeScrollTargetSelector) && !e.ctrlKey && !e.metaKey) {
+                return;
+            }
             // Force canvas zoom if Ctrl is held, regardless of where the mouse is
             if (e.ctrlKey || e.metaKey) {
                 e.preventDefault();
@@ -562,5 +657,6 @@
     <script src="js/snowflake_cursor.js"></script>
 
     <script src="js/figma-app.js"></script>
+    <script src="js/figma-canvas-interactions.js"></script>
 </body>
 </html>

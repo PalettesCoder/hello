@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ELIMINATED - Screenshot Detected!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@500;700&display=swap');
+
+        :root {
+            --br-red: #ff2a2a;
+            --br-dark: #0a0a0c;
+            --br-gold: #ffb700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--br-dark);
+            color: white;
+            font-family: 'Teko', sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        /* TACTICAL GRID & VIGNETTE */
+        .background-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 42, 42, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 42, 42, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+            opacity: 0.5;
+            animation: pulse-grid 4s infinite alternate;
+        }
+
+        .vignette {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, transparent 40%, rgba(10, 10, 12, 0.95) 90%);
+            z-index: 2;
+        }
+
+        /* FAKE MOBILE NOTCH & STATUS BAR */
+        .status-bar {
+            position: absolute;
+            top: 0; width: 100%; height: 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 20px; z-index: 100;
+            font-family: 'Anton', sans-serif; font-size: 14px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+        .notch {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 150px; height: 30px; background: black;
+            border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .notch::before {
+            content: ''; width: 40px; height: 6px; background: #222; border-radius: 10px; margin-right: 10px;
+        }
+        .notch::after {
+            content: ''; width: 10px; height: 10px; background: #111; border-radius: 50%; border: 1px solid #333;
+        }
+
+        /* MAIN CONTENT AREA */
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ELIMINATED BANNER */
+        .eliminated-banner {
+            width: 120%;
+            background: linear-gradient(90deg, transparent, var(--br-red), #aa0000, var(--br-red), transparent);
+            padding: 20px 0;
+            transform: rotate(-3deg) scale(1.2);
+            box-shadow: 0 0 50px rgba(255, 42, 42, 0.8), inset 0 0 20px rgba(0,0,0,0.5);
+            animation: slam-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, shake 0.1s infinite 0.5s;
+            border-top: 4px solid #fff;
+            border-bottom: 4px solid #fff;
+            margin-bottom: 30px;
+            text-shadow: 4px 4px 0px #000, 0 0 20px rgba(255,255,255,0.5);
+        }
+
+        .eliminated-text {
+            font-family: 'Anton', sans-serif;
+            font-size: 6rem;
+            color: white;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        /* SUBTITLE TEXT */
+        .warning-text {
+            font-size: 1.8rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            border-left: 5px solid var(--br-gold);
+            border-right: 5px solid var(--br-gold);
+            max-width: 90%;
+            margin: 20px 0;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px #000;
+            animation: slide-up 0.5s ease-out 0.8s backwards;
+        }
+
+        .ip-highlight {
+            color: var(--br-gold);
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+        }
+
+        /* ROAST LOADING BAR */
+        .loading-container {
+            width: 80%;
+            max-width: 400px;
+            margin-top: 40px;
+            animation: slide-up 0.5s ease-out 1.2s backwards;
+        }
+
+        .loading-title {
+            font-size: 1.5rem;
+            color: var(--br-gold);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: 0 0 10px var(--br-gold);
+        }
+
+        .loading-bar-bg {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--br-gold);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 183, 0, 0.4);
+        }
+
+        .loading-bar-fill {
+            height: 100%;
+            background: repeating-linear-gradient(
+                -45deg,
+                var(--br-gold),
+                var(--br-gold) 15px,
+                #d49800 15px,
+                #d49800 30px
+            );
+            width: 0%;
+            animation: fill-bar 3s forwards cubic-bezier(0.1, 0.8, 0.3, 1) 1.5s;
+        }
+
+        /* KILL FEED ROASTING */
+        .kill-feed {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            font-size: 1.2rem;
+            text-align: right;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .kill-item {
+            background: rgba(255, 42, 42, 0.2);
+            border: 1px solid rgba(255, 42, 42, 0.5);
+            padding: 4px 12px;
+            border-radius: 4px;
+            opacity: 0;
+            animation: feed-in 0.3s forwards;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .kill-item span.skull { color: var(--br-red); }
+
+        /* PARTICLES / EMOJIS */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 100;
+            font-size: 2rem;
+            animation: float-up 3s linear forwards;
+        }
+
+        /* ANIMATIONS */
+        @keyframes pulse-grid {
+            from { opacity: 0.3; }
+            to { opacity: 0.7; }
+        }
+
+        @keyframes slam-in {
+            0% { transform: scale(5) rotate(-10deg); opacity: 0; }
+            50% { transform: scale(0.8) rotate(3deg); opacity: 1; }
+            100% { transform: scale(1) rotate(-3deg); opacity: 1; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(-3deg) translate(0, 0); }
+            25% { transform: rotate(-3.5deg) translate(-2px, 2px); }
+            50% { transform: rotate(-2.5deg) translate(2px, -2px); }
+            75% { transform: rotate(-3.5deg) translate(-2px, -2px); }
+        }
+
+        @keyframes slide-up {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fill-bar {
+            0% { width: 0%; }
+            40% { width: 60%; }
+            80% { width: 85%; }
+            100% { width: 100%; box-shadow: 0 0 30px var(--br-gold); }
+        }
+
+        @keyframes feed-in {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-300px) scale(1.5); opacity: 0; }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Tactical Grid & Vignette -->
+    <div class="background-grid"></div>
+    <div class="vignette"></div>
+
+    <!-- Mobile UI Simulator -->
+    <div class="status-bar">
+        <span>10:42 PM</span>
+        <div class="notch"></div>
+        <span>5G  🔋 12%</span>
+    </div>
+
+    <!-- Kill Feed -->
+    <div class="kill-feed" id="killFeed"></div>
+
+    <div class="content">
+        <!-- Giant Eliminated Banner -->
+        <div class="eliminated-banner">
+            <div class="eliminated-text">ELIMINATED</div>
+        </div>
+
+        <!-- Warning Info -->
+        <div class="warning-text">
+            SCREENSHOT ATTEMPT DETECTED!<br>
+            Player IP: <span class="ip-highlight">182.64.123.45</span><br>
+            has been sent to the squad chat for public roasting.
+        </div>
+
+        <!-- Roast Progress Bar -->
+        <div class="loading-container">
+            <div class="loading-title">
+                <span>☠ ROAST LOADING...</span>
+                <span>100%</span>
+            </div>
+            <div class="loading-bar-bg">
+                <div class="loading-bar-fill"></div>
+            </div>
+        </div>
+
+        <h1 style="font-family:'Anton', sans-serif; font-size:4rem; color:#fff; text-shadow:0 0 20px #ff2a2a; margin-top:50px; opacity:0; animation:slide-up 0.5s ease-out 2.5s forwards;">YOU JUST GOT ROASTED</h1>
+    </div>
+
+    <script>
+        // Create Floating Emojis
+        const emojis = ['😂', '🔥', '💀', '🤡', '😭', '📸'];
+        function spawnParticle() {
+            const el = document.createElement('div');
+            el.className = 'particle';
+            el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.top = '100vh';
+            el.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 3000);
+        }
+        
+        // Intensity ramps up
+        setTimeout(() => {
+            setInterval(spawnParticle, 150);
+        }, 1000);
+
+        // Kill Feed Population
+        const kills = [
+            "SquadLeader ︻╦╤─ System_Bypass",
+            "xX_Sniper_Xx 💀 Player_182.64.123.45",
+            "AntiCheat 😂 Camera_Roll",
+            "RoastBot 🔥 Caught_In_4K"
+        ];
+        
+        const feed = document.getElementById('killFeed');
+        kills.forEach((text, i) => {
+            setTimeout(() => {
+                const item = document.createElement('div');
+                item.className = 'kill-item';
+                item.innerHTML = `<span class="skull">☠</span> ${text}`;
+                feed.appendChild(item);
+                setTimeout(() => item.style.display = 'none', 5000);
+            }, 800 + (i * 700));
+        });
+    </script>
+</body>
+</html>

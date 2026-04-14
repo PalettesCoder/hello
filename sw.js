@@ -1,4 +1,4 @@
-const CACHE_NAME = 'harsha-portfolio-cache-v2';
+const CACHE_NAME = 'harsha-portfolio-cache-v15';
 
 // Core shell — cached on install for offline support
 const CORE_SHELL = [
@@ -50,6 +50,7 @@ const CORE_SHELL = [
   'images/favicon.svg',
   'images/pwa-icon.png',
   'images/avatar-boy.png',
+  'images/roast-alert-bg.png',
   'manifest.json'
 ];
 

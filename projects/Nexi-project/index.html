@@ -80,11 +80,34 @@
         }
 
         .scroll-hint {
-            position: absolute; top: 16px; right: 24px;
-            background: var(--color-surface-dark); color: #fff;
-            padding: 8px 16px; border-radius: 100px; font-size: 0.875rem;
-            font-weight: 700; letter-spacing: 1px; z-index: 10;
-            pointer-events: none; opacity: 0.9;
+            position: absolute; top: 20px; right: 20px;
+            background: rgba(18, 18, 18, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #ffffff;
+            padding: 8px 14px; 
+            border-radius: 6px; 
+            font-size: 0.7rem; 
+            font-weight: 500;
+            letter-spacing: 0.08em; 
+            text-transform: uppercase;
+            z-index: 10; 
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px;
+        }
+
+        .scroll-icon-wrapper {
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0.8;
+        }
+
+        .scroll-icon-wrapper svg {
+            width: 14px; height: 14px;
+            stroke-width: 2px;
         }
 
         .image-scroll-container img { width: 100%; height: auto; display: block; }
@@ -242,7 +265,12 @@
                 <p><strong>The UX Problem Statement:</strong> The legacy architecture of Nexi Pay was fundamentally exclusionary. It favored deep, nested menus filled with technical banking jargon (e.g., "Amortization", "ACH Routing") that paralyzed casual tech users. Users experienced acute cognitive overload when attempting basic tasks. The <em>"Send Money"</em> flow absurdly required 7 distinct screen traverses. Furthermore, the dashboard aggressively obfuscated the user's Total Available Balance behind promotional loan carousels, fostering deep-seated resentment and anxiety.</p>
                 
                 <div class="image-scroll-container">
-                    <div class="scroll-hint">↓ SCROLL TO VIEW FULL MOCKUP</div>
+                    <div class="scroll-hint">
+                        <div class="scroll-icon-wrapper">
+                            <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                        </div>
+                        Scroll to view full mockup
+                    </div>
                     <img src="../../images/Nexi/f35ad5221343037.67d298f68e160.webp" alt="High-fidelity mockups showing the overarching architecture of the Nexi Pay financial application, including the main dashboard, onboarding, and tracking interfaces.">
                 </div>
                 <span class="image-caption">Figure 1: Comprehensive overview of the redesigned High-Fidelity App Architecture (Scroll to view all screens).</span>
@@ -407,7 +435,12 @@
                 </ol>
 
                 <div class="image-scroll-container">
-                    <div class="scroll-hint">↓ SCROLL TO VIEW DIAGRAMS</div>
+                    <div class="scroll-hint">
+                        <div class="scroll-icon-wrapper">
+                            <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                        </div>
+                        Scroll to view diagrams
+                    </div>
                     <img src="../../images/Nexi/f7aeb4221343037.Y3JvcCwxNDQwLDExMjYsMCw4MQ.png" alt="Detailed layouts depicting the restructured architectural flow, particularly highlighting the seamless sign-up authentication flows and new dashboard component hierarchy.">
                 </div>
                 <span class="image-caption">Figure 2: Architectural layouts highlighting the rigorous Bottom Navigation system and simplified KYC forms.</span>
@@ -438,7 +471,12 @@
                 <p><strong>Geometry:</strong> To counterbalance the brutalist contrast, we implemented a universal <code>24px</code> border-radius philosophy on all cards and containers. This "softness" visually cushions the user, subtly neutralizing the inherent stress of banking logic.</p>
 
                 <div class="image-scroll-container">
-                    <div class="scroll-hint">↓ SCROLL TO EXPLORE UI COMPONENTS</div>
+                    <div class="scroll-hint">
+                        <div class="scroll-icon-wrapper">
+                            <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                        </div>
+                        Scroll to explore UI components
+                    </div>
                     <img src="../../images/Nexi/91ed74221343037.67d298f68b759.png" alt="Exhaustive high-fidelity screen catalog displaying the dark blue app headers, massive tabular typography, vividly distinct card boundaries, and the clean progress indicators within the specific deposits section.">
                 </div>
                 <span class="image-caption">Figure 3: Comprehensive catalog of the Final High-Fidelity Design System in action. Note the strict typographical hierarchy.</span>

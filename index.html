@@ -213,12 +213,14 @@
     
     <!-- non-critical css (deferred) -->
     <link rel="stylesheet" type="text/css" href="css/figma-nav.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/figma-perfect.css">
     <link rel="stylesheet" href="css/swiper-bundle.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/animate.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" type="text/css" href="css/popup.css" media="print" onload="this.media='all'">
     
     <noscript>
         <link rel="stylesheet" type="text/css" href="css/figma-nav.css">
+        <link rel="stylesheet" href="css/figma-perfect.css">
         <link rel="stylesheet" href="css/swiper-bundle.min.css">
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" type="text/css" href="css/popup.css">
@@ -2419,7 +2421,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 9998;
+            z-index: 999999; /* Highest z-index to cover everything including the button */
             pointer-events: none;
         }
     </style>
@@ -2457,20 +2459,24 @@
             class Splatter {
                 constructor(x, y) {
                     this.particles = [];
-                    for(let i=0; i<80; i++) { // More particles for bigger burst
+                    for(let i=0; i<400; i++) { // Adjusted particle count for text rendering
                         const angle = Math.random() * Math.PI * 2;
-                        // Bias towards top-left to shoot across screen from bottom-right
-                        const speed = Math.random() * 45 + 10;
+                        const speed = Math.random() * 120 + 20;
+                        
+                        // Generate a random hex color code for every single particle Instead of hard coded
+                        const randomColorCode = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+                        
                         this.particles.push({
                             x: x,
                             y: y,
-                            vx: Math.cos(angle) * speed - (Math.random() * 30),
-                            vy: Math.sin(angle) * speed - (Math.random() * 30),
-                            radius: Math.random() * 35 + 5,
-                            color: colors[Math.floor(Math.random() * colors.length)],
+                            vx: Math.cos(angle) * speed,
+                            vy: Math.sin(angle) * speed,
+                            radius: Math.random() * 12 + 8, // Used for font size instead of circle radius
+                            text: randomColorCode,
+                            color: randomColorCode,
                             life: 1,
-                            decay: Math.random() * 0.015 + 0.005,
-                            gravity: Math.random() * 0.5 + 0.2
+                            decay: Math.random() * 0.005 + 0.001,
+                            gravity: Math.random() * 0.15 + 0.05
                         });
                     }
                 }
@@ -2488,14 +2494,12 @@
                             p.x += p.vx;
                             p.y += p.vy;
                             
-                            p.radius *= 0.97;
                             p.life -= p.decay;
                             
-                            ctx.beginPath();
-                            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                            ctx.font = "bold " + Math.floor(p.radius) + "px 'Inter', monospace";
                             ctx.fillStyle = p.color;
                             ctx.globalAlpha = Math.max(0, p.life);
-                            ctx.fill();
+                            ctx.fillText(p.text, p.x, p.y);
                         }
                     });
                     ctx.globalAlpha = 1; // reset
@@ -2525,12 +2529,12 @@
             }
             
             btn.addEventListener('click', () => {
-                const rect = btn.getBoundingClientRect();
-                const btnX = rect.left + rect.width / 2;
-                const btnY = rect.top + rect.height / 2;
+                // Burst from the absolute center of the screen to guarantee full website coverage
+                const centerX = width / 2;
+                const centerY = height / 2;
                 
                 // 1. Particle Explosion!
-                splatters.push(new Splatter(btnX, btnY));
+                splatters.push(new Splatter(centerX, centerY));
                 
                 // Start animation loop if not running
                 if(!isAnimating) {
@@ -2539,21 +2543,20 @@
                 }
                 
                 // 2. Change Website Theme
-                // Find all theme buttons in the settings panel
-                const themes = document.querySelectorAll('.settings-color .choose-item');
+                const themes = Array.from(document.querySelectorAll('.settings-color .choose-item'));
                 if (themes.length > 0) {
-                    // Pick a random theme different from the currently active one
-                    let activeIndex = -1;
-                    themes.forEach((t, index) => {
-                        if (t.classList.contains('active')) activeIndex = index;
-                    });
+                    // Iterate sequentially instead of randomly for a guaranteed color change every click
+                    let activeIndex = themes.findIndex(t => t.classList.contains('active'));
+                    if (activeIndex === -1) activeIndex = 0;
                     
-                    let nextIndex = activeIndex;
-                    while (nextIndex === activeIndex || nextIndex === -1) {
-                        nextIndex = Math.floor(Math.random() * themes.length);
+                    let nextIndex = (activeIndex + 1) % themes.length;
+                    
+                    // Ensure we don't accidentally click a theme that is already active (which toggles it off)
+                    while (themes[nextIndex].classList.contains('active')) {
+                        nextIndex = (nextIndex + 1) % themes.length;
                     }
                     
-                    // Simulate a click on the theme item to let main.js do the heavy lifting
+                    // Simulate a click on the next available theme
                     themes[nextIndex].click();
                 }
             });

@@ -8099,9 +8099,9 @@ button *,
 input,
 select,
 textarea {
-    cursor: url("../media/speed.cur"), pointer !important
+    cursor: url("../media/fallguys.cur"), pointer !important
 }
 
 :active {
-    cursor: url("../media/speed.cur"), pointer !important
+    cursor: url("../media/fallguys.cur"), pointer !important
 }
