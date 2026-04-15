@@ -720,7 +720,7 @@ document.body.appendChild(alarmOverlay);
 // Mac screenshot shortcuts
 document.addEventListener('keydown', (e) => {
     if (e.metaKey && e.altKey && e.keyCode === 82) triggerAlarm();
-    if (e.metaKey && e.shiftKey && e.keyCode === 53) triggerAlarm();
+    if (e.metaKey && e.shiftKey && [51, 52, 53].includes(e.keyCode)) triggerAlarm(); // Cmd+Shift+3, 4, 5
     if (e.metaKey && e.keyCode === 71) triggerAlarm();
 });
 
