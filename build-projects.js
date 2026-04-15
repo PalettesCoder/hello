@@ -7,17 +7,17 @@ const content = fs.readFileSync(srcFile, 'utf8');
 const projects = [
     {
         id: 'WSP-project',
-        title: 'WSP PM | Engineering Clarity at Enterprise Scale — Senior UX Case Study',
+        title: 'WSP PM | Engineering Clarity at Enterprise Scale —  UX Case Study',
         h1: 'Engineering clarity.<br><span style="color:var(--primary); opacity:0.9;">at Enterprise Scale.</span>'
     },
     {
         id: 'Intel-project',
-        title: 'Intel Chat Bots | AI Conversational UX — Senior UX Case Study',
+        title: 'Intel Chat Bots | AI Conversational UX —  UX Case Study',
         h1: 'Conversational AI.<br><span style="color:var(--primary); opacity:0.9;">for Modern Enterprises.</span>'
     },
     {
         id: 'Bajaj-project',
-        title: 'Bajaj Pay | FinTech Ecosystem — Senior UX Case Study',
+        title: 'Bajaj Pay | FinTech Ecosystem —  UX Case Study',
         h1: 'Seamless FinTech.<br><span style="color:var(--primary); opacity:0.9;">at Massive Scale.</span>'
     }
 ];

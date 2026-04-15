@@ -1,7 +1,7 @@
 # ============================================
 # robots.txt — harsharoyal.in
 # Professional Portfolio SEO Configuration
-# Last Updated: 2026-02-23
+# Last Updated: 2026-04-15
 # ============================================
 
 # Allow all major search engines
@@ -19,9 +19,6 @@ Disallow: /CNAME
 
 # Block 404 page from indexing
 Disallow: /404.html
-
-# Crawl-delay (optional, gentle rate limit)
-Crawl-delay: 1
 
 # Sitemap
 Sitemap: https://harsharoyal.in/sitemap.xml
