@@ -35,25 +35,138 @@ function signOut() {
     updateLoginUI();
 }
 
+// ===== 10-LEVEL SYSTEM =====
+const LEVELS = [
+    {
+        id: 1, name: 'Training Grounds', icon: '🎯', difficulty: 'EASY',
+        description: 'Learn the ropes. Slow enemies, big targets.',
+        color: '#4CAF50', enemySpeed: 1.0, enemyRadius: 28, spawnRate: 1200,
+        lives: 7, scoreMultiplier: 1, enemyTypes: ['🤡', '👾'],
+        unlockScore: 0, starThresholds: [200, 500, 1000]
+    },
+    {
+        id: 2, name: 'Rookie Arena', icon: '⚔️', difficulty: 'EASY',
+        description: 'Slightly faster enemies. Time to warm up.',
+        color: '#66BB6A', enemySpeed: 1.3, enemyRadius: 26, spawnRate: 1000,
+        lives: 6, scoreMultiplier: 1.2, enemyTypes: ['🤡', '👾', '👹'],
+        unlockScore: 300, starThresholds: [400, 800, 1500]
+    },
+    {
+        id: 3, name: 'Street Brawl', icon: '🥊', difficulty: 'MEDIUM',
+        description: 'Enemies get aggressive. Watch your six.',
+        color: '#FFC107', enemySpeed: 1.6, enemyRadius: 24, spawnRate: 850,
+        lives: 6, scoreMultiplier: 1.5, enemyTypes: ['🤡', '👾', '👹', '💀'],
+        unlockScore: 800, starThresholds: [600, 1200, 2000]
+    },
+    {
+        id: 4, name: 'Cyber Alley', icon: '🌃', difficulty: 'MEDIUM',
+        description: 'Neon-lit chaos. More enemies, faster pace.',
+        color: '#FF9800', enemySpeed: 1.9, enemyRadius: 22, spawnRate: 700,
+        lives: 5, scoreMultiplier: 1.8, enemyTypes: ['🤡', '👾', '👹', '💀', '🤖'],
+        unlockScore: 1500, starThresholds: [800, 1600, 2800]
+    },
+    {
+        id: 5, name: 'Flame Circuit', icon: '🔥', difficulty: 'MEDIUM',
+        description: 'The heat is on. Smaller targets, faster spawns.',
+        color: '#FF5722', enemySpeed: 2.2, enemyRadius: 20, spawnRate: 600,
+        lives: 5, scoreMultiplier: 2.0, enemyTypes: ['👹', '💀', '🤖', '👾', '🧟'],
+        unlockScore: 2500, starThresholds: [1000, 2000, 3500]
+    },
+    {
+        id: 6, name: 'Skull Canyon', icon: '💀', difficulty: 'HARD',
+        description: 'Relentless waves. Only skilled players survive.',
+        color: '#E91E63', enemySpeed: 2.5, enemyRadius: 18, spawnRate: 500,
+        lives: 4, scoreMultiplier: 2.5, enemyTypes: ['💀', '🤖', '👹', '🧟', '👿'],
+        unlockScore: 4000, starThresholds: [1500, 3000, 5000]
+    },
+    {
+        id: 7, name: 'Demon Gates', icon: '👿', difficulty: 'HARD',
+        description: 'Portal opens. Enemies flood from all sides.',
+        color: '#9C27B0', enemySpeed: 2.8, enemyRadius: 16, spawnRate: 420,
+        lives: 4, scoreMultiplier: 3.0, enemyTypes: ['💀', '🤖', '👿', '🧟', '☠️'],
+        unlockScore: 6000, starThresholds: [2000, 4000, 7000]
+    },
+    {
+        id: 8, name: 'Inferno Pit', icon: '🌋', difficulty: 'EXTREME',
+        description: 'Tiny targets, blazing speed. Pure chaos.',
+        color: '#F44336', enemySpeed: 3.2, enemyRadius: 14, spawnRate: 350,
+        lives: 3, scoreMultiplier: 4.0, enemyTypes: ['👿', '☠️', '🧟', '💀', '🔥'],
+        unlockScore: 9000, starThresholds: [3000, 6000, 10000]
+    },
+    {
+        id: 9, name: 'Void Abyss', icon: '🕳️', difficulty: 'EXTREME',
+        description: 'Near-invisible enemies. Reflexes at max.',
+        color: '#7B1FA2', enemySpeed: 3.6, enemyRadius: 12, spawnRate: 280,
+        lives: 2, scoreMultiplier: 5.0, enemyTypes: ['☠️', '🧟', '👿', '🌑', '💀'],
+        unlockScore: 13000, starThresholds: [4000, 8000, 15000]
+    },
+    {
+        id: 10, name: 'ROAST GOD', icon: '👑', difficulty: 'NIGHTMARE',
+        description: 'One life. Microscopic targets. Ultimate test.',
+        color: '#FFD700', enemySpeed: 4.0, enemyRadius: 10, spawnRate: 220,
+        lives: 1, scoreMultiplier: 10.0, enemyTypes: ['👑', '☠️', '👿', '🔥', '💀'],
+        unlockScore: 20000, starThresholds: [5000, 12000, 25000]
+    }
+];
+
+let currentLevel = null;
+
 function getPlayerScores(email) {
     const data = JSON.parse(localStorage.getItem('roastRoyaleScores') || '{}');
-    return data[email] || { highScore: 0, lastScore: 0, gamesPlayed: 0 };
+    return data[email] || { highScore: 0, lastScore: 0, gamesPlayed: 0, levelScores: {} };
 }
 
 function savePlayerScore(email, score) {
     const data = JSON.parse(localStorage.getItem('roastRoyaleScores') || '{}');
-    const existing = data[email] || { highScore: 0, lastScore: 0, gamesPlayed: 0 };
+    const existing = data[email] || { highScore: 0, lastScore: 0, gamesPlayed: 0, levelScores: {} };
     existing.lastScore = score;
     existing.gamesPlayed++;
     if (score > existing.highScore) existing.highScore = score;
+    // Save per-level best score
+    if (currentLevel) {
+        const lvlKey = 'level_' + currentLevel.id;
+        if (!existing.levelScores) existing.levelScores = {};
+        if (!existing.levelScores[lvlKey] || score > existing.levelScores[lvlKey]) {
+            existing.levelScores[lvlKey] = score;
+        }
+    }
     data[email] = existing;
     localStorage.setItem('roastRoyaleScores', JSON.stringify(data));
+}
+
+function getTotalBestScore() {
+    if (!currentUser) return 0;
+    const scores = getPlayerScores(currentUser.email);
+    return scores.highScore || 0;
+}
+
+function getLevelBestScore(levelId) {
+    if (!currentUser) return 0;
+    const scores = getPlayerScores(currentUser.email);
+    return (scores.levelScores && scores.levelScores['level_' + levelId]) || 0;
+}
+
+function getStarsForLevel(levelId) {
+    const best = getLevelBestScore(levelId);
+    const level = LEVELS.find(l => l.id === levelId);
+    if (!level) return 0;
+    let stars = 0;
+    for (const threshold of level.starThresholds) {
+        if (best >= threshold) stars++;
+    }
+    return stars;
+}
+
+function isLevelUnlocked(level) {
+    if (level.id === 1) return true;
+    return getTotalBestScore() >= level.unlockScore;
 }
 
 function updateLoginUI() {
     const googleBtnContainer = document.getElementById('googleBtnContainer');
     const userInfo = document.getElementById('userInfo');
     const scoreCards = document.getElementById('scoreCards');
+    const fallbackBtn = document.getElementById('googleFallbackBtn');
     if (!googleBtnContainer) return;
 
     if (currentUser) {
@@ -70,7 +183,8 @@ function updateLoginUI() {
             document.getElementById('gamesPlayedVal').textContent = scores.gamesPlayed;
         }
     } else {
-        googleBtnContainer.style.display = 'block';
+        googleBtnContainer.style.display = 'flex';
+        if (fallbackBtn) fallbackBtn.style.display = 'inline-flex';
         userInfo.style.display = 'none';
         if (scoreCards) scoreCards.style.display = 'none';
     }
@@ -176,17 +290,29 @@ securityStyles.innerHTML = `
         padding: 6px 16px; border: 2px solid rgba(255,255,255,0.3); background: transparent;
         color: #fff; font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.85rem;
         cursor: pointer; transition: all 0.2s; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px;
+        pointer-events: auto;
     }
     .topbar-btn:hover { border-color: #00e5ff; color: #00e5ff; }
-    .topbar-btn.google { background: #fff; color: #333; border-color: #fff; }
+    .topbar-btn.google { background: #fff; color: #333; border-color: #fff; font-size: 0.8rem; }
     .topbar-btn.google:hover { background: #e0e0e0; }
     .topbar-btn.google img { width: 18px; height: 18px; }
-    .user-info { display: none; align-items: center; gap: 10px; }
+    .topbar-btn.google svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .user-info { display: none; align-items: center; gap: 10px; pointer-events: auto; }
     .user-avatar { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #00e5ff; }
     .user-name { font-weight: 700; font-size: 0.85rem; color: #00e5ff; }
-    .signout-btn { background: none; border: 1px solid rgba(255,255,255,0.3); color: #aaa; padding: 3px 10px; font-size: 0.7rem; cursor: pointer; border-radius: 4px; font-family: 'Rajdhani', sans-serif; }
+    .signout-btn { background: none; border: 1px solid rgba(255,255,255,0.3); color: #aaa; padding: 3px 10px; font-size: 0.7rem; cursor: pointer; border-radius: 4px; font-family: 'Rajdhani', sans-serif; pointer-events: auto; }
     .signout-btn:hover { color: #ff4444; border-color: #ff4444; }
     .topbar-btn.highlight { background: #ff4444; border-color: #ff4444; }
+    #googleBtnContainer { pointer-events: auto; min-height: 36px; display: flex; align-items: center; }
+    .google-fallback-btn {
+        display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px;
+        background: #fff; color: #3c4043; border: 1px solid #dadce0; border-radius: 4px;
+        font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.85rem;
+        cursor: pointer; transition: all 0.2s; pointer-events: auto;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .google-fallback-btn:hover { background: #f1f3f4; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+    .google-fallback-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
     .game-title {
         position: absolute; left: 50%; transform: translateX(-50%);
@@ -312,42 +438,141 @@ securityStyles.innerHTML = `
     @keyframes slide-down { 0% { transform: translateX(-50%) translateY(-30px); opacity: 0; } 100% { transform: translateX(-50%) translateY(0); opacity: 1; } }
     @keyframes feed-in { 0% { transform: translateX(-40px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
 
-    /* ===== CHALLENGES SCREEN ===== */
-    .challenges-screen {
-        position: absolute; inset: 70px 0 100px 70px; z-index: 15;
-        background: rgba(10, 10, 30, 0.95); display: none;
-        flex-direction: column; padding: 40px; overflow-y: auto;
+    /* ===== LEVELS SCREEN ===== */
+    .levels-screen {
+        position: absolute; inset: 50px 0 100px 70px; z-index: 15;
+        background: rgba(8, 8, 25, 0.97); display: none;
+        flex-direction: column; padding: 30px 40px; overflow-y: auto;
     }
-    .challenges-screen.active { display: flex; }
-    .challenges-title {
-        font-family: 'Bungee', sans-serif; font-size: 3rem; color: #ffcc00;
-        margin-bottom: 30px; text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+    .levels-screen.active { display: flex; }
+    .levels-screen::-webkit-scrollbar { width: 6px; }
+    .levels-screen::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+    .levels-header {
+        display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px;
     }
-    .challenges-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px;
+    .levels-title {
+        font-family: 'Bungee', sans-serif; font-size: 2.5rem; color: #ffcc00;
+        text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
     }
-    .challenge-card {
-        background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px; padding: 25px; cursor: pointer; transition: all 0.3s;
-        display: flex; flex-direction: column; gap: 15px; position: relative; overflow: hidden;
+    .levels-subtitle {
+        font-size: 1rem; color: rgba(255,255,255,0.5); font-weight: 700; letter-spacing: 1px;
     }
-    .challenge-card:hover { 
-        background: rgba(0, 229, 255, 0.1); border-color: #00e5ff;
-        transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2);
+    .difficulty-legend {
+        display: flex; gap: 15px; align-items: center;
     }
-    .challenge-card .icon { font-size: 3rem; }
-    .challenge-card h3 { font-family: 'Bungee', sans-serif; font-size: 1.5rem; color: #fff; margin: 0; }
-    .challenge-card p { font-size: 1rem; color: rgba(255, 255, 255, 0.6); margin: 0; line-height: 1.4; }
-    .challenge-card .reward { 
-        align-self: flex-start; background: #ffcc00; color: #000;
-        padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;
+    .difficulty-tag {
+        padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.7rem;
+        letter-spacing: 1px; border: 1px solid;
     }
-    .challenge-card.locked { opacity: 0.5; filter: grayscale(1); cursor: not-allowed; }
-    .challenge-card.locked::after {
-        content: '🔒 LOCKED'; position: absolute; inset: 0;
-        display: flex; align-items: center; justify-content: center;
-        background: rgba(0, 0, 0, 0.6); font-family: 'Bungee', sans-serif; font-size: 2rem; color: #fff;
+    .difficulty-tag.easy { color: #4CAF50; border-color: #4CAF50; }
+    .difficulty-tag.medium { color: #FF9800; border-color: #FF9800; }
+    .difficulty-tag.hard { color: #E91E63; border-color: #E91E63; }
+    .difficulty-tag.extreme { color: #9C27B0; border-color: #9C27B0; }
+    .difficulty-tag.nightmare { color: #FFD700; border-color: #FFD700; background: rgba(255,215,0,0.1); }
+    .levels-grid {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;
     }
+    .level-card {
+        background: rgba(255, 255, 255, 0.04); border: 2px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px; padding: 0; cursor: pointer; transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        display: flex; flex-direction: column; position: relative; overflow: hidden;
+    }
+    .level-card:hover:not(.locked) {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    }
+    .level-card-top {
+        padding: 20px 20px 15px; position: relative;
+        background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 100%);
+    }
+    .level-number {
+        position: absolute; top: 12px; right: 15px;
+        font-family: 'Bungee', sans-serif; font-size: 2.8rem; color: rgba(255,255,255,0.06);
+        line-height: 1;
+    }
+    .level-icon { font-size: 2.8rem; margin-bottom: 8px; display: block; }
+    .level-card h3 {
+        font-family: 'Bungee', sans-serif; font-size: 1.2rem; color: #fff; margin: 0 0 4px;
+    }
+    .level-difficulty {
+        display: inline-block; padding: 2px 10px; border-radius: 12px;
+        font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px;
+        margin-bottom: 8px;
+    }
+    .level-card p {
+        font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); margin: 0; line-height: 1.4;
+    }
+    .level-card-bottom {
+        padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;
+        background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .level-stars { font-size: 1.2rem; letter-spacing: 4px; }
+    .level-stars .earned { filter: none; }
+    .level-stars .empty { filter: grayscale(1) brightness(0.3); }
+    .level-best-score {
+        font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 700;
+    }
+    .level-best-score span { color: #ffcc00; }
+    .level-card .level-play-btn {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0);
+        background: rgba(0, 229, 255, 0.95); color: #000; border: none; padding: 10px 28px;
+        font-family: 'Bungee', sans-serif; font-size: 1rem; border-radius: 8px;
+        cursor: pointer; transition: all 0.3s; z-index: 5; pointer-events: none;
+        box-shadow: 0 4px 20px rgba(0,229,255,0.4);
+    }
+    .level-card:hover:not(.locked) .level-play-btn {
+        transform: translate(-50%,-50%) scale(1); pointer-events: auto;
+    }
+    .level-card.locked {
+        opacity: 0.4; filter: grayscale(0.8); cursor: not-allowed;
+    }
+    .level-card.locked::after {
+        content: ''; position: absolute; inset: 0;
+        background: rgba(0,0,0,0.55); z-index: 4;
+    }
+    .level-lock-info {
+        position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
+        font-size: 0.75rem; color: rgba(255,255,255,0.6); white-space: nowrap;
+        font-weight: 700; letter-spacing: 0.5px; z-index: 5;
+    }
+    .level-lock-icon {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        font-size: 3rem; z-index: 5; filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+    }
+    /* Level card dynamic border glow on hover */
+    .level-card::before {
+        content: ''; position: absolute; inset: -2px; border-radius: 18px;
+        background: linear-gradient(135deg, var(--card-color), transparent 60%);
+        z-index: -1; opacity: 0; transition: opacity 0.35s;
+    }
+    .level-card:hover:not(.locked)::before { opacity: 1; }
+    /* Game Over overlay */
+    .game-over-overlay {
+        position: fixed; inset: 0; z-index: 30; display: none;
+        background: rgba(0,0,0,0.85); flex-direction: column;
+        align-items: center; justify-content: center; gap: 20px;
+    }
+    .game-over-overlay.active { display: flex; }
+    .game-over-title {
+        font-family: 'Bungee', sans-serif; font-size: 4rem; color: #ff4444;
+        text-shadow: 0 0 30px rgba(255,68,68,0.5);
+    }
+    .game-over-score {
+        font-family: 'Bungee', sans-serif; font-size: 2rem; color: #ffcc00;
+    }
+    .game-over-stars { font-size: 3rem; letter-spacing: 8px; margin: 10px 0; }
+    .game-over-level {
+        font-size: 1.1rem; color: rgba(255,255,255,0.6); font-weight: 700;
+    }
+    .game-over-buttons { display: flex; gap: 15px; margin-top: 15px; }
+    .game-over-btn {
+        padding: 12px 30px; border: 2px solid rgba(255,255,255,0.3); background: transparent;
+        color: #fff; font-family: 'Bungee', sans-serif; font-size: 1rem;
+        cursor: pointer; transition: all 0.2s; border-radius: 6px;
+    }
+    .game-over-btn:hover { border-color: #00e5ff; color: #00e5ff; transform: translateY(-2px); }
+    .game-over-btn.primary { background: #00e5ff; border-color: #00e5ff; color: #000; }
+    .game-over-btn.primary:hover { background: #00b8d4; }
 `;
 document.head.appendChild(securityStyles);
 
@@ -377,7 +602,12 @@ alarmOverlay.innerHTML = `
 
     <!-- TOP BAR -->
     <div class="game-topbar">
-        <div id="googleBtnContainer" style="pointer-events:auto;"></div>
+        <div id="googleBtnContainer" style="pointer-events:auto;">
+            <button class="google-fallback-btn" id="googleFallbackBtn" onclick="manualGoogleSignIn()">
+                <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                Sign in with Google
+            </button>
+        </div>
         <div class="user-info" id="userInfo">
             <img class="user-avatar" src="" alt="avatar">
             <span class="user-name"></span>
@@ -401,40 +631,34 @@ alarmOverlay.innerHTML = `
         <div class="subtitle">Now Playing: Roast Confirmed on Screenshot Map</div>
     </div>
 
-    <!-- CHALLENGES SCREEN -->
-    <div class="challenges-screen" id="challengesScreen">
-        <div class="challenges-title">GLOBAL CHALLENGES</div>
-        <div class="challenges-grid">
-            <div class="challenge-card" onclick="startSpecialMode('precision')">
-                <span class="icon">🎯</span>
-                <h3>Precision Master</h3>
-                <p>Targets are smaller and move faster. Hits give double points!</p>
-                <div class="reward">+500 XP</div>
+    <!-- LEVELS SCREEN -->
+    <div class="levels-screen" id="levelsScreen">
+        <div class="levels-header">
+            <div>
+                <div class="levels-title">SELECT LEVEL</div>
+                <div class="levels-subtitle">10 levels from easy to nightmare — earn stars, unlock more!</div>
             </div>
-            <div class="challenge-card" onclick="startSpecialMode('speed')">
-                <span class="icon">⚡</span>
-                <h3>Speed Frenzy</h3>
-                <p>Triple spawn rate. How long can you survive the swarm?</p>
-                <div class="reward">+200 ROASTS</div>
+            <div class="difficulty-legend">
+                <span class="difficulty-tag easy">EASY</span>
+                <span class="difficulty-tag medium">MEDIUM</span>
+                <span class="difficulty-tag hard">HARD</span>
+                <span class="difficulty-tag extreme">EXTREME</span>
+                <span class="difficulty-tag nightmare">NIGHTMARE</span>
             </div>
-            <div class="challenge-card" onclick="startSpecialMode('survival')">
-                <span class="icon">🛡️</span>
-                <h3>Ultimate Survival</h3>
-                <p>Only 1 Life. No room for error. Real players only.</p>
-                <div class="reward">LEGENDARY BADGE</div>
-            </div>
-            <div class="challenge-card locked">
-                <span class="icon">🔥</span>
-                <h3>Inferno Mode</h3>
-                <p>Unlock by reaching a High Score of 10,000.</p>
-                <div class="reward">???</div>
-            </div>
-            <div class="challenge-card locked">
-                <span class="icon">🛸</span>
-                <h3>UFO Invasion</h3>
-                <p>Unlock by playing 50 games.</p>
-                <div class="reward">ALIEN SKIN</div>
-            </div>
+        </div>
+        <div class="levels-grid" id="levelsGrid"></div>
+    </div>
+
+    <!-- GAME OVER OVERLAY -->
+    <div class="game-over-overlay" id="gameOverOverlay">
+        <div class="game-over-title">ELIMINATED</div>
+        <div class="game-over-level" id="gameOverLevel"></div>
+        <div class="game-over-score" id="gameOverScore"></div>
+        <div class="game-over-stars" id="gameOverStars"></div>
+        <div class="game-over-buttons">
+            <button class="game-over-btn primary" id="retryLevelBtn">RETRY</button>
+            <button class="game-over-btn" id="backToLevelsBtn">LEVELS</button>
+            <button class="game-over-btn" id="backToLobbyBtn">LOBBY</button>
         </div>
     </div>
 
@@ -512,13 +736,14 @@ sidebarItems.forEach(id => {
 
             // Hide all screens
             document.getElementById('clickToPlay').style.display = 'none';
-            document.getElementById('challengesScreen').classList.remove('active');
+            document.getElementById('levelsScreen').classList.remove('active');
             
             // Show selected screen
             if (id === 'navHome') {
                 document.getElementById('clickToPlay').style.display = 'block';
-            } else if (id === 'navChallenges') {
-                document.getElementById('challengesScreen').classList.add('active');
+            } else if (id === 'navChallenges' || id === 'navGames') {
+                renderLevelsGrid();
+                document.getElementById('levelsScreen').classList.add('active');
             } else {
                 // For others, just show placeholder or home for now
                 document.getElementById('clickToPlay').style.display = 'block';
@@ -527,9 +752,121 @@ sidebarItems.forEach(id => {
     }
 });
 
-function startSpecialMode(mode) {
-    window.gameMode = mode;
-    document.getElementById('clickToPlay').click(); // Trigger game start
+// ===== RENDER LEVELS GRID =====
+function renderLevelsGrid() {
+    const grid = document.getElementById('levelsGrid');
+    grid.innerHTML = '';
+    
+    LEVELS.forEach(level => {
+        const unlocked = isLevelUnlocked(level);
+        const stars = getStarsForLevel(level.id);
+        const bestScore = getLevelBestScore(level.id);
+        const diffClass = level.difficulty.toLowerCase();
+        
+        const card = document.createElement('div');
+        card.className = `level-card ${unlocked ? '' : 'locked'}`;
+        card.style.setProperty('--card-color', level.color);
+        card.style.borderColor = unlocked ? level.color + '40' : 'rgba(255,255,255,0.05)';
+        
+        const starsHTML = [0,1,2].map(i => 
+            `<span class="${i < stars ? 'earned' : 'empty'}">⭐</span>`
+        ).join('');
+        
+        card.innerHTML = `
+            <div class="level-card-top">
+                <span class="level-number">${String(level.id).padStart(2, '0')}</span>
+                <span class="level-icon">${level.icon}</span>
+                <span class="level-difficulty difficulty-tag ${diffClass}">${level.difficulty}</span>
+                <h3>${level.name}</h3>
+                <p>${level.description}</p>
+            </div>
+            <div class="level-card-bottom">
+                <div class="level-stars">${starsHTML}</div>
+                <div class="level-best-score">${bestScore > 0 ? 'BEST: <span>' + bestScore + '</span>' : 'NOT PLAYED'}</div>
+            </div>
+            ${unlocked ? `<button class="level-play-btn">PLAY ▶</button>` : ''}
+            ${!unlocked ? `<div class="level-lock-icon">🔒</div><div class="level-lock-info">Unlock at ${level.unlockScore} pts</div>` : ''}
+        `;
+        
+        if (unlocked) {
+            card.addEventListener('click', () => startLevel(level));
+        }
+        
+        grid.appendChild(card);
+    });
+}
+
+function startLevel(level) {
+    currentLevel = level;
+    window.gameMode = 'level';
+    document.getElementById('clickToPlay').click();
+}
+
+// ===== GAME OVER OVERLAY =====
+document.getElementById('retryLevelBtn').addEventListener('click', () => {
+    document.getElementById('gameOverOverlay').classList.remove('active');
+    if (currentLevel) {
+        startLevel(currentLevel);
+    }
+});
+
+document.getElementById('backToLevelsBtn').addEventListener('click', () => {
+    document.getElementById('gameOverOverlay').classList.remove('active');
+    // Show lobby + levels screen
+    returnToLobby();
+    document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+    document.getElementById('navChallenges').classList.add('active');
+    document.getElementById('clickToPlay').style.display = 'none';
+    renderLevelsGrid();
+    document.getElementById('levelsScreen').classList.add('active');
+});
+
+document.getElementById('backToLobbyBtn').addEventListener('click', () => {
+    document.getElementById('gameOverOverlay').classList.remove('active');
+    returnToLobby();
+});
+
+function returnToLobby() {
+    gameActive = false;
+    if (window.gameLoopId) cancelAnimationFrame(window.gameLoopId);
+    if (window.enemySpawnInterval) clearInterval(window.enemySpawnInterval);
+    document.getElementById('clickToPlay').style.display = 'block';
+    document.getElementById('playerPanel').style.display = 'flex';
+    document.getElementById('gameBottom').style.display = 'flex';
+    alarmOverlay.querySelector('.game-sidebar').style.display = 'flex';
+    alarmOverlay.querySelector('.game-topbar').style.display = 'flex';
+    alarmOverlay.querySelector('.alert-banner').style.display = 'block';
+    document.getElementById('killFeed').style.display = 'flex';
+    document.getElementById('trapGameCanvas').style.display = 'none';
+    document.getElementById('gameHud').style.display = 'none';
+    document.getElementById('gameCrosshair').style.display = 'none';
+}
+
+// ===== SHOW GAME OVER =====
+function showGameOver(score) {
+    const overlay = document.getElementById('gameOverOverlay');
+    const lvl = currentLevel;
+    
+    // Update game over display
+    document.getElementById('gameOverScore').textContent = `SCORE: ${score}`;
+    
+    if (lvl) {
+        document.getElementById('gameOverLevel').textContent = `Level ${lvl.id}: ${lvl.name} — ${lvl.difficulty}`;
+        // Calculate stars earned this round
+        let starsEarned = 0;
+        for (const threshold of lvl.starThresholds) {
+            if (score >= threshold) starsEarned++;
+        }
+        const starsHTML = [0,1,2].map(i => 
+            i < starsEarned ? '⭐' : '✩'
+        ).join(' ');
+        document.getElementById('gameOverStars').textContent = starsHTML;
+    } else {
+        document.getElementById('gameOverLevel').textContent = 'Quick Match';
+        document.getElementById('gameOverStars').textContent = '';
+    }
+    
+    overlay.classList.add('active');
 }
 
 // 4. IP & WEBHOOK
@@ -626,6 +963,7 @@ document.getElementById('clickToPlay').addEventListener('click', () => {
     document.getElementById('clickToPlay').style.display = 'none';
     document.getElementById('playerPanel').style.display = 'none';
     document.getElementById('gameBottom').style.display = 'none';
+    document.getElementById('levelsScreen').classList.remove('active');
     alarmOverlay.querySelector('.game-sidebar').style.display = 'none';
     alarmOverlay.querySelector('.game-topbar').style.display = 'none';
     alarmOverlay.querySelector('.alert-banner').style.display = 'none';
@@ -661,21 +999,16 @@ function closeOverlay() {
 // ESC key to exit game mode back to lobby (or close)
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && alarmOverlay.classList.contains('active')) {
+        // Dismiss game over overlay first
+        const gameOverEl = document.getElementById('gameOverOverlay');
+        if (gameOverEl.classList.contains('active')) {
+            gameOverEl.classList.remove('active');
+            returnToLobby();
+            return;
+        }
         if (gameActive) {
-            // Go back to lobby — restore ALL lobby elements
-            gameActive = false;
-            if (window.gameLoopId) cancelAnimationFrame(window.gameLoopId);
-            if (window.enemySpawnInterval) clearInterval(window.enemySpawnInterval);
-            document.getElementById('clickToPlay').style.display = 'block';
-            document.getElementById('playerPanel').style.display = 'flex';
-            document.getElementById('gameBottom').style.display = 'flex';
-            alarmOverlay.querySelector('.game-sidebar').style.display = 'flex';
-            alarmOverlay.querySelector('.game-topbar').style.display = 'flex';
-            alarmOverlay.querySelector('.alert-banner').style.display = 'block';
-            document.getElementById('killFeed').style.display = 'flex';
-            document.getElementById('trapGameCanvas').style.display = 'none';
-            document.getElementById('gameHud').style.display = 'none';
-            document.getElementById('gameCrosshair').style.display = 'none';
+            // Go back to lobby
+            returnToLobby();
         } else {
             closeOverlay();
         }
@@ -695,10 +1028,24 @@ function startCanvasGame() {
     const explosions = [];
     const stars = [];
     let playerHits = 0;
-    const maxHits = window.gameMode === 'survival' ? 1 : 5;
+    
+    // Use level config if playing a level, otherwise default
+    const lvl = currentLevel;
+    const maxHits = lvl ? lvl.lives : 5;
+    const enemySpeedBase = lvl ? lvl.enemySpeed : 1.5;
+    const enemyRadiusBase = lvl ? lvl.enemyRadius : 22;
+    const spawnRateMs = lvl ? lvl.spawnRate : 700;
+    const scoreMultiplier = lvl ? lvl.scoreMultiplier : 1;
+    const enemyTypes = lvl ? lvl.enemyTypes : ['🤡', '👹', '💀', '👾', '🤖'];
     
     // Reset lives display
     document.getElementById('gameLives').innerText = '❤️'.repeat(maxHits);
+    
+    // Show level info in HUD
+    const hintEl = document.querySelector('.game-hud .hint');
+    if (lvl && hintEl) {
+        hintEl.textContent = `Level ${lvl.id}: ${lvl.name} — ${lvl.difficulty} • x${scoreMultiplier} Score • ESC to exit`;
+    }
 
     // Background stars
     for (let i = 0; i < 100; i++) {
@@ -706,6 +1053,27 @@ function startCanvasGame() {
     }
 
     const crosshair = document.getElementById('gameCrosshair');
+    const BULLET_SPEED = 35;       // Much faster bullets
+    const FIRE_RATE = 50;          // Fire every 50ms (20 shots/sec)
+    const SPREAD_COUNT = 3;        // 3 bullets per burst
+    const SPREAD_ANGLE = 0.08;     // Spread angle in radians (~4.5°)
+    let mouseHeld = false;
+    let fireInterval = null;
+
+    function fireBullets() {
+        if (!gameActive) return;
+        for (let s = 0; s < SPREAD_COUNT; s++) {
+            const offset = (s - (SPREAD_COUNT - 1) / 2) * SPREAD_ANGLE;
+            const angle = player.angle + offset + (Math.random() - 0.5) * 0.04;
+            bullets.push({
+                x: player.x + Math.cos(angle) * 30,
+                y: player.y + Math.sin(angle) * 30,
+                vx: Math.cos(angle) * BULLET_SPEED,
+                vy: Math.sin(angle) * BULLET_SPEED,
+                life: 50
+            });
+        }
+    }
 
     const onMouseMove = (e) => {
         player.angle = Math.atan2(e.clientY - player.y, e.clientX - player.x);
@@ -715,19 +1083,22 @@ function startCanvasGame() {
 
     const onMouseDown = (e) => {
         if (!gameActive) return;
-        bullets.push({
-            x: player.x + Math.cos(player.angle) * 30,
-            y: player.y + Math.sin(player.angle) * 30,
-            vx: Math.cos(player.angle) * 18,
-            vy: Math.sin(player.angle) * 18,
-            life: 60
-        });
+        mouseHeld = true;
+        fireBullets(); // Immediate first burst
+        if (fireInterval) clearInterval(fireInterval);
+        fireInterval = setInterval(fireBullets, FIRE_RATE);
+    };
+
+    const onMouseUp = () => {
+        mouseHeld = false;
+        if (fireInterval) { clearInterval(fireInterval); fireInterval = null; }
     };
 
     window.addEventListener('mousemove', onMouseMove);
     canvas.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mouseup', onMouseUp);
 
-    // Enemy spawner
+    // Enemy spawner — uses level config
     window.enemySpawnInterval = setInterval(() => {
         if (!gameActive) return;
         let ex, ey;
@@ -737,22 +1108,18 @@ function startCanvasGame() {
         else if (side === 2) { ex = Math.random() * canvas.width; ey = canvas.height + 40; }
         else { ex = -40; ey = Math.random() * canvas.height; }
 
-        const types = ['🤡', '👹', '💀', '👾', '🤖'];
-        let radius = 22;
-        let speed = 1.5 + Math.random() * 2;
-        
-        if (window.gameMode === 'precision') {
-            radius = 12;
-            speed = 3 + Math.random() * 3;
-        }
+        let radius = enemyRadiusBase + Math.random() * 4 - 2;
+        let speed = enemySpeedBase + Math.random() * (enemySpeedBase * 0.5);
 
-        enemies.push({ x: ex, y: ey, radius: radius, speed: speed, type: types[Math.floor(Math.random() * types.length)] });
-    }, window.gameMode === 'speed' ? 250 : 700);
+        enemies.push({ x: ex, y: ey, radius: radius, speed: speed, type: enemyTypes[Math.floor(Math.random() * enemyTypes.length)] });
+    }, spawnRateMs);
 
     function gameLoop() {
         if (!gameActive) {
             window.removeEventListener('mousemove', onMouseMove);
             canvas.removeEventListener('mousedown', onMouseDown);
+            window.removeEventListener('mouseup', onMouseUp);
+            if (fireInterval) { clearInterval(fireInterval); fireInterval = null; }
             return;
         }
 
@@ -771,6 +1138,18 @@ function startCanvasGame() {
         ctx.lineWidth = 1;
         for (let x = 0; x < canvas.width; x += 80) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke(); }
         for (let y = 0; y < canvas.height; y += 80) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke(); }
+
+        // Muzzle flash when firing
+        if (mouseHeld) {
+            ctx.save();
+            ctx.translate(player.x + Math.cos(player.angle) * 32, player.y + Math.sin(player.angle) * 32);
+            ctx.shadowColor = '#ffcc00';
+            ctx.shadowBlur = 30;
+            ctx.fillStyle = `rgba(255,204,0,${0.4 + Math.random() * 0.4})`;
+            ctx.beginPath(); ctx.arc(0, 0, 8 + Math.random() * 6, 0, Math.PI * 2); ctx.fill();
+            ctx.restore();
+            ctx.shadowBlur = 0;
+        }
 
         // Draw Player Ship
         ctx.save();
@@ -803,21 +1182,34 @@ function startCanvasGame() {
         ctx.restore();
         ctx.shadowBlur = 0;
 
-        // Update & Draw Bullets
+        // Update & Draw Bullets — fast glowing projectiles with long trails
         for (let i = bullets.length - 1; i >= 0; i--) {
             const b = bullets[i];
             b.x += b.vx; b.y += b.vy; b.life--;
 
-            ctx.fillStyle = '#ffcc00';
+            // Bright bullet core
+            ctx.fillStyle = '#fff';
             ctx.shadowColor = '#ffcc00';
-            ctx.shadowBlur = 12;
-            ctx.beginPath(); ctx.arc(b.x, b.y, 4, 0, Math.PI * 2); ctx.fill();
+            ctx.shadowBlur = 18;
+            ctx.beginPath(); ctx.arc(b.x, b.y, 3, 0, Math.PI * 2); ctx.fill();
+            
+            // Outer glow ring
+            ctx.fillStyle = 'rgba(255,204,0,0.6)';
+            ctx.beginPath(); ctx.arc(b.x, b.y, 5, 0, Math.PI * 2); ctx.fill();
             ctx.shadowBlur = 0;
 
-            // Bullet trail
-            ctx.strokeStyle = 'rgba(255,204,0,0.3)';
-            ctx.lineWidth = 2;
-            ctx.beginPath(); ctx.moveTo(b.x, b.y); ctx.lineTo(b.x - b.vx * 2, b.y - b.vy * 2); ctx.stroke();
+            // Long glowing bullet trail
+            const trailLen = 3;
+            for (let t = 1; t <= trailLen; t++) {
+                const alpha = 0.3 - (t * 0.08);
+                const width = 3 - (t * 0.6);
+                ctx.strokeStyle = `rgba(255,180,0,${Math.max(alpha, 0.05)})`;
+                ctx.lineWidth = Math.max(width, 0.5);
+                ctx.beginPath();
+                ctx.moveTo(b.x - b.vx * (t - 1) * 0.6, b.y - b.vy * (t - 1) * 0.6);
+                ctx.lineTo(b.x - b.vx * t * 0.6, b.y - b.vy * t * 0.6);
+                ctx.stroke();
+            }
 
             if (b.life <= 0 || b.x < -10 || b.x > canvas.width + 10 || b.y < -10 || b.y > canvas.height + 10) {
                 bullets.splice(i, 1);
@@ -857,7 +1249,7 @@ function startCanvasGame() {
                     }
                     enemies.splice(i, 1);
                     bullets.splice(j, 1);
-                    killScore += window.gameMode === 'precision' ? 200 : 100;
+                    killScore += Math.round(100 * scoreMultiplier);
                     document.getElementById('gameScore').innerText = killScore;
                     break;
                 }
@@ -876,7 +1268,7 @@ function startCanvasGame() {
                 ctx.fillStyle = 'rgba(255,0,0,0.35)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                // Hits = game over → save score & send back to portfolio
+                // Hits = game over → show game over screen
                 if (playerHits >= maxHits) {
                     gameActive = false;
                     if (window.enemySpawnInterval) clearInterval(window.enemySpawnInterval);
@@ -884,7 +1276,7 @@ function startCanvasGame() {
                     if (currentUser) {
                         savePlayerScore(currentUser.email, killScore);
                     }
-                    closeOverlay();
+                    showGameOver(killScore);
                     return;
                 }
             }
@@ -921,8 +1313,19 @@ function initGoogleSignIn() {
     if (!currentUser) {
         const container = document.getElementById('googleBtnContainer');
         if (container) {
-            container.innerHTML = '';
-            google.accounts.id.renderButton(container, {
+            // Hide fallback, render real Google button
+            const fallback = document.getElementById('googleFallbackBtn');
+            if (fallback) fallback.style.display = 'none';
+            
+            // Create a sub-container for the SDK button
+            let sdkDiv = container.querySelector('.gsi-btn-wrapper');
+            if (!sdkDiv) {
+                sdkDiv = document.createElement('div');
+                sdkDiv.className = 'gsi-btn-wrapper';
+                container.appendChild(sdkDiv);
+            }
+            sdkDiv.innerHTML = '';
+            google.accounts.id.renderButton(sdkDiv, {
                 theme: 'filled_black',
                 size: 'medium',
                 text: 'signin_with',
@@ -931,6 +1334,49 @@ function initGoogleSignIn() {
         }
     }
     updateLoginUI();
+}
+
+// Manual Google Sign-In (fallback button click)
+function manualGoogleSignIn() {
+    // Check if running on local file system
+    if (window.location.protocol === 'file:') {
+        alert('Google Sign-In requires a web server and does not work on file:// addresses. Please host the site or use a local server.');
+        console.warn('Google Sign-In blocked: Cannot run from file protocol.');
+        return;
+    }
+
+    if (typeof google !== 'undefined' && google.accounts) {
+        try {
+            google.accounts.id.prompt(); // Show One Tap prompt
+        } catch (err) {
+            console.error('Google Prompt Error:', err);
+            initGoogleSignIn(); // Re-init and try again
+        }
+    } else {
+        // SDK not loaded yet — try loading again
+        const fallback = document.getElementById('googleFallbackBtn');
+        if (fallback) fallback.textContent = 'Loading SDK...';
+        
+        console.log('Attempting to reload Google SDK...');
+        const retryScript = document.createElement('script');
+        retryScript.src = 'https://accounts.google.com/gsi/client';
+        retryScript.async = true;
+        retryScript.defer = true;
+        retryScript.onload = () => {
+            console.log('Google SDK loaded successfully.');
+            if (fallback) fallback.textContent = 'Sign in with Google';
+            initGoogleSignIn();
+            setTimeout(() => {
+                if (google && google.accounts) google.accounts.id.prompt();
+            }, 100);
+        };
+        retryScript.onerror = (e) => {
+            console.error('Google SDK failed to load:', e);
+            if (fallback) fallback.textContent = 'Sign in with Google';
+            alert('Google Sign-In SDK could not be loaded. This is often caused by ad-blockers or firewall settings.');
+        };
+        document.head.appendChild(retryScript);
+    }
 }
 
 // Auto-init Google Sign-In when script loads
