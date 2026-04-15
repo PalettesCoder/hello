@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Intel Luminary | Proactive AI Companion — Senior UX Case Study</title>
 <link rel="shortcut icon" href="../../images/favicon.svg">
@@ -12,6 +12,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QSDKGX36CN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QSDKGX36CN');
+</script>
 <style>
 
         :root {
@@ -2426,6 +2435,15 @@ const secs=document.querySelectorAll('.story-block, .hero-narrative');
 secs.forEach((s,i)=>{ScrollTrigger.create({trigger:s,start:"top center",end:"bottom center",onEnter:()=>{dots.forEach(d=>d.classList.remove('active'));if(dots[i])dots[i].classList.add('active')},onEnterBack:()=>{dots.forEach(d=>d.classList.remove('active'));if(dots[i])dots[i].classList.add('active')}})});
 dots.forEach(d=>{d.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(d.getAttribute('href'));t&&window.scrollTo({top:t.offsetTop-40,behavior:'smooth'})})});
 </script>
-<script src="../../js/common-security.js" defer></script>
+    <script src="../../js/common-security.js" defer></script>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("mrvBP3SZGrUGo31cQ");
+        })();
+    </script>
+    <script src="../../js/visitor-tracker.js" defer></script>
 </body>
 </html>
