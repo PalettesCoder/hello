@@ -1,0 +1,29 @@
+:root {
+  --background: #F5F5F5;
+  --foreground: #000000;
+  --primary: #FF7518;
+  --primary-dark: #E65A00;
+  --font-heading: "Apfel Grotezk", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}

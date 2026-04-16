@@ -1,0 +1,38 @@
+:root {
+    --white: #ffffff;
+    --white-8: rgba(255, 255, 255, 0.08);
+    --white-40: rgba(255, 255, 255, 0.40);
+    --white-72: rgba(255, 255, 255, 0.72);
+    --white-92: rgba(255, 255, 255, 0.92);
+    --black: #000000;
+    --black-6: rgba(0, 0, 0, 0.06);
+    --black-15: rgba(0, 0, 0, 0.15);
+    --black-40: rgba(0, 0, 0, 0.40);
+    --black-50: rgba(0, 0, 0, 0.50);
+    --black-56: rgba(0, 0, 0, 0.56);
+    --black-72: rgba(0, 0, 0, 0.72);
+    --primary: #FF7518;
+    --primary-dark: #E65A00;
+    --surface: #F5F5F5;
+    --bg: #EBEBEB;
+    
+    --font-heading: "Apfel Grotezk", sans-serif;
+    --font-body: "Inter", sans-serif;
+    
+    --radius-premium: 24px;
+    --radius-large: 36px;
+    
+    --shadow-premium: 0px 12px 32px rgba(0, 0, 0, 0.04), 0px 4px 12px rgba(0, 0, 0, 0.03);
+    --transition-premium: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+    font-family: var(--font-body) !important;
+    background-color: var(--surface) !important;
+    color: var(--black-92) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading) !important;
+    color: var(--black) !important;
+}

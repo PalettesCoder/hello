@@ -73,6 +73,7 @@
     </noscript>
 
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/unified-design.css">
     <link rel="stylesheet" href="css/figma-nav.css">
     <link rel="stylesheet" href="css/figma-perfect.css">
     <link rel="stylesheet" href="css/figma-interactive.css">
@@ -89,8 +90,11 @@
             min-height: 100vh;
             overflow: hidden;
             position: relative;
-            font-family: "Inter", sans-serif;
+            font-family: var(--font-body);
             margin: 0; padding: 0;
+            --primary: #FF7518;
+            --font-heading: "Apfel Grotezk", sans-serif;
+            --font-body: "Inter", sans-serif;
         }
 
         /* Relying on figma-nav.css for core app layout */
@@ -301,7 +305,7 @@
         }
 
         .reveal-title {
-            font-family: "Apfel Grotezk", sans-serif;
+            font-family: var(--font-heading);
             font-size: clamp(18px, 3vw, 26px);
             font-weight: 500;
             letter-spacing: -0.02em;
