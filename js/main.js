@@ -1,1 +1,343 @@
-!function(t){"use strict";const e=()=>{const e=t(".toggle-switch-mode"),o=t("body"),n=t(".image-switch"),i=t("#logo_mode");if(!e.length)return;n.each(function(){const e=t(this);e.data("light-original")||e.data("light-original",e.attr("src"))}),i.length&&!i.data("light-original")&&i.data("light-original",i.attr("src"));const a=e=>{if(n.each(function(){const o=t(this),n=o.data("light-original"),i=o.data("dark");o.attr("src",e&&i?i:n)}),i.length){const t=i.data("light-original"),o=i.data("dark");i.attr("src",e&&o?o:t)}},s=o=>{e.each(function(){t(this).toggleClass("active",o)})},c=localStorage.getItem("darkMode"),l=o.data("default-mode");let r;r=void 0!==l?"dark"===l:null!==c&&"enabled"===c,o.toggleClass("dark-mode",r),a(r),s(r),e.on("click",function(){const t=!o.hasClass("dark-mode");o.toggleClass("dark-mode",t),s(t),a(t),localStorage.setItem("darkMode",t?"enabled":"disabled")})};var o=()=>{function e(){t(".wg-work").each(function(){let e=t(this),o=e.offset().top,n=o+e.outerHeight(),i=t(window).scrollTop(),a=i+t(window).height();n>i&&o<a?e.find(".wrap").addClass("active"):e.find(".wrap").removeClass("active")})}t(window).on("scroll",e),e()};t(function(){t("#contactform").each(function(){t(this).validate({submitHandler:function(e){var o=t(e),n=o.serialize(),i=t("<div />",{class:"loading"});t.ajax({type:"POST",url:o.attr("action"),data:n,beforeSend:function(){o.find(".send-wrap").append(i)},success:function(e){var n,i;"Success"===e?(n="Email Sent Successfully. Thank you, Your application is accepted - we will contact you shortly",i="msg-success"):(n="Error sending email.",i="msg-error"),o.prepend(t("<div />",{class:"flat-alert "+i,text:n}).append(t('<a class="close" href="#"><i class="icon icon-close2"></i></a>'))),o.find(":input").not(".submit").val("")},complete:function(t,e,n){o.find(".loading").remove()}})}})}),function(){let e=t("a.scroll-link");t(document).on("scroll",function(){e.each(function(){let e=t(this).attr("href");if(!e||"#"===e)return;if(!t(e).length)return;let o=t(e).offset().top,n=o+t(e).outerHeight(),i=t(document).scrollTop();i<n-20&&i>=o-20?t(this).addClass("active"):t(this).removeClass("active")})})}(),t(".infiniteSlide").length>0&&t(".infiniteSlide").each(function(){var e=t(this),o=e.data("style")||"left",n=e.data("clone")||2,i=e.data("speed")||50;e.infiniteslide({speed:i,direction:o,clone:n,pauseonhover:!0})}),function(t=".time-local"){function e(){const e=new Date,o=e.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"}),n=e.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"});document.querySelectorAll(t).forEach(t=>{const e=t.querySelector(".date"),i=t.querySelector(".clock");e&&(e.textContent=n),i&&(i.textContent=o)})}e(),setInterval(e,1e3)}(".time-local"),function(){if(t(document.body).hasClass("counter-scroll")){const e=e=>{t().countTo&&e.find(".number").each(function(){const e=t(this).data("to"),o=t(this).data("speed");t(this).countTo({to:e,speed:o})})},o=new IntersectionObserver(n=>{n.forEach(n=>{if(n.isIntersecting){const i=t(n.target);i.data("started")||(e(i),i.data("started",!0),o.unobserve(n.target))}})},{root:null,threshold:.1});t(".counter").each(function(){t(this).data("started",!1),o.observe(this)})}}(),(()=>{if(!t(".settings-color").length)return;const e=document.querySelectorAll(".choose-item"),o=document.body;e.forEach((t,e)=>{t.addEventListener("click",()=>{const n=t.classList.contains("theme-light"),i=`${n?"body-v":"dark-v"}${e%3+1}`;if(t.classList.contains("active"))return t.classList.remove("active"),void o.classList.remove(i);document.querySelectorAll(".choose-item").forEach(t=>t.classList.remove("active")),t.classList.add("active"),o.classList.forEach(t=>{(t.startsWith("body-v")||t.startsWith("dark-v"))&&o.classList.remove(t)}),o.classList.add(i)})})})(),t(".hover-cursor-img").on("mousemove",function(e){t(this).find(".hover-image").css({top:e.clientY+20+"px",left:e.clientX+20+"px"})}),t(".hover-cursor-img").on("mouseenter",function(){t(this).find(".hover-image").css({transform:"scale(1)",opacity:1})}),t(".hover-cursor-img").on("mouseleave",function(){t(this).find(".hover-image").css({transform:"scale(0)",opacity:0})}),e(),(()=>{function t(){document.querySelectorAll(".intro-title span").forEach(t=>{if(t.classList.contains("active"))return;const e=t.getBoundingClientRect();e.top<.8*window.innerHeight&&e.bottom>0&&setTimeout(()=>{t.classList.add("active")},300)})}window.addEventListener("scroll",t),window.addEventListener("load",t)})(),o(),(()=>{if(t(".text-typing").length>0){const e=["harsha","Designer","Developer"],o=document.getElementById("typed");let n=0,i=0,a=!1;const s=100,c=50,l=1200;function r(){const t=e[n];if(a)o.textContent=t.slice(0,--i),0===i&&(a=!1,n=(n+1)%e.length);else if(o.textContent=t.slice(0,++i),i===t.length)return a=!0,void setTimeout(r,l);setTimeout(r,a?c:s)}r()}})(),t(".action-open-mobile, .overlay-pop").on("click",function(){t(".nav-mobile-list, .overlay-pop").toggleClass("open"),t("body").toggleClass("overflow-hidden"),t(".btn-mobile-menu").toggleClass("close")})})}(jQuery);
+(function($) {
+    "use strict";
+
+    const darkModeToggle = () => {
+        const toggle = $(".toggle-switch-mode");
+        const body = $("body");
+        const images = $(".image-switch");
+        const logo = $("#logo_mode");
+
+        if (!toggle.length) return;
+
+        images.each(function() {
+            const img = $(this);
+            if (!img.data("light-original")) {
+                img.data("light-original", img.attr("src"));
+            }
+        });
+
+        if (logo.length && !logo.data("light-original")) {
+            logo.data("light-original", logo.attr("src"));
+        }
+
+        const switchImages = (isDark) => {
+            images.each(function() {
+                const img = $(this);
+                const light = img.data("light-original");
+                const dark = img.data("dark");
+                img.attr("src", isDark && dark ? dark : light);
+            });
+
+            if (logo.length) {
+                const light = logo.data("light-original");
+                const dark = logo.data("dark");
+                logo.attr("src", isDark && dark ? dark : light);
+            }
+        };
+
+        const updateToggleState = (isDark) => {
+            toggle.each(function() {
+                $(this).toggleClass("active", isDark);
+            });
+        };
+
+        const currentMode = localStorage.getItem("darkMode");
+        const defaultMode = body.data("default-mode");
+        let isDark;
+
+        if (defaultMode !== undefined) {
+            isDark = defaultMode === "dark";
+        } else if (currentMode !== null) {
+            isDark = currentMode === "enabled";
+        } else {
+            isDark = false;
+        }
+
+        body.toggleClass("dark-mode", isDark);
+        switchImages(isDark);
+        updateToggleState(isDark);
+
+        toggle.on("click", function() {
+            const nextMode = !body.hasClass("dark-mode");
+            body.toggleClass("dark-mode", nextMode);
+            updateToggleState(nextMode);
+            switchImages(nextMode);
+            localStorage.setItem("darkMode", nextMode ? "enabled" : "disabled");
+        });
+    };
+
+    const workScrollReveal = () => {
+        function reveal() {
+            $(".wg-work").each(function() {
+                let el = $(this);
+                let top = el.offset().top;
+                let bottom = top + el.outerHeight();
+                let scroll = $(window).scrollTop();
+                let winH = $(window).height();
+
+                if (bottom > scroll && top < scroll + winH) {
+                    el.find(".wrap").addClass("active");
+                } else {
+                    el.find(".wrap").removeClass("active");
+                }
+            });
+        }
+        $(window).on("scroll", reveal);
+        reveal();
+    };
+
+    const themeSwitcher = () => {
+        // Support both legacy .choose-item and new .theme-choice
+        const items = document.querySelectorAll(".choose-item, .theme-choice");
+        const body = document.body;
+
+        if (!items.length) return;
+
+        items.forEach((item, index) => {
+            item.addEventListener("click", () => {
+                // If using data-theme (New Method)
+                const themeId = item.getAttribute("data-theme");
+                
+                // Remove all existing theme classes
+                body.classList.forEach(cls => {
+                    if (cls.startsWith("body-v") || cls.startsWith("dark-v")) {
+                        body.classList.remove(cls);
+                    }
+                });
+
+                // Set active state
+                items.forEach(i => i.classList.remove("active"));
+                item.classList.add("active");
+
+                if (themeId) {
+                    // Mapping data-theme to classes
+                    const themeMap = {
+                        "silver-dawn": "body-v1",
+                        "lavender-stone": "body-v2",
+                        "ocean-breezes": "body-v3",
+                        "midnight-fade": "dark-v1",
+                        "charcoal-mist": "dark-v2",
+                        "forest-shadow": "dark-v3"
+                    };
+                    if (themeMap[themeId]) body.classList.add(themeMap[themeId]);
+                } else {
+                    // Legacy Fallback (Index based)
+                    const isLight = item.classList.contains("theme-light");
+                    const cls = `${isLight ? "body-v" : "dark-v"}${ (index % 3) + 1 }`;
+                    body.classList.add(cls);
+                }
+            });
+        });
+    };
+
+    const localTime = (selector = ".time-local") => {
+        function update() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+            const dateStr = now.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+
+            document.querySelectorAll(selector).forEach(el => {
+                const d = el.querySelector(".date");
+                const c = el.querySelector(".clock");
+                if (d) d.textContent = dateStr;
+                if (c) c.textContent = timeStr;
+            });
+        }
+        update();
+        setInterval(update, 1000);
+    };
+
+    const scrollNav = () => {
+        const links = $("a.scroll-link");
+        $(document).on("scroll", function() {
+            links.each(function() {
+                const href = $(this).attr("href");
+                if (!href || href === "#") return;
+                const target = $(href);
+                if (!target.length) return;
+
+                const top = target.offset().top;
+                const bottom = top + target.outerHeight();
+                const scroll = $(document).scrollTop();
+
+                if (scroll < bottom - 20 && scroll >= top - 20) {
+                    $(this).addClass("active");
+                } else {
+                    $(this).removeClass("active");
+                }
+            });
+        });
+    };
+
+    const menuMobile = () => {
+        $(".action-open-mobile, .overlay-pop").on("click", function() {
+            $(".nav-mobile-list, .overlay-pop").toggleClass("open");
+            $("body").toggleClass("overflow-hidden");
+            $(".btn-mobile-menu").toggleClass("close");
+        });
+    };
+
+    const envControls = () => {
+        const body = document.body;
+        const motionToggle = document.getElementById("motionToggle");
+        const tooltipToggle = document.getElementById("tooltipToggle");
+        const debugToggle = document.getElementById("debugToggle");
+
+        if (!motionToggle) return;
+
+        // Dev Mode Overlay Element
+        let devOverlay = document.getElementById("devmode-overlay");
+        if (!devOverlay) {
+            devOverlay = document.createElement("div");
+            devOverlay.id = "devmode-overlay";
+            devOverlay.innerHTML = `
+                <div class="stat-row"><span class="label">STATUS:</span> <span id="dev-status">OPERATIONAL</span></div>
+                <div class="stat-row"><span class="label">THEME:</span> <span id="dev-theme">DEFAULT</span></div>
+                <div class="stat-row"><span class="label">MEMORY:</span> <span id="dev-mem">-- MB</span></div>
+                <div class="stat-row"><span class="label">LOAD:</span> <span id="dev-load">-- ms</span></div>
+                <div class="stat-row"><span class="label">FPS:</span> <span id="dev-fps">--</span></div>
+            `;
+            document.body.appendChild(devOverlay);
+        }
+
+        // 1. Fluid Motion
+        const updateMotion = () => {
+            const isEnabled = motionToggle.checked;
+            body.classList.toggle("no-animations", !isEnabled);
+            localStorage.setItem("env-motion", isEnabled);
+        };
+
+        // 2. Smart Tooltips
+        const updateTooltips = () => {
+            const isEnabled = tooltipToggle.checked;
+            body.classList.toggle("hide-tooltips", !isEnabled);
+            localStorage.setItem("env-tooltips", isEnabled);
+        };
+
+        // 3. Developer Mode
+        const updateDebug = () => {
+            const isEnabled = debugToggle.checked;
+            devOverlay.classList.toggle("active", isEnabled);
+            localStorage.setItem("env-debug", isEnabled);
+        };
+
+        // Event Listeners
+        motionToggle.addEventListener("change", updateMotion);
+        tooltipToggle.addEventListener("change", updateTooltips);
+        debugToggle.addEventListener("change", updateDebug);
+
+        // Persistent Settings Restore
+        if (localStorage.getItem("env-motion") === "false") {
+            motionToggle.checked = false;
+            updateMotion();
+        }
+        if (localStorage.getItem("env-tooltips") === "false") {
+            tooltipToggle.checked = false;
+            updateTooltips();
+        }
+        if (localStorage.getItem("env-debug") === "true") {
+            debugToggle.checked = true;
+            updateDebug();
+        }
+
+        // Live Stats Update For Dev Mode
+        let frameCount = 0;
+        let lastTime = performance.now();
+        const updateStats = (time) => {
+            if (debugToggle.checked) {
+                frameCount++;
+                if (time - lastTime >= 1000) {
+                    document.getElementById("dev-fps").textContent = frameCount;
+                    frameCount = 0;
+                    lastTime = time;
+                }
+                
+                const themeClass = Array.from(body.classList).find(c => c.startsWith("body-v") || c.startsWith("dark-v")) || "DEFAULT";
+                document.getElementById("dev-theme").textContent = themeClass.toUpperCase();
+
+                if (window.performance && window.performance.memory) {
+                    document.getElementById("dev-mem").textContent = Math.round(window.performance.memory.usedJSHeapSize / 1048576) + " MB";
+                }
+                
+                const perf = performance.getEntriesByType("navigation")[0];
+                if (perf) {
+                    document.getElementById("dev-load").textContent = Math.round(perf.duration) + " ms";
+                }
+            }
+            requestAnimationFrame(updateStats);
+        };
+        requestAnimationFrame(updateStats);
+    };
+
+    $(function() {
+        darkModeToggle();
+        workScrollReveal();
+        themeSwitcher();
+        localTime();
+        scrollNav();
+        menuMobile();
+        envControls();
+
+        // Contact Form Validation
+        $("#contactform").each(function() {
+            $(this).validate({
+                submitHandler: function(form) {
+                    const $form = $(form);
+                    const data = $form.serialize();
+                    const loading = $("<div />", { class: "loading" });
+
+                    $.ajax({
+                        type: "POST",
+                        url: $form.attr("action"),
+                        data: data,
+                        beforeSend: function() {
+                            $form.find(".send-wrap").append(loading);
+                        },
+                        success: function(resp) {
+                            let msg, type;
+                            if (resp === "Success") {
+                                msg = "Message sent successfully. I'll get back to you soon!";
+                                type = "msg-success";
+                            } else {
+                                msg = "Error sending message.";
+                                type = "msg-error";
+                            }
+                            $form.prepend($("<div />", { class: "flat-alert " + type, text: msg })
+                                .append($('<a class="close" href="#"><i class="icon icon-close2"></i></a>')));
+                            $form.find(":input").not(".submit").val("");
+                        },
+                        complete: function() {
+                            $form.find(".loading").remove();
+                        }
+                    });
+                }
+            });
+        });
+
+        // Infinite Slide
+        if ($(".infiniteSlide").length > 0) {
+            $(".infiniteSlide").each(function() {
+                const el = $(this);
+                const dir = el.data("style") || "left";
+                const clone = el.data("clone") || 2;
+                const speed = el.data("speed") || 50;
+                el.infiniteslide({ speed: speed, direction: dir, clone: clone, pauseonhover: true });
+            });
+        }
+
+        // Title Animation Reveal
+        const revealTitles = () => {
+            const titles = document.querySelectorAll(".intro-title span");
+            titles.forEach(span => {
+                if (span.classList.contains("active")) return;
+                const rect = span.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
+                    setTimeout(() => span.classList.add("active"), 300);
+                }
+            });
+        };
+        window.addEventListener("scroll", revealTitles);
+        window.addEventListener("load", revealTitles);
+    });
+
+})(jQuery);

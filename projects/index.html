@@ -245,98 +245,118 @@
         </a>
     </div>
     <!-- /Toggle & Settings -->
-    <!-- Setting Color -->
-    <div class="offcanvas offcanvas-end" id="settingColorMenu" style="width: 380px; border: none; box-shadow: -10px 0 40px rgba(0,0,0,0.1);">
-        <div class="offcanvas-content" style="background: #ffffff; height: 100%; display: flex; flex-direction: column;">
-            
-            <!-- Dark Premium Header -->
-            <div class="canvas-header" style="background: #bababa; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center;">
-                <h5 class="m-0" style="color: #ffffff; font-size: 20px; font-weight: 500; font-family: 'Inter', sans-serif;">Configuration</h5>
-                <span data-bs-dismiss="offcanvas" style="cursor: pointer; color: #ffffff; font-size: 20px; transition: color 0.2s;" onmouseover="this.style.color='#FF7518'" onmouseout="this.style.color='#ffffff'" aria-label="Close Configuration menu">
-                    &times;
-                </span>
-            </div>
-            
-            <!-- White Premium Body -->
-            <div class="canvas-body" style="padding: 40px 32px; flex: 1; overflow-y: auto;">
-                <h6 style="color: #666; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px; font-family: 'Inter', sans-serif;">Color Theme</h6>
-                
-                <div class="settings-color list-choose" style="display: flex; flex-direction: column; gap: 16px;">
-                    
-                    <!-- Styles for Custom Popup Colors Settings -->
-                    <style>
-                        .settings-color .choose-item {
-                            display: flex;
-                            align-items: center;
-                            gap: 16px;
-                            background: transparent;
-                            border: 1px solid transparent;
-                            padding: 12px 16px;
-                            border-radius: 8px;
-                            cursor: pointer;
-                            transition: all 0.2s ease;
-                            width: 100%;
-                            text-align: left;
-                        }
-                        .settings-color .choose-item:hover {
-                            background: #f9f9f9;
-                        }
-                        .settings-color .choose-item.active {
-                            border-color: #111;
-                            background: #ffffff;
-                            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-                        }
-                        .settings-color .choose-item .color {
-                            width: 24px;
-                            height: 24px;
-                            border-radius: 50%;
-                            display: block;
-                            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
-                            flex-shrink: 0;
-                        }
-                        .settings-color .choose-item .text {
-                            color: #111;
-                            font-size: 15px;
-                            font-weight: 500;
-                            font-family: 'Inter', sans-serif;
-                            flex-grow: 1;
-                        }
-                    </style>
-
-                    <button type="button" class="btn-color theme-light choose-item active" aria-label="Select Silver Dawn theme">
-                        <span class="color type-body-v1"></span>
+    <!-- Configuration Sidebar -->
+    <div class="offcanvas offcanvas-end premium-offcanvas" id="settingColorMenu" tabindex="-1">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">System Config</h5>
+            <button type="button" class="btn-close-premium" data-bs-dismiss="offcanvas" aria-label="Close Portal">
+                &times;
+            </button>
+        </div>
+        
+        <div class="offcanvas-body">
+            <!-- Section: Appearance -->
+            <div class="setting-group">
+                <span class="setting-label"><i class="icon icon-high-light" style="font-size: 14px; margin-top: -2px;"></i> Visual Engine</span>
+                <div class="theme-grid settings-color list-choose">
+                    <div class="theme-choice active btn-color theme-light" data-theme="silver-dawn">
+                        <div class="theme-visual">
+                            <div class="swatch type-body-v1"></div>
+                            <div class="swatch" style="background: #f8f8f8;"></div>
+                        </div>
                         <span class="text">Silver Dawn</span>
-                    </button>
-                    
-                    <button type="button" class="btn-color theme-light choose-item" aria-label="Select Lavender Stone theme">
-                        <span class="color type-body-v2"></span>
+                        <span class="tag">Default</span>
+                    </div>
+
+                    <div class="theme-choice btn-color theme-light" data-theme="lavender-stone">
+                        <div class="theme-visual">
+                            <div class="swatch type-body-v2"></div>
+                            <div class="swatch" style="background: #f0f0f5;"></div>
+                        </div>
                         <span class="text">Lavender Stone</span>
-                    </button>
-                    
-                    <button type="button" class="btn-color theme-light choose-item" aria-label="Select Ocean Breezes theme">
-                        <span class="color type-body-v3"></span>
+                        <span class="tag">Serene</span>
+                    </div>
+
+                    <div class="theme-choice btn-color theme-light" data-theme="ocean-breezes">
+                        <div class="theme-visual">
+                            <div class="swatch type-body-v3"></div>
+                            <div class="swatch" style="background: #eef2f5;"></div>
+                        </div>
                         <span class="text">Ocean Breezes</span>
-                    </button>
-                    
-                    <button type="button" class="btn-color theme-dark choose-item" aria-label="Select Midnight Fade theme">
-                        <span class="color type-dark-v1"></span>
+                        <span class="tag">Clear</span>
+                    </div>
+
+                    <div class="theme-choice btn-color theme-dark" data-theme="midnight-fade">
+                        <div class="theme-visual">
+                            <div class="swatch type-dark-v1"></div>
+                            <div class="swatch" style="background: #111;"></div>
+                        </div>
                         <span class="text">Midnight Fade</span>
-                    </button>
-                    
-                    <button type="button" class="btn-color theme-dark choose-item" aria-label="Select Charcoal Mist theme">
-                        <span class="color type-dark-v2"></span>
+                        <span class="tag">Dark Mode</span>
+                    </div>
+
+                    <div class="theme-choice btn-color theme-dark" data-theme="charcoal-mist">
+                        <div class="theme-visual">
+                            <div class="swatch type-dark-v2"></div>
+                            <div class="swatch" style="background: #1a1a1a;"></div>
+                        </div>
                         <span class="text">Charcoal Mist</span>
-                    </button>
-                    
-                    <button type="button" class="btn-color theme-dark choose-item" aria-label="Select Forest Shadow theme">
-                        <span class="color type-dark-v3"></span>
+                        <span class="tag">Premium</span>
+                    </div>
+
+                    <div class="theme-choice btn-color theme-dark" data-theme="forest-shadow">
+                        <div class="theme-visual">
+                            <div class="swatch type-dark-v3"></div>
+                            <div class="swatch" style="background: #0f1410;"></div>
+                        </div>
                         <span class="text">Forest Shadow</span>
-                    </button>
+                        <span class="tag">Organic</span>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Section: Experience -->
+            <div class="setting-group" style="margin-top: 40px;">
+                <span class="setting-label"><i class="icon icon-gear" style="font-size: 14px; margin-top: -2px;"></i> Environment</span>
+                
+                <div class="toggle-item">
+                    <div class="toggle-info">
+                        <strong>Fluid Motion</strong>
+                        <span>GSAP & Framer Animations</span>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="motionToggle" checked>
+                    </div>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-info">
+                        <strong>Smart Tooltips</strong>
+                        <span>Assistive UI pointers</span>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="tooltipToggle" checked>
+                    </div>
+                </div>
+
+                <div class="toggle-item">
+                    <div class="toggle-info">
+                        <strong>Developer Mode</strong>
+                        <span>Debug & Performance Metrics</span>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="debugToggle">
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer-note" style="margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.05); text-align: center;">
+                <p style="font-size: 11px; color: var(--black-40); margin: 0;">WORKSHOP V3.1.2025</p>
+                <p style="font-size: 10px; color: var(--black-40); margin-top: 4px;">SYSTEM OPERATIONAL</p>
             </div>
         </div>
     </div>
-    <!-- /Setting Color -->
+    <!-- /Configuration Sidebar -->
 
     <!-- Menu Mobile -->
     <div class="action-open-mobile d-lg-none">
@@ -348,51 +368,51 @@
         <div class="nav-mobile-list">
             <ul class="nav-mobile-item">
                 <li class="nav-item">
-                    <a href="../index.html#home" class="item-link scroll-link">
+                    <a href="/#home" class="item-link scroll-link">
                         <i class="icon icon-home"></i>
                         <p class="tool-tip text-caption">Home</p>
                     </a>
                 </li>
                 <li class="br-line"></li>
                 <li class="nav-item">
-                    <a href="../index.html#about" class="item-link scroll-link">
+                    <a href="/#about" class="item-link scroll-link">
                         <i class="icon icon-user-circle"></i>
                         <p class="tool-tip text-caption">About</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#education" class="item-link scroll-link">
+                    <a href="/#education" class="item-link scroll-link">
                         <i class="icon icon-edu"></i>
                         <p class="tool-tip text-caption">Experience & Education</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#work" class="item-link scroll-link">
+                    <a href="/#work" class="item-link scroll-link">
                         <i class="icon icon-high-light"></i>
                         <p class="tool-tip text-caption">Work</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#service" class="item-link scroll-link">
+                    <a href="/#service" class="item-link scroll-link">
                         <i class="icon icon-service"></i>
                         <p class="tool-tip text-caption">Services</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#tech" class="item-link scroll-link">
+                    <a href="/#tech" class="item-link scroll-link">
                         <i class="icon icon-tech-stack"></i>
                         <p class="tool-tip text-caption">Tech</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html#testimonial" class="item-link scroll-link">
+                    <a href="/#testimonial" class="item-link scroll-link">
                         <i class="icon icon-tes"></i>
                         <p class="tool-tip text-caption">Testimonials</p>
                     </a>
                 </li>
                 <li class="br-line"></li>
                 <li class="nav-item">
-                    <a href="../index.html#contact" class="item-link scroll-link">
+                    <a href="/#contact" class="item-link scroll-link">
                         <i class="icon icon-send"></i>
                         <p class="tool-tip text-caption">Contact</p>
                     </a>
@@ -406,58 +426,58 @@
     <div class="sidebar-tools pst-v1">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="../index.html#home" class="item-link scroll-link" aria-label="Navigate to Home">
+                <a href="/#home" class="item-link scroll-link" aria-label="Navigate to Home">
                     <i class="icon icon-home"></i>
                     <p class="tool-tip text-caption">Home</p>
                 </a>
             </li>
             <li class="br-line"></li>
             <li class="nav-item">
-                <a href="../index.html#about" class="item-link scroll-link" aria-label="Read more About Me">
+                <a href="/#about" class="item-link scroll-link" aria-label="Read more About Me">
                     <i class="icon icon-user-circle"></i>
                     <p class="tool-tip text-caption">About</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#education" class="item-link scroll-link" aria-label="View Education and History">
+                <a href="/#education" class="item-link scroll-link" aria-label="View Education and History">
                     <i class="icon icon-edu"></i>
                     <p class="tool-tip text-caption">Work & Education</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#work" class="item-link scroll-link" aria-label="View My Projects">
+                <a href="/#work" class="item-link scroll-link" aria-label="View My Projects">
                     <i class="icon icon-high-light"></i>
                     <p class="tool-tip text-caption">Work</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#service" class="item-link scroll-link" aria-label="View My Services">
+                <a href="/#service" class="item-link scroll-link" aria-label="View My Services">
                     <i class="icon icon-service"></i>
                     <p class="tool-tip text-caption">Services</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#tech" class="item-link scroll-link" aria-label="Explore My Tech Stack">
+                <a href="/#tech" class="item-link scroll-link" aria-label="Explore My Tech Stack">
                     <i class="icon icon-tech-stack"></i>
                     <p class="tool-tip text-caption">Tech</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../index.html#testimonial" class="item-link scroll-link" aria-label="Read Client Testimonials">
+                <a href="/#testimonial" class="item-link scroll-link" aria-label="Read Client Testimonials">
                     <i class="icon icon-tes"></i>
                     <p class="tool-tip text-caption">Testimonials</p>
                 </a>
             </li>
             <li class="br-line"></li>
             <li class="nav-item">
-                <a href="../index.html#contact" class="item-link scroll-link" aria-label="Contact Me">
+                <a href="/#contact" class="item-link scroll-link" aria-label="Contact Me">
                     <i class="icon icon-send"></i>
                     <p class="tool-tip text-caption">Contact</p>
                 </a>
             </li>
         </ul>
         <div class="nav-bottom">
-            <a href="../index.html#home" class="tf-btn-icon go-top scroll-link" aria-label="Back to Top">
+            <a href="/#home" class="tf-btn-icon go-top scroll-link" aria-label="Back to Top">
                 <i class="icon icon-arrow-top"></i>
             </a>
         </div>
@@ -494,6 +514,27 @@
                 <div class="user-image">
                     <div class="image">
                         <img loading="eager" decoding="async" fetchpriority="high" width="468" height="856" src="../images/image.jpg" alt="Harsha Royal Profile Portrait" class="profile-image">
+                        
+                        <div class="action-group overlay-buttons">
+                            <a href="/freelance" class="tf-btn-action">
+                                <span class="ic-wrap">
+                                    <i class="icon icon-arrow-right-top"></i>
+                                </span>
+                                <span class="text text-body-3 letter-space--05 fw-medium">
+                                    Let’s talk
+                                </span>
+                                <span class="ic-wrap">
+                                    <i class="icon icon-arrow-right-top"></i>
+                                </span>
+                            </a>
+    
+                            <a href="/resume" class="action-down style-white-border">
+                                <i class="icon icon-download"></i>
+                                <span class="text-body-3 fw-medium">
+                                    Download CV
+                                </span>
+                            </a>
+                        </div>
                     </div>
                     <div class="meta-left d-none d-sm-block">
                         <div class="bg-item-svg">
@@ -535,28 +576,6 @@
                         <span>Available for Work</span>
                     </p>
                     <div class="br-line"></div>
-                    <div class="action-group">
-                        <a href="freelance.html"
-                            class="tf-btn-action">
-                            <span class="ic-wrap">
-                                <i class="icon icon-arrow-right-top"></i>
-                            </span>
-                            <span class="text text-body-3 letter-space--05 fw-medium">
-                                Let’s talk
-                            </span>
-                            <span class="ic-wrap">
-                                <i class="icon icon-arrow-right-top"></i>
-                            </span>
-                        </a>
-
-                        <a href="resume.html"
-                            class="action-down">
-                            <i class="icon icon-user-circle"></i>
-                            <span class="text-body-3">
-                                View Resume
-                            </span>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -588,7 +607,7 @@
                         </div>
                     </div>
 
-                    <div class="tf-grid-layout" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 40px; padding-bottom: 100px;">
+                    <div class="tf-grid-layout is-list-view" id="projectContainer" style="display: grid; grid-template-columns: 1fr; gap: 24px; padding-bottom: 100px; transition: all 0.5s ease;">
                         
                         <!-- Project 1: WSP -->
                         <div class="project-card-v2" onclick="location.href='WSP-project/index.html'">
@@ -865,15 +884,93 @@
                 .header-title { font-size: 4rem !important; letter-spacing: -2px; }
             }
 
-            /* Fix for Sidebar Typing Animation clipping */
-            .cd-words-wrapper {
-                width: auto !important;
-                min-width: 250px;
-                display: inline-block !important;
-                overflow: visible !important;
+            /* View Switcher UI */
+            .view-switcher-wrap {
+                display: inline-flex;
+                background: rgba(0,0,0,0.03);
+                padding: 4px;
+                border-radius: 100px;
+                border: 1px solid rgba(0,0,0,0.05);
             }
-            .cd-words-wrapper b {
-                white-space: nowrap;
+            .view-btn {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 24px;
+                border: none;
+                background: transparent;
+                border-radius: 100px;
+                font-size: 13px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #666;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                cursor: pointer;
+            }
+            .view-btn.active {
+                background: #ffffff;
+                color: #000000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            }
+            .view-btn i { font-size: 16px; }
+
+            /* LIST VIEW MODE */
+            .tf-grid-layout.is-list-view {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+
+            .tf-grid-layout.is-list-view .project-card-v2 {
+                display: flex;
+                flex-direction: row;
+                height: 280px;
+                padding: 12px;
+                border-radius: 24px;
+            }
+
+            .tf-grid-layout.is-list-view .card-image-outer {
+                width: 360px;
+                height: 100%;
+                flex-shrink: 0;
+            }
+
+            .tf-grid-layout.is-list-view .card-info {
+                padding: 20px 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                flex-grow: 1;
+            }
+
+            .tf-grid-layout.is-list-view .card-title {
+                font-size: 32px;
+                margin-bottom: 8px;
+            }
+
+            .tf-grid-layout.is-list-view .card-desc {
+                font-size: 15px;
+                margin-bottom: 24px;
+                max-width: 600px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .tf-grid-layout.is-list-view .card-footer {
+                padding-top: 16px;
+            }
+
+            @media (max-width: 991px) {
+                .tf-grid-layout.is-list-view .project-card-v2 {
+                    flex-direction: column;
+                    height: auto;
+                }
+                .tf-grid-layout.is-list-view .card-image-outer {
+                    width: 100%;
+                    height: 280px;
+                }
             }
         </style>
 
@@ -1100,6 +1197,7 @@
             }, 3000);
         }
 
+
         // Toggle View Logic
         function toggleDualView() {
             viewMode = (viewMode + 1) % 3;
@@ -1202,4 +1300,6 @@
 </body>
 
 </html>
+
+
 

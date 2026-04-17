@@ -3,12 +3,11 @@ const CACHE_NAME = 'harsha-portfolio-cache-v15';
 // Core shell — cached on install for offline support
 const CORE_SHELL = [
   '/',
-  'index.html',
-  'freelance.html',
-  'resume.html',
-  'tech-stack.html',
-  'projects/WSP-project',
-  '404.html',
+  '/freelance',
+  '/resume',
+  '/tech-stack',
+  '/projects',
+  '/404',
   'css/bootstrap.min.css',
   'css/styles.css',
   'css/figma-nav.css',

@@ -190,29 +190,6 @@
             transform-origin: center center;
         }
 
-        .frame-controls {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.88);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-            z-index: 20;
-            opacity: 0;
-            transform: translateY(-2px);
-            transition: opacity 0.18s ease, transform 0.18s ease;
-        }
-
-        .figma-layer:hover .frame-controls,
-        .figma-layer.active-frame .frame-controls {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         .frame-control-btn {
             border: 0;
@@ -246,27 +223,49 @@
         }
 
         /* Position layers across the panoramic canvas in a single row */
+        /* ROW 2: The Focal Point - 404 ERROR */
         .layer-1 {
-            top: -100px;
-            left: -960px;
+            top: -160px;
+            left: -250px;
+            width: 500px;
+            z-index: 50;
         }
 
-        /* Detached */
+        /* Diagnostic and others */
         .layer-5 {
-            top: -100px;
-            left: -430px;
+            top: -550px;
+            left: -150px;
             width: 500px;
         }
 
         .layer-6 {
-            top: -100px;
-            left: 120px;
-            width: 420px;
+            top: -550px;
+            left: -600px;
+            width: 380px;
         }
 
         .layer-7 {
-            top: -100px;
-            left: 590px;
+            top: -550px;
+            left: 360px;
+            width: 340px;
+        }
+
+        /* ROW 3: Creative Easter Eggs */
+        .layer-8 {
+            top: 400px;
+            left: -600px;
+            width: 380px;
+        }
+
+        .layer-9 {
+            top: 400px;
+            left: -150px;
+            width: 380px;
+        }
+
+        .layer-10 {
+            top: 400px;
+            left: 310px;
             width: 340px;
         }
 
@@ -293,14 +292,14 @@
 
         /* ===== FRAME BODY CONTENT ===== */
         .layer-body {
-            padding: 58px 24px 24px;
+            padding: 24px;
             pointer-events: none;
         }
 
         .reveal-content {
             width: 100%;
             text-align: center;
-            padding: 58px 40px 40px;
+            padding: 40px;
         }
 
         .mock-row {
@@ -719,6 +718,106 @@
             }
         }
 
+        /* ===== COLLABORATOR CURSORS ===== */
+        .collaborator-cursor {
+            position: absolute;
+            pointer-events: none;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            transition: transform 0.1s linear;
+        }
+
+        .cursor-pointer {
+            width: 14px;
+            height: 14px;
+            color: #FF7518;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .cursor-label {
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+            border-radius: 2px 8px 8px 8px;
+            white-space: nowrap;
+            background: #FF7518;
+        }
+
+        /* GHOST LAYERS */
+        .ghost-layer {
+            position: absolute;
+            border: 1px dashed rgba(0,0,0,0.1);
+            border-radius: 8px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .ghost-layer::after {
+            content: "Component";
+            position: absolute;
+            top: -14px;
+            left: 0;
+            font-size: 8px;
+            color: rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+
+        /* GLOW EFFECTS */
+        .glow-accent {
+            box-shadow: 0 0 40px rgba(255, 117, 24, 0.15), 0 0 0 1px rgba(255, 117, 24, 0.2) !important;
+        }
+
+        .purple-glow {
+            box-shadow: 0 0 40px rgba(162, 89, 255, 0.1), 0 0 0 1px rgba(162, 89, 255, 0.2) !important;
+        }
+
+        /* ===== PROTOTYPE NOODLES ===== */
+        .prototype-noodle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+            overflow: visible !important;
+        }
+
+        .noodle-path {
+            fill: none;
+            stroke: #18A0FB;
+            stroke-width: 2px;
+            stroke-dasharray: 4 4;
+            animation: flowNoodle 1s linear infinite;
+        }
+
+        @keyframes flowNoodle {
+            from { stroke-dashoffset: 8; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        .flow-marker {
+            position: absolute;
+            background: #18A0FB;
+            color: white;
+            font-size: 8px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 99px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .flow-dot {
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+        }
+
         /* ===== CONFETTI ===== */
         .confetti-layer {
             position: absolute;
@@ -796,7 +895,7 @@
                     Home
                     <span class="tab-close">&times;</span>
                 </a>
-                <a href="404.html" class="figma-tab active">
+                <a href="/404" class="figma-tab active">
                     404 Page
                     <span class="tab-close">&times;</span>
                 </a>
@@ -951,16 +1050,28 @@
 
                     <!-- Panning Canvas -->
                     <div class="pan-canvas" id="panCanvas">
+                        <!-- PROTOTYPE NOODLES (INTERCONNECTIONS) -->
+                        <svg id="noodleContainer" class="prototype-noodle" style="width: 10000px; height: 10000px; top: -5000px; left: -5000px;"></svg>
+
+                        <!-- GHOST LAYERS (SCATTERED INFINITELY) -->
+                        <div id="ghostContainer"></div>
+
+                        <!-- FLOW MARKERS -->
+                        <div id="flowContainer"></div>
+
+                        <!-- COLLABORATOR CURSORS (LIVING CANVAS) -->
+                        <div id="collabContainer"></div>
 
                         <!-- Buried Avatar -->
-                        <div class="buried-avatar" style="top: 250px; left: -40px; opacity: 1;">
+                        <div class="buried-avatar" style="top: -240px; left: -140px; opacity: 1;">
                             <img src="images/avatar-boy.png" alt="Buried Designer" loading="lazy" decoding="async"
-                                width="90" height="90" class="avatar-img">
-                            <div class="avatar-help-text" style="color: rgba(0,0,0,0.4)">Where did everything go?</div>
+                                width="60" height="60" class="avatar-img">
+                            <div class="avatar-help-text" style="color: rgba(0,0,0,0.4)">Are you lost?</div>
                         </div>
 
                         <!-- Layer 1: Error -->
-                        <div class="figma-layer layer-1">
+                        <!-- Layer 1: Error -->
+                        <div class="figma-layer layer-1 glow-accent">
                             <div class="layer-title"># Error_Overlay_FINAL_v3_REAL</div>
                             <div class="layer-body">
                                 <div style="text-align: center; padding: 40px 0;">
@@ -1022,7 +1133,7 @@
                             </div>
                         </div>
 
-                        <div class="figma-layer layer-7">
+                        <div class="figma-layer layer-7 purple-glow">
                             <div class="layer-title"># Signal_404_Oscillator</div>
                             <div class="layer-body">
                                 <div class="mock-row">
@@ -1367,14 +1478,15 @@
             let activeFrame = null;
 
             // Initial state centered on first layer
-            let translateX = window.innerWidth > 900 ? 860 : 860;
+            // Initial state focused on the Central Safe Zone
+            let translateX = 0;
             let translateY = 0;
             let scale = Math.min(window.innerWidth / 520, 1);
 
             let isSpacePressed = false;
             let isCtrlPressed = false;
             let signalBars = [];
-            const interactiveTargetSelector = 'input, textarea, select, button, a, label, [contenteditable="true"], .frame-controls, .search-bar-container, .reveal-actions';
+            const interactiveTargetSelector = 'input, textarea, select, button, a, label, [contenteditable="true"], .search-bar-container, .reveal-actions';
             const nativeScrollTargetSelector = '.figma-sidebar-left, .figma-sidebar-right, .sidebar-panel-content, .offcanvas, .nav-mobile-list';
 
             function updateTransform() {
@@ -1536,7 +1648,132 @@
                 }
                 updateTransform();
                 updateTools();
+                populateInfiniteCanvas();
+                initCollaborators();
+                initPrototypes();
             };
+
+            function populateInfiniteCanvas() {
+                const ghostContainer = document.getElementById('ghostContainer');
+                if (!ghostContainer) return;
+                
+                // Add 3 extra ghost layers instead of dozens
+                for (let i = 0; i < 3; i++) {
+                    const ghost = document.createElement('div');
+                    ghost.className = 'ghost-layer';
+                    const top = -2000 + Math.random() * 4000;
+                    const left = -2500 + Math.random() * 5000;
+                    const width = 150 + Math.random() * 400;
+                    const height = 100 + Math.random() * 400;
+                    ghost.id = `ghost-${i}`;
+                    ghost.style.cssText = `top: ${top}px; left: ${left}px; width: ${width}px; height: ${height}px;`;
+                    ghostContainer.appendChild(ghost);
+                }
+            }
+
+            function initPrototypes() {
+                const noodleContainer = document.getElementById('noodleContainer');
+                const flowContainer = document.getElementById('flowContainer');
+                if (!noodleContainer) return;
+
+                const ghosts = Array.from(document.querySelectorAll('.ghost-layer, .figma-layer'));
+                
+                // Create 4 prototype noodles
+                for (let i = 0; i < 4; i++) {
+                    const start = ghosts[Math.floor(Math.random() * ghosts.length)];
+                    const end = ghosts[Math.floor(Math.random() * ghosts.length)];
+                    if (start === end) continue;
+
+                    const sRect = { 
+                        x: parseInt(start.style.left) || start.offsetLeft, 
+                        y: parseInt(start.style.top) || start.offsetTop,
+                        w: start.offsetWidth || 300
+                    };
+                    const eRect = { 
+                        x: parseInt(end.style.left) || end.offsetLeft, 
+                        y: parseInt(end.style.top) || end.offsetTop 
+                    };
+
+                    // Offset coordinates because SVG is at -5000, -5000
+                    const x1 = sRect.x + sRect.w + 5000;
+                    const y1 = sRect.y + 20 + 5000;
+                    const x2 = eRect.x + 5000;
+                    const y2 = eRect.y + 20 + 5000;
+
+                    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    const cp1x = x1 + (x2 - x1) * 0.5;
+                    const cp2x = x1 + (x2 - x1) * 0.5;
+                    path.setAttribute("d", `M${x1},${y1} C${cp1x},${y1} ${cp2x},${y2} ${x2},${y2}`);
+                    path.setAttribute("class", "noodle-path");
+                    noodleContainer.appendChild(path);
+
+                    // Add Flow marker to some
+                    if (Math.random() > 0.7) {
+                        const flow = document.createElement('div');
+                        flow.className = 'flow-marker';
+                        flow.style.left = `${sRect.x - 40}px`;
+                        flow.style.top = `${sRect.y - 10}px`;
+                        flow.innerHTML = `<div class="flow-dot"></div> Flow ${Math.floor(Math.random()*100)}`;
+                        flowContainer.appendChild(flow);
+                    }
+                }
+            }
+
+            function initCollaborators() {
+                const collabContainer = document.getElementById('collabContainer');
+                if (!collabContainer) return;
+
+                const collabNames = [
+                    'Designing_v4', 'Bug_Hunter', 'Stray_Pixel', 'Admin_UX', 'Dev_Lord', 
+                    'Component_King', 'Pixel_Perfect', 'Frame_Wizard', 'Proto_Guru', 'Clean_Coder'
+                ];
+                const colors = ['#FF7518', '#A259FF', '#0ACF83', '#1ABCFE', '#F24E1E', '#FF7262'];
+                
+                const activeCollabs = [];
+
+                // Create 3 active collaborators
+                for (let i = 0; i < 3; i++) {
+                    const color = colors[i % colors.length];
+                    const name = collabNames[i % collabNames.length];
+                    const id = `collab-dyn-${i}`;
+                    
+                    const el = document.createElement('div');
+                    el.className = 'collaborator-cursor';
+                    el.id = id;
+                    el.style.color = color;
+                    el.innerHTML = `
+                        <svg class="cursor-pointer" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M5.653 1.901l14.056 14.056-6.31 1.262 1.262 6.31-14.056-14.056 5.048-7.572z"/>
+                        </svg>
+                        <div class="cursor-label" style="background: ${color}">${name}</div>
+                    `;
+                    collabContainer.appendChild(el);
+
+                    activeCollabs.push({
+                        id: id,
+                        speed: 0.0004 + Math.random() * 0.0008,
+                        radiusX: 400 + Math.random() * 1200,
+                        radiusY: 300 + Math.random() * 800,
+                        offsetX: Math.random() * Math.PI * 2,
+                        offsetY: Math.random() * Math.PI * 2,
+                        phase: Math.random() * 10
+                    });
+                }
+
+                function move() {
+                    const time = Date.now();
+                    activeCollabs.forEach(c => {
+                        const el = document.getElementById(c.id);
+                        if (el) {
+                            const x = Math.cos(time * c.speed + c.offsetX) * c.radiusX + Math.sin(time * 0.0002) * 200;
+                            const y = Math.sin(time * c.speed + c.offsetY) * c.radiusY + Math.cos(time * 0.0001) * 150;
+                            el.style.transform = `translate(${x}px, ${y}px)`;
+                        }
+                    });
+                    requestAnimationFrame(move);
+                }
+                move();
+            }
 
             window.addEventListener('resize', updateTransform);
 
@@ -1544,33 +1781,6 @@
                 figmaLayers.forEach((layer, index) => {
                     layer.setAttribute('tabindex', '0');
                     layer.setAttribute('aria-label', `Interactive frame ${index + 1}`);
-
-                    const controls = document.createElement('div');
-                    controls.className = 'frame-controls';
-                    controls.innerHTML = `
-                        <button type="button" class="frame-control-btn" data-frame-focus aria-label="Focus frame" title="Focus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4"></path><path d="M15 3h4a2 2 0 0 1 2 2v4"></path><path d="M21 15v4a2 2 0 0 1-2 2h-4"></path><path d="M3 15v4a2 2 0 0 0 2 2h4"></path></svg></button>
-                        <button type="button" class="frame-control-btn" data-frame-shuffle aria-label="Mix frame" title="Mix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"></path><path d="M4 20 21 3"></path><path d="M21 16v5h-5"></path><path d="M15 15 21 21"></path><path d="M4 4 9 9"></path></svg></button>
-                        <button type="button" class="frame-control-btn" data-frame-expand aria-label="Scale frame" title="Scale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M9 4v16"></path><path d="M15 4v16"></path></svg></button>
-                    `;
-                    layer.appendChild(controls);
-
-                    controls.querySelector('[data-frame-focus]').addEventListener('click', (event) => {
-                        event.stopPropagation();
-                        selectFrame(layer);
-                        focusFrame(layer);
-                    });
-
-                    controls.querySelector('[data-frame-shuffle]').addEventListener('click', (event) => {
-                        event.stopPropagation();
-                        selectFrame(layer);
-                        randomizeFrame(layer);
-                    });
-
-                    controls.querySelector('[data-frame-expand]').addEventListener('click', (event) => {
-                        event.stopPropagation();
-                        selectFrame(layer);
-                        layer.classList.toggle('frame-expanded');
-                    });
 
                     layer.addEventListener('mousedown', (event) => {
                         if (isSpacePressed || event.button !== 0) return;
@@ -1652,17 +1862,17 @@
 
                 const routes = [
                     { keywords: ['home', 'portfolio', 'main'], href: '/#home', label: 'Home' },
-                    { keywords: ['work', 'works', 'project', 'projects', 'case study', 'case studies'], href: '/projects/index.html', label: 'Projects' },
+                    { keywords: ['work', 'works', 'project', 'projects', 'case study', 'case studies'], href: '/projects', label: 'Projects' },
                     { keywords: ['about'], href: '/#about', label: 'About' },
-                    { keywords: ['contact', 'hire', 'freelance', 'talk'], href: '/freelance.html', label: 'Freelance' },
-                    { keywords: ['resume', 'cv'], href: '/resume.html', label: 'Resume' },
-                    { keywords: ['tech', 'stack', 'skills'], href: '/tech-stack.html', label: 'Tech Stack' },
-                    { keywords: ['wsp'], href: '/projects/WSP-project/index.html', label: 'WSP Project' },
-                    { keywords: ['bajaj', 'bajaj pay'], href: '/projects/Bajaj-project/index.html', label: 'Bajaj Project' },
-                    { keywords: ['nexi'], href: '/projects/Nexi-project/index.html', label: 'Nexi Project' },
-                    { keywords: ['intel'], href: '/projects/Intel-project/index.html', label: 'Intel Project' },
-                    { keywords: ['destined'], href: '/projects/Destined-project/index.html', label: 'Destined Project' },
-                    { keywords: ['automate'], href: '/projects/Automate-project/index.html', label: 'Automate Project' }
+                    { keywords: ['contact', 'hire', 'freelance', 'talk'], href: '/freelance', label: 'Freelance' },
+                    { keywords: ['resume', 'cv'], href: '/resume', label: 'Resume' },
+                    { keywords: ['tech', 'stack', 'skills'], href: '/tech-stack', label: 'Tech Stack' },
+                    { keywords: ['wsp'], href: '/projects/WSP-project/', label: 'WSP Project' },
+                    { keywords: ['bajaj', 'bajaj pay'], href: '/projects/Bajaj-project/', label: 'Bajaj Project' },
+                    { keywords: ['nexi'], href: '/projects/Nexi-project/', label: 'Nexi Project' },
+                    { keywords: ['intel'], href: '/projects/Intel-project/', label: 'Intel Project' },
+                    { keywords: ['destined'], href: '/projects/Destined-project/', label: 'Destined Project' },
+                    { keywords: ['automate'], href: '/projects/Automate-project/', label: 'Automate Project' }
                 ];
 
                 return routes.find((route) => route.keywords.some((keyword) => normalized.includes(keyword)));

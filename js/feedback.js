@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const submitBtn = form.querySelector('.feedback-submit');
             const name = form.querySelector('input[name="name"]').value;
+            const email = form.querySelector('input[name="email"]').value;
             const message = form.querySelector('textarea[name="message"]').value;
             const type = typeInput.value;
 
@@ -90,17 +91,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const templateParams = {
                 from_name: name,
+                from_email: email, // New parameter
                 to_name: "Harsha Royal",
                 feedback_type: type,
                 message: `[${type.toUpperCase()}] ${message}`,
-                reply_to: "no-reply@portfolio.com" // Standard placeholder
+                reply_to: email || "no-reply@portfolio.com" // Use user's email if provided
             };
 
             // service_kfsqpcg is the user's Service ID
             // template_yog32e8 is the user's Template ID
             emailjs.send("service_kfsqpcg", "template_yog32e8", templateParams)
                 .then(() => {
-                    submitBtn.textContent = 'Feedback Received! ✨';
+                    submitBtn.textContent = 'Sent! ✨';
                     submitBtn.style.background = '#0ACF83';
                     submitBtn.style.boxShadow = '0 15px 30px rgba(10, 207, 131, 0.3)';
                     
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             form.reset();
                             submitBtn.disabled = false;
-                            submitBtn.textContent = 'Send Feedback';
+                            submitBtn.textContent = 'Send';
                             submitBtn.style.background = '';
                             submitBtn.style.boxShadow = '';
                             options.forEach(o => o.classList.remove('active'));
@@ -125,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.style.background = '#FF2B2B';
                     
                     setTimeout(() => {
-                        submitBtn.textContent = 'Send Feedback';
+                        submitBtn.textContent = 'Send';
                         submitBtn.style.background = '';
                     }, 3000);
                 });

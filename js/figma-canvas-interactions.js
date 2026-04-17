@@ -1,14 +1,4 @@
 (function () {
-    function getFrameIcon(action) {
-        if (action === 'focus') {
-            return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4"></path><path d="M15 3h4a2 2 0 0 1 2 2v4"></path><path d="M21 15v4a2 2 0 0 1-2 2h-4"></path><path d="M3 15v4a2 2 0 0 0 2 2h4"></path></svg>';
-        }
-        if (action === 'mix') {
-            return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"></path><path d="M4 20 21 3"></path><path d="M21 16v5h-5"></path><path d="M15 15 21 21"></path><path d="M4 4 9 9"></path></svg>';
-        }
-        return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M9 4v16"></path><path d="M15 4v16"></path></svg>';
-    }
-
     function initFigmaCanvasInteractions() {
         var viewport = document.getElementById('viewport');
         var panCanvas = document.getElementById('panCanvas');
@@ -46,9 +36,7 @@
         }
 
         function getTextTargets(layer) {
-            return Array.from(layer.querySelectorAll('h1, h2, h3, h4, p, li, .layer-title, .reveal-title, .reveal-desc, .type-lab-word, .type-lab-meta')).filter(function (node) {
-                return !node.closest('.frame-controls');
-            });
+            return Array.from(layer.querySelectorAll('h1, h2, h3, h4, p, li, .layer-title, .reveal-title, .reveal-desc, .type-lab-word, .type-lab-meta'));
         }
 
         function getPrimaryTextTarget(layer) {
@@ -273,44 +261,9 @@
             layer.dataset.figmaInteractiveReady = 'true';
             layer.setAttribute('tabindex', '0');
 
-            var controls = layer.querySelector('.frame-controls');
-            if (!controls) {
-                controls = document.createElement('div');
-                controls.className = 'frame-controls';
-                layer.appendChild(controls);
-            }
-
-            controls.innerHTML = [
-                '<button type="button" class="frame-control-btn" data-frame-focus aria-label="Focus frame" title="Focus">' + getFrameIcon('focus') + '</button>',
-                '<button type="button" class="frame-control-btn" data-frame-mix aria-label="Mix frame" title="Mix">' + getFrameIcon('mix') + '</button>',
-                '<button type="button" class="frame-control-btn" data-frame-scale aria-label="Scale frame" title="Scale">' + getFrameIcon('scale') + '</button>'
-            ].join('');
-
-            var focusButton = controls.querySelector('[data-frame-focus]');
-            var mixButton = controls.querySelector('[data-frame-mix]');
-            var scaleButton = controls.querySelector('[data-frame-scale]');
-
-            focusButton.addEventListener('click', function (event) {
-                event.stopPropagation();
-                selectLayer(layer);
-                focusLayer(layer);
-            });
-
-            mixButton.addEventListener('click', function (event) {
-                event.stopPropagation();
-                selectLayer(layer);
-                randomizeLayer(layer);
-            });
-
-            scaleButton.addEventListener('click', function (event) {
-                event.stopPropagation();
-                selectLayer(layer);
-                toggleScale(layer, scaleButton);
-            });
-
             layer.addEventListener('mousedown', function (event) {
                 if (event.button !== 0) return;
-                if (event.target.closest('input, textarea, select, button, a, label, .frame-controls, form, .search-bar-container, .reveal-actions')) return;
+                if (event.target.closest('input, textarea, select, button, a, label, form, .search-bar-container, .reveal-actions')) return;
                 event.stopPropagation();
                 selectLayer(layer);
 
@@ -333,7 +286,7 @@
 
             layer.addEventListener('dblclick', function (event) {
                 if (event.target.closest('input, textarea, select, button, a, label')) return;
-                toggleScale(layer, scaleButton);
+                toggleScale(layer);
             });
 
             layer.addEventListener('keydown', function (event) {
@@ -344,7 +297,7 @@
 
                 if (event.key === 'Enter') {
                     event.preventDefault();
-                    toggleScale(layer, scaleButton);
+                    toggleScale(layer);
                     return;
                 }
                 if (event.key.toLowerCase() === 'f') {

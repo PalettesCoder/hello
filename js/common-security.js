@@ -1,17 +1,23 @@
 /* 🛡️ Harsha Royal Portfolio - FPS Game Lobby Security Screen */
 
 // Silent operation - no annoying sirens
-const startSiren = () => {};
-const stopSiren = () => {};
+if (typeof startSiren === 'undefined') {
+    var startSiren = () => {};
+}
+if (typeof stopSiren === 'undefined') {
+    var stopSiren = () => {};
+}
 
 // ===== GOOGLE SIGN-IN =====
 // Replace with your Google OAuth Client ID from https://console.cloud.google.com/
-const GOOGLE_CLIENT_ID = '818346747129-b57boo9gr4ra5hs0jg5hcvlilb2ith6c.apps.googleusercontent.com';
+var GOOGLE_CLIENT_ID = '818346747129-b57boo9gr4ra5hs0jg5hcvlilb2ith6c.apps.googleusercontent.com';
 
-let currentUser = JSON.parse(localStorage.getItem('roastRoyaleUser') || 'null');
+if (typeof currentUser === 'undefined') {
+    var currentUser = JSON.parse(localStorage.getItem('roastRoyaleUser') || 'null');
+}
 
 // Load Google Identity Services
-const gsiScript = document.createElement('script');
+var gsiScript = document.createElement('script');
 gsiScript.src = 'https://accounts.google.com/gsi/client';
 gsiScript.async = true;
 gsiScript.defer = true;
@@ -36,80 +42,82 @@ function signOut() {
 }
 
 // ===== 10-LEVEL SYSTEM =====
-const LEVELS = [
-    {
-        id: 1, name: 'Training Grounds', icon: '🎯', difficulty: 'EASY',
-        description: 'Learn the ropes. Slow enemies, big targets.',
-        color: '#4CAF50', enemySpeed: 1.0, enemyRadius: 28, spawnRate: 1200,
-        lives: 7, scoreMultiplier: 1, enemyTypes: ['🤡', '👾'],
-        unlockScore: 0, starThresholds: [200, 500, 1000]
-    },
-    {
-        id: 2, name: 'Rookie Arena', icon: '⚔️', difficulty: 'EASY',
-        description: 'Slightly faster enemies. Time to warm up.',
-        color: '#66BB6A', enemySpeed: 1.3, enemyRadius: 26, spawnRate: 1000,
-        lives: 6, scoreMultiplier: 1.2, enemyTypes: ['🤡', '👾', '👹'],
-        unlockScore: 300, starThresholds: [400, 800, 1500]
-    },
-    {
-        id: 3, name: 'Street Brawl', icon: '🥊', difficulty: 'MEDIUM',
-        description: 'Enemies get aggressive. Watch your six.',
-        color: '#FFC107', enemySpeed: 1.6, enemyRadius: 24, spawnRate: 850,
-        lives: 6, scoreMultiplier: 1.5, enemyTypes: ['🤡', '👾', '👹', '💀'],
-        unlockScore: 800, starThresholds: [600, 1200, 2000]
-    },
-    {
-        id: 4, name: 'Cyber Alley', icon: '🌃', difficulty: 'MEDIUM',
-        description: 'Neon-lit chaos. More enemies, faster pace.',
-        color: '#FF9800', enemySpeed: 1.9, enemyRadius: 22, spawnRate: 700,
-        lives: 5, scoreMultiplier: 1.8, enemyTypes: ['🤡', '👾', '👹', '💀', '🤖'],
-        unlockScore: 1500, starThresholds: [800, 1600, 2800]
-    },
-    {
-        id: 5, name: 'Flame Circuit', icon: '🔥', difficulty: 'MEDIUM',
-        description: 'The heat is on. Smaller targets, faster spawns.',
-        color: '#FF5722', enemySpeed: 2.2, enemyRadius: 20, spawnRate: 600,
-        lives: 5, scoreMultiplier: 2.0, enemyTypes: ['👹', '💀', '🤖', '👾', '🧟'],
-        unlockScore: 2500, starThresholds: [1000, 2000, 3500]
-    },
-    {
-        id: 6, name: 'Skull Canyon', icon: '💀', difficulty: 'HARD',
-        description: 'Relentless waves. Only skilled players survive.',
-        color: '#E91E63', enemySpeed: 2.5, enemyRadius: 18, spawnRate: 500,
-        lives: 4, scoreMultiplier: 2.5, enemyTypes: ['💀', '🤖', '👹', '🧟', '👿'],
-        unlockScore: 4000, starThresholds: [1500, 3000, 5000]
-    },
-    {
-        id: 7, name: 'Demon Gates', icon: '👿', difficulty: 'HARD',
-        description: 'Portal opens. Enemies flood from all sides.',
-        color: '#9C27B0', enemySpeed: 2.8, enemyRadius: 16, spawnRate: 420,
-        lives: 4, scoreMultiplier: 3.0, enemyTypes: ['💀', '🤖', '👿', '🧟', '☠️'],
-        unlockScore: 6000, starThresholds: [2000, 4000, 7000]
-    },
-    {
-        id: 8, name: 'Inferno Pit', icon: '🌋', difficulty: 'EXTREME',
-        description: 'Tiny targets, blazing speed. Pure chaos.',
-        color: '#F44336', enemySpeed: 3.2, enemyRadius: 14, spawnRate: 350,
-        lives: 3, scoreMultiplier: 4.0, enemyTypes: ['👿', '☠️', '🧟', '💀', '🔥'],
-        unlockScore: 9000, starThresholds: [3000, 6000, 10000]
-    },
-    {
-        id: 9, name: 'Void Abyss', icon: '🕳️', difficulty: 'EXTREME',
-        description: 'Near-invisible enemies. Reflexes at max.',
-        color: '#7B1FA2', enemySpeed: 3.6, enemyRadius: 12, spawnRate: 280,
-        lives: 2, scoreMultiplier: 5.0, enemyTypes: ['☠️', '🧟', '👿', '🌑', '💀'],
-        unlockScore: 13000, starThresholds: [4000, 8000, 15000]
-    },
-    {
-        id: 10, name: 'ROAST GOD', icon: '👑', difficulty: 'NIGHTMARE',
-        description: 'One life. Microscopic targets. Ultimate test.',
-        color: '#FFD700', enemySpeed: 4.0, enemyRadius: 10, spawnRate: 220,
-        lives: 1, scoreMultiplier: 10.0, enemyTypes: ['👑', '☠️', '👿', '🔥', '💀'],
-        unlockScore: 20000, starThresholds: [5000, 12000, 25000]
-    }
-];
+if (typeof LEVELS === 'undefined') {
+    var LEVELS = [
+        {
+            id: 1, name: 'Training Grounds', icon: '🎯', difficulty: 'EASY',
+            description: 'Learn the ropes. Slow enemies, big targets.',
+            color: '#4CAF50', enemySpeed: 1.0, enemyRadius: 28, spawnRate: 1200,
+            lives: 7, scoreMultiplier: 1, enemyTypes: ['🤡', '👾'],
+            unlockScore: 0, starThresholds: [200, 500, 1000]
+        },
+        {
+            id: 2, name: 'Rookie Arena', icon: '⚔️', difficulty: 'EASY',
+            description: 'Slightly faster enemies. Time to warm up.',
+            color: '#66BB6A', enemySpeed: 1.3, enemyRadius: 26, spawnRate: 1000,
+            lives: 6, scoreMultiplier: 1.2, enemyTypes: ['🤡', '👾', '👹'],
+            unlockScore: 300, starThresholds: [400, 800, 1500]
+        },
+        {
+            id: 3, name: 'Street Brawl', icon: '🥊', difficulty: 'MEDIUM',
+            description: 'Enemies get aggressive. Watch your six.',
+            color: '#FFC107', enemySpeed: 1.6, enemyRadius: 24, spawnRate: 850,
+            lives: 6, scoreMultiplier: 1.5, enemyTypes: ['🤡', '👾', '👹', '💀'],
+            unlockScore: 800, starThresholds: [600, 1200, 2000]
+        },
+        {
+            id: 4, name: 'Cyber Alley', icon: '🌃', difficulty: 'MEDIUM',
+            description: 'Neon-lit chaos. More enemies, faster pace.',
+            color: '#FF9800', enemySpeed: 1.9, enemyRadius: 22, spawnRate: 700,
+            lives: 5, scoreMultiplier: 1.8, enemyTypes: ['🤡', '👾', '👹', '💀', '🤖'],
+            unlockScore: 1500, starThresholds: [800, 1600, 2800]
+        },
+        {
+            id: 5, name: 'Flame Circuit', icon: '🔥', difficulty: 'MEDIUM',
+            description: 'The heat is on. Smaller targets, faster spawns.',
+            color: '#FF5722', enemySpeed: 2.2, enemyRadius: 20, spawnRate: 600,
+            lives: 5, scoreMultiplier: 2.0, enemyTypes: ['👹', '💀', '🤖', '👾', '🧟'],
+            unlockScore: 2500, starThresholds: [1000, 2000, 3500]
+        },
+        {
+            id: 6, name: 'Skull Canyon', icon: '💀', difficulty: 'HARD',
+            description: 'Relentless waves. Only skilled players survive.',
+            color: '#E91E63', enemySpeed: 2.5, enemyRadius: 18, spawnRate: 500,
+            lives: 4, scoreMultiplier: 2.5, enemyTypes: ['💀', '🤖', '👹', '🧟', '👿'],
+            unlockScore: 4000, starThresholds: [1500, 3000, 5000]
+        },
+        {
+            id: 7, name: 'Demon Gates', icon: '👿', difficulty: 'HARD',
+            description: 'Portal opens. Enemies flood from all sides.',
+            color: '#9C27B0', enemySpeed: 2.8, enemyRadius: 16, spawnRate: 420,
+            lives: 4, scoreMultiplier: 3.0, enemyTypes: ['💀', '🤖', '👿', '🧟', '☠️'],
+            unlockScore: 6000, starThresholds: [2000, 4000, 7000]
+        },
+        {
+            id: 8, name: 'Inferno Pit', icon: '🌋', difficulty: 'EXTREME',
+            description: 'Tiny targets, blazing speed. Pure chaos.',
+            color: '#F44336', enemySpeed: 3.2, enemyRadius: 14, spawnRate: 350,
+            lives: 3, scoreMultiplier: 4.0, enemyTypes: ['👿', '☠️', '🧟', '💀', '🔥'],
+            unlockScore: 9000, starThresholds: [3000, 6000, 10000]
+        },
+        {
+            id: 9, name: 'Void Abyss', icon: '🕳️', difficulty: 'EXTREME',
+            description: 'Near-invisible enemies. Reflexes at max.',
+            color: '#7B1FA2', enemySpeed: 3.6, enemyRadius: 12, spawnRate: 280,
+            lives: 2, scoreMultiplier: 5.0, enemyTypes: ['☠️', '🧟', '👿', '🌑', '💀'],
+            unlockScore: 13000, starThresholds: [4000, 8000, 15000]
+        },
+        {
+            id: 10, name: 'ROAST GOD', icon: '👑', difficulty: 'NIGHTMARE',
+            description: 'One life. Microscopic targets. Ultimate test.',
+            color: '#FFD700', enemySpeed: 4.0, enemyRadius: 10, spawnRate: 220,
+            lives: 1, scoreMultiplier: 10.0, enemyTypes: ['👑', '☠️', '👿', '🔥', '💀'],
+            unlockScore: 20000, starThresholds: [5000, 12000, 25000]
+        }
+    ];
+}
 
-let currentLevel = null;
+var currentLevel = null;
 
 function getPlayerScores(email) {
     const data = JSON.parse(localStorage.getItem('roastRoyaleScores') || '{}');
@@ -215,7 +223,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 // 2. STYLES — KRUNKER-STYLE FPS GAME LOBBY
-const securityStyles = document.createElement('style');
+var securityStyles = document.createElement('style');
 securityStyles.innerHTML = `
     @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Rajdhani:wght@500;700&family=Press+Start+2P&display=swap');
     
@@ -577,7 +585,7 @@ securityStyles.innerHTML = `
 document.head.appendChild(securityStyles);
 
 // 3. OVERLAY HTML — FPS GAME LOBBY
-const alarmOverlay = document.createElement('div');
+var alarmOverlay = document.createElement('div');
 alarmOverlay.className = 'security-overlay';
 alarmOverlay.innerHTML = `
     <!-- GAME SCENE BACKGROUND -->
@@ -725,7 +733,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Sidebar Navigation
-const sidebarItems = ['navHome', 'navShop', 'navChallenges', 'navSocial', 'navEvents', 'navGames', 'navSettings'];
+var sidebarItems = ['navHome', 'navShop', 'navChallenges', 'navSocial', 'navEvents', 'navGames', 'navSettings'];
 sidebarItems.forEach(id => {
     const el = document.getElementById(id);
     if (el) {
@@ -870,8 +878,8 @@ function showGameOver(score) {
 }
 
 // 4. IP & WEBHOOK
-let visitorIP = "Capturing...";
-const WEBHOOK_URL = ""; 
+var visitorIP = "Capturing...";
+var WEBHOOK_URL = ""; 
 
 async function fetchIP() {
     const apis = ['https://api.ipify.org?format=json', 'https://ipapi.co/json/', 'https://api.db-ip.com/v2/free/self'];
@@ -901,9 +909,9 @@ async function logVisit(type = "Regular Visit") {
 fetchIP().then(() => logVisit());
 
 // 5. GAME STATE
-let particleInterval = null;
-let killScore = 0;
-let gameActive = false;
+var particleInterval = null;
+var killScore = 0;
+var gameActive = false;
 
 // 6. TRIGGER ALARM — SHOW LOBBY
 async function triggerAlarm(violationType = "Security Violation") {
@@ -1302,12 +1310,14 @@ function startCanvasGame() {
 // 9. GOOGLE SIGN-IN INITIALIZATION
 function initGoogleSignIn() {
     if (typeof google === 'undefined' || !google.accounts) return;
+    if (window.isGSIInitialized) return; // Prevent double initialization
 
     google.accounts.id.initialize({
         client_id: GOOGLE_CLIENT_ID,
         callback: handleGoogleSignIn,
         auto_select: true
     });
+    window.isGSIInitialized = true;
 
     // Only render button if NOT already signed in
     if (!currentUser) {

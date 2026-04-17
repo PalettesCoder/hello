@@ -107,9 +107,8 @@
     padding: 16px 0;
     gap: 16px;
 }
-.side-icon { font-size: 16px; color: #CCC; }
+.side-icon { font-size: 16px; color: #666; transition: 0.3s; } /* WCAG COMPLIANT */
 .side-icon.active { color: var(--primary); }
-.spacer { flex: 1; }
 .side-icon.profile { width: 22px; height: 22px; background: #000; border-radius: 50%; color: #FFF; font-size: 9px; display: flex; align-items: center; justify-content: center; }
 
 /* Body Content */
@@ -122,9 +121,9 @@
 }
 
 .feedback-breadcrumbs {
-    font-size: 8px;
-    font-weight: 800;
-    color: #AAA;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666; /* WCAG COMPLIANT */
     margin-bottom: 12px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -189,9 +188,9 @@
 }
 
 .feedback-label {
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 800;
-    color: #999;
+    color: #666; /* WCAG COMPLIANT */
     text-transform: uppercase;
 }
 
@@ -252,7 +251,7 @@
 }
 
 .f-social-item {
-    color: #BBB;
+    color: #666; /* WCAG COMPLIANT */
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     align-items: center;
@@ -279,9 +278,9 @@
 }
 
 .ins-label {
-    font-size: 9px;
+    font-size: 14px;
     font-weight: 800;
-    color: #AAA;
+    color: #666; /* WCAG COMPLIANT */
     text-transform: uppercase;
     margin-bottom: 8px;
 }
@@ -298,18 +297,18 @@
 }
 .ins-stat:last-child { margin-bottom: 0; }
 
-.ins-stat span { display: block; font-size: 8px; font-weight: 800; color: #BBB; text-transform: uppercase; margin-bottom: 2px; }
+.ins-stat span { display: block; font-size: 8px; font-weight: 800; color: #666; text-transform: uppercase; margin-bottom: 2px; } /* WCAG COMPLIANT */
 .ins-stat strong { font-size: 13px; color: #000; }
 
 .ins-support {
-    margin-top: auto;
+    margin-top: 0px;
     padding: 12px;
     background: #FFF;
     border: 1px solid #EEE;
     border-radius: 8px;
 }
 
-.ins-support p { font-size: 10px; color: #888; line-height: 1.4; margin-bottom: 8px; }
+.ins-support p { font-size: 11px; color: #444; line-height: 1.4; margin-bottom: 8px; } /* WCAG COMPLIANT */
 
 @media (max-width: 900px) {
     .feedback-inspector { display: none; }

@@ -28,22 +28,23 @@ ErrorDocument 404 /404.html
 # --- Allow HTML Pages & Assets ---
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /
 
-    # Allow known HTML pages
-    RewriteRule ^(index|project-detail|tech-stack|freelance|404)\.html$ - [L]
+    # 1. Redirect /index.html to /
+    RewriteCond %{THE_REQUEST} /index\.html [NC]
+    RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
 
-    # Allow asset files (CSS, JS, images, fonts, media)
-    RewriteRule \.(css|js|gif|jpe?g|png|svg|webp|woff2?|ttf|eot|otf|mp4|pdf|xml|ico|txt)$ - [L]
-    
-    # Allow sitemap, robots, CNAME
-    RewriteRule ^(sitemap|BingSiteAuth)\.xml$ - [L]
-    RewriteRule ^(CNAME|robots\.txt)$ - [L]
+    # 2. Map /projects to projects/index.html (Explicit handling for the directory slug)
+    RewriteRule ^projects/?$ projects/index.html [L]
 
-    # Allow root
-    RewriteRule ^$ - [L]
+    # 3. Internally map /file to /file.html (for freelance, resume, etc)
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^([^/]+)$ $1.html [L]
 
-    # Everything else → 404
-    RewriteRule . /404.html [L,R=404]
+    # 4. Handle actual files/directories that exist (Fallback for static assets)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
 </IfModule>
 
 # --- Security Headers ---

@@ -144,6 +144,78 @@
             cursor: grabbing !important;
         }
 
+        /* ===== RESUME DOCUMENT HEADER ===== */
+        .resume-doc-header {
+            background: #FFFFFF;
+            border-bottom: 1px solid #E6E6E6;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+        }
+
+        .doc-name-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .doc-icon {
+            color: #FF7518;
+            font-size: 16px;
+        }
+
+        .doc-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #111111;
+            letter-spacing: -0.01em;
+        }
+
+        .doc-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .doc-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #666666;
+            text-decoration: none !important;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            background: #F5F5F7;
+        }
+
+        .doc-action-btn:hover {
+            color: #FFFFFF;
+            background: #FF7518;
+        }
+
+        .doc-action-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .pdf-viewer-container {
+            position: absolute;
+            top: 48px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
         @media (max-width: 900px) { .figma-sidebar-right { display: none; } }
         @media (max-width: 600px) { .figma-sidebar-left { display: none; } .desktop-only { display: none !important; } }
     </style>
@@ -166,19 +238,19 @@
                     Home
                     <span class="tab-close">&times;</span>
                 </a>
-                <a href="resume.html" class="figma-tab active">
+                <a href="/resume" class="figma-tab active">
                     Resume
                     <span class="tab-close">&times;</span>
                 </a>
-                <a href="tech-stack.html" class="figma-tab">
+                <a href="/tech-stack" class="figma-tab">
                     Tech Stack
                     <span class="tab-close">&times;</span>
                 </a>
-                <a href="projects/WSP-project" class="figma-tab">
-                    Project Detail
+                <a href="/projects" class="figma-tab">
+                    Projects
                     <span class="tab-close">&times;</span>
                 </a>
-                <a href="freelance.html" class="figma-tab">
+                <a href="/freelance" class="figma-tab">
                     Freelance
                     <span class="tab-close">&times;</span>
                 </a>
@@ -304,8 +376,30 @@
                     <div class="figma-layer">
                         <div class="layer-title"># Harsha_Resume_Final</div>
                         <div class="layer-body">
-                            <div class="grab-shield" id="interaction-shield"></div>
-                            <iframe id="pdf-frame" class="pdf-viewer" src="media/harsharesume.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+                            <!-- Premium Document Toolbar -->
+                            <div class="resume-doc-header">
+                                <div class="doc-name-group">
+                                    <div class="doc-icon">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    </div>
+                                    <div class="doc-name">Harsha_Singiri_Resume.pdf</div>
+                                </div>
+                                <div class="doc-actions">
+                                    <a href="media/harsharesume.pdf" target="_blank" class="doc-action-btn">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                        View
+                                    </a>
+                                    <a href="media/harsharesume.pdf" download class="doc-action-btn">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="pdf-viewer-container">
+                                <div class="grab-shield" id="interaction-shield"></div>
+                                <iframe id="pdf-frame" class="pdf-viewer" src="media/harsharesume.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -493,7 +587,7 @@
         
         let isSpacePressed = false;
         let isCtrlPressed = false;
-        const interactiveTargetSelector = 'input, textarea, select, button, a, label, [contenteditable="true"], .frame-controls';
+        const interactiveTargetSelector = 'input, textarea, select, button, a, label, [contenteditable="true"]';
         const nativeScrollTargetSelector = '.figma-sidebar-left, .figma-sidebar-right, .sidebar-panel-content, .offcanvas, .nav-mobile-list';
 
         function updateTransform() {

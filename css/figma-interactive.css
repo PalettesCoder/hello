@@ -23,70 +23,9 @@
     transform-origin: center center;
 }
 
-.frame-controls {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06);
-    backdrop-filter: blur(12px);
-    opacity: 0;
-    transform: translateY(-2px);
-    transition: opacity 0.18s ease, transform 0.18s ease;
-    z-index: 20;
-}
-
-.figma-layer:hover .frame-controls,
-.figma-layer.active-frame .frame-controls,
-.figma-layer:focus-within .frame-controls {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.frame-control-btn {
-    width: 28px;
-    height: 28px;
-    padding: 0;
-    border: 0;
-    border-radius: 8px;
-    background: transparent;
-    color: rgba(0, 0, 0, 0.72);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
-}
-
-.frame-control-btn:hover,
-.frame-control-btn:focus-visible {
-    background: rgba(255, 117, 24, 0.12);
-    color: #b24b00;
-    outline: none;
-}
-
-.frame-control-btn.is-active {
-    background: rgba(255, 117, 24, 0.16);
-    color: #ff7518;
-}
-
-.frame-control-btn svg {
-    width: 14px;
-    height: 14px;
-    pointer-events: none;
-}
-
-.figma-layer .layer-body {
-    padding-top: 58px !important;
-}
-
+.figma-layer .layer-body,
 .figma-layer .reveal-content {
-    padding-top: 58px !important;
+    padding-top: 0 !important;
 }
 
 .figma-editable-value,
