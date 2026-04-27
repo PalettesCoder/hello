@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="../../js/protect.js"></script>
+    <script src="../../js/theme-engine.js"></script>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://dns.google; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/project-gate.css">
     <title>Nexi Pay | Comprehensive Accessible UX Case Study</title>
     <meta name="description" content="An exhaustive, WCAG-compliant UX case study detailing the redesign of the Nexi Pay mobile financial application.">
     
     <link rel="stylesheet" href="../../css/fonts.css">
     <link rel="stylesheet" href="../../css/inter.css">
-    <link rel="stylesheet" href="../../css/unified-design.css">
-    
     <style>
         /* WCAG AAA COMPLIANT COLOR PALETTE */
         :root {
             --color-bg: #F5F5F5;
             --color-text-main: #000000;
-            --color-text-sub: rgba(0, 0, 0, 0.6);
+            --color-text-sub: rgba(0, 0, 0, 0.75);
             --color-accent: #FF7518;
             --color-accent-dark: #E65A00;
             --color-focus: #FF7518;
@@ -213,22 +215,57 @@
         @media (max-width: 1240px) {
             .mini-nav { display: none; }
         }
+    
+        /* DARK MODE VARIABLE OVERRIDES */
+        body.dark-mode {
+            --color-bg: #0A0A0A;
+            --color-text-main: #FFFFFF;
+            --color-text-sub: rgba(255, 255, 255, 0.75);
+            --color-surface-dark: #151515;
+            --color-text-on-dark: #FFFFFF;
+            --surface: #151515;
+            --bg-base: #0A0A0A;
+            --black-92: rgba(255, 255, 255, 0.92);
+            --black-72: rgba(255, 255, 255, 0.85);
+            --black-56: rgba(255, 255, 255, 0.75);
+            --black-40: rgba(255, 255, 255, 0.65);
+            --black: #ffffff;
+            color: #ffffff;
+            background-color: #0A0A0A;
+        }
+        body.dark-mode .case-study-header {
+            background-color: #151515;
+            color: #ffffff;
+        }
+        body.dark-mode h1, 
+        body.dark-mode h2, 
+        body.dark-mode h3, 
+        body.dark-mode h4,
+        body.dark-mode p,
+        body.dark-mode li {
+            color: var(--color-text-main, #ffffff);
+        }
+        body.dark-mode .narrative-copy {
+            color: var(--color-text-sub, rgba(255, 255, 255, 0.75));
+        }
+        
     </style>
+    <link rel="stylesheet" href="../../css/unified-design.css">
 </head>
 <body>
 
     <!-- Mini Nav Spy -->
     <nav class="mini-nav" aria-label="Section Navigation">
-        <a href="#heading-overview" class="nav-dot active" data-label="Overview"></a>
-        <a href="#heading-goals" class="nav-dot" data-label="Goals"></a>
-        <a href="#heading-research" class="nav-dot" data-label="Research"></a>
-        <a href="#heading-personas" class="nav-dot" data-label="Personas"></a>
-        <a href="#heading-journey" class="nav-dot" data-label="Journey"></a>
-        <a href="#heading-architecture" class="nav-dot" data-label="Architecture"></a>
-        <a href="#heading-wireframes" class="nav-dot" data-label="Wireframes"></a>
-        <a href="#heading-design" class="nav-dot" data-label="Design UI"></a>
-        <a href="#heading-testing" class="nav-dot" data-label="Testing"></a>
-        <a href="#heading-impact" class="nav-dot" data-label="Impact"></a>
+        <a href="#heading-overview" class="nav-dot active" aria-label="${labelVal}" data-label="Overview"></a>
+        <a href="#heading-goals" class="nav-dot" aria-label="${labelVal}" data-label="Goals"></a>
+        <a href="#heading-research" class="nav-dot" aria-label="${labelVal}" data-label="Research"></a>
+        <a href="#heading-personas" class="nav-dot" aria-label="${labelVal}" data-label="Personas"></a>
+        <a href="#heading-journey" class="nav-dot" aria-label="${labelVal}" data-label="Journey"></a>
+        <a href="#heading-architecture" class="nav-dot" aria-label="${labelVal}" data-label="Architecture"></a>
+        <a href="#heading-wireframes" class="nav-dot" aria-label="${labelVal}" data-label="Wireframes"></a>
+        <a href="#heading-design" class="nav-dot" aria-label="${labelVal}" data-label="Design UI"></a>
+        <a href="#heading-testing" class="nav-dot" aria-label="${labelVal}" data-label="Testing"></a>
+        <a href="#heading-impact" class="nav-dot" aria-label="${labelVal}" data-label="Impact"></a>
     </nav>
 
     <!-- WCAG 2.4.1 Bypass Blocks -->
@@ -606,5 +643,10 @@
             });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>emailjs.init("G8jc2t6dBS8BNn7sQ");</script>
+    <script src="../../js/project-gate.js" defer></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/main.js"></script>
 </body>
 </html>

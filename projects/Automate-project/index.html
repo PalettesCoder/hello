@@ -3,9 +3,11 @@
 <html xmlns="https://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><!--<![endif]-->
 
 <head>
+    <script src="../../js/protect.js"></script>
+    <script src="../../js/theme-engine.js"></script>
     <meta charset="utf-8">
     <!-- Security Headers (GitHub Pages doesn't support HTTP headers) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://dns.google; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
     <title>Automate | Visual Workflow Builder —  UX Case Study</title>
     <meta name="author" content="Harsha Royal">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -159,8 +161,6 @@
     <!-- critical css -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/styles.css">
-    <link rel="stylesheet" href="../../css/unified-design.css">
-    
     <!-- non-critical css (deferred) -->
     <link rel="stylesheet" type="text/css" href="../../css/figma-nav.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="../../css/figma-perfect.css">
@@ -237,8 +237,13 @@
         // Disable right-click across the entire page
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
+    <link rel="stylesheet" href="../../css/unified-design.css">
+    <link rel="stylesheet" href="../../css/project-gate.css">
 </head>
 <body class="counter-scroll">
+    <!-- WCAG 2.4.1 Bypass Blocks -->
+    <a href="#wrapper" class="nav-skip">Skip to main content</a>
+
 <!-- Preload -->
     <div class="preload preload-container" id="preload">
         <div class="preload-logo">
@@ -269,7 +274,7 @@
     <!-- /Toggle & Settings -->
     <!-- Setting Color -->
     <div class="offcanvas offcanvas-end" id="settingColorMenu" style="width: 380px; border: none; box-shadow: -10px 0 40px rgba(0,0,0,0.1);">
-        <div class="offcanvas-content" style="background: #ffffff; height: 100%; display: flex; flex-direction: column;">
+        <div class="offcanvas-content" style="background: var(--bg-surface, #fff); height: 100%; display: flex; flex-direction: column;">
             
             <!-- Dark Premium Header -->
             <div class="canvas-header" style="background: #bababa; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center;">
@@ -515,7 +520,7 @@
                     <div class="work-content" style="position: relative; height: 100%; border-radius: 24px; overflow: hidden;">
                         <div class="w-image" style="position: absolute; inset: 0; z-index: 0; border-radius: 18px;">
                             <img loading="lazy" width="468" height="856" src="../../images/work-1.jpg" alt="Image" style="width: 100%; height: 100%; object-fit: cover;">
-                            <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"></div>
+                            <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"></div>
                         </div>
                         <div class="content" style="position: relative; z-index: 1; padding: 32px; display: flex; flex-direction: column; height: 100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
                             <div class="content-top" style="flex-shrink: 0;">
@@ -575,8 +580,8 @@
                                 <h1 class="mb-4 mt-2 text-black text-64 font-2">Visual automation.<br><span style="color:var(--primary); opacity:0.9;">for enterprise teams.</span></h1>
                                 <p class="text-body-1 text-black-56 mb-5">This projects involved designing and building scalable components for enterprise project management. It addresses common pain points by optimizing navigation and contextual information density, making complex data manageable.</p>
                                 
-                                <img src="../../images/work-2.jpg" class="img-fluid rounded mb-5 shadow" style="width:100%; object-fit: cover; border-radius: 20px;" />
-                                <img src="../../images/work-3.jpg" class="img-fluid rounded mb-5 shadow" style="width:100%; object-fit: cover; border-radius: 20px;" />
+                                <img src="../../images/work-2.jpg" class="img-fluid rounded mb-5 shadow" style="width:100%; object-fit: cover; border-radius: 20px;" / alt="Interface Screenshot">
+                                <img src="../../images/work-3.jpg" class="img-fluid rounded mb-5 shadow" style="width:100%; object-fit: cover; border-radius: 20px;" / alt="UI Graphic">
                             
                                 <div class="text-center mt-5 mb-5 pb-5 pt-5">
                                   <h2>Enjoyed this case study?</h2>
@@ -910,4 +915,7 @@
     <script src="../../js/snowflake_cursor.js" defer></script>
     <script src="../../js/figma-app.js" defer></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>emailjs.init("G8jc2t6dBS8BNn7sQ");</script>
+    <script src="../../js/project-gate.js" defer></script>
 </body></html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../../js/protect.js"></script>
+    <link rel="stylesheet" href="../../css/project-gate.css">
+    <script src="../../js/theme-engine.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://dns.google; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drame | Visual Storytelling — Showcase</title>
+    <link rel="shortcut icon" href="../../images/favicon.svg">
+
+    <link rel="stylesheet" href="../../css/fonts.css">
+    <link rel="stylesheet" href="../../css/inter.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/unified-design.css">
+
+    <style>
+        :root {
+            --primary: #FF7518;
+            --surface: #0a0a0a;
+            --text-main: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.6);
+            --glass: rgba(15, 15, 15, 0.8);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            background-color: var(--surface);
+            color: var(--text-main);
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Premium Sticky Header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+
+        .project-meta h2 {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 0;
+            color: var(--primary);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            box-shadow: 0 0 15px var(--primary);
+            transition: width 0.1s ease-out;
+        }
+
+        .hero {
+            padding: 200px 5% 100px;
+            text-align: center;
+            background: radial-gradient(circle at top, #1a1a1a, #0a0a0a);
+        }
+
+        .hero h1 {
+            font-family: "Apfel Grotezk", sans-serif;
+            font-size: clamp(60px, 12vw, 160px);
+            line-height: 0.9;
+            margin: 0;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.4) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 500px;
+            margin: 30px auto 0;
+            line-height: 1.6;
+        }
+
+        .gallery {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            width: 100%;
+            overflow: hidden;
+            background: var(--surface);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Floating Nav */
+        .floating-nav {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 10px 20px rgba(255,117,24,0.3);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255,117,24,0.5);
+        }
+
+        footer {
+            padding: 100px 5%;
+            text-align: center;
+            background: #000;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .back-link-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 100px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .back-link-premium:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+    </style>
+</head><body>
+    <div id="main-content">
+        <header class="sticky-header">
+            <div class="project-meta">
+                <h2>Dramebaaz — Case Study</h2>
+            </div>
+            <a href="../../projects/index.html" class="back-link-premium">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                EXIT
+            </a>
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1>DRAMEBAAZ</h1>
+            <p>Architecting the future of short-form drama streaming through competitive research and high-fidelity product design.</p>
+        </section>
+
+        <section class="gallery">
+            <div class="gallery-item"><img src="5a4250240046921.6936ab7d98ac8.png" alt="Dramebaaz Title"></div>
+            <div class="gallery-item"><img src="927c15240046921.6936ab7d99495.png" alt="Project Context"></div>
+            <div class="gallery-item"><img src="5dd603240046921.6936b221b5225.png" alt="Competitor Summary"></div>
+            <div class="gallery-item"><img src="34e305240046921.6936b221bde18.png" alt="Competitor Analysis Grid"></div>
+            <div class="gallery-item"><img src="d7b036240046921.6936b221bc199.png" alt="User Research"></div>
+            <div class="gallery-item"><img src="0d4b7f240046921.6936b221b99cc.png" alt="UX/UI Opportunities"></div>
+            <div class="gallery-item"><img src="69dfc8240046921.6936b221bade3.png" alt="Information Architecture"></div>
+            <div class="gallery-item"><img src="cb466b240046921.6936b221b79d0.png" alt="User Flows"></div>
+            <div class="gallery-item"><img src="7b4c6f240046921.6936b221b4c77.png" alt="Wireframes"></div>
+            <div class="gallery-item"><img src="c7a672240046921.6936b221bce2d.png" alt="Visual Direction"></div>
+            <div class="gallery-item"><img src="42bed3240046921.6936b221b5ced.png" alt="Typography"></div>
+            <div class="gallery-item"><img src="c8b7f1240046921.6936b221b8af2.png" alt="Iconography"></div>
+            <div class="gallery-item"><img src="fe6e10240046921.6936b221b57c6.png" alt="Color Palette Premium"></div>
+            <div class="gallery-item"><img src="13cc0b240046921.6936b221b6cc9.png" alt="Color System"></div>
+            <div class="gallery-item"><img src="21d872240046921.6936b221b651e.png" alt="Components"></div>
+            <div class="gallery-item"><img src="2035eb240046921.6936b221b3bbd.png" alt="Buttons and Inputs"></div>
+            <div class="gallery-item"><img src="d2fd3c240046921.6936b221ba68b.png" alt="Navigation Design"></div>
+            <div class="gallery-item"><img src="bb1e3d240046921.6936b221b4489.png" alt="Onboarding Screens"></div>
+            <div class="gallery-item"><img src="ca43d9240046921.6936b221b825b.png" alt="Home Feed Design"></div>
+            <div class="gallery-item"><img src="7d1444240046921.6936b221bc923.png" alt="Content Discovery"></div>
+            <div class="gallery-item"><img src="edc7d3240046921.6936b221bb545.png" alt="Search and Filters"></div>
+            <div class="gallery-item"><img src="073010240046921.6936b221ba13e.png" alt="Seamless Watching Experience"></div>
+            <div class="gallery-item"><img src="959a1c240046921.6936b221b9269.png" alt="Monetization Strategy"></div>
+            <div class="gallery-item"><img src="165f07240046921.6936b221bd670.png" alt="Profile and Settings"></div>
+            <div class="gallery-item"><img src="d7f86b240046921.6936b221bbca0.png" alt="Final Conclusion"></div>
+        </section>
+
+        <footer>
+            <p style="color: var(--text-dim);">&copy; 2026 Harsha Royal. Built with Precision.</p>
+        </footer>
+
+        <div class="floating-nav">
+            <button class="nav-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+            </button>
+            <a href="../../projects/index.html" class="nav-btn" title="Back to Gallery">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>emailjs.init("G8jc2t6dBS8BNn7sQ");</script>
+    <script src="../../js/project-gate.js" defer></script>
+
+    <script>
+        // Progress Bar Logic
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+
+        // Fade-in Observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+>
+</html>

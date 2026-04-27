@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
+    <script src="../../js/protect.js"></script>
+    <link rel="stylesheet" href="../../css/project-gate.css">
+    <script src="../../js/theme-engine.js"></script>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://dns.google; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bajaj Pay | Fintech at Scale —  UX Case Study</title>
     <link rel="shortcut icon" href="../../images/favicon.svg">
@@ -12,8 +15,6 @@
     <link rel="stylesheet" href="../../css/inter.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/styles.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="../../css/unified-design.css">
-
     <style>
         :root {
             --primary: #FF7518;
@@ -23,8 +24,8 @@
             --black: #000000;
             --black-92: rgba(0, 0, 0, 0.92);
             --black-72: rgba(0, 0, 0, 0.72);
-            --black-56: rgba(0, 0, 0, 0.56);
-            --black-40: rgba(0, 0, 0, 0.40);
+            --black-56: rgba(0, 0, 0, 0.75);
+            --black-40: rgba(0, 0, 0, 0.75);
             --border: rgba(0, 0, 0, 0.08);
             --font-heading: "Apfel Grotezk", sans-serif;
             --font-body: "Inter", sans-serif;
@@ -312,7 +313,7 @@
             margin: 24px 0;
             width: 100%;
             padding: 24px;
-            background: #fff;
+            background: var(--bg-surface, #fff);
             box-shadow: var(--shadow-subtle);
             font-family: var(--font-body);
             font-size: 15px;
@@ -336,7 +337,7 @@
             height: 24px;
             background: #e63946;
             border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75), inset -4px -4px 8px rgba(0, 0, 0, 0.2);
             z-index: 11;
         }
 
@@ -466,7 +467,7 @@
         .ui-fragment {
             position: relative;
             margin: 20px 0;
-            background: #fff;
+            background: var(--bg-surface, #fff);
             padding: 12px 16px;
             border-radius: 8px;
             box-shadow: var(--shadow);
@@ -498,7 +499,7 @@
             flex-direction: column;
             justify-content: center;
             padding: 32px var(--gutter) 140px;
-            background: #fff;
+            background: var(--bg-surface, #fff);
             position: relative;
         }
 
@@ -629,7 +630,7 @@
         }
 
         .story-block.white {
-            background: #fff;
+            background: var(--bg-surface, #fff);
         }
 
         .block-text {
@@ -673,7 +674,7 @@
         }
 
         .insight-card {
-            background: #fff;
+            background: var(--bg-surface, #fff);
             padding: 48px;
             border-radius: 4px;
             margin-top: 40px;
@@ -692,7 +693,7 @@
         }
 
         .block-visual {
-            background: #fff;
+            background: var(--bg-surface, #fff);
             padding: 32px;
             border-radius: 12px;
             box-shadow: 0 60px 120px rgba(0, 0, 0, 0.05);
@@ -793,7 +794,7 @@
 
         .metric-card {
             padding: 32px;
-            background: #fff;
+            background: var(--bg-surface, #fff);
             border: 1px solid var(--border);
             text-align: left;
         }
@@ -1253,15 +1254,19 @@
         // Disable right-click across the entire page
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
+    <link rel="stylesheet" href="../../css/unified-design.css">
 </head>
 
 <body>
+    <!-- WCAG 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="nav-skip">Skip to main content</a>
+
 
     <!-- Creative Under Construction Modal -->
     <div class="construction-overlay" id="constructionOverlay">
         <div class="construction-note" style="position: relative; transform: rotate(-2deg); width: 400px; padding: 40px; border-radius: 4px; border-bottom: 6px solid rgba(0,0,0,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.2); background: #fefce8; border-left: 4px solid #eab308;">
             <div style="margin-bottom: 16px;">
-                <strong style="font-size: 24px; color: #000; font-family: var(--font-heading); font-weight: 800;">⚠️ Still in the Labs</strong>
+                <strong style="font-size: 24px; color: var(--text-heading, #000); font-family: var(--font-heading); font-weight: 800;">⚠️ Still in the Labs</strong>
             </div>
             <p style="margin-top: 12px; font-size: 15px; line-height: 1.6; color: #222; font-family: var(--font-body); font-weight: 500;">
                 Brewing strong espresso, organizing loose pixels, and weaving logic. This masterpiece is currently incubating.
@@ -1275,17 +1280,17 @@
                     <!-- Step 1 (Active) -->
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
                         <div style="width: 28px; height: 28px; border-radius: 50%; background: #FF7518; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; box-shadow: 0 0 12px rgba(255,117,24,0.4); animation: pulseScale 2s infinite;">1</div>
-                        <span style="font-size: 9px; font-weight: 800; text-transform: uppercase; color: #000; letter-spacing: 0.05em;">Drafting</span>
+                        <span style="font-size: 9px; font-weight: 800; text-transform: uppercase; color: var(--text-heading, #000); letter-spacing: 0.05em;">Drafting</span>
                     </div>
                     <!-- Step 2 -->
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.4;">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.75;">
                         <div style="width: 28px; height: 28px; border-radius: 50%; background: #999; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">2</div>
-                        <span style="font-size: 9px; font-weight: 800; text-transform: uppercase; color: #000; letter-spacing: 0.05em;">Coded</span>
+                        <span style="font-size: 9px; font-weight: 800; text-transform: uppercase; color: var(--text-heading, #000); letter-spacing: 0.05em;">Coded</span>
                     </div>
                     <!-- Step 3 -->
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.4;">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.75;">
                         <div style="width: 28px; height: 28px; border-radius: 50%; background: #999; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">3</div>
-                        <span style="font-size: 9px; font-weight: 800; text-transform: uppercase; color: #000; letter-spacing: 0.05em;">Live</span>
+                        <span style="font-size: 9px; font-weight: 800; text-transform: uppercase; color: var(--text-heading, #000); letter-spacing: 0.05em;">Live</span>
                     </div>
                 </div>
             </div>
@@ -1369,7 +1374,7 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div style="position:absolute; bottom:40px; left:var(--gutter); display:flex; align-items:center; gap:16px; opacity:0.4;">
+        <div style="position:absolute; bottom:40px; left:var(--gutter); display:flex; align-items:center; gap:16px; opacity: 0.75;">
             <div style="width:2px; height:60px; background:linear-gradient(to bottom, var(--primary), transparent);"></div>
             <span style="font-size:10px; font-weight:900; letter-spacing:0.2em; text-transform:uppercase;">Read Case Study</span>
         </div>
@@ -1436,7 +1441,7 @@
                         "We have more data than ever, yet we understand less than before."
                     </div>
                     <div
-                        style="background:#fff; border:1px solid var(--border); padding:24px; border-radius:12px; box-shadow:var(--shadow-medium);">
+                        style="background: var(--bg-surface, #fff); border:1px solid var(--border); padding:24px; border-radius:12px; box-shadow:var(--shadow-medium);">
                         <img src="../../images/WSP/PolishedPortfolioOverview.png.png"
                             alt="Operational Dashboard showing the 'Data Density Paradox'"
                             style="border-radius:4px; filter: grayscale(0.2);">
@@ -1469,19 +1474,19 @@
                 <h2 style=" font-weight: 800; margin-bottom: 32px; letter-spacing: -0.04em; color: var(--black-92);">Living in the Context of Pressure.</h2>
             </div>
             <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:24px;">
-                <div style="padding:32px; border:1px solid var(--border); border-radius:12px; background:#fff;">
+                <div style="padding:32px; border:1px solid var(--border); border-radius:12px; background: var(--bg-surface, #fff);">
                     <h4 style=" margin-bottom:16px;">Analytical Latency.</h4>
                     <p style="font-size:14px; color:var(--black-72); line-height:1.4;">PMs spent 16+ hours/week manually exporting data into PowerPoints.</p>
                 </div>
-                <div style="padding:32px; border:1px solid var(--border); border-radius:12px; background:#fff;">
+                <div style="padding:32px; border:1px solid var(--border); border-radius:12px; background: var(--bg-surface, #fff);">
                     <h4 style=" margin-bottom:16px;">Invisible Overload.</h4>
                     <p style="font-size:14px; color:var(--black-72); line-height:1.4;">Resource managers had no early warning for talent burnout or skill gaps.</p>
                 </div>
-                <div style="padding:32px; border:1px solid var(--border); border-radius:12px; background:#fff;">
+                <div style="padding:32px; border:1px solid var(--border); border-radius:12px; background: var(--bg-surface, #fff);">
                     <h4 style=" margin-bottom:16px;">Legacy Inertia.</h4>
                     <p style="font-size:14px; color:var(--black-72); line-height:1.4;">By the time a report reached an exec, the "truth" was already 10 days old.</p>
                 </div>
-                <div style="padding:32px; border:1px solid var(--border); border-radius:12px; background:#fff;">
+                <div style="padding:32px; border:1px solid var(--border); border-radius:12px; background: var(--bg-surface, #fff);">
                     <h4 style=" margin-bottom:16px;">Decision Anxiety.</h4>
                     <p style="font-size:14px; color:var(--black-72); line-height:1.4;">Data fragmentation led to "Analysis Paralysis" during high-stakes reviews.</p>
                 </div>
@@ -1510,7 +1515,7 @@
                             <h4 style=" font-weight:800; margin:16px 0 8px 0; color:var(--black-92); letter-spacing:-0.03em;">Arjun Mehta</h4>
                             <p style="font-size:18px; color:var(--black-40);">High-velocity customer onboarding</p>
                         </div>
-                        <div style="width: 80px; height: 80px; border-radius: 12px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">🤝</div>
+                        <div style="width: 80px; height: 80px; border-radius: 12px; background: var(--bg-surface, #fff); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">🤝</div>
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 40px;">
@@ -1546,7 +1551,7 @@
                             <h4 style=" font-weight:800; margin:12px 0 8px 0; color:var(--black-92); letter-spacing:-0.03em;">Priya Sharma</h4>
                             <p style="font-size:18px; color:var(--black-40);">Fraud detection and risk mitigation</p>
                         </div>
-                        <div style="width: 80px; height: 80px; border-radius: 12px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">🛡️</div>
+                        <div style="width: 80px; height: 80px; border-radius: 12px; background: var(--bg-surface, #fff); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">🛡️</div>
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 40px;">
@@ -1582,7 +1587,7 @@
                             <h4 style=" font-weight:800; margin:12px 0 8px 0; color:var(--black-92); letter-spacing:-0.03em;">Rahul Verma</h4>
                             <p style="font-size:18px; color:var(--black-40);">Performance steward @ 20+ Branches</p>
                         </div>
-                        <div style="width: 80px; height: 80px; border-radius: 12px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">📈</div>
+                        <div style="width: 80px; height: 80px; border-radius: 12px; background: var(--bg-surface, #fff); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">📈</div>
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 40px;">
@@ -1618,7 +1623,7 @@
                             <h4 style=" font-weight:800; margin:12px 0 8px 0; color:var(--black-92); letter-spacing:-0.03em;">Maya Iyer</h4>
                             <p style="font-size:18px; color:var(--black-40);">Application health and query lead</p>
                         </div>
-                        <div style="width: 80px; height: 80px; border-radius: 12px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">📞</div>
+                        <div style="width: 80px; height: 80px; border-radius: 12px; background: var(--bg-surface, #fff); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: var(--shadow-small);">📞</div>
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 40px;">
@@ -1650,7 +1655,7 @@
     </section>
 
     <!-- 4️⃣ PRINCIPLES & IA -->
-    <section class="story-block" id="principles" style="background:#fff; padding-top: 140px; padding-bottom: 140px;">
+    <section class="story-block" id="principles" style="background: var(--bg-surface, #fff); padding-top: 140px; padding-bottom: 140px;">
         <div class="container">
             <div class="mega-text" style="max-width: 1000px; margin-bottom: 80px;">
                 <span class="section-tag" style="background:rgba(0,0,0,0.05); color:var(--black-72); padding:6px 16px; border-radius:2px; font-size:11px; margin-bottom:24px; display:inline-block; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;">05 Principles</span>
@@ -1723,11 +1728,11 @@
                     <p style="font-size:18px; color:rgba(255,255,255,0.7); margin-bottom:32px;">The platform manages massive liquidity cycles with 99.8% uptime. Standardized API connectors to bank-aa and NPCI rails ensure that capital moves as fast as the design intends.</p>
                     <div style="padding-top:24px; border-top:1px solid rgba(255,255,255,0.1); display:flex; gap:32px;">
                         <div>
-                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase;">Monthly CapEx</span>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:rgba(255, 255, 255, 0.75); text-transform:uppercase;">Monthly CapEx</span>
                             <span style="display:block; font-size:18px; font-weight:700; color:#fff;">₹500Cr+ Rail</span>
                         </div>
                         <div>
-                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase;">System Reliability</span>
+                            <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:rgba(255, 255, 255, 0.75); text-transform:uppercase;">System Reliability</span>
                             <span style="display:block; font-size:18px; font-weight:700; color:#fff;">99.8% Uptime</span>
                         </div>
                     </div>
@@ -1832,10 +1837,10 @@
                     <div>
                         <h5 style="font-size:11px; text-transform:uppercase; color:var(--wsp-color-gray-400); letter-spacing:0.1em; margin-bottom:32px; font-weight:900;">3. Responsive Density</h5>
                         <div style="display:flex; flex-direction:column; gap:20px;">
-                            <div style="background:#fff; border:1px solid var(--wsp-color-gray-100); padding:24px; border-radius:var(--wsp-radius-md);">
+                            <div style="background: var(--bg-surface, #fff); border:1px solid var(--wsp-color-gray-100); padding:24px; border-radius:var(--wsp-radius-md);">
                                 <span style="background:var(--wsp-color-info-100); color:var(--wsp-color-info-700); padding:8px 16px; border-radius:var(--wsp-radius-xs); font-size:12px; font-weight:900; text-transform:uppercase;">Comfortable</span>
                             </div>
-                            <div style="background:#fff; border:1px solid var(--wsp-color-gray-100); padding:12px; border-radius:var(--wsp-radius-md);">
+                            <div style="background: var(--bg-surface, #fff); border:1px solid var(--wsp-color-gray-100); padding:12px; border-radius:var(--wsp-radius-md);">
                                 <span style="background:var(--wsp-color-info-100); color:var(--wsp-color-info-700); padding:2px 6px; border-radius:var(--wsp-radius-xs); font-size:10px; font-weight:900; text-transform:uppercase;">Dense (Table)</span>
                             </div>
                         </div>
@@ -1859,7 +1864,7 @@
                     <img src="../../images/WSP/PolishedPortfolioOverview.png.png" alt="Global Portfolio Health Dashboard" style="width:100%; border-radius:12px; box-shadow:var(--wsp-shadow-xl);">
                     <!-- Anchor Dot -->
                     <div style="position:absolute; top:42%; left:28%; width:12px; height:12px; background:var(--primary); border:2px solid #fff; border-radius:50%; box-shadow: 0 0 10px var(--primary); z-index:5;"></div>
-                    <div style="position:absolute; top:20%; left:5%; max-width:280px; background:#fff; padding:24px; border-radius:var(--wsp-radius-md); box-shadow:var(--wsp-shadow-lg);">
+                    <div style="position:absolute; top:20%; left:5%; max-width:280px; background: var(--bg-surface, #fff); padding:24px; border-radius:var(--wsp-radius-md); box-shadow:var(--wsp-shadow-lg);">
                         <span style="font-size:10px; font-weight:900; color:var(--primary); text-transform:uppercase; display:block; margin-bottom:8px;">01 | Glanceable Truth</span>
                         <p style="font-size:14px; margin:0; line-height:1.4;">Critical metrics are anchored in the primary eye-path, ensuring health assessment in &lt;5 seconds.</p>
                     </div>
@@ -1887,7 +1892,7 @@
                         <div style="width:10px; height:10px; border-radius:50%; background:#FFBD2E;"></div>
                         <div style="width:10px; height:10px; border-radius:50%; background:#27C93F;"></div>
                     </div>
-                    <div style="color:rgba(255,255,255,0.4); font-family:var(--wsp-font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase;">Agentic_Reasoning_Engine_v4.2</div>
+                    <div style="color:rgba(255, 255, 255, 0.75); font-family:var(--wsp-font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase;">Agentic_Reasoning_Engine_v4.2</div>
                 </div>
                 <div style="padding: 60px 10%; position:relative; text-align:center;">
                     <h3 style="color:#fff;  line-height:1.1; margin-bottom:40px; font-family:var(--font-serif);">"The Infrastructure portfolio is at risk due to <strong>Skill Concentration.</strong>"</h3>
@@ -1947,15 +1952,15 @@
                 <h2 style=" font-weight:800;">Measurable Success.</h2>
             </div>
             <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:32px;">
-                <div style="text-align:center; padding:48px; background:#fff; border:1px solid var(--border); border-radius:12px;">
+                <div style="text-align:center; padding:48px; background: var(--bg-surface, #fff); border:1px solid var(--border); border-radius:12px;">
                     <div style="font-size:64px; font-weight:900; color:var(--primary);">-73%</div>
                     <p style="font-size:14px; text-transform:uppercase; font-weight:800;">Time to Insight</p>
                 </div>
-                <div style="text-align:center; padding:48px; background:#fff; border:1px solid var(--border); border-radius:12px;">
+                <div style="text-align:center; padding:48px; background: var(--bg-surface, #fff); border:1px solid var(--border); border-radius:12px;">
                     <div style="font-size:64px; font-weight:900; color:var(--primary);">78%</div>
                     <p style="font-size:14px; text-transform:uppercase; font-weight:800;">Daily Adoption</p>
                 </div>
-                <div style="text-align:center; padding:48px; background:#fff; border:1px solid var(--border); border-radius:12px;">
+                <div style="text-align:center; padding:48px; background: var(--bg-surface, #fff); border:1px solid var(--border); border-radius:12px;">
                     <div style="font-size:64px; font-weight:900; color:var(--primary);">60%</div>
                     <p style="font-size:14px; text-transform:uppercase; font-weight:800;">Escalation Speed</p>
                 </div>
@@ -2079,6 +2084,11 @@
     </script>
     <script src="../../js/snowflake_cursor.js" defer></script>
     <script src="../../js/common-security.js" defer></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>emailjs.init("G8jc2t6dBS8BNn7sQ");</script>
+    <script src="../../js/project-gate.js" defer></script>
 </body>
 
 </html>

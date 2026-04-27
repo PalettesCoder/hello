@@ -3,9 +3,10 @@
 <html xmlns="https://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><!--<![endif]-->
 
 <head>
+    <script src="../js/protect.js"></script>
     <meta charset="utf-8">
     <!-- Security Headers (GitHub Pages doesn't support HTTP headers) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://dns.google; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
     <title>Harsha Royal | UI Developer & Product Designer Portfolio</title>
     <meta name="author" content="Harsha Royal">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -156,7 +157,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/unified-design.css">
+    <link rel="stylesheet" href="../../css/unified-design.css">
+    <link rel="stylesheet" href="../css/project-gate.css">
+
     <style>
         /* Maintain the website design but fix layout for All Projects */
         .main-content { padding-top: 100px !important; }
@@ -690,6 +693,26 @@
                             </div>
                         </div>
 
+                        <!-- Project 4: DRAMEBAAZ -->
+                        <div class="project-card-v2" onclick="location.href='Drame/index.html'">
+                            <div class="card-image-outer">
+                                <img src="Drame/5a4250240046921.6936ab7d98ac8.png" alt="DRAMEBAAZ Project Thumbnail">
+                                <div class="card-overlay"></div>
+                                <div class="card-tags">
+                                    <span class="tag-v2" style="background: rgba(123,31,162,0.2); color: #7B1FA2;">Visuals</span>
+                                    <span class="tag-v2">Branding</span>
+                                </div>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">DRAMEBAAZ</h3>
+                                <p class="card-desc">Visual Storytelling. A high-fidelity exploration of light, shadow, and narrative through advanced digital design.</p>
+                                <div class="card-footer">
+                                    <span class="phase-label">GALLERY</span>
+                                    <span class="explore-link">Explore Gallery <i class="icon icon-arrow-right-top"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -954,6 +977,7 @@
                 max-width: 600px;
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
+                line-clamp: 2;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
@@ -1297,6 +1321,10 @@
     <script src="../js/snowflake_cursor.js" defer></script>
 
     <script src="../js/figma-app.js" defer></script>
+    <!-- Access Protection -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>emailjs.init("G8jc2t6dBS8BNn7sQ");</script>
+    <script src="../js/project-gate.js" defer></script>
 </body>
 
 </html>

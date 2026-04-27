@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="../../js/protect.js"></script>
+    <link rel="stylesheet" href="../../css/project-gate.css">
+    <script src="../../js/theme-engine.js"></script>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://dns.google; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content=" UX Case Study: Intel Luminary. Designing a proactive AI companion for enterprise productivity. High-fidelity UI development and cognitive load reduction.">
 <meta name="keywords" content="Intel Luminary Case Study, AI Companion UX, Enterprise AI Design, Proactive UI, High Fidelity Prototypes, AI User Interface, Harsha Royal Intel">
@@ -13,8 +16,6 @@
 <link rel="stylesheet" href="../../css/fonts.css">
 <link rel="stylesheet" href="../../css/inter.css">
 <link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../css/unified-design.css">
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSDKGX36CN"></script>
     <script>
@@ -35,8 +36,8 @@
             --bg-base: #EBEBEB;
             --black-92: rgba(0, 0, 0, 0.92);
             --black-72: rgba(0, 0, 0, 0.72);
-            --black-56: rgba(0, 0, 0, 0.56);
-            --black-40: rgba(0, 0, 0, 0.40);
+            --black-56: rgba(0, 0, 0, 0.75);
+            --black-40: rgba(0, 0, 0, 0.75);
             --border: rgba(0, 0, 0, 0.08);
             --font-heading: "Apfel Grotezk", sans-serif;
             --font-body: "Inter", sans-serif;
@@ -49,7 +50,7 @@
             --gutter: 5%;
             --radius: 10px;
             --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.75);
             --glass-blur: blur(12px);
         }
 
@@ -328,7 +329,7 @@
             margin: 24px 0;
             width: 100%;
             padding: 24px;
-            background: #fff;
+            background: var(--bg-surface, #fff);
             box-shadow: var(--shadow-subtle);
             font-family: var(--font-body);
             font-size: 15px;
@@ -352,7 +353,7 @@
             height: 24px;
             background: #e63946;
             border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset -4px -4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75), inset -4px -4px 8px rgba(0, 0, 0, 0.2);
             z-index: 11;
         }
 
@@ -482,7 +483,7 @@
         .ui-fragment {
             position: relative;
             margin: 20px 0;
-            background: #fff;
+            background: var(--bg-surface, #fff);
             padding: 12px 16px;
             border-radius: 8px;
             box-shadow: var(--shadow);
@@ -701,7 +702,7 @@
         }
 
         .btn-secondary {
-            background: #ffffff;
+            background: var(--bg-surface, #fff);
             color: #000000;
             padding: 14px 28px;
             border-radius: 10px;
@@ -730,7 +731,7 @@
         }
 
         .hero-testimonial {
-            background: #ffffff;
+            background: var(--bg-surface, #fff);
             border: 1px solid rgba(0,0,0,0.03);
             padding: 32px;
             border-radius: 20px;
@@ -840,7 +841,7 @@
         }
 
         .story-block.white {
-            background: #fff;
+            background: var(--bg-surface, #fff);
         }
 
         .block-text {
@@ -884,7 +885,7 @@
         }
 
         .insight-card {
-            background: #fff;
+            background: var(--bg-surface, #fff);
             padding: 48px;
             border-radius: 4px;
             margin-top: 40px;
@@ -1005,7 +1006,7 @@
         }
 
         .metric-card {
-            background: #ffffff;
+            background: var(--bg-surface, #fff);
             padding: 40px;
             border-radius: 20px;
             border: 1px solid var(--border);
@@ -1511,7 +1512,7 @@
         .chat-window {
             background: #1e1e1e;
             border-radius: 12px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px #333;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px #333;
             overflow: hidden;
             font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
             margin: 60px 0;
@@ -1644,7 +1645,7 @@
         #design .showcase-caption {
             display: block;
             padding: 0 20px 20px 20px;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.75);
             font-size: 14px;
         }
 
@@ -1798,7 +1799,7 @@
         }
 
         .power-pro-card.orange .power-pro-card-icon {
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.75);
             color: #ffffff;
             background: rgba(255,255,255,0.1);
         }
@@ -2017,8 +2018,12 @@
     
 
 </style>
+    <link rel="stylesheet" href="../../css/unified-design.css">
 </head>
 <body>
+    <!-- WCAG 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="nav-skip">Skip to main content</a>
+
 
 <!-- Progress Bar -->
 <div class="progress-bar-top" id="pb"></div>
@@ -2044,12 +2049,12 @@
 
 <!-- Mini Nav -->
 <nav class="mini-nav" id="miniNav">
-    <a href="#hero" class="nav-dot active" data-label="Hero"></a>
-    <a href="#planning" class="nav-dot" data-label="Strategy"></a>
-    <a href="#research" class="nav-dot" data-label="Research"></a>
-    <a href="#north-star" class="nav-dot" data-label="North Star"></a>
-    <a href="#design" class="nav-dot" data-label="Design"></a>
-    <a href="#impact" class="nav-dot" data-label="Impact"></a>
+    <a href="#hero" class="nav-dot active" aria-label="${labelVal}" data-label="Hero"></a>
+    <a href="#planning" class="nav-dot" aria-label="${labelVal}" data-label="Strategy"></a>
+    <a href="#research" class="nav-dot" aria-label="${labelVal}" data-label="Research"></a>
+    <a href="#north-star" class="nav-dot" aria-label="${labelVal}" data-label="North Star"></a>
+    <a href="#design" class="nav-dot" aria-label="${labelVal}" data-label="Design"></a>
+    <a href="#impact" class="nav-dot" aria-label="${labelVal}" data-label="Impact"></a>
 </nav>
 
 <!-- ═════════════<header class="hero-narrative" id="hero">
@@ -2099,7 +2104,7 @@
     <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/Automate-Dashboard-Hero.png" alt="Dashboard Interface" style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 40px 100px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); filter: contrast(1.02) saturate(1.05);" onerror="this.src='https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/App-Automate-Mockup.png'">
 </div>
 
-<section class="trusted-by-section" style="text-align: center; padding: 40px var(--gutter) 100px; background: #fff;">
+<section class="trusted-by-section" style="text-align: center; padding: 40px var(--gutter) 100px; background: var(--bg-surface, #fff);">
     <p style="font-family: var(--font-body); font-size: 16px; font-weight: 500; color: #717171; margin-bottom: 40px;">Trusted by 10k+ companies worldwide</p>
     <div style="display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; opacity: 0.6; filter: grayscale(100%); transition: var(--transition);">
         <img src="https://show.uwebb.id/automate/wp-content/uploads/sites/16/2025/12/logo-5.svg" alt="Company 1" style="height: 32px;">
@@ -2152,7 +2157,7 @@
 <!-- ═════════════════════════════════════════ -->
 <!-- POWER PRO (The Personas) -->
 <!-- ═════════════════════════════════════════ -->
-<section style="padding: 120px 0; background: #ffffff;">
+<section style="padding: 120px 0; background: var(--bg-surface, #fff);">
     <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 max(var(--gutter), 40px);">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px;">
             <div style="max-width: 600px;">
@@ -2394,7 +2399,7 @@
         </div>
 
         <div class="wrap-container" style="margin-top:60px; display:grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap:40px;">
-            <div style="background:#fff; padding:40px; border-radius:24px; border:1px solid #eee; box-shadow:0 10px 40px rgba(0,0,0,0.03);">
+            <div style="background: var(--bg-surface, #fff); padding:40px; border-radius:24px; border:1px solid #eee; box-shadow:0 10px 40px rgba(0,0,0,0.03);">
                 <h4 style="font-size:32px; margin-bottom:24px; font-weight:400; color:#222;">Key Learnings</h4>
                 <ul class="list-narrative">
                     <li><strong style="font-weight:600; color:#222;">AI earns trust through humility.</strong> Showing confidence levels ("I'm 92% sure this is the right driver") built more trust than absolute certainties.</li>
@@ -2402,7 +2407,7 @@
                     <li><strong style="font-weight:600; color:#222;">Personality is product, not polish.</strong> The warm, witty voice was the primary driver of trust, engagement, and NPS uplift.</li>
                 </ul>
             </div>
-            <div style="background:#fff; padding:40px; border-radius:24px; border:1px solid #eee; box-shadow:0 10px 40px rgba(0,0,0,0.03);">
+            <div style="background: var(--bg-surface, #fff); padding:40px; border-radius:24px; border:1px solid #eee; box-shadow:0 10px 40px rgba(0,0,0,0.03);">
                 <h4 style="font-size:32px; margin-bottom:24px; font-weight:400; color:#222;">The Bigger Vision</h4>
                 <ul class="list-narrative">
                     <li><strong style="font-weight:600; color:#222;">Voice on AI PCs</strong> — NPU-powered, privacy-first voice companion running locally on Intel Core Ultra</li>
@@ -2444,9 +2449,13 @@ dots.forEach(d=>{d.addEventListener('click',e=>{e.preventDefault();const t=docum
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            emailjs.init("mrvBP3SZGrUGo31cQ");
+            emailjs.init("G8jc2t6dBS8BNn7sQ");
         })();
     </script>
     <script src="../../js/visitor-tracker.js" defer></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="../../js/project-gate.js" defer></script>
 </body>
 </html>
