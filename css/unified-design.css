@@ -1,47 +1,485 @@
 :root {
     --white: #ffffff;
     --white-8: rgba(255, 255, 255, 0.08);
-    --white-40: rgba(255, 255, 255, 0.40);
-    --white-72: rgba(255, 255, 255, 0.72);
+    --white-15: rgba(255, 255, 255, 0.15);
+    --white-40: rgba(255, 255, 255, 0.80);
+    --white-50: rgba(255, 255, 255, 0.70);
+    --white-72: rgba(255, 255, 255, 0.85);
     --white-92: rgba(255, 255, 255, 0.92);
+    
     --black: #000000;
     --black-6: rgba(0, 0, 0, 0.06);
+    --black-8: rgba(0, 0, 0, 0.08);
     --black-15: rgba(0, 0, 0, 0.15);
-    --black-40: rgba(0, 0, 0, 0.40);
-    --black-50: rgba(0, 0, 0, 0.50);
-    --black-56: rgba(0, 0, 0, 0.56);
-    --black-72: rgba(0, 0, 0, 0.72);
+    --black-40: rgba(0, 0, 0, 0.75);
+    --black-50: rgba(0, 0, 0, 0.75);
+    --black-56: rgba(0, 0, 0, 0.75);
+    --black-72: rgba(0, 0, 0, 0.85);
+    --black-92: rgba(0, 0, 0, 0.92);
+    
     --primary: #FF7518;
     --primary-dark: #E65A00;
     --surface: #F5F5F5;
     --bg: #EBEBEB;
+
+    /* Semantic tokens */
+    --text-main: var(--black-92);
+    --text-heading: var(--black);
+    --text-sub: var(--black-72);
+    --text-muted: var(--black-40);
+    
+    --bg-app: var(--surface);
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-surface: #ffffff;
+    
+    --border-main: var(--black-15);
+    --border-subtle: var(--black-6);
+    
+    --shadow-main: 0px 12px 32px rgba(0, 0, 0, 0.04);
     
     --font-heading: "Apfel Grotezk", sans-serif;
     --font-body: "Inter", sans-serif;
-    
     --radius-premium: 24px;
-    --radius-large: 36px;
-    
-    --shadow-premium: 0px 12px 32px rgba(0, 0, 0, 0.04), 0px 4px 12px rgba(0, 0, 0, 0.03);
     --transition-premium: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* DARK MODE OVERRIDES — targets both html and body for zero-flash */
+html.dark-mode,
+body.dark-mode,
+[class*="dark-v"] {
+    --surface: #0a0a0a;
+    --bg: #000000;
+    --bg-app: #0a0a0a;
+    --bg-card: rgba(255, 255, 255, 0.05);
+    --bg-surface: #151515;
+    --bg-base: #0a0a0a;
+    
+    --text-main: rgba(255, 255, 255, 0.92);
+    --text-heading: #ffffff;
+    --text-sub: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.80);
+    
+    --black: #ffffff;
+    --black-92: rgba(255, 255, 255, 0.92);
+    --black-72: rgba(255, 255, 255, 0.85);
+    --black-56: rgba(255, 255, 255, 0.75);
+    --black-50: rgba(255, 255, 255, 0.70);
+    --black-40: rgba(255, 255, 255, 0.80);
+    --black-15: rgba(255, 255, 255, 0.15);
+    --black-8: rgba(255, 255, 255, 0.08);
+    --black-6: rgba(255, 255, 255, 0.06);
+    --black-4: rgba(255, 255, 255, 0.04);
+    --black-36: rgba(255, 255, 255, 0.75);
+    
+    --white-8: rgba(255, 255, 255, 0.08);
+    
+    --border: rgba(255, 255, 255, 0.08);
+    --border-main: rgba(255, 255, 255, 0.15);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    
+    --shadow-main: 0 20px 50px rgba(0, 0, 0, 0.75);
+    --shadow-subtle: 0px 2px 12px rgba(0, 0, 0, 0.2);
+    --shadow-medium: 0px 16px 48px -8px rgba(0, 0, 0, 0.75);
+
+    /* Project-Specific Overrides */
+    --color-bg: #0A0A0B;
+    --color-text-main: #FFFFFF;
+    --color-text-sub: rgba(255, 255, 255, 0.80);
+    --color-surface-dark: #151517;
+    --border-thick: 1px solid rgba(255, 255, 255, 0.1);
+    --border-light: 1px solid rgba(255, 255, 255, 0.05);
+
+    color-scheme: dark;
 }
 
 body {
     font-family: var(--font-body) !important;
-    background-color: var(--surface) !important;
-    color: var(--black-92) !important;
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading) !important;
-    color: var(--black) !important;
+    color: var(--text-heading);
+}
+
+/* ========================================
+   PROJECT PAGE DARK MODE OVERRIDES
+   Targets hardcoded inline styles in project case studies
+   ======================================== */
+
+/* Hero sections with background: #fff */
+body.dark-mode .hero-narrative,
+body.dark-mode .story-block.white,
+body.dark-mode .story-block {
+    background: var(--bg-app) !important;
+}
+
+/* Headers with background: rgba(255,255,255,0.85) */
+body.dark-mode .main-header {
+    background: rgba(10, 10, 10, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Insight cards with background: #fff */
+body.dark-mode .insight-card {
+    background: #1a1a1c !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Block visuals with background: #fff */
+body.dark-mode .block-visual {
+    background: #1a1a1c !important;
+}
+
+/* UI fragments with background: #fff */
+body.dark-mode .ui-fragment {
+    background: #1a1a1c !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Status badges */
+body.dark-mode .status-badge {
+    background: rgba(76, 175, 80, 0.15) !important;
+    color: #81C784 !important;
+}
+
+/* Reading mode toggle */
+body.dark-mode .reading-mode-toggle {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Switch track */
+body.dark-mode .switch-track {
+    background: #333 !important;
+}
+
+/* Meta items */
+body.dark-mode .meta-item {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Narrative copy */
+body.dark-mode .narrative-copy {
+    color: var(--text-sub) !important;
+}
+
+/* Body copy */
+body.dark-mode .body-copy,
+body.dark-mode .block-text .body-copy {
+    color: var(--text-sub) !important;
+}
+
+/* Pull quotes */
+body.dark-mode .pull-quote {
+    color: var(--text-heading) !important;
+}
+
+/* Strategy items */
+body.dark-mode .strategy-item h4 {
+    color: var(--text-heading) !important;
+}
+body.dark-mode .strategy-item p {
+    color: var(--text-sub) !important;
+}
+
+/* Nav dots */
+body.dark-mode .nav-dot {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+body.dark-mode .nav-dot.active {
+    background: var(--primary) !important;
+}
+
+/* Back link */
+body.dark-mode .back-link {
+    color: var(--text-sub) !important;
+}
+body.dark-mode .back-link:hover {
+    color: var(--primary) !important;
+}
+
+/* Header logo */
+body.dark-mode .header-logo {
+    color: var(--text-heading) !important;
+}
+
+/* Meta label/value */
+body.dark-mode .meta-label {
+    color: var(--text-muted) !important;
+}
+body.dark-mode .meta-value {
+    color: var(--text-heading) !important;
+}
+
+/* Hero insight serif text */
+body.dark-mode .hero-insight {
+    color: var(--text-sub) !important;
+}
+
+/* Prop tabs (figma) in project pages */
+body.dark-mode .prop-tab {
+    color: var(--text-sub) !important;
+}
+body.dark-mode .prop-tab.active {
+    background: #2a2a2a !important;
+    color: var(--text-heading) !important;
+    border-color: rgba(255,255,255,0.15) !important;
+}
+
+/* Section labels */
+body.dark-mode .section-label {
+    color: var(--text-heading) !important;
+}
+
+/* Section actions */
+body.dark-mode .section-actions {
+    color: var(--text-muted) !important;
+}
+
+/* Body::before texture overlay */
+body.dark-mode::before {
+    opacity: 0.01 !important;
+}
+
+/* Sticky notes (these have hardcoded yellow bg - keep it for contrast) */
+body.dark-mode .sticky-note.yellow { background: #3d3520 !important; }
+body.dark-mode .sticky-note.blue { background: #1a2a30 !important; }
+body.dark-mode .sticky-note.pink { background: #301a2a !important; }
+body.dark-mode .sticky-note.green { background: #1a301d !important; }
+body.dark-mode .sticky-note.orange { background: #302010 !important; }
+
+/* ========================================
+   HOME PAGE & PROJECT PAGE INLINE STYLE OVERRIDES
+   These use !important to beat inline <style> specificity
+   ======================================== */
+body.dark-mode .hc-card {
+    background-color: #1a1a1c !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode .hc-card h3 {
+    color: var(--primary) !important;
+}
+
+body.dark-mode .hc-card p,
+body.dark-mode .hc-card li {
+    color: var(--text-sub) !important;
+}
+
+body.dark-mode blockquote {
+    background: rgba(255, 117, 24, 0.08) !important;
+    border-left-color: var(--primary) !important;
+}
+
+body.dark-mode blockquote p {
+    color: #FF9A56 !important;
+}
+
+body.dark-mode blockquote footer {
+    color: var(--text-sub) !important;
+}
+
+body.dark-mode table {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode th {
+    background-color: #1a1a1a !important;
+    color: var(--text-heading) !important;
+}
+
+body.dark-mode td {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-main) !important;
+}
+
+body.dark-mode tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+body.dark-mode .mini-nav {
+    background: rgba(20, 20, 20, 0.8) !important;
+    border-color: var(--border-main) !important;
+}
+
+/* Image scroll containers in project pages */
+body.dark-mode .image-scroll-container {
+    background: #151515 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Image captions */
+body.dark-mode .image-caption {
+    color: var(--text-muted) !important;
+}
+
+/* Lead paragraphs */
+body.dark-mode p.lead {
+    color: var(--text-sub) !important;
+}
+
+/* Card grid items */
+body.dark-mode .card-grid .hc-card:not(.dark) {
+    background-color: #1a1a1c !important;
+}
+
+/* Meta grid (project page headers) */
+body.dark-mode .meta-grid {
+    border-top-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark-mode .meta-col strong {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+body.dark-mode .meta-col span {
+    color: var(--text-heading) !important;
+}
+
+/* Article footer border */
+body.dark-mode .article-footer {
+    border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Medium nav */
+body.dark-mode .medium-nav {
+    background: rgba(10, 10, 10, 0.8) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Feedback body border */
+body.dark-mode .feedback-body {
+    border-right-color: #252528 !important;
+}
+
+/* Generic p and li in dark mode project pages */
+body.dark-mode section p,
+body.dark-mode section li {
+    color: var(--text-main) !important;
+}
+
+body.dark-mode h4 {
+    color: var(--text-sub) !important;
+}
+
+/* Metric cards */
+body.dark-mode .metric-card {
+    background: #1a1a1c !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .metric-card .metric-number,
+body.dark-mode .metric-card strong {
+    color: var(--primary) !important;
+}
+
+body.dark-mode .metric-card p,
+body.dark-mode .metric-card span {
+    color: var(--text-sub) !important;
+}
+
+/* Report cards */
+body.dark-mode .report-card {
+    background: #1a1a1c !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Sticky notes base - white bg and black text */
+body.dark-mode .sticky-note {
+    background: #2a2520 !important;
+    color: var(--text-main) !important;
+}
+
+body.dark-mode .sticky-note strong {
+    color: var(--text-heading) !important;
+}
+
+/* Overview/timeline items */
+body.dark-mode .overview-card,
+body.dark-mode .timeline-card {
+    background: #1a1a1c !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Director sidebar */
+body.dark-mode .director-sidebar {
+    background: #1a1a1c !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Any card or container with --bg-surface fallback */
+body.dark-mode [style*="background: var(--bg-surface"] {
+    background: var(--bg-surface) !important;
+}
+
+/* Generic dark mode overrides for common patterns */
+body.dark-mode .hero-tagline {
+    color: var(--primary) !important;
+}
+
+body.dark-mode .progress-bar-top {
+    background: var(--primary) !important;
+}
+
+/* Ensure all `a` tags in dark mode are visible */
+body.dark-mode a:not([class]) {
+    color: var(--primary) !important;
+}
+
+body.dark-mode .top-bar {
+    background-color: rgba(15, 15, 15, 0.9) !important;
+}
+
+/* Project meta bar items */
+body.dark-mode .project-meta-bar .meta-item {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Colored sticky notes in dark - also fix text */
+body.dark-mode .sticky-note.blue { background: #1a2a30 !important; color: #c0e0f0 !important; }
+body.dark-mode .sticky-note.pink { background: #301a2a !important; color: #f0c0e0 !important; }
+body.dark-mode .sticky-note.orange { background: #302010 !important; color: #f0d0a0 !important; }
+body.dark-mode .sticky-note.yellow { background: #3d3520 !important; color: #f0e0a0 !important; }
+body.dark-mode .sticky-note.green { background: #1a301d !important; color: #c0f0c0 !important; }
+
+/* Figma notification in dark mode */
+body.dark-mode .figma-notification {
+    background: #1a1a1c !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+/* Page background must be dark */
+body.dark-mode {
+    background-color: var(--bg-app, #0a0a0a);
+    color: var(--text-main, rgba(255,255,255,0.92));
+}
+
+/* Ensure story blocks with inline styles are dark */
+body.dark-mode .story-block[style] {
+    background: var(--bg-app) !important;
+}
+
+body.dark-mode section[style*="background:#fff"],
+body.dark-mode section[style*="background: #fff"],
+body.dark-mode div[style*="background:#fff"],
+body.dark-mode div[style*="background: #fff"] {
+    background: var(--bg-surface) !important;
+}
+
+/* Nav dot tooltip background in dark mode */
+body.dark-mode .nav-dot::after {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-heading) !important;
 }
 
 /* PREMIUM CONFIGURATION PORTAL (CONTROL CENTER) */
 .premium-offcanvas {
-    border: 1px solid rgba(255,255,255,0.2) !important;
-    box-shadow: 0 50px 100px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05) !important;
-    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid var(--border-subtle) !important;
+    box-shadow: var(--shadow-premium) !important;
+    background: var(--bg-card) !important;
     backdrop-filter: blur(30px) saturate(180%) !important;
     width: 440px !important;
     margin: 20px;
@@ -49,6 +487,10 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 32px !important;
     overflow: hidden;
     transition: var(--transition-premium) !important;
+}
+
+body.dark-mode .premium-offcanvas {
+    background: rgba(20, 20, 20, 0.85) !important;
 }
 
 .premium-offcanvas .offcanvas-header {
@@ -63,7 +505,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 28px;
     font-weight: 900;
     letter-spacing: -1px;
-    color: var(--black);
+    color: var(--text-heading);
     line-height: 1;
 }
 
@@ -71,18 +513,19 @@ h1, h2, h3, h4, h5, h6 {
     width: 44px;
     height: 44px;
     border-radius: 14px;
-    background: var(--white);
-    border: 1px solid rgba(0,0,0,0.05);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition-premium);
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    color: var(--text-main);
 }
 
 .premium-offcanvas .btn-close-premium:hover {
-    background: var(--black);
+    background: var(--primary);
     color: var(--white);
     transform: scale(0.9);
 }
@@ -101,7 +544,7 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 800;
-    color: var(--black-50);
+    color: var(--primary);
     margin-bottom: 32px;
     display: flex;
     align-items: center;
@@ -112,7 +555,7 @@ h1, h2, h3, h4, h5, h6 {
     content: '';
     flex: 1;
     height: 1px;
-    background: rgba(0,0,0,0.05);
+    background: var(--border-subtle);
 }
 
 /* Theme Choice Visuals (Ultra Premium) */
@@ -126,21 +569,21 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     padding: 8px;
     border-radius: 20px;
-    background: rgba(255,255,255,0.4);
-    border: 1px solid rgba(0,0,0,0.05);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
     cursor: pointer;
     transition: var(--transition-premium);
 }
 
 .theme-choice:hover {
-    background: var(--white);
+    background: var(--bg-app);
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 .theme-choice.active {
-    background: var(--white);
-    border-color: var(--black);
+    background: var(--bg-app);
+    border-color: var(--primary);
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
@@ -155,20 +598,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .theme-visual .swatch {
     flex: 1;
-    position: relative;
-}
-
-.theme-visual .swatch::after {
-    content: '';
     position: absolute;
     inset: 0;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
 }
 
 .theme-choice .text {
     font-size: 14px;
     font-weight: 800;
-    color: var(--black);
+    color: var(--text-heading);
     padding: 0 10px;
 }
 
@@ -179,10 +616,10 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
     padding: 4px 10px;
     border-radius: 100px;
-    background: var(--black-6);
+    background: var(--border-subtle);
     margin: 6px 10px 10px 10px;
     display: inline-block;
-    color: var(--black-72);
+    color: var(--text-main);
 }
 
 .theme-choice.active .tag {
@@ -196,22 +633,21 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: space-between;
     padding: 24px;
-    background: rgba(255,255,255,0.4);
+    background: var(--bg-card);
     border-radius: 24px;
     margin-bottom: 16px;
-    border: 1px solid rgba(0,0,0,0.03);
+    border: 1px solid var(--border-subtle);
     transition: var(--transition-premium);
 }
 
 .toggle-item:hover {
-    background: var(--white);
-    border-color: rgba(0,0,0,0.1);
+    background: var(--bg-app);
 }
 
 .toggle-info strong {
     font-size: 15px;
     font-weight: 800;
-    color: var(--black);
+    color: var(--text-heading);
     display: block;
     margin-bottom: 2px;
 }
@@ -265,7 +701,7 @@ body.hide-tooltips .tool-tip {
     transform: translateY(20px);
     transition: var(--transition-premium);
     border: 1px solid rgba(0,255,0,0.2);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
 }
 
 #devmode-overlay.active {
@@ -280,3 +716,100 @@ body.hide-tooltips .tool-tip {
 }
 
 #devmode-overlay .label { color: rgba(0,255,0,0.5); }
+
+/* ========================================
+   HOME PAGE POPUPS & USER SIDEBAR OVERRIDES
+   ======================================== */
+/* User Profile Sidebar Card */
+body.dark-mode .sidebar-user .wrap {
+    background-color: var(--bg-surface, #1a1a1c) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .sidebar-user .user-info .avaiable-dot,
+body.dark-mode .sidebar-user .user-info .avaiable-dot span {
+    color: var(--text-sub) !important;
+}
+
+body.dark-mode .sidebar-user .user-intro-top .text-white {
+    color: var(--text-heading) !important;
+}
+
+body.dark-mode .intro-author {
+    background-color: var(--bg-surface, #1a1a1c) !important;
+}
+
+body.dark-mode .intro-author .info_name {
+    color: var(--text-heading) !important;
+}
+
+body.dark-mode .intro-author .info_duty {
+    color: var(--text-sub) !important;
+}
+
+/* Popups (Starter Popup, Cert Popup, Split Popup) */
+body.dark-mode .split-popup-container,
+body.dark-mode .dev-popup-content,
+body.dark-mode .cert-popup-container,
+body.dark-mode .cert-image-side,
+body.dark-mode .cert-content-side,
+body.dark-mode .side-design,
+body.dark-mode .frame,
+body.dark-mode .note-item,
+body.dark-mode .code-editor,
+body.dark-mode .proto-screen,
+body.dark-mode .split-footer-content {
+    background-color: var(--bg-surface, #1a1a1c) !important;
+    background: var(--bg-surface, #1a1a1c) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .dev-popup-title,
+body.dark-mode .split-headline,
+body.dark-mode .cert-title,
+body.dark-mode .cert-credential strong {
+    color: var(--text-heading) !important;
+}
+
+body.dark-mode .dev-popup-msg,
+body.dark-mode .split-subheadline,
+body.dark-mode .cert-credential,
+body.dark-mode .note-item {
+    color: var(--text-sub) !important;
+}
+
+body.dark-mode .dev-btn-secondary {
+    background-color: var(--bg-surface, #1a1a1c) !important;
+    color: var(--text-main) !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
+
+body.dark-mode .dev-btn-secondary:hover {
+    background-color: rgba(255,255,255,0.05) !important;
+}
+
+/* Navigation Skip Link (WCAG) */
+.nav-skip { position: absolute; top: -100px; left: 0; background: var(--color-accent, #FF7518); color: white; padding: 16px 24px; z-index: 10000; transition: top 0.2s; font-weight: 800; }
+.nav-skip:focus { top: 0; outline: none; }
+
+
+/* OVERRIDES FOR TEXT COLOR IN DARK MODE TO PREVENT MERGING BLENDS */
+body.dark-mode .text-black,
+body.dark-mode .text-dark,
+body.dark-mode .text-black-100 {
+    color: var(--text-heading) !important;
+}
+
+body.dark-mode .text-black-50,
+body.dark-mode .text-black-56,
+body.dark-mode .text-black-72,
+body.dark-mode .text-muted {
+    color: var(--text-sub) !important;
+}
+
+body.dark-mode .bg-white,
+body.dark-mode .bg-light,
+body.dark-mode.bg-white {
+    background-color: var(--bg-surface) !important;
+}

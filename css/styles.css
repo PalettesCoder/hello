@@ -8197,3 +8197,84 @@ textarea {
 :active {
     cursor: url("../media/fallguys.cur"), pointer !important
 }
+/* ========================================
+   PREMIUM SIDE NAVIGATION (DOTS)
+   ======================================== */
+.mini-nav {
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    padding: 24px 12px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .mini-nav {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    display: block;
+}
+
+body.dark-mode .nav-dot {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-dot.active {
+    background: #FF7518;
+    transform: scale(2);
+    box-shadow: 0 0 20px rgba(255, 117, 24, 0.4);
+}
+
+.nav-dot::after {
+    content: attr(data-label);
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%) translateX(15px);
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark-mode .nav-dot::after {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+}
+
+.nav-dot:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.nav-dot:hover {
+    background: #FF7518;
+    transform: scale(1.4);
+}
+
