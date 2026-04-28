@@ -13,7 +13,7 @@
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.feedback-trigger {
+.floating-trigger {
     position: fixed;
     bottom: 40px;
     right: 40px;
@@ -30,14 +30,79 @@
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.feedback-trigger:hover {
-    transform: scale(1.1) rotate(15deg);
+.floating-trigger:hover {
+    transform: scale(1.1) rotate(5deg);
     box-shadow: 0 15px 40px rgba(255, 117, 24, 0.5);
 }
 
-.feedback-trigger i {
-    font-size: 24px;
+.floating-trigger i {
+    font-size: 26px;
     color: #fff !important;
+}
+
+/* Specific styling for AI Chat Bot */
+.ai-chat-floating {
+    background: #000; /* Sleek black for AI Chat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .ai-chat-floating {
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .ai-chat-floating i {
+    color: #000 !important;
+}
+
+.ai-chat-floating:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Mini Action Buttons for Name Section */
+.action-triggers-wrap {
+    display: flex;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.mini-trigger {
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mini-trigger:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 117, 24, 0.2);
+}
+
+.mini-trigger i {
+    font-size: 16px;
+    color: #444;
+    transition: color 0.3s ease;
+}
+
+.mini-trigger:hover i {
+    color: #fff !important;
+}
+
+.dark-mode .mini-trigger {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .mini-trigger i {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* The Mac-Style Window Frame */

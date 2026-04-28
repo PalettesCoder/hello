@@ -8,14 +8,14 @@
 
   <!-- ===================================================
        HARSHA ROYAL — PORTFOLIO SITEMAP
-       Last updated: 2026-03-24
+       Last updated: 2026-04-28
        Maintained by: palettescoder@gmail.com
   =================================================== -->
 
   <!-- ① Homepage — Primary Landing -->
   <url>
     <loc>https://harsharoyal.in/</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -23,16 +23,12 @@
       <image:title>Harsha Royal — UI Developer &amp; Product Designer</image:title>
       <image:caption>Profile portrait of Harsha Royal, UI Developer and Product Designer based in Hyderabad, India</image:caption>
     </image:image>
-    <image:image>
-      <image:loc>https://harsharoyal.in/images/profile.png</image:loc>
-      <image:title>Harsha Royal Portfolio — Open Graph Preview</image:title>
-    </image:image>
   </url>
 
   <!-- ② Projects Listing Page -->
   <url>
     <loc>https://harsharoyal.in/projects/</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -40,61 +36,63 @@
   <!-- ③ WSP Project Case Study -->
   <url>
     <loc>https://harsharoyal.in/projects/WSP-project/</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://harsharoyal.in/images/WSP/PolishedPortfolioOverview.png.png</image:loc>
-      <image:title>WSP PM — Enterprise Project Management Dashboard — UX Case Study by Harsha Royal</image:title>
-      <image:caption>Global portfolio health dashboard designed for WSP PM — reducing briefing lag by 73%</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://harsharoyal.in/images/WSP/PolishedPortfolioOverview.png-1.png</image:loc>
-      <image:title>WSP PM — Project Detail View — UX Design by Harsha Royal</image:title>
-    </image:image>
   </url>
 
   <!-- ④ Bajaj Project Case Study -->
   <url>
     <loc>https://harsharoyal.in/projects/Bajaj-project/</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://harsharoyal.in/images/WSP/PolishedPortfolioOverview.png.png</image:loc>
-      <image:title>Bajaj Finance — Seamless FinTech Platform — UX Case Study by Harsha Royal</image:title>
-      <image:caption>Fintech loan management platform designed for Bajaj Finance — achieving sub-2 min verification</image:caption>
-    </image:image>
   </url>
 
   <!-- ⑤ Intel Project Case Study -->
   <url>
     <loc>https://harsharoyal.in/projects/Intel-project/</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ⑥ Freelance / Hire Page -->
+  <!-- ⑥ Nexi Project Case Study -->
+  <url>
+    <loc>https://harsharoyal.in/projects/Nexi-project/</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ⑦ Dramebaaz Project Case Study -->
+  <url>
+    <loc>https://harsharoyal.in/projects/Drame/</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ⑧ Freelance / Hire Page -->
   <url>
     <loc>https://harsharoyal.in/freelance.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ⑦ Resume Page -->
+  <!-- ⑨ Resume Page -->
   <url>
     <loc>https://harsharoyal.in/resume.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ⑧ Tech Stack Page -->
+  <!-- ⑩ Tech Stack Page -->
   <url>
     <loc>https://harsharoyal.in/tech-stack.html</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

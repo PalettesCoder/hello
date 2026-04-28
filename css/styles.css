@@ -4441,7 +4441,8 @@ button.animate-btn::after {
     align-items: center;
     opacity: 1;
     visibility: visible;
-    z-index: 2000 !important; /* Above all background decorative elements */
+    z-index: 2000 !important;
+    /* Above all background decorative elements */
 }
 
 .sidebar-user::-webkit-scrollbar {
@@ -4462,7 +4463,8 @@ button.animate-btn::after {
     width: 100%;
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* Allow scrolling if content is too tall for small screens */
+    overflow-y: auto;
+    /* Allow scrolling if content is too tall for small screens */
     overflow-x: hidden;
 }
 
@@ -4550,10 +4552,12 @@ button.animate-btn::after {
 }
 
 .sidebar-user .user-info {
-    position: relative; /* Changed from absolute to flow naturally after text */
+    position: relative;
+    /* Changed from absolute to flow naturally after text */
     padding: 0 38px 38px;
     z-index: 110;
-    margin-top: auto; /* Push to bottom if space available */
+    margin-top: auto;
+    /* Push to bottom if space available */
 }
 
 .sidebar-user .user-intro-top {
@@ -4606,7 +4610,7 @@ button.animate-btn::after {
     color: var(--white-72)
 }
 
-.sidebar-user .tf-btn-action, 
+.sidebar-user .tf-btn-action,
 .sidebar-user .action-down {
     display: flex !important;
     opacity: 1 !important;
@@ -4619,7 +4623,7 @@ button.animate-btn::after {
     color: var(--black-72) !important;
 }
 
- .sidebar-user .action-down:hover {
+.sidebar-user .action-down:hover {
     color: var(--primary) !important;
     border-color: var(--primary) !important;
 }
@@ -6987,54 +6991,147 @@ button.animate-btn::after {
     background: linear-gradient(180deg, #aac7cf 0, #d8e2d6 100%)
 }
 
+/* === Animated Environment Fallbacks (ALL LIGHT) === */
+.env-orbs .body-background {
+    background: linear-gradient(180deg, #fef4f8 0%, #f4effc 100%);
+}
+.env-orbs .sidebar-user .user-image {
+    background: linear-gradient(180deg, #fef4f8 0%, #f4effc 100%);
+}
+
+.env-blossom .body-background {
+    background: linear-gradient(180deg, #fff2f5 0%, #fcecf0 100%);
+}
+.env-blossom .sidebar-user .user-image {
+    background: linear-gradient(180deg, #fff2f5 0%, #fcecf0 100%);
+}
+
+.env-glimmer .body-background {
+    background: linear-gradient(180deg, #fffdf2 0%, #fdf5df 100%);
+}
+.env-glimmer .sidebar-user .user-image {
+    background: linear-gradient(180deg, #fffdf2 0%, #fdf5df 100%);
+}
+
+.env-breeze .body-background {
+    background: linear-gradient(180deg, #f0fbfc 0%, #e0f4f7 100%);
+}
+.env-breeze .sidebar-user .user-image {
+    background: linear-gradient(180deg, #f0fbfc 0%, #e0f4f7 100%);
+}
+
+.env-waves .body-background {
+    background: linear-gradient(180deg, #fdfdfd 0%, #f3f5f7 100%);
+}
+.env-waves.dark-mode .body-background {
+    background: linear-gradient(180deg, #1f2229 0%, #292d36 100%); /* Still must respect global dark-mode toggle if user uses it, but base is light */
+}
+.env-waves .sidebar-user .user-image {
+    background: linear-gradient(180deg, #fdfdfd 0%, #f3f5f7 100%);
+}
+.env-waves.dark-mode .sidebar-user .user-image {
+    background: linear-gradient(180deg, #1f2229 0%, #292d36 100%);
+}
+
+/* === Night Gradients â€” deep stellar indigo === */
 .dark-v1.dark-mode .body-background {
-    background: linear-gradient(0deg, #14151a, #14151a), linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%)
+    background: linear-gradient(160deg, #0a0a1a 0%, #0d0d28 40%, #080815 100%);
+}
+
+.dark-v1.dark-mode .body-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 30%, rgba(80, 60, 200, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(120, 80, 255, 0.12) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .dark-v1.dark-mode .sidebar-user .user-image {
-    background: linear-gradient(0deg, #14151a, #14151a), linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%)
+    background: linear-gradient(160deg, #0a0a1a 0%, #0d0d28 40%, #080815 100%);
 }
 
+/* === Aurora Borealis â€” teal/emerald shimmer === */
 .dark-v2.dark-mode .body-background {
-    background: linear-gradient(0deg, #14151a, #14151a), linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%)
+    background: linear-gradient(160deg, #030d0a 0%, #071410 40%, #041209 100%);
+}
+
+.dark-v2.dark-mode .body-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(0, 210, 140, 0.14) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 60%, rgba(20, 180, 100, 0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(0, 255, 180, 0.06) 0%, transparent 40%);
+    pointer-events: none;
 }
 
 .dark-v2.dark-mode .sidebar-user .user-image {
-    background: linear-gradient(0deg, #14151a, #14151a), linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%)
+    background: linear-gradient(160deg, #030d0a 0%, #071410 40%, #041209 100%);
 }
 
+/* === Neon Noir â€” cyberpunk magenta/violet === */
 .dark-v3.dark-mode .body-background {
-    background: linear-gradient(0deg, #0d1210, #0d1210), linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%)
+    background: linear-gradient(160deg, #080008 0%, #0d0010 40%, #06000c 100%);
+}
+
+.dark-v3.dark-mode .body-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 10% 50%, rgba(200, 0, 255, 0.14) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 20%, rgba(255, 20, 180, 0.10) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 100%, rgba(140, 0, 200, 0.08) 0%, transparent 40%);
+    pointer-events: none;
 }
 
 .dark-v3.dark-mode .sidebar-user .user-image {
-    background: linear-gradient(0deg, #0d1210, #0d1210), linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%)
+    background: linear-gradient(160deg, #080008 0%, #0d0010 40%, #06000c 100%);
 }
 
+/* === Solar Flare â€” volcanic deep amber === */
 .dark-v4.dark-mode .body-background {
-    background: linear-gradient(0deg, #12151c, #12151c)
+    background: linear-gradient(160deg, #0c0500 0%, #120800 40%, #0a0400 100%);
 }
 
-.dark-v4.dark-mode .body-background::before {
+.dark-v4.dark-mode .body-background::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%);
-    z-index: 1
+    background:
+        radial-gradient(ellipse at 50% 110%, rgba(255, 100, 0, 0.20) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 60%, rgba(220, 60, 0, 0.12) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 30%, rgba(255, 140, 0, 0.08) 0%, transparent 40%);
+    pointer-events: none;
 }
 
 .dark-v4.dark-mode .sidebar-user .user-image {
-    background: linear-gradient(0deg, #12151c, #12151c)
+    background: linear-gradient(160deg, #0c0500 0%, #120800 40%, #0a0400 100%);
 }
 
-.dark-v4.dark-mode .sidebar-user .user-image::before {
+/* === Deep Ocean â€” abyssal navy/teal === */
+.dark-v5.dark-mode .body-background {
+    background: linear-gradient(160deg, #020810 0%, #030d1a 40%, #020912 100%);
+}
+
+.dark-v5.dark-mode .body-background::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%);
-    z-index: 1;
-    pointer-events: none
+    background:
+        radial-gradient(ellipse at 30% 80%, rgba(0, 80, 180, 0.16) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 20%, rgba(0, 120, 200, 0.10) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 50, 120, 0.08) 0%, transparent 40%);
+    pointer-events: none;
 }
+
+.dark-v5.dark-mode .sidebar-user .user-image {
+    background: linear-gradient(160deg, #020810 0%, #030d1a 40%, #020912 100%);
+}
+
 
 .video-v1 .bg-video {
     display: block
@@ -7435,16 +7532,44 @@ button.animate-btn::after {
     background: linear-gradient(180deg, #aac7cf 0, #d8e2d6 100%)
 }
 
-.choose-item .color.type-dark-v1 {
-    background: linear-gradient(0deg, #14151a, #14151a), linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%)
+.choose-item .color.type-body-v4 {
+    background: linear-gradient(135deg, #fcd5c0 0%, #fadadd 100%)
 }
 
-.choose-item .color.type-dark-v2 {
-    background: linear-gradient(0deg, #14151a, #14151a), linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%)
+.choose-item .color.type-body-v5 {
+    background: linear-gradient(135deg, #c8eedd 0%, #e0f5ee 100%)
 }
 
-.choose-item .color.type-dark-v3 {
-    background: linear-gradient(0deg, #0d1210, #0d1210), linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .08) 100%)
+.choose-item .color.type-body-v6 {
+    background: linear-gradient(135deg, #fde9b0 0%, #fdf0c8 100%)
+}
+
+.choose-item .color.type-body-v7 {
+    background: linear-gradient(135deg, #e8d0f0 0%, #edd8f5 100%)
+}
+
+.choose-item .color.type-body-v8 {
+    background: linear-gradient(135deg, #d4d0f0 0%, #dcd8f5 100%)
+}
+
+.choose-item .color.type-body-v9 {
+    background: linear-gradient(135deg, #b8e8ff 0%, #caf0ff 100%)
+}
+
+.choose-item .color.type-body-v10 {
+    background: linear-gradient(135deg, #f8c8dc 0%, #fad8e8 100%)
+}
+
+.choose-item .color.type-body-v11 {
+    background: linear-gradient(135deg, #e8d4b0 0%, #f0dfc0 100%)
+}
+
+.choose-item .color.type-body-v12 {
+    background: linear-gradient(135deg, #98e8e0 0%, #b8f0e8 100%)
+}
+
+.choose-item .color.type-body-v13 {
+    background: linear-gradient(135deg, #c0c8dc 0%, #d0d5e5 100%)
 }
 
 .choose-item .color::before {
@@ -8118,10 +8243,21 @@ button.animate-btn::after {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-.sticky-note.yellow { background: #fff7d1; }
-.sticky-note.blue { background: #d1f7ff; }
-.sticky-note.pink { background: #ffd1f7; }
-.sticky-note.green { background: #d1ffd7; }
+.sticky-note.yellow {
+    background: #fff7d1;
+}
+
+.sticky-note.blue {
+    background: #d1f7ff;
+}
+
+.sticky-note.pink {
+    background: #ffd1f7;
+}
+
+.sticky-note.green {
+    background: #d1ffd7;
+}
 
 .note-push-pin {
     position: absolute;
@@ -8197,6 +8333,7 @@ textarea {
 :active {
     cursor: url("../media/fallguys.cur"), pointer !important
 }
+
 /* ========================================
    PREMIUM SIDE NAVIGATION (DOTS)
    ======================================== */
@@ -8277,4 +8414,3 @@ body.dark-mode .nav-dot::after {
     background: #FF7518;
     transform: scale(1.4);
 }
-

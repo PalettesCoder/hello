@@ -95,12 +95,15 @@
 
         items.forEach((item, index) => {
             item.addEventListener("click", () => {
+                // Ignore elements meant for other systems (like accessibility)
+                if (item.hasAttribute("data-access")) return;
+
                 // If using data-theme (New Method)
                 const themeId = item.getAttribute("data-theme");
                 
                 // Remove all existing theme classes
                 body.classList.forEach(cls => {
-                    if (cls.startsWith("body-v") || cls.startsWith("dark-v")) {
+                    if (cls.startsWith("body-v") || cls.startsWith("dark-v") || cls.startsWith("env-")) {
                         body.classList.remove(cls);
                     }
                 });
@@ -115,9 +118,11 @@
                         "silver-dawn": "body-v1",
                         "lavender-stone": "body-v2",
                         "ocean-breezes": "body-v3",
-                        "midnight-fade": "dark-v1",
-                        "charcoal-mist": "dark-v2",
-                        "forest-shadow": "dark-v3"
+                        "env-orbs": "env-orbs",
+                        "env-blossom": "env-blossom",
+                        "env-glimmer": "env-glimmer",
+                        "env-breeze": "env-breeze",
+                        "env-waves": "env-waves"
                     };
                     if (themeMap[themeId]) body.classList.add(themeMap[themeId]);
                 } else {
