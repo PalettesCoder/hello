@@ -67,33 +67,35 @@
 }
 
 .mini-trigger {
-    width: 36px;
-    height: 36px;
-    background: rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    background: var(--primary);
+    border: none;
+    border-radius: 50%;
     display: flex !important;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 16px rgba(255, 117, 24, 0.25);
+    position: relative;
+    overflow: hidden;
 }
 
 .mini-trigger:hover {
-    background: var(--primary);
-    border-color: var(--primary);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 16px rgba(255, 117, 24, 0.2);
+    background: #000;
+    transform: translateY(-5px) rotate(12deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .mini-trigger i {
-    font-size: 16px;
-    color: #444;
-    transition: color 0.3s ease;
+    font-size: 18px;
+    color: #fff !important;
+    transition: all 0.4s ease;
 }
 
 .mini-trigger:hover i {
-    color: #fff !important;
+    transform: scale(1.1);
 }
 
 .dark-mode .mini-trigger {

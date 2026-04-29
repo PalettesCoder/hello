@@ -140,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 800);
             }
         }
+        scrollToBottom();
     };
 
     initChat();

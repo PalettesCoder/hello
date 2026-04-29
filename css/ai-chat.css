@@ -10,7 +10,7 @@
 .neural-portal {
     position: fixed;
     top: 40px;
-    right: 40px;
+    right: 10px;
     bottom: 40px;
     width: 420px;
     z-index: 999999;
@@ -203,9 +203,12 @@
 /* Body - Message Mesh */
 .portal-body {
     flex: 1;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
 }
+
 
 .message-mesh {
     flex: 1;
@@ -219,23 +222,14 @@
 
 /* Premium Scrollbar Styling */
 .message-mesh::-webkit-scrollbar {
-    width: 6px;
+    display: none;
 }
 
-.message-mesh::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
+.message-mesh {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
-.message-mesh::-webkit-scrollbar-thumb {
-    background: rgba(255, 117, 24, 0.3);
-    border-radius: 10px;
-    transition: background 0.3s;
-}
-
-.message-mesh::-webkit-scrollbar-thumb:hover {
-    background: var(--neural-primary);
-}
 
 .neural-msg {
     max-width: 85%;

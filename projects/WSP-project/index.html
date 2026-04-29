@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="../../css/inter.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../../css/interactive-case-study.css">
     <style>
         :root {
             --primary: #FF7518;
@@ -1516,6 +1517,51 @@
             </div>
         </div>
     </section>
+    <!-- 2.5️⃣ PROCESS TIMELINE -->
+    <section class="story-block" id="process" style="padding-top: 100px; padding-bottom: 100px;">
+        <div class="container">
+            <div class="mega-text" style="max-width: 1000px; margin-bottom: 60px;">
+                <span class="section-tag" style="background:rgba(0,0,0,0.05); color:var(--black-72); padding:6px 16px; border-radius:2px; font-size:11px; margin-bottom:24px; display:inline-block; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;">03 Design Process</span>
+                <h2 style="font-weight: 800; margin-bottom: 32px; letter-spacing: -0.04em; color: var(--black-92);">Methodology of Precision.</h2>
+                <p class="narrative-copy" style="font-size: 22px; color: var(--black-72);">My process is a feedback loop of research, rapid prototyping, and technical validation. Click each step to explore the transition from chaos to clarity.</p>
+            </div>
+
+            <div class="process-timeline">
+                <!-- Step 1 -->
+                <div class="process-step-item active">
+                    <div class="process-trigger">
+                        <h4><span>01</span> Discovery & Research</h4>
+                        <i class="icon icon-plus"></i>
+                    </div>
+                    <div class="process-content">
+                        <p>I conducted 15+ stakeholder interviews across 4 time zones to identify the 'Reporting Lag' as the primary business friction point. We mapped the path of a single data point from site engineer to regional executive.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step-item">
+                    <div class="process-trigger">
+                        <h4><span>02</span> High-Density Wireframing</h4>
+                        <i class="icon icon-plus"></i>
+                    </div>
+                    <div class="process-content">
+                        <p>Building for enterprise means managing 'Data Fatigue'. I designed 40+ wireframe iterations focused on Glanceable HUDs and SUB-3s cognitive thresholds.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step-item">
+                    <div class="process-trigger">
+                        <h4><span>03</span> Technical Validation</h4>
+                        <i class="icon icon-plus"></i>
+                    </div>
+                    <div class="process-content">
+                        <p>We stress-tested the UI components with 1,200+ live telemetry nodes to ensure zero-latency performance in the production environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- 3️⃣ PERSONAS -->
     <section class="story-block white" id="personas" style="padding-top: 120px; padding-bottom: 120px;">
@@ -1881,6 +1927,24 @@
                 <p class="narrative-copy" style="font-size: 22px;">Design decisions centered on <strong>Action over Information.</strong> I developed high-fidelity surfaces that guide the user toward critical interventions using visual hierarchy as a primary tool.</p>
             </div>
 
+            <!-- Before/After Evolution Slider -->
+            <div style="margin-bottom: 100px;">
+                <h4 style="text-transform:uppercase; color:var(--primary); letter-spacing:0.2em; margin-bottom:32px; font-weight:900;">Visual Evolution: Before & After</h4>
+                <div class="ba-slider hover-micro">
+                    <div class="ba-after">
+                        <img src="../../images/WSP/PolishedPortfolioOverview.png.png" alt="Final High-Fidelity Dashboard">
+                    </div>
+                    <div class="ba-overlay">
+                        <div class="ba-before">
+                            <img src="../../images/WSP/WSP-Dashboard-Draft.png" alt="Initial Legacy Concept">
+                        </div>
+                    </div>
+                    <div class="ba-handle"></div>
+                    <div class="ba-label before">Legacy Data View</div>
+                    <div class="ba-label after">Neural AI Dashboard</div>
+                </div>
+            </div>
+
             <div style="display:grid; grid-template-columns: 1fr; gap:80px; margin-bottom: 120px;">
                 <!-- Dashboard Overhaul -->
                 <div style="background:var(--wsp-color-gray-25); border-radius:24px; padding:60px; position:relative; overflow:hidden; border:1px solid var(--wsp-color-gray-100); transition: var(--transition);">
@@ -2117,6 +2181,7 @@
     <script src="../../js/project-gate.js" defer></script>
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/main.js"></script>
+    <script src="../../js/interactive-case-study.js"></script>
 </body>
 
 </html>

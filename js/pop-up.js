@@ -39,14 +39,14 @@ document.addEventListener("DOMContentLoaded", function() {
             continueToWebsiteButton.addEventListener("click", function(event) {
                 event.preventDefault();
                 popupOverlay.style.display = "none";
-                setCookie("popupClosed", "true", 1); // Set cookie to expire in 1 minute
+                setCookie("popupClosed", "true", 1440); // Set cookie to expire in 1440 minutes (24 hours)
             });
         }
 
         if (contactFromPopupButton) {
             contactFromPopupButton.addEventListener("click", function() {
                 popupOverlay.style.display = "none";
-                setCookie("popupClosed", "true", 1); // Set cookie to expire in 1 minute
+                setCookie("popupClosed", "true", 1440); // Set cookie to expire in 1440 minutes (24 hours)
             });
         }
     }

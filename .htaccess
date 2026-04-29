@@ -73,7 +73,7 @@ ErrorDocument 404 /404.html
     # - Google Fonts (apis and gstatic)
     # - EmailJS via jsdelivr (script) and api.emailjs.com (connect)
     # - Unsafe-inline for scripts and styles (required by existing codebase animations/styles)
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in; connect-src 'self' https://api.emailjs.com https://*.emailjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com https://cdn.userway.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.userway.org; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://harsharoyal.in https://cdn.userway.org; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://cdn.userway.org https://api.userway.org; frame-src 'self' https://cdn.userway.org; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
 </IfModule>
 
 # --- Cache Control ---

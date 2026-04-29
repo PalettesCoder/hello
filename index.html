@@ -6,7 +6,7 @@
     <script src="js/protect.js"></script>
     <meta charset="utf-8">
     <!-- Security Headers (GitHub Pages doesn't support HTTP headers) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com https://accounts.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://accounts.google.com; frame-src 'self' https://accounts.google.com; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com https://accounts.google.com https://cdn.userway.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com https://cdn.userway.org; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://harsharoyal.in https://show.uwebb.id https://www.transparenttextures.com https://www.google-analytics.com https://www.googletagmanager.com https://cdn.userway.org; connect-src 'self' https://api.emailjs.com https://*.emailjs.com https://api.ipify.org https://ipapi.co https://api.db-ip.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://accounts.google.com https://cdn.userway.org https://api.userway.org; frame-src 'self' https://accounts.google.com https://cdn.userway.org; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
     <title>Harsha Royal — UI Developer & Product Designer | Portfolio</title>
     <meta name="author" content="Harsha Royal">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -573,18 +573,6 @@
                         <span class="text">None</span>
                         <span class="tag">Default</span>
                     </div>
-                    <div class="theme-choice btn-access" data-access="accessibe" data-no-theme="true">
-                        <span class="text">AccessiBe</span>
-                        <span class="tag">Widget</span>
-                    </div>
-                    <div class="theme-choice btn-access" data-access="equalweb" data-no-theme="true">
-                        <span class="text">EqualWeb</span>
-                        <span class="tag">Widget</span>
-                    </div>
-                    <div class="theme-choice btn-access" data-access="eyeable" data-no-theme="true">
-                        <span class="text">Eye-Able</span>
-                        <span class="tag">Assist</span>
-                    </div>
                     <div class="theme-choice btn-access" data-access="userway" data-no-theme="true">
                         <span class="text">UserWay</span>
                         <span class="tag">Free</span>
@@ -840,7 +828,7 @@
                                             <p class="info_name text-black" style="margin-bottom: 0;">Harsha Royal</p>
                                             <p class="info_duty text-black-50 text-body-3">UI Developer & Product Designer</p>
                                         </div>
-                                        <div class="action-triggers-wrap">
+                                        <div class="action-triggers-wrap" style="display: flex; gap: 10px;">
                                             <div class="feedback-trigger mini-trigger" title="Send Feedback" aria-label="Send Feedback">
                                                 <i class="icon icon-send"></i>
                                             </div>
@@ -2652,8 +2640,19 @@
         let currentPhase = 0;
 
         window.addEventListener('DOMContentLoaded', () => {
-            // Temporarily disabled for testing
-            // if (localStorage.getItem('hasSeenAnnouncementPopup')) return;
+            // Check for the cookie
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(';');
+                for(let i=0;i < ca.length;i++) {
+                    let c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+            }
+
+            if (getCookie('hasSeenAnnouncementPopup')) return;
 
             const phrases = [
                 "Loading magic...",
@@ -2739,7 +2738,12 @@
             if (announcementPopup) {
                 announcementPopup.classList.remove('show');
                 document.body.style.overflow = 'auto';
-                localStorage.setItem('hasSeenAnnouncementPopup', 'true');
+                
+                // Set cookie for 24 hours (1440 minutes)
+                const date = new Date();
+                date.setTime(date.getTime() + (1440 * 60 * 1000));
+                const expires = "; expires=" + date.toUTCString();
+                document.cookie = "hasSeenAnnouncementPopup=true" + expires + "; path=/";
             }
         }
 
