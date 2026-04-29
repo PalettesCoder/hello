@@ -935,6 +935,16 @@ async function triggerAlarm(violationType = "Security Violation") {
     document.getElementById('gameHud').style.display = 'none';
     document.getElementById('gameCrosshair').style.display = 'none';
 
+    // Handle Training Mode vs Violation
+    const isTraining = violationType.includes("Training");
+    const banner = alarmOverlay.querySelector('.alert-banner');
+    if (banner) {
+        banner.style.display = isTraining ? 'none' : 'block';
+        if (!isTraining) {
+            banner.innerHTML = `⚠️ ${violationType.toUpperCase()} DETECTED — Player IP: <span class="ip alert-ip">${visitorIP}</span> sent to squad chat for roasting 🔥`;
+        }
+    }
+
     // Refresh login state and scores
     updateLoginUI();
     tryInitGoogle();
